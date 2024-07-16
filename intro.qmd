@@ -1,5 +1,27 @@
 # Introduction
 
-This is a book created from markdown and executable code.
+## Introduction to Computational Linear Algebra
 
-See @knuth84 for additional discussion of literate programming.
+Welcome to the Computational Linear Algebra course, a pivotal component of our Computational Mathematics for Engineering minor program. This course is meticulously designed to connect theoretical linear algebra concepts with their practical applications in Artificial Intelligence (AI) and Data Science.
+
+### Course Themes
+
+1. **Practical Application Proficiency**
+   - Our primary focus is on seamlessly translating theoretical concepts into practical solutions for real-world challenges.
+   - Develop robust problem-solving skills applicable to AI, Data Science, and advanced engineering scenarios.
+
+2. **Mathematical Expertise for Data Insights**
+   - Gain in-depth proficiency in computational linear algebra, covering essential topics like matrix operations, eigendecomposition, and singular value decomposition.
+   - Leverage linear algebra techniques to derive meaningful insights and make informed decisions in data science applications.
+
+3. **Hands-On Learning**
+   - Engage in immersive, project-based learning experiences with a strong emphasis on Python implementation.
+   - Apply linear algebra principles to practical problems, including linear regression, principal component analysis (PCA), and neural networks.
+
+### Relevance and Impact
+
+In today's technology-driven landscape, linear algebra forms the backbone of many critical algorithms and applications in AI and Data Science. This course will not only enhance your analytical and computational skills but also prepare you to address complex engineering problems with confidence.
+
+By the end of this course, you will have acquired a comprehensive understanding of the role of linear algebra in computational mathematics and its practical applications. This knowledge will equip you with the tools necessary to excel in the rapidly evolving tech industry.
+
+Let us start this journey together, where theoretical knowledge meets practical application, and explore the fascinating and impactful world of Computational Linear Algebra.

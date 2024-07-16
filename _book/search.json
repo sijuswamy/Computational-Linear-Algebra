@@ -1,0 +1,42 @@
+[
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "1.1 Introduction to Computational Linear Algebra\nWelcome to the Computational Linear Algebra course, a pivotal component of our Computational Mathematics for Engineering minor program. This course is meticulously designed to connect theoretical linear algebra concepts with their practical applications in Artificial Intelligence (AI) and Data Science.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#introduction-to-computational-linear-algebra",
+    "href": "intro.html#introduction-to-computational-linear-algebra",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "1.1.1 Course Themes\n\nPractical Application Proficiency\n\nOur primary focus is on seamlessly translating theoretical concepts into practical solutions for real-world challenges.\nDevelop robust problem-solving skills applicable to AI, Data Science, and advanced engineering scenarios.\n\nMathematical Expertise for Data Insights\n\nGain in-depth proficiency in computational linear algebra, covering essential topics like matrix operations, eigendecomposition, and singular value decomposition.\nLeverage linear algebra techniques to derive meaningful insights and make informed decisions in data science applications.\n\nHands-On Learning\n\nEngage in immersive, project-based learning experiences with a strong emphasis on Python implementation.\nApply linear algebra principles to practical problems, including linear regression, principal component analysis (PCA), and neural networks.\n\n\n\n\n1.1.2 Relevance and Impact\nIn today’s technology-driven landscape, linear algebra forms the backbone of many critical algorithms and applications in AI and Data Science. This course will not only enhance your analytical and computational skills but also prepare you to address complex engineering problems with confidence.\nBy the end of this course, you will have acquired a comprehensive understanding of the role of linear algebra in computational mathematics and its practical applications. This knowledge will equip you with the tools necessary to excel in the rapidly evolving tech industry.\nLet us start this journey together, where theoretical knowledge meets practical application, and explore the fascinating and impactful world of Computational Linear Algebra.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Computational Linear Algebra",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "crumbs": [
+      "Preface"
+    ]
+  }
+]
