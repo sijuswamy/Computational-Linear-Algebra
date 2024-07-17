@@ -1,14 +1,13 @@
 project:
-  type: website
-  output-dir: docs
-
+  type: book
 book:
   title: "Computational Linear Algebra"
   author: "Siju Swamy"
-  date: "16/7/2024"
+  date: "7/16/2024"
   chapters:
     - index.qmd
     - intro.qmd
+    - module_1.qmd
     - summary.qmd
     - references.qmd
 
@@ -21,6 +20,7 @@ format:
     documentclass: scrreprt
   epub:
     cover-image: cover.png
+jupyter: python3
 
 
 
