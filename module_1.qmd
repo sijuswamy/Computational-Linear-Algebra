@@ -1,7 +1,7 @@
 ---
 title: "Python for Linear Algebra"
 execute: 
-  enabled: false
+  enabled: true
 ---
 ## Pseudocode: the new language for algorithm design
 
@@ -1603,7 +1603,7 @@ When working with grayscale images, each image can be represented as a matrix wh
 
 Consider two 2x2 grayscale images represented as matrices:
 
-```{python}
+```python
 image1= [[100, 150],[200, 250]]
 image2=[[50, 100],[100, 150]]
 ```
@@ -1679,7 +1679,7 @@ sharpened_image[i][j] = original_image[i][j] - blurred_image[i][j]
 
 Below is a simplified Python example of image sharpening using matrix subtraction:
 
-```{python}
+```python
 # Original image matrix (grayscale values)
 original_image = [
     [100, 150, 200],
@@ -1762,7 +1762,7 @@ smoothed_image[i][j] = sum(original_image[ii][jj] * kernel[k][l] for all (ii, jj
 
 Here's a simplified Python example demonstrating convolution for image smoothing without external libraries:
 
-```{python}
+```python
 # Original image matrix (grayscale values)
 original_image = [
     [100, 150, 200, 250],
@@ -1911,25 +1911,27 @@ FUNCTION matrix_add():
 # Return the result matrix
     return result
 ENDFUNCTION
+```
+
 
 ```{python}
-from sympy import Matrix
-
+import sympy as sy
+sy.init_printing()
 # Define matrices A and B
-A = Matrix([[1, 2], [3, 4]])
-B = Matrix([[5, 6], [7, 8]])
+A = sy.Matrix([[1, 2], [3, 4]])
+B = sy.Matrix([[5, 6], [7, 8]])
 
 # Add matrices
 C = A + B
 
 # Print the result in symbolic form
 print("Matrix Addition Result:")
-print(C)
+display(C)
 
 # Convert to LaTeX code for documentation or presentation
-latex_code = C.to_latex()
-print("LaTeX Code for Addition Result:")
-print(latex_code)
+#latex_code = sy.latex(C)
+#print("LaTeX Code for Addition Result:")
+#print(latex_code)
 ```
 
 

@@ -1,6 +1,9 @@
 # Preface {.unnumbered}
 
-This is a Quarto book.
+Welcome to the course on **Computational Linear Algebra**. This course is designed to provide a practical perspective on linear algebra, bridging the gap between mathematical theory and real-world applications. As we delve into the intricacies of linear algebra, our focus will be on equipping you with the skills to effectively utilize these concepts in the design, development, and manipulation of data-driven processes applicable to Computer Science and Engineering.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
-@knuth84.
+Throughout this course, you will explore linear algebra not just as a set of abstract mathematical principles, but as a powerful tool for solving complex problems and optimizing processes. The curriculum integrates robust mathematical theory with hands-on implementation, enabling you to apply linear algebra techniques in practical scenarios.
+
+From understanding fundamental operations to applying advanced concepts in data-driven contexts, this course aims to build a strong foundation that supports both theoretical knowledge and practical expertise. Whether you're tackling computational challenges or developing innovative solutions, the skills and insights gained here will be invaluable in your academic and professional endeavors @knuth84.
+
+We look forward to guiding you through this journey of blending theory with practice and helping you harness the full potential of linear algebra in your work.

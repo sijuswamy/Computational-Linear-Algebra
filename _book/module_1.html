@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Computational Linear Algebra - 2&nbsp; Python for Linear Algebra</title>
+<title>Computational Linear Algebra - 1&nbsp; Python for Linear Algebra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="next">
+<link href="./module_2.html" rel="next">
 <link href="./intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -144,7 +144,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./module_1.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python for Linear Algebra</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./module_1.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python for Linear Algebra</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -178,19 +178,19 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./module_1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python for Linear Algebra</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python for Linear Algebra</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  <a href="./module_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transforming Linear Algebra to Computational Language</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -209,53 +209,53 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#pseudocode-the-new-language-for-algorithm-design" id="toc-pseudocode-the-new-language-for-algorithm-design" class="nav-link active" data-scroll-target="#pseudocode-the-new-language-for-algorithm-design"><span class="header-section-number">2.1</span> Pseudocode: the new language for algorithm design</a>
+  <li><a href="#pseudocode-the-new-language-for-algorithm-design" id="toc-pseudocode-the-new-language-for-algorithm-design" class="nav-link active" data-scroll-target="#pseudocode-the-new-language-for-algorithm-design"><span class="header-section-number">1.1</span> Pseudocode: the new language for algorithm design</a>
   <ul class="collapse">
-  <li><a href="#matrix-sum" id="toc-matrix-sum" class="nav-link" data-scroll-target="#matrix-sum"><span class="header-section-number">2.1.1</span> Matrix Sum</a></li>
-  <li><a href="#matrix-difference" id="toc-matrix-difference" class="nav-link" data-scroll-target="#matrix-difference"><span class="header-section-number">2.1.2</span> Matrix Difference</a></li>
-  <li><a href="#matrix-product" id="toc-matrix-product" class="nav-link" data-scroll-target="#matrix-product"><span class="header-section-number">2.1.3</span> Matrix Product</a></li>
-  <li><a href="#determinant" id="toc-determinant" class="nav-link" data-scroll-target="#determinant"><span class="header-section-number">2.1.4</span> Determinant</a></li>
-  <li><a href="#rank-of-a-matrix" id="toc-rank-of-a-matrix" class="nav-link" data-scroll-target="#rank-of-a-matrix"><span class="header-section-number">2.1.5</span> Rank of a Matrix</a></li>
-  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link" data-scroll-target="#practice-problems"><span class="header-section-number">2.1.6</span> Practice Problems</a></li>
-  <li><a href="#solving-a-system-of-equations" id="toc-solving-a-system-of-equations" class="nav-link" data-scroll-target="#solving-a-system-of-equations"><span class="header-section-number">2.1.7</span> Solving a System of Equations</a></li>
-  <li><a href="#review-problems" id="toc-review-problems" class="nav-link" data-scroll-target="#review-problems"><span class="header-section-number">2.1.8</span> Review Problems</a></li>
+  <li><a href="#matrix-sum" id="toc-matrix-sum" class="nav-link" data-scroll-target="#matrix-sum"><span class="header-section-number">1.1.1</span> Matrix Sum</a></li>
+  <li><a href="#matrix-difference" id="toc-matrix-difference" class="nav-link" data-scroll-target="#matrix-difference"><span class="header-section-number">1.1.2</span> Matrix Difference</a></li>
+  <li><a href="#matrix-product" id="toc-matrix-product" class="nav-link" data-scroll-target="#matrix-product"><span class="header-section-number">1.1.3</span> Matrix Product</a></li>
+  <li><a href="#determinant" id="toc-determinant" class="nav-link" data-scroll-target="#determinant"><span class="header-section-number">1.1.4</span> Determinant</a></li>
+  <li><a href="#rank-of-a-matrix" id="toc-rank-of-a-matrix" class="nav-link" data-scroll-target="#rank-of-a-matrix"><span class="header-section-number">1.1.5</span> Rank of a Matrix</a></li>
+  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link" data-scroll-target="#practice-problems"><span class="header-section-number">1.1.6</span> Practice Problems</a></li>
+  <li><a href="#solving-a-system-of-equations" id="toc-solving-a-system-of-equations" class="nav-link" data-scroll-target="#solving-a-system-of-equations"><span class="header-section-number">1.1.7</span> Solving a System of Equations</a></li>
+  <li><a href="#review-problems" id="toc-review-problems" class="nav-link" data-scroll-target="#review-problems"><span class="header-section-number">1.1.8</span> Review Problems</a></li>
   </ul></li>
-  <li><a href="#transition-from-pseudocode-to-python-programming" id="toc-transition-from-pseudocode-to-python-programming" class="nav-link" data-scroll-target="#transition-from-pseudocode-to-python-programming"><span class="header-section-number">2.2</span> Transition from Pseudocode to Python Programming</a></li>
-  <li><a href="#python-fundamentals" id="toc-python-fundamentals" class="nav-link" data-scroll-target="#python-fundamentals"><span class="header-section-number">2.3</span> Python Fundamentals</a>
+  <li><a href="#transition-from-pseudocode-to-python-programming" id="toc-transition-from-pseudocode-to-python-programming" class="nav-link" data-scroll-target="#transition-from-pseudocode-to-python-programming"><span class="header-section-number">1.2</span> Transition from Pseudocode to Python Programming</a></li>
+  <li><a href="#python-fundamentals" id="toc-python-fundamentals" class="nav-link" data-scroll-target="#python-fundamentals"><span class="header-section-number">1.3</span> Python Fundamentals</a>
   <ul class="collapse">
-  <li><a href="#python-programming-overview" id="toc-python-programming-overview" class="nav-link" data-scroll-target="#python-programming-overview"><span class="header-section-number">2.3.1</span> Python Programming Overview</a></li>
-  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables"><span class="header-section-number">2.3.2</span> Variables</a></li>
-  <li><a href="#python-programming-style" id="toc-python-programming-style" class="nav-link" data-scroll-target="#python-programming-style"><span class="header-section-number">2.3.3</span> Python Programming Style</a></li>
+  <li><a href="#python-programming-overview" id="toc-python-programming-overview" class="nav-link" data-scroll-target="#python-programming-overview"><span class="header-section-number">1.3.1</span> Python Programming Overview</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables"><span class="header-section-number">1.3.2</span> Variables</a></li>
+  <li><a href="#python-programming-style" id="toc-python-programming-style" class="nav-link" data-scroll-target="#python-programming-style"><span class="header-section-number">1.3.3</span> Python Programming Style</a></li>
   </ul></li>
-  <li><a href="#basic-datatypes-in-python" id="toc-basic-datatypes-in-python" class="nav-link" data-scroll-target="#basic-datatypes-in-python"><span class="header-section-number">2.4</span> Basic Datatypes in Python</a>
+  <li><a href="#basic-datatypes-in-python" id="toc-basic-datatypes-in-python" class="nav-link" data-scroll-target="#basic-datatypes-in-python"><span class="header-section-number">1.4</span> Basic Datatypes in Python</a>
   <ul class="collapse">
-  <li><a href="#numeric-types" id="toc-numeric-types" class="nav-link" data-scroll-target="#numeric-types"><span class="header-section-number">2.4.1</span> Numeric Types</a></li>
-  <li><a href="#sequence-types" id="toc-sequence-types" class="nav-link" data-scroll-target="#sequence-types"><span class="header-section-number">2.4.2</span> Sequence Types</a></li>
-  <li><a href="#mapping-types" id="toc-mapping-types" class="nav-link" data-scroll-target="#mapping-types"><span class="header-section-number">2.4.3</span> Mapping Types</a></li>
-  <li><a href="#set-types" id="toc-set-types" class="nav-link" data-scroll-target="#set-types"><span class="header-section-number">2.4.4</span> Set Types</a></li>
+  <li><a href="#numeric-types" id="toc-numeric-types" class="nav-link" data-scroll-target="#numeric-types"><span class="header-section-number">1.4.1</span> Numeric Types</a></li>
+  <li><a href="#sequence-types" id="toc-sequence-types" class="nav-link" data-scroll-target="#sequence-types"><span class="header-section-number">1.4.2</span> Sequence Types</a></li>
+  <li><a href="#mapping-types" id="toc-mapping-types" class="nav-link" data-scroll-target="#mapping-types"><span class="header-section-number">1.4.3</span> Mapping Types</a></li>
+  <li><a href="#set-types" id="toc-set-types" class="nav-link" data-scroll-target="#set-types"><span class="header-section-number">1.4.4</span> Set Types</a></li>
   </ul></li>
-  <li><a href="#control-structures-in-python" id="toc-control-structures-in-python" class="nav-link" data-scroll-target="#control-structures-in-python"><span class="header-section-number">2.5</span> Control Structures in Python</a>
+  <li><a href="#control-structures-in-python" id="toc-control-structures-in-python" class="nav-link" data-scroll-target="#control-structures-in-python"><span class="header-section-number">1.5</span> Control Structures in Python</a>
   <ul class="collapse">
-  <li><a href="#conditional-statements" id="toc-conditional-statements" class="nav-link" data-scroll-target="#conditional-statements"><span class="header-section-number">2.5.1</span> Conditional Statements</a></li>
-  <li><a href="#looping-statements" id="toc-looping-statements" class="nav-link" data-scroll-target="#looping-statements"><span class="header-section-number">2.5.2</span> Looping Statements</a></li>
-  <li><a href="#control-flow-statements" id="toc-control-flow-statements" class="nav-link" data-scroll-target="#control-flow-statements"><span class="header-section-number">2.5.3</span> Control Flow Statements</a></li>
+  <li><a href="#conditional-statements" id="toc-conditional-statements" class="nav-link" data-scroll-target="#conditional-statements"><span class="header-section-number">1.5.1</span> Conditional Statements</a></li>
+  <li><a href="#looping-statements" id="toc-looping-statements" class="nav-link" data-scroll-target="#looping-statements"><span class="header-section-number">1.5.2</span> Looping Statements</a></li>
+  <li><a href="#control-flow-statements" id="toc-control-flow-statements" class="nav-link" data-scroll-target="#control-flow-statements"><span class="header-section-number">1.5.3</span> Control Flow Statements</a></li>
   </ul></li>
-  <li><a href="#functions-in-python-programming" id="toc-functions-in-python-programming" class="nav-link" data-scroll-target="#functions-in-python-programming"><span class="header-section-number">2.6</span> Functions in Python Programming</a></li>
-  <li><a href="#object-oriented-programming-oop-in-python" id="toc-object-oriented-programming-oop-in-python" class="nav-link" data-scroll-target="#object-oriented-programming-oop-in-python"><span class="header-section-number">2.7</span> Object-Oriented Programming (OOP) in Python</a>
+  <li><a href="#functions-in-python-programming" id="toc-functions-in-python-programming" class="nav-link" data-scroll-target="#functions-in-python-programming"><span class="header-section-number">1.6</span> Functions in Python Programming</a></li>
+  <li><a href="#object-oriented-programming-oop-in-python" id="toc-object-oriented-programming-oop-in-python" class="nav-link" data-scroll-target="#object-oriented-programming-oop-in-python"><span class="header-section-number">1.7</span> Object-Oriented Programming (OOP) in Python</a>
   <ul class="collapse">
-  <li><a href="#key-concepts-of-oop" id="toc-key-concepts-of-oop" class="nav-link" data-scroll-target="#key-concepts-of-oop"><span class="header-section-number">2.7.1</span> Key Concepts of OOP</a></li>
+  <li><a href="#key-concepts-of-oop" id="toc-key-concepts-of-oop" class="nav-link" data-scroll-target="#key-concepts-of-oop"><span class="header-section-number">1.7.1</span> Key Concepts of OOP</a></li>
   </ul></li>
-  <li><a href="#working-with-files-in-python" id="toc-working-with-files-in-python" class="nav-link" data-scroll-target="#working-with-files-in-python"><span class="header-section-number">2.8</span> Working with Files in Python</a></li>
-  <li><a href="#from-theory-to-practice" id="toc-from-theory-to-practice" class="nav-link" data-scroll-target="#from-theory-to-practice"><span class="header-section-number">2.9</span> From Theory to Practice</a>
+  <li><a href="#working-with-files-in-python" id="toc-working-with-files-in-python" class="nav-link" data-scroll-target="#working-with-files-in-python"><span class="header-section-number">1.8</span> Working with Files in Python</a></li>
+  <li><a href="#from-theory-to-practice" id="toc-from-theory-to-practice" class="nav-link" data-scroll-target="#from-theory-to-practice"><span class="header-section-number">1.9</span> From Theory to Practice</a>
   <ul class="collapse">
-  <li><a href="#applications-of-matrix-operations-in-digital-image-processing" id="toc-applications-of-matrix-operations-in-digital-image-processing" class="nav-link" data-scroll-target="#applications-of-matrix-operations-in-digital-image-processing"><span class="header-section-number">2.9.1</span> Applications of Matrix Operations in Digital Image Processing</a></li>
+  <li><a href="#applications-of-matrix-operations-in-digital-image-processing" id="toc-applications-of-matrix-operations-in-digital-image-processing" class="nav-link" data-scroll-target="#applications-of-matrix-operations-in-digital-image-processing"><span class="header-section-number">1.9.1</span> Applications of Matrix Operations in Digital Image Processing</a></li>
   </ul></li>
-  <li><a href="#matrix-operations-using-python-libraries" id="toc-matrix-operations-using-python-libraries" class="nav-link" data-scroll-target="#matrix-operations-using-python-libraries"><span class="header-section-number">2.10</span> Matrix Operations Using <code>Python</code> Libraries</a>
+  <li><a href="#matrix-operations-using-python-libraries" id="toc-matrix-operations-using-python-libraries" class="nav-link" data-scroll-target="#matrix-operations-using-python-libraries"><span class="header-section-number">1.10</span> Matrix Operations Using <code>Python</code> Libraries</a>
   <ul class="collapse">
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">2.10.1</span> Introduction</a></li>
-  <li><a href="#introduction-to-sympy" id="toc-introduction-to-sympy" class="nav-link" data-scroll-target="#introduction-to-sympy"><span class="header-section-number">2.10.2</span> Introduction to SymPy</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">1.10.1</span> Introduction</a></li>
+  <li><a href="#introduction-to-sympy" id="toc-introduction-to-sympy" class="nav-link" data-scroll-target="#introduction-to-sympy"><span class="header-section-number">1.10.2</span> Introduction to SymPy</a></li>
   </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">2.11</span> Conclusion</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">1.11</span> Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -264,7 +264,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python for Linear Algebra</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python for Linear Algebra</span></h1>
 </div>
 
 
@@ -281,8 +281,8 @@ window.Quarto = {
 </header>
 
 
-<section id="pseudocode-the-new-language-for-algorithm-design" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="pseudocode-the-new-language-for-algorithm-design"><span class="header-section-number">2.1</span> Pseudocode: the new language for algorithm design</h2>
+<section id="pseudocode-the-new-language-for-algorithm-design" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="pseudocode-the-new-language-for-algorithm-design"><span class="header-section-number">1.1</span> Pseudocode: the new language for algorithm design</h2>
 <p>Pseudocode is a way to describe algorithms in a structured but plain language. It helps in planning the logic without worrying about the syntax of a specific programming language. In this module, we’ll use Python-flavored pseudocode to describe various matrix operations.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -297,8 +297,8 @@ Caution
 <p>There are varities of approaches in writing pseudocode. Students can adopt any of the standard approach to write pseudocode.</p>
 </div>
 </div>
-<section id="matrix-sum" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="matrix-sum"><span class="header-section-number">2.1.1</span> Matrix Sum</h3>
+<section id="matrix-sum" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="matrix-sum"><span class="header-section-number">1.1.1</span> Matrix Sum</h3>
 <p><strong>Mathematical Procedure:</strong></p>
 <p>To add two matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, both matrices must have the same dimensions. The sum <span class="math inline">\(C\)</span> of two matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is calculated element-wise:</p>
 <p><span class="math display">\[C[i][j] = A[i][j] + B[i][j]\]</span></p>
@@ -324,8 +324,8 @@ Caution
 <li>Return the resulting matrix <span class="math inline">\(C\)</span>.</li>
 </ol>
 </section>
-<section id="matrix-difference" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="matrix-difference"><span class="header-section-number">2.1.2</span> Matrix Difference</h3>
+<section id="matrix-difference" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="matrix-difference"><span class="header-section-number">1.1.2</span> Matrix Difference</h3>
 <p><strong>Mathematical Procedure:</strong></p>
 <p>To subtract matrix <span class="math inline">\(B\)</span> from matrix <span class="math inline">\(A\)</span>, both matrices must have the same dimensions. The difference <span class="math inline">\(C\)</span> of two matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is calculated element-wise:</p>
 <p><span class="math display">\[ C[i][j] = A[i][j] - B[i][j] \]</span></p>
@@ -370,8 +370,8 @@ Caution
 <li>Return the resulting matrix <span class="math inline">\(C\)</span>.</li>
 </ol>
 </section>
-<section id="matrix-product" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="matrix-product"><span class="header-section-number">2.1.3</span> Matrix Product</h3>
+<section id="matrix-product" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="matrix-product"><span class="header-section-number">1.1.3</span> Matrix Product</h3>
 <p><strong>Mathematical Procedure:</strong></p>
 <p>To find the product of two matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, the number of columns in <span class="math inline">\(A\)</span> must be equal to the number of rows in <span class="math inline">\(B\)</span>. The element <span class="math inline">\(C[i][j]\)</span> in the product matrix <span class="math inline">\(C\)</span> is computed as:</p>
 <p><span class="math display">\[C[i][j] = \sum_{k} A[i][k] \cdot B[k][j]\]</span></p>
@@ -426,8 +426,8 @@ Caution
 <li>Return the resulting matrix <span class="math inline">\(C\)</span>.</li>
 </ol>
 </section>
-<section id="determinant" class="level3" data-number="2.1.4">
-<h3 data-number="2.1.4" class="anchored" data-anchor-id="determinant"><span class="header-section-number">2.1.4</span> Determinant</h3>
+<section id="determinant" class="level3" data-number="1.1.4">
+<h3 data-number="1.1.4" class="anchored" data-anchor-id="determinant"><span class="header-section-number">1.1.4</span> Determinant</h3>
 <p><strong>Mathematical Procedure:</strong></p>
 <p>To find the determinant of a square matrix <span class="math inline">\(A\)</span>, we can use the Laplace expansion, which involves breaking the matrix down into smaller submatrices. For a <span class="math inline">\(2 \times 2\)</span> matrix, the determinant is calculated as:</p>
 <p><span class="math display">\[\text{det}(A) = A[0][0] \cdot A[1][1] - A[0][1] \cdot A[1][0]\]</span></p>
@@ -511,8 +511,8 @@ Caution
 <li>Sum the determinants of the submatrices, adjusted for the sign and the current element.</li>
 </ol>
 </section>
-<section id="rank-of-a-matrix" class="level3" data-number="2.1.5">
-<h3 data-number="2.1.5" class="anchored" data-anchor-id="rank-of-a-matrix"><span class="header-section-number">2.1.5</span> Rank of a Matrix</h3>
+<section id="rank-of-a-matrix" class="level3" data-number="1.1.5">
+<h3 data-number="1.1.5" class="anchored" data-anchor-id="rank-of-a-matrix"><span class="header-section-number">1.1.5</span> Rank of a Matrix</h3>
 <p><strong>Mathematical Procedure:</strong></p>
 <p>The rank of a matrix <span class="math inline">\(A\)</span> is the maximum number of linearly independent rows or columns in <span class="math inline">\(A\)</span>. This can be found using Gaussian elimination to transform the matrix into its row echelon form (REF) and then counting the number of non-zero rows.</p>
 <p><strong>Example:</strong></p>
@@ -606,16 +606,16 @@ Caution
 <li>Return the resulting rank of the matrix.</li>
 </ol>
 </section>
-<section id="practice-problems" class="level3" data-number="2.1.6">
-<h3 data-number="2.1.6" class="anchored" data-anchor-id="practice-problems"><span class="header-section-number">2.1.6</span> Practice Problems</h3>
+<section id="practice-problems" class="level3" data-number="1.1.6">
+<h3 data-number="1.1.6" class="anchored" data-anchor-id="practice-problems"><span class="header-section-number">1.1.6</span> Practice Problems</h3>
 <p>Find the rank of the following matrices.</p>
 <ol type="1">
 <li><span class="math inline">\(\begin{pmatrix} 1&amp;1&amp;3\\ 2&amp;2&amp;6\\ 2&amp;5&amp;3\end{pmatrix}\)</span>.</li>
 <li><span class="math inline">\(\begin{pmatrix} 2&amp;0&amp;2\\ 1&amp;2&amp;3\\ 3&amp;2&amp;7\end{pmatrix}\)</span></li>
 </ol>
 </section>
-<section id="solving-a-system-of-equations" class="level3" data-number="2.1.7">
-<h3 data-number="2.1.7" class="anchored" data-anchor-id="solving-a-system-of-equations"><span class="header-section-number">2.1.7</span> Solving a System of Equations</h3>
+<section id="solving-a-system-of-equations" class="level3" data-number="1.1.7">
+<h3 data-number="1.1.7" class="anchored" data-anchor-id="solving-a-system-of-equations"><span class="header-section-number">1.1.7</span> Solving a System of Equations</h3>
 <p><strong>Mathematical Procedure:</strong></p>
 <p>To solve a system of linear equations represented as <span class="math inline">\(A \mathbf{x} = \mathbf{b}\)</span>, where<span class="math inline">\(A\)</span> is the coefficient matrix, <span class="math inline">\(\mathbf{x}\)</span> is the vector of variables, and<span class="math inline">\(\mathbf{b}\)</span> is the constant vector, we can use Gaussian elimination to transform the augmented matrix <span class="math inline">\([A | \mathbf{b}]\)</span> into its row echelon form (REF) and then perform back substitution to find the solution vector <span class="math inline">\(\mathbf{x}\)</span>.</p>
 <p><strong>Example:</strong></p>
@@ -712,8 +712,8 @@ x = 3
 <li>Return the solution vector <span class="math inline">\(X\)</span>.</li>
 </ol>
 </section>
-<section id="review-problems" class="level3" data-number="2.1.8">
-<h3 data-number="2.1.8" class="anchored" data-anchor-id="review-problems"><span class="header-section-number">2.1.8</span> Review Problems</h3>
+<section id="review-problems" class="level3" data-number="1.1.8">
+<h3 data-number="1.1.8" class="anchored" data-anchor-id="review-problems"><span class="header-section-number">1.1.8</span> Review Problems</h3>
 <p><strong>Q1:</strong> Fill in the missing parts of the pseudocode to yield a meaningful algebraic operation on of two matrices.</p>
 <p><strong>Pseudocode:</strong></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>FUNCTION matrix_op1(A, B):</span>
@@ -742,8 +742,8 @@ x = 3
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>END FUNCTION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="transition-from-pseudocode-to-python-programming" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="transition-from-pseudocode-to-python-programming"><span class="header-section-number">2.2</span> Transition from Pseudocode to Python Programming</h2>
+<section id="transition-from-pseudocode-to-python-programming" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="transition-from-pseudocode-to-python-programming"><span class="header-section-number">1.2</span> Transition from Pseudocode to Python Programming</h2>
 <p>In this course, our initial approach to understanding and solving linear algebra problems has been through pseudocode. Pseudocode allows us to focus on the logical steps and algorithms without getting bogged down by the syntax of a specific programming language. This method helps us build a strong foundation in the computational aspects of linear algebra.</p>
 <p>However, to fully leverage the power of computational tools and prepare for real-world applications, it is essential to implement these algorithms in a practical programming language. Python is a highly versatile and widely-used language in the fields of data science, artificial intelligence, and engineering. By transitioning from pseudocode to Python, we align with the following course objectives:</p>
 <ol type="1">
@@ -755,14 +755,14 @@ x = 3
 </ol>
 <p>By transitioning to Python programming, we not only achieve our course objectives but also equip students with valuable skills that are directly applicable to their academic and professional pursuits.</p>
 </section>
-<section id="python-fundamentals" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="python-fundamentals"><span class="header-section-number">2.3</span> Python Fundamentals</h2>
-<section id="python-programming-overview" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="python-programming-overview"><span class="header-section-number">2.3.1</span> Python Programming Overview</h3>
+<section id="python-fundamentals" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="python-fundamentals"><span class="header-section-number">1.3</span> Python Fundamentals</h2>
+<section id="python-programming-overview" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="python-programming-overview"><span class="header-section-number">1.3.1</span> Python Programming Overview</h3>
 <p>Python is a high-level, interpreted programming language that was created by Guido van Rossum and first released in 1991. Its design philosophy emphasizes code readability and simplicity, making it an excellent choice for both beginners and experienced developers. Over the years, Python has undergone significant development and improvement, with major releases adding new features and optimizations. The language’s versatility and ease of use have made it popular in various domains, including web development, data science, artificial intelligence, scientific computing, automation, and more. Python’s extensive standard library and active community contribute to its widespread adoption, making it one of the most popular programming languages in the world today.</p>
 </section>
-<section id="variables" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="variables"><span class="header-section-number">2.3.2</span> Variables</h3>
+<section id="variables" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="variables"><span class="header-section-number">1.3.2</span> Variables</h3>
 <p>In Python, variables are used to store data that can be used and manipulated throughout a program. Variables do not need explicit declaration to reserve memory space. The declaration happens automatically when a value is assigned to a variable.</p>
 <p><strong>Basic Input/Output Functions</strong></p>
 <p>Python provides built-in functions for basic input and output operations. The <code>print()</code> function is used to display output, while the <code>input()</code> function is used to take input from the user.</p>
@@ -826,30 +826,30 @@ Note
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the result</span></span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The sum of"</span>, num1, <span class="st">"and"</span>, num2, <span class="st">"is"</span>, <span class="bu">sum</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="python-programming-style" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="python-programming-style"><span class="header-section-number">2.3.3</span> Python Programming Style</h3>
-<section id="indentation" class="level4" data-number="2.3.3.1">
-<h4 data-number="2.3.3.1" class="anchored" data-anchor-id="indentation"><span class="header-section-number">2.3.3.1</span> Indentation</h4>
+<section id="python-programming-style" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="python-programming-style"><span class="header-section-number">1.3.3</span> Python Programming Style</h3>
+<section id="indentation" class="level4" data-number="1.3.3.1">
+<h4 data-number="1.3.3.1" class="anchored" data-anchor-id="indentation"><span class="header-section-number">1.3.3.1</span> Indentation</h4>
 <p>Python uses indentation to define the blocks of code. Proper indentation is crucial as it affects the program’s flow. Use 4 spaces per indentation level.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&gt;</span> b:</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"a is greater than b"</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"b is greater than or equal to a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="comments" class="level4" data-number="2.3.3.2">
-<h4 data-number="2.3.3.2" class="anchored" data-anchor-id="comments"><span class="header-section-number">2.3.3.2</span> Comments</h4>
+<section id="comments" class="level4" data-number="1.3.3.2">
+<h4 data-number="1.3.3.2" class="anchored" data-anchor-id="comments"><span class="header-section-number">1.3.3.2</span> Comments</h4>
 <p>Use comments to explain usr code. Comments begin with the <code>#</code> symbol and extend to the end of the line. Write comments that are clear and concise. See the example:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a comment</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span>  <span class="co"># This is an inline comment</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="variable-naming" class="level4" data-number="2.3.3.3">
-<h4 data-number="2.3.3.3" class="anchored" data-anchor-id="variable-naming"><span class="header-section-number">2.3.3.3</span> Variable Naming</h4>
+<section id="variable-naming" class="level4" data-number="1.3.3.3">
+<h4 data-number="1.3.3.3" class="anchored" data-anchor-id="variable-naming"><span class="header-section-number">1.3.3.3</span> Variable Naming</h4>
 <p>Use meaningful variable names to make usr code more understandable. Variable names should be in lowercase with words separated by underscores.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>student_name <span class="op">=</span> <span class="st">"John"</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>total_score <span class="op">=</span> <span class="dv">95</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="consistent-style" class="level4" data-number="2.3.3.4">
-<h4 data-number="2.3.3.4" class="anchored" data-anchor-id="consistent-style"><span class="header-section-number">2.3.3.4</span> Consistent Style</h4>
+<section id="consistent-style" class="level4" data-number="1.3.3.4">
+<h4 data-number="1.3.3.4" class="anchored" data-anchor-id="consistent-style"><span class="header-section-number">1.3.3.4</span> Consistent Style</h4>
 <p>Follow the <code>PEP 8</code> style guide for Python code to maintain consistency and readability. Use blank lines to separate different sections of usr code. See the following example of function definition:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_sum(x, y):</span>
@@ -860,11 +860,11 @@ Note
 </section>
 </section>
 </section>
-<section id="basic-datatypes-in-python" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="basic-datatypes-in-python"><span class="header-section-number">2.4</span> Basic Datatypes in Python</h2>
+<section id="basic-datatypes-in-python" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="basic-datatypes-in-python"><span class="header-section-number">1.4</span> Basic Datatypes in Python</h2>
 <p>In Python, a datatype is a classification that specifies which type of value a variable can hold. Understanding datatypes is essential as it helps in performing appropriate operations on variables. Python supports various built-in datatypes, which can be categorized into several groups.</p>
-<section id="numeric-types" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="numeric-types"><span class="header-section-number">2.4.1</span> Numeric Types</h3>
+<section id="numeric-types" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="numeric-types"><span class="header-section-number">1.4.1</span> Numeric Types</h3>
 <p>Numeric types represent data that consists of numbers. Python has three distinct numeric types:</p>
 <ol type="1">
 <li><strong>Integers (<code>int</code>)</strong>:
@@ -888,11 +888,11 @@ Note
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>pi <span class="op">=</span> <span class="fl">3.14</span>      <span class="co"># Float</span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> <span class="dv">3</span> <span class="op">+</span> <span class="ot">4j</span>     <span class="co"># Complex</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="sequence-types" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="sequence-types"><span class="header-section-number">2.4.2</span> Sequence Types</h3>
+<section id="sequence-types" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="sequence-types"><span class="header-section-number">1.4.2</span> Sequence Types</h3>
 <p>Sequence types are used to store multiple items in a single variable. Python has several sequence types, including:</p>
-<section id="string-type" class="level4" data-number="2.4.2.1">
-<h4 data-number="2.4.2.1" class="anchored" data-anchor-id="string-type"><span class="header-section-number">2.4.2.1</span> String Type</h4>
+<section id="string-type" class="level4" data-number="1.4.2.1">
+<h4 data-number="1.4.2.1" class="anchored" data-anchor-id="string-type"><span class="header-section-number">1.4.2.1</span> String Type</h4>
 <p>Strings in Python are sequences of characters enclosed in quotes. They are used to handle and manipulate textual data.</p>
 <p><strong>Characteristics of Strings</strong></p>
 <ul>
@@ -937,8 +937,8 @@ Note
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>replaced_text <span class="op">=</span> text.replace(<span class="st">"world"</span>, <span class="st">"Python"</span>)  <span class="co"># Result: "   hello, Python!   "</span></span>
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>words <span class="op">=</span> text.split(<span class="st">","</span>)             <span class="co"># Result: ['hello', ' world!   ']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="list-type" class="level4" data-number="2.4.2.2">
-<h4 data-number="2.4.2.2" class="anchored" data-anchor-id="list-type"><span class="header-section-number">2.4.2.2</span> List Type</h4>
+<section id="list-type" class="level4" data-number="1.4.2.2">
+<h4 data-number="1.4.2.2" class="anchored" data-anchor-id="list-type"><span class="header-section-number">1.4.2.2</span> List Type</h4>
 <p>Lists are one of the most versatile and commonly used sequence types in Python. They allow for the storage and manipulation of ordered collections of items.</p>
 <blockquote class="blockquote">
 <p><strong>Characteristics of Lists</strong></p>
@@ -1004,8 +1004,8 @@ Note
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>numbers.reverse()     <span class="co"># numbers is now [9, 5, 4, 2, 1]</span></span>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>first_number <span class="op">=</span> numbers.pop(<span class="dv">0</span>)  <span class="co"># first_number is 9, numbers is now [5, 4, 2, 1]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="tuple-type" class="level4" data-number="2.4.2.3">
-<h4 data-number="2.4.2.3" class="anchored" data-anchor-id="tuple-type"><span class="header-section-number">2.4.2.3</span> Tuple Type</h4>
+<section id="tuple-type" class="level4" data-number="1.4.2.3">
+<h4 data-number="1.4.2.3" class="anchored" data-anchor-id="tuple-type"><span class="header-section-number">1.4.2.3</span> Tuple Type</h4>
 <p>Tuples are a built-in sequence type in Python that is used to store an ordered collection of items. Unlike lists, tuples are immutable, which means their contents cannot be changed after creation.</p>
 <p><strong>Characteristics of Tuples</strong></p>
 <ul>
@@ -1066,11 +1066,11 @@ Note
 <span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>index_2 <span class="op">=</span> numbers.index(<span class="dv">2</span>)  <span class="co"># Result: 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="mapping-types" class="level3" data-number="2.4.3">
-<h3 data-number="2.4.3" class="anchored" data-anchor-id="mapping-types"><span class="header-section-number">2.4.3</span> Mapping Types</h3>
+<section id="mapping-types" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="mapping-types"><span class="header-section-number">1.4.3</span> Mapping Types</h3>
 <p>Mapping types in Python are used to store data in key-value pairs. Unlike sequences, mappings do not maintain an order and are designed for quick lookups of data.</p>
-<section id="dictionary-dict" class="level4" data-number="2.4.3.1">
-<h4 data-number="2.4.3.1" class="anchored" data-anchor-id="dictionary-dict"><span class="header-section-number">2.4.3.1</span> Dictionary (<code>dict</code>)</h4>
+<section id="dictionary-dict" class="level4" data-number="1.4.3.1">
+<h4 data-number="1.4.3.1" class="anchored" data-anchor-id="dictionary-dict"><span class="header-section-number">1.4.3.1</span> Dictionary (<code>dict</code>)</h4>
 <p>The primary mapping type in Python is the <code>dict</code>. Dictionaries store data as key-value pairs, where each key must be unique, and keys are used to access their corresponding values.</p>
 <p><strong>Characteristics of Dictionaries</strong></p>
 <ul>
@@ -1126,8 +1126,8 @@ Note
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> student.pop(<span class="st">"age"</span>)    <span class="co"># Result: 22</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="set-types" class="level3" data-number="2.4.4">
-<h3 data-number="2.4.4" class="anchored" data-anchor-id="set-types"><span class="header-section-number">2.4.4</span> Set Types</h3>
+<section id="set-types" class="level3" data-number="1.4.4">
+<h3 data-number="1.4.4" class="anchored" data-anchor-id="set-types"><span class="header-section-number">1.4.4</span> Set Types</h3>
 <p>Sets are a built-in data type in Python used to store unique, unordered collections of items. They are particularly useful for operations involving membership tests, set operations, and removing duplicates.</p>
 <p><strong>Characteristics of Sets</strong></p>
 <ul>
@@ -1196,8 +1196,8 @@ Note
 <span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>set1.discard(<span class="dv">5</span>)    <span class="co"># No error, set1 remains {1, 3, 4}</span></span>
 <span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>item <span class="op">=</span> set1.pop()  <span class="co"># Removes and returns an arbitrary item, e.g., 1</span></span>
 <span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>set1.clear()      <span class="co"># set1 is now an empty set {}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="frozen-sets" class="level4" data-number="2.4.4.1">
-<h4 data-number="2.4.4.1" class="anchored" data-anchor-id="frozen-sets"><span class="header-section-number">2.4.4.1</span> ## Frozen Sets</h4>
+<section id="frozen-sets" class="level4" data-number="1.4.4.1">
+<h4 data-number="1.4.4.1" class="anchored" data-anchor-id="frozen-sets"><span class="header-section-number">1.4.4.1</span> ## Frozen Sets</h4>
 <p>Frozen sets are a built-in data type in Python that are similar to sets but are immutable. Once created, a frozen set cannot be modified, making it suitable for use as a key in dictionaries or as elements of other sets.</p>
 <p><strong>Characteristics of Frozen Sets</strong></p>
 <ul>
@@ -1273,11 +1273,11 @@ Note
 </section>
 </section>
 </section>
-<section id="control-structures-in-python" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="control-structures-in-python"><span class="header-section-number">2.5</span> Control Structures in Python</h2>
+<section id="control-structures-in-python" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="control-structures-in-python"><span class="header-section-number">1.5</span> Control Structures in Python</h2>
 <p>Control structures in Python allow us to control the flow of execution in our programs. They help manage decision-making, looping, and the execution of code blocks based on certain conditions. Python provides several key control structures: <code>if</code> statements, <code>for</code> loops, <code>while</code> loops, and control flow statements like <code>break</code>, <code>continue</code>, and <code>pass</code>.</p>
-<section id="conditional-statements" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="conditional-statements"><span class="header-section-number">2.5.1</span> Conditional Statements</h3>
+<section id="conditional-statements" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="conditional-statements"><span class="header-section-number">1.5.1</span> Conditional Statements</h3>
 <p>Conditional statements are used to execute code based on certain conditions. The primary conditional statement in Python is the <code>if</code> statement, which can be combined with <code>elif</code> and <code>else</code> to handle multiple conditions.</p>
 <blockquote class="blockquote">
 <p>Syntax:</p>
@@ -1300,11 +1300,11 @@ Note
 <span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"us are a senior citizen."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="looping-statements" class="level3" data-number="2.5.2">
-<h3 data-number="2.5.2" class="anchored" data-anchor-id="looping-statements"><span class="header-section-number">2.5.2</span> Looping Statements</h3>
+<section id="looping-statements" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="looping-statements"><span class="header-section-number">1.5.2</span> Looping Statements</h3>
 <p>Looping statements are used to repeat a block of code multiple times. Python supports for loops and while loops.</p>
-<section id="for-loop" class="level4" data-number="2.5.2.1">
-<h4 data-number="2.5.2.1" class="anchored" data-anchor-id="for-loop"><span class="header-section-number">2.5.2.1</span> For Loop</h4>
+<section id="for-loop" class="level4" data-number="1.5.2.1">
+<h4 data-number="1.5.2.1" class="anchored" data-anchor-id="for-loop"><span class="header-section-number">1.5.2.1</span> For Loop</h4>
 <p>The <code>for</code> loop iterates over a sequence (like a list, tuple, or string) and executes a block of code for each item in the sequence.</p>
 <blockquote class="blockquote">
 <p>Syntax:</p>
@@ -1319,8 +1319,8 @@ Note
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> fruit <span class="kw">in</span> fruits:</span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(fruit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="while-loop" class="level4" data-number="2.5.2.2">
-<h4 data-number="2.5.2.2" class="anchored" data-anchor-id="while-loop"><span class="header-section-number">2.5.2.2</span> While Loop</h4>
+<section id="while-loop" class="level4" data-number="1.5.2.2">
+<h4 data-number="1.5.2.2" class="anchored" data-anchor-id="while-loop"><span class="header-section-number">1.5.2.2</span> While Loop</h4>
 <p>The <code>while</code> loop repeatedly executes a block of code as long as a specified condition is True.</p>
 <blockquote class="blockquote">
 <p>Syntax:</p>
@@ -1337,11 +1337,11 @@ Note
 <span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    count <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="control-flow-statements" class="level3" data-number="2.5.3">
-<h3 data-number="2.5.3" class="anchored" data-anchor-id="control-flow-statements"><span class="header-section-number">2.5.3</span> Control Flow Statements</h3>
+<section id="control-flow-statements" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="control-flow-statements"><span class="header-section-number">1.5.3</span> Control Flow Statements</h3>
 <p>Control flow statements alter the flow of execution within loops and conditionals.</p>
-<section id="break-statement" class="level4" data-number="2.5.3.1">
-<h4 data-number="2.5.3.1" class="anchored" data-anchor-id="break-statement"><span class="header-section-number">2.5.3.1</span> Break Statement</h4>
+<section id="break-statement" class="level4" data-number="1.5.3.1">
+<h4 data-number="1.5.3.1" class="anchored" data-anchor-id="break-statement"><span class="header-section-number">1.5.3.1</span> Break Statement</h4>
 <p>The <code>break</code> statement exits the current loop, regardless of the loop’s condition.</p>
 <blockquote class="blockquote">
 <p>Example: Program to exit from the printing of whole numbers less than 10, while trigger 5.</p>
@@ -1352,8 +1352,8 @@ Note
 <span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span>
 <span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: 0 1 2 3 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="continue-statement" class="level4" data-number="2.5.3.2">
-<h4 data-number="2.5.3.2" class="anchored" data-anchor-id="continue-statement"><span class="header-section-number">2.5.3.2</span> Continue Statement</h4>
+<section id="continue-statement" class="level4" data-number="1.5.3.2">
+<h4 data-number="1.5.3.2" class="anchored" data-anchor-id="continue-statement"><span class="header-section-number">1.5.3.2</span> Continue Statement</h4>
 <p>The <code>continue</code> statement skips the rest of the code inside the current loop iteration and proceeds to the next iteration.</p>
 <blockquote class="blockquote">
 <p>Example: Program to print all the whole numbers in the range 5 except 2.</p>
@@ -1364,8 +1364,8 @@ Note
 <span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i) </span>
 <span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: 0 1 3 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="pass-statement" class="level4" data-number="2.5.3.3">
-<h4 data-number="2.5.3.3" class="anchored" data-anchor-id="pass-statement"><span class="header-section-number">2.5.3.3</span> Pass Statement</h4>
+<section id="pass-statement" class="level4" data-number="1.5.3.3">
+<h4 data-number="1.5.3.3" class="anchored" data-anchor-id="pass-statement"><span class="header-section-number">1.5.3.3</span> Pass Statement</h4>
 <p>The <code>pass</code> statement is a placeholder that does nothing and is used when a statement is syntactically required but no action is needed.</p>
 <blockquote class="blockquote">
 <p>Example: Program to print all the whole numbers in the range 5 except 3.</p>
@@ -1406,8 +1406,8 @@ Cautions When Using Control Flow Structures
 </section>
 </section>
 </section>
-<section id="functions-in-python-programming" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="functions-in-python-programming"><span class="header-section-number">2.6</span> Functions in Python Programming</h2>
+<section id="functions-in-python-programming" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="functions-in-python-programming"><span class="header-section-number">1.6</span> Functions in Python Programming</h2>
 <p>Functions are a fundamental concept in Python programming that enable code reuse, modularity, and organization. They allow us to encapsulate a block of code that performs a specific task, which can be executed whenever needed. Functions are essential for writing clean, maintainable, and scalable code, making them a cornerstone of effective programming practices.</p>
 <p><strong>What is a Function?</strong></p>
 <p>A function is a named block of code designed to perform a specific task. Functions can take inputs, called parameters or arguments, and can return outputs, which are the results of the computation or task performed by the function. By defining functions, us can write code once and reuse it multiple times, which enhances both efficiency and readability.</p>
@@ -1427,8 +1427,8 @@ Cautions When Using Control Flow Structures
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns a greeting message for the given name.</span></span>
 <span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
 <span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="relevance-of-functions-in-programming" class="level4" data-number="2.6.0.1">
-<h4 data-number="2.6.0.1" class="anchored" data-anchor-id="relevance-of-functions-in-programming"><span class="header-section-number">2.6.0.1</span> Relevance of functions in Programming</h4>
+<section id="relevance-of-functions-in-programming" class="level4" data-number="1.6.0.1">
+<h4 data-number="1.6.0.1" class="anchored" data-anchor-id="relevance-of-functions-in-programming"><span class="header-section-number">1.6.0.1</span> Relevance of functions in Programming</h4>
 <ol type="1">
 <li><p><em>Code Reusability</em> : Functions allow us to define a piece of code once and reuse it in multiple places. This reduces redundancy and helps maintain consistency across our codebase.</p></li>
 <li><p><em>Modularity</em> : Functions break down complex problems into smaller, manageable pieces. Each function can be focused on a specific task, making it easier to understand and maintain the code.</p></li>
@@ -1465,11 +1465,11 @@ Cautions When Using Control Flow Structures
 <span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Product: </span><span class="sc">{</span>result_product<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="object-oriented-programming-oop-in-python" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="object-oriented-programming-oop-in-python"><span class="header-section-number">2.7</span> Object-Oriented Programming (OOP) in Python</h2>
+<section id="object-oriented-programming-oop-in-python" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="object-oriented-programming-oop-in-python"><span class="header-section-number">1.7</span> Object-Oriented Programming (OOP) in Python</h2>
 <p>Object-Oriented Programming (OOP) is a programming paradigm that uses “objects” to design and implement software. It emphasizes the organization of code into classes and objects, allowing for the encapsulation of data and functionality. OOP promotes code reusability, scalability, and maintainability through key principles such as encapsulation, inheritance, and polymorphism.</p>
-<section id="key-concepts-of-oop" class="level3" data-number="2.7.1">
-<h3 data-number="2.7.1" class="anchored" data-anchor-id="key-concepts-of-oop"><span class="header-section-number">2.7.1</span> Key Concepts of OOP</h3>
+<section id="key-concepts-of-oop" class="level3" data-number="1.7.1">
+<h3 data-number="1.7.1" class="anchored" data-anchor-id="key-concepts-of-oop"><span class="header-section-number">1.7.1</span> Key Concepts of OOP</h3>
 <ol type="1">
 <li><strong>Classes and Objects</strong></li>
 </ol>
@@ -1477,8 +1477,8 @@ Cautions When Using Control Flow Structures
 <li><strong>Class</strong>: A class is a blueprint for creating objects. It defines a set of attributes and methods that the created objects will have. A class can be thought of as a template or prototype for objects.</li>
 <li><strong>Object</strong>: An object is an instance of a class. It is a specific realization of the class with actual values for its attributes.</li>
 </ul>
-<section id="example" class="level4" data-number="2.7.1.1">
-<h4 data-number="2.7.1.1" class="anchored" data-anchor-id="example"><span class="header-section-number">2.7.1.1</span> Example</h4>
+<section id="example" class="level4" data-number="1.7.1.1">
+<h4 data-number="1.7.1.1" class="anchored" data-anchor-id="example"><span class="header-section-number">1.7.1.1</span> Example</h4>
 <div class="sourceCode" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining a class</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Dog:</span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, age):</span>
@@ -1582,8 +1582,8 @@ Cautions When Using Control Flow Structures
 </section>
 </section>
 </section>
-<section id="working-with-files-in-python" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="working-with-files-in-python"><span class="header-section-number">2.8</span> Working with Files in Python</h2>
+<section id="working-with-files-in-python" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="working-with-files-in-python"><span class="header-section-number">1.8</span> Working with Files in Python</h2>
 <p>File handling is an essential part of programming that allows us to work with data stored in files. Python provides built-in functions and methods to create, read, write, and manage files efficiently. This section will cover basic file operations, including opening, reading, writing, and closing files.</p>
 <p><strong>Opening a File</strong></p>
 <p>In Python, we use the <code>open()</code> function to open a file. This function returns a file object, which provides methods and attributes to interact with the file. The <code>open()</code> function requires at least one argument: the path to the file. we can also specify the mode in which the file should be opened.</p>
@@ -1654,14 +1654,14 @@ Cautions When Using Control Flow Structures
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'example.txt'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">"This is written using a context manager."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="from-theory-to-practice" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="from-theory-to-practice"><span class="header-section-number">2.9</span> From Theory to Practice</h2>
+<section id="from-theory-to-practice" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="from-theory-to-practice"><span class="header-section-number">1.9</span> From Theory to Practice</h2>
 <p>In this section, we transition from theoretical concepts to practical applications by exploring how fundamental matrix operations can be used in the field of image processing. By leveraging the knowledge gained from understanding matrix addition, subtraction, multiplication, and other operations, we can tackle real-world problems such as image blending, sharpening, filtering, and transformations. This hands-on approach not only reinforces the theoretical principles but also demonstrates their utility in processing and enhancing digital images. Through practical examples and coding exercises, you’ll see how these mathematical operations are essential tools in modern image manipulation and analysis.</p>
-<section id="applications-of-matrix-operations-in-digital-image-processing" class="level3" data-number="2.9.1">
-<h3 data-number="2.9.1" class="anchored" data-anchor-id="applications-of-matrix-operations-in-digital-image-processing"><span class="header-section-number">2.9.1</span> Applications of Matrix Operations in Digital Image Processing</h3>
+<section id="applications-of-matrix-operations-in-digital-image-processing" class="level3" data-number="1.9.1">
+<h3 data-number="1.9.1" class="anchored" data-anchor-id="applications-of-matrix-operations-in-digital-image-processing"><span class="header-section-number">1.9.1</span> Applications of Matrix Operations in Digital Image Processing</h3>
 <p>Matrix operations play a pivotal role in digital image processing, enabling a wide range of techniques for manipulating and enhancing images. By leveraging fundamental matrix operations such as addition, subtraction, multiplication, and transformations, we can perform essential tasks like image blending, filtering, edge detection, and geometric transformations. These operations provide the mathematical foundation for various algorithms used in image analysis, compression, and reconstruction. Understanding and applying matrix operations is crucial for developing efficient and effective image processing solutions, making it an indispensable skill in fields like computer vision, graphics, and multimedia applications.</p>
-<section id="matrix-addition-in-image-blending" class="level4" data-number="2.9.1.1">
-<h4 data-number="2.9.1.1" class="anchored" data-anchor-id="matrix-addition-in-image-blending"><span class="header-section-number">2.9.1.1</span> Matrix Addition in Image Blending</h4>
+<section id="matrix-addition-in-image-blending" class="level4" data-number="1.9.1.1">
+<h4 data-number="1.9.1.1" class="anchored" data-anchor-id="matrix-addition-in-image-blending"><span class="header-section-number">1.9.1.1</span> Matrix Addition in Image Blending</h4>
 <p>Matrix addition is a fundamental operation in image processing, particularly useful in the technique of image blending. Image blending involves combining two images to produce a single image that integrates the features of both original images. This technique is commonly used in applications such as image overlay, transition effects in videos, and creating composite images.</p>
 <p><strong>Concept</strong></p>
 <p>When working with grayscale images, each image can be represented as a matrix where each element corresponds to the intensity of a pixel. By adding corresponding elements (pixels) of two matrices (images), we can blend the images together. The resultant matrix represents the blended image, where each pixel is the sum of the corresponding pixels in the original images.</p>
@@ -1669,16 +1669,14 @@ Cautions When Using Control Flow Structures
 <p>Example:</p>
 </blockquote>
 <p>Consider two 2x2 grayscale images represented as matrices:</p>
-<div id="0c8aefaa" class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>image1<span class="op">=</span> [[<span class="dv">100</span>, <span class="dv">150</span>],[<span class="dv">200</span>, <span class="dv">250</span>]]</span>
+<div class="sourceCode" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>image1<span class="op">=</span> [[<span class="dv">100</span>, <span class="dv">150</span>],[<span class="dv">200</span>, <span class="dv">250</span>]]</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>image2<span class="op">=</span>[[<span class="dv">50</span>, <span class="dv">100</span>],[<span class="dv">100</span>, <span class="dv">150</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p>To blend these images, we add the corresponding pixel values as:</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>blended_image[i][j] <span class="op">=</span> image1[i][j] <span class="op">+</span> image2[i][j]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ensure that the resulting pixel values do not exceed the maximum value allowed (255 for 8-bit images).</p>
 <p><strong>Python Implementation of image blending</strong></p>
 <p>Below is the Python code for blending two images using matrix addition:</p>
-<div id="299282fd" class="cell">
+<div id="90dc9da2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> matrix_addition(image1, image2):</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>    rows <span class="op">=</span> <span class="bu">len</span>(image1)</span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>    cols <span class="op">=</span> <span class="bu">len</span>(image1[<span class="dv">0</span>])</span>
@@ -1699,6 +1697,11 @@ Cautions When Using Control Flow Structures
 <span id="cb70-18"><a href="#cb70-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Blended Image:"</span>)</span>
 <span id="cb70-19"><a href="#cb70-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> blended_image:</span>
 <span id="cb70-20"><a href="#cb70-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Blended Image:
+[150, 250]
+[255, 255]</code></pre>
+</div>
 </div>
 <p>Image blending is a powerful technique with numerous real-time applications. It is widely used in creating smooth transitions in video editing, overlaying images in augmented reality, and producing composite images in photography and graphic design. By understanding and applying matrix operations, we can develop efficient algorithms that seamlessly integrate multiple images, enhancing the overall visual experience. The practical implementation of matrix addition in image blending underscores the importance of mathematical foundations in achieving sophisticated image processing tasks in real-world applications.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Image Blending as Basic Arithmetic with Libraries">
@@ -1716,8 +1719,8 @@ Image Blending as Basic Arithmetic with Libraries
 </div>
 <p>Let’s summarize a few more matrix operations and its uses in digital image processing tasks in the following sections.</p>
 </section>
-<section id="matrix-subtraction-in-image-sharpening" class="level4" data-number="2.9.1.2">
-<h4 data-number="2.9.1.2" class="anchored" data-anchor-id="matrix-subtraction-in-image-sharpening"><span class="header-section-number">2.9.1.2</span> Matrix Subtraction in Image Sharpening</h4>
+<section id="matrix-subtraction-in-image-sharpening" class="level4" data-number="1.9.1.2">
+<h4 data-number="1.9.1.2" class="anchored" data-anchor-id="matrix-subtraction-in-image-sharpening"><span class="header-section-number">1.9.1.2</span> Matrix Subtraction in Image Sharpening</h4>
 <p>Matrix subtraction is a fundamental operation in image processing, essential for techniques like image sharpening. Image sharpening enhances the clarity and detail of an image by increasing the contrast along edges and boundaries.</p>
 <p><strong>Concept</strong></p>
 <p>In grayscale images, each pixel value represents the intensity of light at that point. Image sharpening involves subtracting a smoothed version of the image from the original. This process accentuates edges and fine details, making them more prominent.</p>
@@ -1725,191 +1728,187 @@ Image Blending as Basic Arithmetic with Libraries
 <p>Example:</p>
 </blockquote>
 <p>Consider a grayscale image represented as a matrix:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>original_image [[<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>],[<span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>],[<span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">100</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>original_image [[<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>],[<span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>],[<span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">100</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To sharpen the image, we subtract a blurred version (smoothed image) from the original. This enhances edges and fine details:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>sharpened_image[i][j] <span class="op">=</span> original_image[i][j] <span class="op">-</span> blurred_image[i][j]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>sharpened_image[i][j] <span class="op">=</span> original_image[i][j] <span class="op">-</span> blurred_image[i][j]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Python Implementation</strong></p>
 <p>Below is a simplified Python example of image sharpening using matrix subtraction:</p>
-<div id="ddf26686" class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Original image matrix (grayscale values)</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>original_image <span class="op">=</span> [</span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>],</span>
-<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>],</span>
-<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">100</span>]</span>
-<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to apply Gaussian blur (for demonstration, simplified as average smoothing)</span></span>
-<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> apply_blur(image):</span>
-<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a>    blurred_image <span class="op">=</span> []</span>
-<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(image)):</span>
-<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> []</span>
-<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(image[<span class="dv">0</span>])):</span>
-<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a>            neighbors <span class="op">=</span> []</span>
-<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> dx <span class="kw">in</span> [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>]:</span>
-<span id="cb73-16"><a href="#cb73-16" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> dy <span class="kw">in</span> [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>]:</span>
-<span id="cb73-17"><a href="#cb73-17" aria-hidden="true" tabindex="-1"></a>                    ni, nj <span class="op">=</span> i <span class="op">+</span> dx, j <span class="op">+</span> dy</span>
-<span id="cb73-18"><a href="#cb73-18" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> ni <span class="op">&lt;</span> <span class="bu">len</span>(image) <span class="kw">and</span> <span class="dv">0</span> <span class="op">&lt;=</span> nj <span class="op">&lt;</span> <span class="bu">len</span>(image[<span class="dv">0</span>]):</span>
-<span id="cb73-19"><a href="#cb73-19" aria-hidden="true" tabindex="-1"></a>                        neighbors.append(image[ni][nj])</span>
-<span id="cb73-20"><a href="#cb73-20" aria-hidden="true" tabindex="-1"></a>            blurred_value <span class="op">=</span> <span class="bu">sum</span>(neighbors) <span class="op">//</span> <span class="bu">len</span>(neighbors)</span>
-<span id="cb73-21"><a href="#cb73-21" aria-hidden="true" tabindex="-1"></a>            row.append(blurred_value)</span>
-<span id="cb73-22"><a href="#cb73-22" aria-hidden="true" tabindex="-1"></a>        blurred_image.append(row)</span>
-<span id="cb73-23"><a href="#cb73-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> blurred_image</span>
-<span id="cb73-24"><a href="#cb73-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-25"><a href="#cb73-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Function for matrix subtraction (image sharpening)</span></span>
-<span id="cb73-26"><a href="#cb73-26" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> image_sharpening(original_image, blurred_image):</span>
-<span id="cb73-27"><a href="#cb73-27" aria-hidden="true" tabindex="-1"></a>    sharpened_image <span class="op">=</span> []</span>
-<span id="cb73-28"><a href="#cb73-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(original_image)):</span>
-<span id="cb73-29"><a href="#cb73-29" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> []</span>
-<span id="cb73-30"><a href="#cb73-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(original_image[<span class="dv">0</span>])):</span>
-<span id="cb73-31"><a href="#cb73-31" aria-hidden="true" tabindex="-1"></a>            sharpened_value <span class="op">=</span> original_image[i][j] <span class="op">-</span> blurred_image[i][j]</span>
-<span id="cb73-32"><a href="#cb73-32" aria-hidden="true" tabindex="-1"></a>            row.append(sharpened_value)</span>
-<span id="cb73-33"><a href="#cb73-33" aria-hidden="true" tabindex="-1"></a>        sharpened_image.append(row)</span>
-<span id="cb73-34"><a href="#cb73-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sharpened_image</span>
-<span id="cb73-35"><a href="#cb73-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-36"><a href="#cb73-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply blur to simulate smoothed image</span></span>
-<span id="cb73-37"><a href="#cb73-37" aria-hidden="true" tabindex="-1"></a>blurred_image <span class="op">=</span> apply_blur(original_image)</span>
-<span id="cb73-38"><a href="#cb73-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-39"><a href="#cb73-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform matrix subtraction for image sharpening</span></span>
-<span id="cb73-40"><a href="#cb73-40" aria-hidden="true" tabindex="-1"></a>sharpened_image <span class="op">=</span> image_sharpening(original_image, blurred_image)</span>
-<span id="cb73-41"><a href="#cb73-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-42"><a href="#cb73-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the sharpened image</span></span>
-<span id="cb73-43"><a href="#cb73-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sharpened Image:"</span>)</span>
-<span id="cb73-44"><a href="#cb73-44" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> sharpened_image:</span>
-<span id="cb73-45"><a href="#cb73-45" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Original image matrix (grayscale values)</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>original_image <span class="op">=</span> [</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>],</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>],</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">100</span>]</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to apply Gaussian blur (for demonstration, simplified as average smoothing)</span></span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> apply_blur(image):</span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>    blurred_image <span class="op">=</span> []</span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(image)):</span>
+<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> []</span>
+<span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(image[<span class="dv">0</span>])):</span>
+<span id="cb74-14"><a href="#cb74-14" aria-hidden="true" tabindex="-1"></a>            neighbors <span class="op">=</span> []</span>
+<span id="cb74-15"><a href="#cb74-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> dx <span class="kw">in</span> [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>]:</span>
+<span id="cb74-16"><a href="#cb74-16" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> dy <span class="kw">in</span> [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>]:</span>
+<span id="cb74-17"><a href="#cb74-17" aria-hidden="true" tabindex="-1"></a>                    ni, nj <span class="op">=</span> i <span class="op">+</span> dx, j <span class="op">+</span> dy</span>
+<span id="cb74-18"><a href="#cb74-18" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> ni <span class="op">&lt;</span> <span class="bu">len</span>(image) <span class="kw">and</span> <span class="dv">0</span> <span class="op">&lt;=</span> nj <span class="op">&lt;</span> <span class="bu">len</span>(image[<span class="dv">0</span>]):</span>
+<span id="cb74-19"><a href="#cb74-19" aria-hidden="true" tabindex="-1"></a>                        neighbors.append(image[ni][nj])</span>
+<span id="cb74-20"><a href="#cb74-20" aria-hidden="true" tabindex="-1"></a>            blurred_value <span class="op">=</span> <span class="bu">sum</span>(neighbors) <span class="op">//</span> <span class="bu">len</span>(neighbors)</span>
+<span id="cb74-21"><a href="#cb74-21" aria-hidden="true" tabindex="-1"></a>            row.append(blurred_value)</span>
+<span id="cb74-22"><a href="#cb74-22" aria-hidden="true" tabindex="-1"></a>        blurred_image.append(row)</span>
+<span id="cb74-23"><a href="#cb74-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> blurred_image</span>
+<span id="cb74-24"><a href="#cb74-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-25"><a href="#cb74-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Function for matrix subtraction (image sharpening)</span></span>
+<span id="cb74-26"><a href="#cb74-26" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> image_sharpening(original_image, blurred_image):</span>
+<span id="cb74-27"><a href="#cb74-27" aria-hidden="true" tabindex="-1"></a>    sharpened_image <span class="op">=</span> []</span>
+<span id="cb74-28"><a href="#cb74-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(original_image)):</span>
+<span id="cb74-29"><a href="#cb74-29" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> []</span>
+<span id="cb74-30"><a href="#cb74-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(original_image[<span class="dv">0</span>])):</span>
+<span id="cb74-31"><a href="#cb74-31" aria-hidden="true" tabindex="-1"></a>            sharpened_value <span class="op">=</span> original_image[i][j] <span class="op">-</span> blurred_image[i][j]</span>
+<span id="cb74-32"><a href="#cb74-32" aria-hidden="true" tabindex="-1"></a>            row.append(sharpened_value)</span>
+<span id="cb74-33"><a href="#cb74-33" aria-hidden="true" tabindex="-1"></a>        sharpened_image.append(row)</span>
+<span id="cb74-34"><a href="#cb74-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sharpened_image</span>
+<span id="cb74-35"><a href="#cb74-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-36"><a href="#cb74-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply blur to simulate smoothed image</span></span>
+<span id="cb74-37"><a href="#cb74-37" aria-hidden="true" tabindex="-1"></a>blurred_image <span class="op">=</span> apply_blur(original_image)</span>
+<span id="cb74-38"><a href="#cb74-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-39"><a href="#cb74-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform matrix subtraction for image sharpening</span></span>
+<span id="cb74-40"><a href="#cb74-40" aria-hidden="true" tabindex="-1"></a>sharpened_image <span class="op">=</span> image_sharpening(original_image, blurred_image)</span>
+<span id="cb74-41"><a href="#cb74-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-42"><a href="#cb74-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the sharpened image</span></span>
+<span id="cb74-43"><a href="#cb74-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sharpened Image:"</span>)</span>
+<span id="cb74-44"><a href="#cb74-44" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> sharpened_image:</span>
+<span id="cb74-45"><a href="#cb74-45" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="matrix-multiplication-in-image-filtering-convolution" class="level4" data-number="2.9.1.3">
-<h4 data-number="2.9.1.3" class="anchored" data-anchor-id="matrix-multiplication-in-image-filtering-convolution"><span class="header-section-number">2.9.1.3</span> Matrix Multiplication in Image Filtering (Convolution)</h4>
+<section id="matrix-multiplication-in-image-filtering-convolution" class="level4" data-number="1.9.1.3">
+<h4 data-number="1.9.1.3" class="anchored" data-anchor-id="matrix-multiplication-in-image-filtering-convolution"><span class="header-section-number">1.9.1.3</span> Matrix Multiplication in Image Filtering (Convolution)</h4>
 <p>Matrix multiplication, specifically convolution in the context of image processing, is a fundamental operation used for various tasks such as smoothing, sharpening, edge detection, and more. Convolution involves applying a small matrix, known as a kernel or filter, to an image matrix. This process modifies the pixel values of the image based on the values in the kernel, effectively filtering the image.</p>
 <p><strong>Concept</strong> In grayscale images, each pixel value represents the intensity of light at that point. Convolution applies a kernel matrix over the image matrix to compute a weighted sum of neighborhood pixels. This weighted sum determines the new value of each pixel in the resulting filtered image.</p>
 <blockquote class="blockquote">
 <p>Example:</p>
 </blockquote>
 <p>Consider a grayscale image represented as a matrix:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>original_image<span class="op">=</span> [[<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>],</span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a> [<span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">300</span>],</span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">300</span>, <span class="dv">350</span>],</span>
-<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a> [<span class="dv">250</span>, <span class="dv">300</span>, <span class="dv">350</span>, <span class="dv">400</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>original_image<span class="op">=</span> [[<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>],</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a> [<span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">300</span>],</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">300</span>, <span class="dv">350</span>],</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a> [<span class="dv">250</span>, <span class="dv">300</span>, <span class="dv">350</span>, <span class="dv">400</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To perform smoothing (averaging) using a simple kernel:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>[[<span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>],</span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>],</span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>[[<span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>],</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>],</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The kernel is applied over the image using convolution:</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>smoothed_image[i][j] <span class="op">=</span> <span class="bu">sum</span>(original_image[ii][jj] <span class="op">*</span> kernel[k][l] <span class="cf">for</span> <span class="bu">all</span> (ii, jj) <span class="kw">in</span> neighborhood around (i, j))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>smoothed_image[i][j] <span class="op">=</span> <span class="bu">sum</span>(original_image[ii][jj] <span class="op">*</span> kernel[k][l] <span class="cf">for</span> <span class="bu">all</span> (ii, jj) <span class="kw">in</span> neighborhood around (i, j))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Python Implementation</strong></p>
 <p>Here’s a simplified Python example demonstrating convolution for image smoothing without external libraries:</p>
-<div id="80597303" class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Original image matrix (grayscale values)</span></span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>original_image <span class="op">=</span> [</span>
-<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>],</span>
-<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">300</span>],</span>
-<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">300</span>, <span class="dv">350</span>],</span>
-<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">250</span>, <span class="dv">300</span>, <span class="dv">350</span>, <span class="dv">400</span>]</span>
-<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a simple kernel/filter for smoothing (averaging)</span></span>
-<span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a>kernel <span class="op">=</span> [</span>
-<span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>],</span>
-<span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>],</span>
-<span id="cb77-13"><a href="#cb77-13" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>]</span>
-<span id="cb77-14"><a href="#cb77-14" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb77-15"><a href="#cb77-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-16"><a href="#cb77-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Function for applying convolution (image filtering)</span></span>
-<span id="cb77-17"><a href="#cb77-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> apply_convolution(image, kernel):</span>
-<span id="cb77-18"><a href="#cb77-18" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> <span class="bu">len</span>(image)</span>
-<span id="cb77-19"><a href="#cb77-19" aria-hidden="true" tabindex="-1"></a>    width <span class="op">=</span> <span class="bu">len</span>(image[<span class="dv">0</span>])</span>
-<span id="cb77-20"><a href="#cb77-20" aria-hidden="true" tabindex="-1"></a>    ksize <span class="op">=</span> <span class="bu">len</span>(kernel)</span>
-<span id="cb77-21"><a href="#cb77-21" aria-hidden="true" tabindex="-1"></a>    kcenter <span class="op">=</span> ksize <span class="op">//</span> <span class="dv">2</span>  <span class="co"># Center of the kernel</span></span>
-<span id="cb77-22"><a href="#cb77-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-23"><a href="#cb77-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize result image</span></span>
-<span id="cb77-24"><a href="#cb77-24" aria-hidden="true" tabindex="-1"></a>    filtered_image <span class="op">=</span> [[<span class="dv">0</span>]<span class="op">*</span>width <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(height)]</span>
-<span id="cb77-25"><a href="#cb77-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-26"><a href="#cb77-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Perform convolution</span></span>
-<span id="cb77-27"><a href="#cb77-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(height):</span>
-<span id="cb77-28"><a href="#cb77-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(width):</span>
-<span id="cb77-29"><a href="#cb77-29" aria-hidden="true" tabindex="-1"></a>            <span class="bu">sum</span> <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb77-30"><a href="#cb77-30" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(ksize):</span>
-<span id="cb77-31"><a href="#cb77-31" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> l <span class="kw">in</span> <span class="bu">range</span>(ksize):</span>
-<span id="cb77-32"><a href="#cb77-32" aria-hidden="true" tabindex="-1"></a>                    ii <span class="op">=</span> i <span class="op">+</span> k <span class="op">-</span> kcenter</span>
-<span id="cb77-33"><a href="#cb77-33" aria-hidden="true" tabindex="-1"></a>                    jj <span class="op">=</span> j <span class="op">+</span> l <span class="op">-</span> kcenter</span>
-<span id="cb77-34"><a href="#cb77-34" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> ii <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> ii <span class="op">&lt;</span> height <span class="kw">and</span> jj <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> jj <span class="op">&lt;</span> width:</span>
-<span id="cb77-35"><a href="#cb77-35" aria-hidden="true" tabindex="-1"></a>                        <span class="bu">sum</span> <span class="op">+=</span> image[ii][jj] <span class="op">*</span> kernel[k][l]</span>
-<span id="cb77-36"><a href="#cb77-36" aria-hidden="true" tabindex="-1"></a>            filtered_image[i][j] <span class="op">=</span> <span class="bu">int</span>(<span class="bu">sum</span>)</span>
-<span id="cb77-37"><a href="#cb77-37" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb77-38"><a href="#cb77-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> filtered_image</span>
-<span id="cb77-39"><a href="#cb77-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-40"><a href="#cb77-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply convolution to simulate smoothed image (averaging filter)</span></span>
-<span id="cb77-41"><a href="#cb77-41" aria-hidden="true" tabindex="-1"></a>smoothed_image <span class="op">=</span> apply_convolution(original_image, kernel)</span>
-<span id="cb77-42"><a href="#cb77-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-43"><a href="#cb77-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the smoothed image</span></span>
-<span id="cb77-44"><a href="#cb77-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Smoothed Image:"</span>)</span>
-<span id="cb77-45"><a href="#cb77-45" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> smoothed_image:</span>
-<span id="cb77-46"><a href="#cb77-46" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Original image matrix (grayscale values)</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>original_image <span class="op">=</span> [</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>],</span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">300</span>],</span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">300</span>, <span class="dv">350</span>],</span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">250</span>, <span class="dv">300</span>, <span class="dv">350</span>, <span class="dv">400</span>]</span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a simple kernel/filter for smoothing (averaging)</span></span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a>kernel <span class="op">=</span> [</span>
+<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>],</span>
+<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>],</span>
+<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">9</span>]</span>
+<span id="cb78-14"><a href="#cb78-14" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb78-15"><a href="#cb78-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-16"><a href="#cb78-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Function for applying convolution (image filtering)</span></span>
+<span id="cb78-17"><a href="#cb78-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> apply_convolution(image, kernel):</span>
+<span id="cb78-18"><a href="#cb78-18" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> <span class="bu">len</span>(image)</span>
+<span id="cb78-19"><a href="#cb78-19" aria-hidden="true" tabindex="-1"></a>    width <span class="op">=</span> <span class="bu">len</span>(image[<span class="dv">0</span>])</span>
+<span id="cb78-20"><a href="#cb78-20" aria-hidden="true" tabindex="-1"></a>    ksize <span class="op">=</span> <span class="bu">len</span>(kernel)</span>
+<span id="cb78-21"><a href="#cb78-21" aria-hidden="true" tabindex="-1"></a>    kcenter <span class="op">=</span> ksize <span class="op">//</span> <span class="dv">2</span>  <span class="co"># Center of the kernel</span></span>
+<span id="cb78-22"><a href="#cb78-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-23"><a href="#cb78-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize result image</span></span>
+<span id="cb78-24"><a href="#cb78-24" aria-hidden="true" tabindex="-1"></a>    filtered_image <span class="op">=</span> [[<span class="dv">0</span>]<span class="op">*</span>width <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(height)]</span>
+<span id="cb78-25"><a href="#cb78-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-26"><a href="#cb78-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Perform convolution</span></span>
+<span id="cb78-27"><a href="#cb78-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(height):</span>
+<span id="cb78-28"><a href="#cb78-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(width):</span>
+<span id="cb78-29"><a href="#cb78-29" aria-hidden="true" tabindex="-1"></a>            <span class="bu">sum</span> <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb78-30"><a href="#cb78-30" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(ksize):</span>
+<span id="cb78-31"><a href="#cb78-31" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> l <span class="kw">in</span> <span class="bu">range</span>(ksize):</span>
+<span id="cb78-32"><a href="#cb78-32" aria-hidden="true" tabindex="-1"></a>                    ii <span class="op">=</span> i <span class="op">+</span> k <span class="op">-</span> kcenter</span>
+<span id="cb78-33"><a href="#cb78-33" aria-hidden="true" tabindex="-1"></a>                    jj <span class="op">=</span> j <span class="op">+</span> l <span class="op">-</span> kcenter</span>
+<span id="cb78-34"><a href="#cb78-34" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> ii <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> ii <span class="op">&lt;</span> height <span class="kw">and</span> jj <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> jj <span class="op">&lt;</span> width:</span>
+<span id="cb78-35"><a href="#cb78-35" aria-hidden="true" tabindex="-1"></a>                        <span class="bu">sum</span> <span class="op">+=</span> image[ii][jj] <span class="op">*</span> kernel[k][l]</span>
+<span id="cb78-36"><a href="#cb78-36" aria-hidden="true" tabindex="-1"></a>            filtered_image[i][j] <span class="op">=</span> <span class="bu">int</span>(<span class="bu">sum</span>)</span>
+<span id="cb78-37"><a href="#cb78-37" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb78-38"><a href="#cb78-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> filtered_image</span>
+<span id="cb78-39"><a href="#cb78-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-40"><a href="#cb78-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply convolution to simulate smoothed image (averaging filter)</span></span>
+<span id="cb78-41"><a href="#cb78-41" aria-hidden="true" tabindex="-1"></a>smoothed_image <span class="op">=</span> apply_convolution(original_image, kernel)</span>
+<span id="cb78-42"><a href="#cb78-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-43"><a href="#cb78-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the smoothed image</span></span>
+<span id="cb78-44"><a href="#cb78-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Smoothed Image:"</span>)</span>
+<span id="cb78-45"><a href="#cb78-45" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> smoothed_image:</span>
+<span id="cb78-46"><a href="#cb78-46" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="determinant-image-transformation" class="level4" data-number="2.9.1.4">
-<h4 data-number="2.9.1.4" class="anchored" data-anchor-id="determinant-image-transformation"><span class="header-section-number">2.9.1.4</span> Determinant: Image Transformation</h4>
+<section id="determinant-image-transformation" class="level4" data-number="1.9.1.4">
+<h4 data-number="1.9.1.4" class="anchored" data-anchor-id="determinant-image-transformation"><span class="header-section-number">1.9.1.4</span> Determinant: Image Transformation</h4>
 <p><strong>Concept</strong> The determinant of a transformation matrix helps understand how transformations like scaling affect an image. A transformation matrix determines how an image is scaled, rotated, or sheared.</p>
 <blockquote class="blockquote">
 <p>Example:</p>
 </blockquote>
 <p>Here, we compute the determinant of a scaling matrix to understand how the scaling affects the image area.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_determinant(matrix):</span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>    a, b <span class="op">=</span> matrix[<span class="dv">0</span>]</span>
-<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>    c, d <span class="op">=</span> matrix[<span class="dv">1</span>]</span>
-<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">*</span> d <span class="op">-</span> b <span class="op">*</span> c</span>
-<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Example transformation matrix (scaling)</span></span>
-<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>transformation_matrix <span class="op">=</span> [[<span class="dv">2</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">2</span>]]</span>
-<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>determinant <span class="op">=</span> calculate_determinant(transformation_matrix)</span>
-<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Determinant of the transformation matrix: </span><span class="sc">{</span>determinant<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_determinant(matrix):</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>    a, b <span class="op">=</span> matrix[<span class="dv">0</span>]</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>    c, d <span class="op">=</span> matrix[<span class="dv">1</span>]</span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">*</span> d <span class="op">-</span> b <span class="op">*</span> c</span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Example transformation matrix (scaling)</span></span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>transformation_matrix <span class="op">=</span> [[<span class="dv">2</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">2</span>]]</span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>determinant <span class="op">=</span> calculate_determinant(transformation_matrix)</span>
+<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Determinant of the transformation matrix: </span><span class="sc">{</span>determinant<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This value indicates how the transformation scales the image area.</p>
 </section>
-<section id="rank-image-rank-and-data-compression" class="level4" data-number="2.9.1.5">
-<h4 data-number="2.9.1.5" class="anchored" data-anchor-id="rank-image-rank-and-data-compression"><span class="header-section-number">2.9.1.5</span> Rank: Image Rank and Data Compression</h4>
+<section id="rank-image-rank-and-data-compression" class="level4" data-number="1.9.1.5">
+<h4 data-number="1.9.1.5" class="anchored" data-anchor-id="rank-image-rank-and-data-compression"><span class="header-section-number">1.9.1.5</span> Rank: Image Rank and Data Compression</h4>
 <p><strong>Concept</strong> The rank of a matrix indicates the number of linearly independent rows or columns. In image compression, matrix rank helps approximate an image with fewer data.</p>
 <blockquote class="blockquote">
 <p>Example:</p>
 </blockquote>
 <p>Here, we compute the rank of a matrix representing an image. A lower rank might indicate that the image can be approximated with fewer data.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> matrix_rank(matrix):</span>
-<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_zero_row(row):</span>
-<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">all</span>(value <span class="op">==</span> <span class="dv">0</span> <span class="cf">for</span> value <span class="kw">in</span> row)</span>
-<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> row_echelon_form(matrix):</span>
-<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>        A <span class="op">=</span> [row[:] <span class="cf">for</span> row <span class="kw">in</span> matrix]</span>
-<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>        m <span class="op">=</span> <span class="bu">len</span>(A)</span>
-<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(A[<span class="dv">0</span>])</span>
-<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a>        rank <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">min</span>(m, n)):</span>
-<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> A[i][i] <span class="op">!=</span> <span class="dv">0</span>:</span>
-<span id="cb79-12"><a href="#cb79-12" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, m):</span>
-<span id="cb79-13"><a href="#cb79-13" aria-hidden="true" tabindex="-1"></a>                    factor <span class="op">=</span> A[j][i] <span class="op">/</span> A[i][i]</span>
-<span id="cb79-14"><a href="#cb79-14" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(i, n):</span>
-<span id="cb79-15"><a href="#cb79-15" aria-hidden="true" tabindex="-1"></a>                        A[j][k] <span class="op">-=</span> factor <span class="op">*</span> A[i][k]</span>
-<span id="cb79-16"><a href="#cb79-16" aria-hidden="true" tabindex="-1"></a>                rank <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb79-17"><a href="#cb79-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> rank</span>
-<span id="cb79-18"><a href="#cb79-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-19"><a href="#cb79-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> row_echelon_form(matrix)</span>
-<span id="cb79-20"><a href="#cb79-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-21"><a href="#cb79-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Example matrix (image)</span></span>
-<span id="cb79-22"><a href="#cb79-22" aria-hidden="true" tabindex="-1"></a>image_matrix <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]]</span>
-<span id="cb79-23"><a href="#cb79-23" aria-hidden="true" tabindex="-1"></a>rank <span class="op">=</span> matrix_rank(image_matrix)</span>
-<span id="cb79-24"><a href="#cb79-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Rank of the image matrix: </span><span class="sc">{</span>rank<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> matrix_rank(matrix):</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_zero_row(row):</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">all</span>(value <span class="op">==</span> <span class="dv">0</span> <span class="cf">for</span> value <span class="kw">in</span> row)</span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> row_echelon_form(matrix):</span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>        A <span class="op">=</span> [row[:] <span class="cf">for</span> row <span class="kw">in</span> matrix]</span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>        m <span class="op">=</span> <span class="bu">len</span>(A)</span>
+<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">len</span>(A[<span class="dv">0</span>])</span>
+<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a>        rank <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">min</span>(m, n)):</span>
+<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> A[i][i] <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb80-12"><a href="#cb80-12" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, m):</span>
+<span id="cb80-13"><a href="#cb80-13" aria-hidden="true" tabindex="-1"></a>                    factor <span class="op">=</span> A[j][i] <span class="op">/</span> A[i][i]</span>
+<span id="cb80-14"><a href="#cb80-14" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(i, n):</span>
+<span id="cb80-15"><a href="#cb80-15" aria-hidden="true" tabindex="-1"></a>                        A[j][k] <span class="op">-=</span> factor <span class="op">*</span> A[i][k]</span>
+<span id="cb80-16"><a href="#cb80-16" aria-hidden="true" tabindex="-1"></a>                rank <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb80-17"><a href="#cb80-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> rank</span>
+<span id="cb80-18"><a href="#cb80-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-19"><a href="#cb80-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> row_echelon_form(matrix)</span>
+<span id="cb80-20"><a href="#cb80-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-21"><a href="#cb80-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Example matrix (image)</span></span>
+<span id="cb80-22"><a href="#cb80-22" aria-hidden="true" tabindex="-1"></a>image_matrix <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]]</span>
+<span id="cb80-23"><a href="#cb80-23" aria-hidden="true" tabindex="-1"></a>rank <span class="op">=</span> matrix_rank(image_matrix)</span>
+<span id="cb80-24"><a href="#cb80-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Rank of the image matrix: </span><span class="sc">{</span>rank<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 </section>
-<section id="matrix-operations-using-python-libraries" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="matrix-operations-using-python-libraries"><span class="header-section-number">2.10</span> Matrix Operations Using <code>Python</code> Libraries</h2>
-<section id="introduction" class="level3" data-number="2.10.1">
-<h3 data-number="2.10.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">2.10.1</span> Introduction</h3>
+<section id="matrix-operations-using-python-libraries" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="matrix-operations-using-python-libraries"><span class="header-section-number">1.10</span> Matrix Operations Using <code>Python</code> Libraries</h2>
+<section id="introduction" class="level3" data-number="1.10.1">
+<h3 data-number="1.10.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1.10.1</span> Introduction</h3>
 <p>In this section, we will explore the computational aspects of basic matrix algebra using Python. We will utilize the <code>SymPy</code> library for symbolic mathematics, which allows us to perform matrix operations and convert results into LaTeX format. Additionally, the <code>Pillow</code> (PIL) library will be used for image manipulation to demonstrate practical applications of these matrix operations in digital image processing. By the end of this section, you’ll understand how to implement matrix operations and apply them to real-world problems such as image blending, sharpening, filtering, and solving systems of equations.</p>
 </section>
-<section id="introduction-to-sympy" class="level3" data-number="2.10.2">
-<h3 data-number="2.10.2" class="anchored" data-anchor-id="introduction-to-sympy"><span class="header-section-number">2.10.2</span> Introduction to SymPy</h3>
+<section id="introduction-to-sympy" class="level3" data-number="1.10.2">
+<h3 data-number="1.10.2" class="anchored" data-anchor-id="introduction-to-sympy"><span class="header-section-number">1.10.2</span> Introduction to SymPy</h3>
 <p><code>SymPy</code> is a powerful Python library designed for symbolic mathematics. It provides tools for algebraic operations, equation solving, and matrix handling in a symbolic form. This makes it ideal for educational purposes and theoretical work where exact results are needed.</p>
-<section id="key-matrix-functions-in-sympy" class="level4" data-number="2.10.2.1">
-<h4 data-number="2.10.2.1" class="anchored" data-anchor-id="key-matrix-functions-in-sympy"><span class="header-section-number">2.10.2.1</span> Key Matrix Functions in SymPy</h4>
+<section id="key-matrix-functions-in-sympy" class="level4" data-number="1.10.2.1">
+<h4 data-number="1.10.2.1" class="anchored" data-anchor-id="key-matrix-functions-in-sympy"><span class="header-section-number">1.10.2.1</span> Key Matrix Functions in SymPy</h4>
 <ul>
 <li><strong>Matrix Addition</strong>: Adds two matrices element-wise.</li>
 <li><strong>Matrix Subtraction</strong>: Subtracts one matrix from another element-wise.</li>
@@ -1920,52 +1919,56 @@ Image Blending as Basic Arithmetic with Libraries
 <p><strong>Example 1: Matrix Addition</strong></p>
 </blockquote>
 <p><strong>Pseudocode</strong></p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>FUNCTION matrix_add():</span>
-<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define matrices A and B</span></span>
-<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]]</span>
-<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>    B <span class="op">=</span> [[<span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>]]</span>
-<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if matrices A and B have the same dimensions</span></span>
-<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> dimensions_of(A) <span class="op">!=</span> dimensions_of(B):</span>
-<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a>         <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Matrices must have the same dimensions"</span>)</span>
-<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize result matrix with zeros</span></span>
-<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> [[<span class="dv">0</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(A[<span class="dv">0</span>]))] <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(A))]</span>
-<span id="cb80-12"><a href="#cb80-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-13"><a href="#cb80-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add corresponding elements from A and B</span></span>
-<span id="cb80-14"><a href="#cb80-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(A)):</span>
-<span id="cb80-15"><a href="#cb80-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(A[<span class="dv">0</span>])):</span>
-<span id="cb80-16"><a href="#cb80-16" aria-hidden="true" tabindex="-1"></a>            result[i][j] <span class="op">=</span> A[i][j] <span class="op">+</span> B[i][j]</span>
-<span id="cb80-17"><a href="#cb80-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-18"><a href="#cb80-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the result matrix</span></span>
-<span id="cb80-19"><a href="#cb80-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
-<span id="cb80-20"><a href="#cb80-20" aria-hidden="true" tabindex="-1"></a>ENDFUNCTION</span>
-<span id="cb80-21"><a href="#cb80-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-22"><a href="#cb80-22" aria-hidden="true" tabindex="-1"></a>::: {<span class="co">#1071bfcc .cell}</span></span>
-<span id="cb80-23"><a href="#cb80-23" aria-hidden="true" tabindex="-1"></a>``` {.python .cell<span class="op">-</span>code}</span>
-<span id="cb80-24"><a href="#cb80-24" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
-<span id="cb80-25"><a href="#cb80-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-26"><a href="#cb80-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
-<span id="cb80-27"><a href="#cb80-27" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
-<span id="cb80-28"><a href="#cb80-28" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> Matrix([[<span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>]])</span>
-<span id="cb80-29"><a href="#cb80-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-30"><a href="#cb80-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Add matrices</span></span>
-<span id="cb80-31"><a href="#cb80-31" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> A <span class="op">+</span> B</span>
-<span id="cb80-32"><a href="#cb80-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-33"><a href="#cb80-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the result in symbolic form</span></span>
-<span id="cb80-34"><a href="#cb80-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Matrix Addition Result:"</span>)</span>
-<span id="cb80-35"><a href="#cb80-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(C)</span>
-<span id="cb80-36"><a href="#cb80-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-37"><a href="#cb80-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to LaTeX code for documentation or presentation</span></span>
-<span id="cb80-38"><a href="#cb80-38" aria-hidden="true" tabindex="-1"></a>latex_code <span class="op">=</span> C.to_latex()</span>
-<span id="cb80-39"><a href="#cb80-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"LaTeX Code for Addition Result:"</span>)</span>
-<span id="cb80-40"><a href="#cb80-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(latex_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>:::</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>FUNCTION matrix_add():</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define matrices A and B</span></span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]]</span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>    B <span class="op">=</span> [[<span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>]]</span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if matrices A and B have the same dimensions</span></span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> dimensions_of(A) <span class="op">!=</span> dimensions_of(B):</span>
+<span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a>         <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Matrices must have the same dimensions"</span>)</span>
+<span id="cb81-9"><a href="#cb81-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-10"><a href="#cb81-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize result matrix with zeros</span></span>
+<span id="cb81-11"><a href="#cb81-11" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> [[<span class="dv">0</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(A[<span class="dv">0</span>]))] <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(A))]</span>
+<span id="cb81-12"><a href="#cb81-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-13"><a href="#cb81-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add corresponding elements from A and B</span></span>
+<span id="cb81-14"><a href="#cb81-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(A)):</span>
+<span id="cb81-15"><a href="#cb81-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(A[<span class="dv">0</span>])):</span>
+<span id="cb81-16"><a href="#cb81-16" aria-hidden="true" tabindex="-1"></a>            result[i][j] <span class="op">=</span> A[i][j] <span class="op">+</span> B[i][j]</span>
+<span id="cb81-17"><a href="#cb81-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-18"><a href="#cb81-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the result matrix</span></span>
+<span id="cb81-19"><a href="#cb81-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
+<span id="cb81-20"><a href="#cb81-20" aria-hidden="true" tabindex="-1"></a>ENDFUNCTION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="82006512" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sy</span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>sy.init_printing()</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> sy.Matrix([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> sy.Matrix([[<span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>]])</span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add matrices</span></span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> A <span class="op">+</span> B</span>
+<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the result in symbolic form</span></span>
+<span id="cb82-11"><a href="#cb82-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Matrix Addition Result:"</span>)</span>
+<span id="cb82-12"><a href="#cb82-12" aria-hidden="true" tabindex="-1"></a>display(C)</span>
+<span id="cb82-13"><a href="#cb82-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-14"><a href="#cb82-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to LaTeX code for documentation or presentation</span></span>
+<span id="cb82-15"><a href="#cb82-15" aria-hidden="true" tabindex="-1"></a><span class="co">#latex_code = sy.latex(C)</span></span>
+<span id="cb82-16"><a href="#cb82-16" aria-hidden="true" tabindex="-1"></a><span class="co">#print("LaTeX Code for Addition Result:")</span></span>
+<span id="cb82-17"><a href="#cb82-17" aria-hidden="true" tabindex="-1"></a><span class="co">#print(latex_code)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Matrix Addition Result:</code></pre>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}6 &amp; 8\\10 &amp; 12\end{matrix}\right]\)</span></p>
+</div>
+</div>
 </section>
 </section>
 </section>
-<section id="conclusion" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">2.11</span> Conclusion</h2>
+<section id="conclusion" class="level2" data-number="1.11">
+<h2 data-number="1.11" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">1.11</span> Conclusion</h2>
 <p>In this chapter, we transitioned from understanding fundamental matrix operations to applying them in practical scenarios, specifically in the realm of image processing. We began by covering essential matrix operations such as addition, subtraction, multiplication, and determinant calculations, providing both pseudocode and detailed explanations. This foundational knowledge was then translated into Python code, demonstrating how to perform these operations computationally.</p>
 <p>We further explored the application of these matrix operations to real-world image processing tasks. By applying techniques such as image blending, sharpening, filtering, and transformation, we illustrated how theoretical concepts can be used to manipulate and enhance digital images effectively. These practical examples highlighted the significance of matrix operations in solving complex image processing challenges.</p>
 <p>By integrating theoretical understanding with practical implementation, this chapter reinforced how matrix operations form the backbone of many image processing techniques. This blend of theory and practice equips you with essential skills for tackling advanced problems and developing innovative solutions in the field of image processing and beyond.</p>
@@ -2363,13 +2366,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link  aria-label=" &lt;span="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="./intro.html" class="pagination-link  aria-label=" introduction"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>Summary</span>">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./module_2.html" class="pagination-link" aria-label="<span class='chapter-number'>2</span>&nbsp; <span class='chapter-title'>Transforming Linear Algebra to Computational Language</span>">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transforming Linear Algebra to Computational Language</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

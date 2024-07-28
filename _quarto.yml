@@ -10,7 +10,7 @@ book:
     - index.qmd
     - intro.qmd
     - module_1.qmd
-    - summary.qmd
+    - module_2.qmd
     - references.qmd
 
 bibliography: references.bib

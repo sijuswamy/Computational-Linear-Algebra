@@ -1,4 +1,4 @@
-# Introduction
+# Introduction {.unnumbered}
 
 ## Introduction to Computational Linear Algebra
 
