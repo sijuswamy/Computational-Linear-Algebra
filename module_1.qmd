@@ -1,7 +1,7 @@
 ---
 title: "Python for Linear Algebra"
 execute: 
-  enabled: true
+  enabled: false
 ---
 ## Pseudocode: the new language for algorithm design
 
@@ -21,7 +21,7 @@ $$C[i][j] = A[i][j] + B[i][j]$$
 
 **Example:**
 
-Let $ A $ and $ B $ be two $ 2 \times 2 $ matrices:
+Let $A$ and $B$ be two $2 \times 2$ matrices:
 
 $$ A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}, \quad B = \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix} $$
 
@@ -63,7 +63,7 @@ Let $A$ and $B$ be two $2 \times 2$ matrices:
 
 $$ A = \begin{bmatrix} 9 & 8 \\ 7 & 6 \end{bmatrix}, \quad B = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} $$
 
-The difference $ C $ is:
+The difference $C$ is:
 
 $$ C = A - B = \begin{bmatrix} 9-1 & 8-2 \\ 7-3 & 6-4 \end{bmatrix} = \begin{bmatrix} 8 & 6 \\ 4 & 2 \end{bmatrix} $$
 
@@ -157,7 +157,7 @@ FUNCTION matrix_product(A, B):
 END FUNCTION
 ```
 
-A more humar readable version of the `pseudocode` is shown below:
+A more human readable version of the `pseudocode` is shown below:
 ```python
 FUNCTION matrix_product(A, B):
     Get the number of rows and columns in matrix A
@@ -222,6 +222,22 @@ FUNCTION determinant(A):
         det = det + ((-1) ^ j) * A[0][j] * sub_det
     
     RETURN det
+END FUNCTION
+
+FUNCTION create_sub_matrix(A, row, col):
+    sub_matrix = create_matrix(number_of_rows(A)-1, number_of_columns(A)-1)
+    sub_i = 0
+    FOR i FROM 0 TO number_of_rows(A)-1:
+        IF i == row:
+            CONTINUE
+        sub_j = 0
+        FOR j FROM 0 TO number_of_columns(A)-1:
+            IF j == col:
+                CONTINUE
+            sub_matrix[sub_i][sub_j] = A[i][j]
+            sub_j = sub_j + 1
+        sub_i = sub_i + 1
+    RETURN sub_matrix
 END FUNCTION
 ```
 A human readable version of the same pseudocode is shown below:
@@ -369,6 +385,13 @@ END FUNCTION
 4. If the diagonal element is zero, try to swap with a lower row that has a non-zero element in the same column.
 5. If no such row is found, decrement the rank.
 6. Return the resulting rank of the matrix.
+
+### Practice Problems
+
+Find the rank of the following matrices.
+
+1. $\begin{pmatrix} 1&1&3\\ 2&2&6\\ 2&5&3\end{pmatrix}$.
+2. $\begin{pmatrix} 2&0&2\\ 1&2&3\\ 3&2&7\end{pmatrix}$
 
 ### Solving a System of Equations
 
@@ -1563,6 +1586,291 @@ with open('example.txt', 'w') as file:
 ## From Theory to Practice
 
 In this section, we transition from theoretical concepts to practical applications by exploring how fundamental matrix operations can be used in the field of image processing. By leveraging the knowledge gained from understanding matrix addition, subtraction, multiplication, and other operations, we can tackle real-world problems such as image blending, sharpening, filtering, and transformations. This hands-on approach not only reinforces the theoretical principles but also demonstrates their utility in processing and enhancing digital images. Through practical examples and coding exercises, you'll see how these mathematical operations are essential tools in modern image manipulation and analysis.
+
+### Applications of Matrix Operations in Digital Image Processing
+
+Matrix operations play a pivotal role in digital image processing, enabling a wide range of techniques for manipulating and enhancing images. By leveraging fundamental matrix operations such as addition, subtraction, multiplication, and transformations, we can perform essential tasks like image blending, filtering, edge detection, and geometric transformations. These operations provide the mathematical foundation for various algorithms used in image analysis, compression, and reconstruction. Understanding and applying matrix operations is crucial for developing efficient and effective image processing solutions, making it an indispensable skill in fields like computer vision, graphics, and multimedia applications.
+
+#### Matrix Addition in Image Blending
+
+Matrix addition is a fundamental operation in image processing, particularly useful in the technique of image blending. Image blending involves combining two images to produce a single image that integrates the features of both original images. This technique is commonly used in applications such as image overlay, transition effects in videos, and creating composite images.
+
+**Concept**
+
+When working with grayscale images, each image can be represented as a matrix where each element corresponds to the intensity of a pixel. By adding corresponding elements (pixels) of two matrices (images), we can blend the images together. The resultant matrix represents the blended image, where each pixel is the sum of the corresponding pixels in the original images.
+
+>Example:
+
+Consider two 2x2 grayscale images represented as matrices:
+
+```{python}
+image1= [[100, 150],[200, 250]]
+image2=[[50, 100],[100, 150]]
+```
+
+
+To blend these images, we add the corresponding pixel values as:
+
+```python
+blended_image[i][j] = image1[i][j] + image2[i][j]
+```
+
+
+Ensure that the resulting pixel values do not exceed the maximum value allowed (255 for 8-bit images).
+
+**Python Implementation of image blending**
+
+Below is the Python code for blending two images using matrix addition:
+
+```{python}
+def matrix_addition(image1, image2):
+    rows = len(image1)
+    cols = len(image1[0])
+    blended_image = [[0] * cols for _ in range(rows)]
+
+    for i in range(rows):
+        for j in range(cols):
+            blended_pixel = image1[i][j] + image2[i][j]
+            blended_image[i][j] = min(blended_pixel, 255)  # Clip to 255
+
+    return blended_image
+
+# Example matrices (images)
+image1 = [[100, 150], [200, 250]]
+image2 = [[50, 100], [100, 150]]
+
+blended_image = matrix_addition(image1, image2)
+print("Blended Image:")
+for row in blended_image:
+    print(row)
+```
+
+
+Image blending is a powerful technique with numerous real-time applications. It is widely used in creating smooth transitions in video editing, overlaying images in augmented reality, and producing composite images in photography and graphic design. By understanding and applying matrix operations, we can develop efficient algorithms that seamlessly integrate multiple images, enhancing the overall visual experience. The practical implementation of matrix addition in image blending underscores the importance of mathematical foundations in achieving sophisticated image processing tasks in real-world applications.
+
+::: {.callout-tip title="Image Blending as Basic Arithmetic with Libraries"}
+In upcoming chapters, we will explore how specific libraries for image handling simplify the process of image blending to a basic arithmetic operation—adding two objects. Using these libraries, such as PIL (Python Imaging Library) or OpenCV, allows us to leverage efficient built-in functions that streamline tasks like resizing, matrix operations, and pixel manipulation.
+:::
+
+Let's summarize a few more matrix operations and its uses in digital image processing tasks in the following sections.
+
+#### Matrix Subtraction in Image Sharpening
+
+Matrix subtraction is a fundamental operation in image processing, essential for techniques like image sharpening. Image sharpening enhances the clarity and detail of an image by increasing the contrast along edges and boundaries.
+
+**Concept**
+
+In grayscale images, each pixel value represents the intensity of light at that point. Image sharpening involves subtracting a smoothed version of the image from the original. This process accentuates edges and fine details, making them more prominent.
+
+>Example:
+
+Consider a grayscale image represented as a matrix:
+```python
+original_image [[100, 150, 200],[150, 200, 250],[200, 250, 100]]
+```
+
+To sharpen the image, we subtract a blurred version (smoothed image) from the original. This enhances edges and fine details:
+
+```python
+sharpened_image[i][j] = original_image[i][j] - blurred_image[i][j]
+```
+
+**Python Implementation**
+
+Below is a simplified Python example of image sharpening using matrix subtraction:
+
+```{python}
+# Original image matrix (grayscale values)
+original_image = [
+    [100, 150, 200],
+    [150, 200, 250],
+    [200, 250, 100]
+]
+
+# Function to apply Gaussian blur (for demonstration, simplified as average smoothing)
+def apply_blur(image):
+    blurred_image = []
+    for i in range(len(image)):
+        row = []
+        for j in range(len(image[0])):
+            neighbors = []
+            for dx in [-1, 0, 1]:
+                for dy in [-1, 0, 1]:
+                    ni, nj = i + dx, j + dy
+                    if 0 <= ni < len(image) and 0 <= nj < len(image[0]):
+                        neighbors.append(image[ni][nj])
+            blurred_value = sum(neighbors) // len(neighbors)
+            row.append(blurred_value)
+        blurred_image.append(row)
+    return blurred_image
+
+# Function for matrix subtraction (image sharpening)
+def image_sharpening(original_image, blurred_image):
+    sharpened_image = []
+    for i in range(len(original_image)):
+        row = []
+        for j in range(len(original_image[0])):
+            sharpened_value = original_image[i][j] - blurred_image[i][j]
+            row.append(sharpened_value)
+        sharpened_image.append(row)
+    return sharpened_image
+
+# Apply blur to simulate smoothed image
+blurred_image = apply_blur(original_image)
+
+# Perform matrix subtraction for image sharpening
+sharpened_image = image_sharpening(original_image, blurred_image)
+
+# Print the sharpened image
+print("Sharpened Image:")
+for row in sharpened_image:
+    print(row)
+
+```
+
+#### Matrix Multiplication in Image Filtering (Convolution)
+
+Matrix multiplication, specifically convolution in the context of image processing, is a fundamental operation used for various tasks such as smoothing, sharpening, edge detection, and more. Convolution involves applying a small matrix, known as a kernel or filter, to an image matrix. This process modifies the pixel values of the image based on the values in the kernel, effectively filtering the image.
+
+**Concept**
+In grayscale images, each pixel value represents the intensity of light at that point. Convolution applies a kernel matrix over the image matrix to compute a weighted sum of neighborhood pixels. This weighted sum determines the new value of each pixel in the resulting filtered image.
+
+>Example:
+
+Consider a grayscale image represented as a matrix:
+
+```python
+original_image= [[100, 150, 200, 250],
+ [150, 200, 250, 300],
+ [200, 250, 300, 350],
+ [250, 300, 350, 400]]
+```
+
+To perform smoothing (averaging) using a simple kernel:
+
+```python
+[[1/9, 1/9, 1/9],
+ [1/9, 1/9, 1/9],
+ [1/9, 1/9, 1/9]]
+```
+The kernel is applied over the image using convolution:
+
+```python
+smoothed_image[i][j] = sum(original_image[ii][jj] * kernel[k][l] for all (ii, jj) in neighborhood around (i, j))
+```
+**Python Implementation**
+
+Here's a simplified Python example demonstrating convolution for image smoothing without external libraries:
+
+```{python}
+# Original image matrix (grayscale values)
+original_image = [
+    [100, 150, 200, 250],
+    [150, 200, 250, 300],
+    [200, 250, 300, 350],
+    [250, 300, 350, 400]
+]
+
+# Define a simple kernel/filter for smoothing (averaging)
+kernel = [
+    [1/9, 1/9, 1/9],
+    [1/9, 1/9, 1/9],
+    [1/9, 1/9, 1/9]
+]
+
+# Function for applying convolution (image filtering)
+def apply_convolution(image, kernel):
+    height = len(image)
+    width = len(image[0])
+    ksize = len(kernel)
+    kcenter = ksize // 2  # Center of the kernel
+
+    # Initialize result image
+    filtered_image = [[0]*width for _ in range(height)]
+
+    # Perform convolution
+    for i in range(height):
+        for j in range(width):
+            sum = 0.0
+            for k in range(ksize):
+                for l in range(ksize):
+                    ii = i + k - kcenter
+                    jj = j + l - kcenter
+                    if ii >= 0 and ii < height and jj >= 0 and jj < width:
+                        sum += image[ii][jj] * kernel[k][l]
+            filtered_image[i][j] = int(sum)
+    
+    return filtered_image
+
+# Apply convolution to simulate smoothed image (averaging filter)
+smoothed_image = apply_convolution(original_image, kernel)
+
+# Print the smoothed image
+print("Smoothed Image:")
+for row in smoothed_image:
+    print(row)
+```
+
+
+#### Determinant: Image Transformation
+
+**Concept**
+The determinant of a transformation matrix helps understand how transformations like scaling affect an image. A transformation matrix determines how an image is scaled, rotated, or sheared.
+
+>Example:
+
+Here, we compute the determinant of a scaling matrix to understand how the scaling affects the image area.
+
+```python
+def calculate_determinant(matrix):
+    a, b = matrix[0]
+    c, d = matrix[1]
+    return a * d - b * c
+
+# Example transformation matrix (scaling)
+transformation_matrix = [[2, 0], [0, 2]]
+determinant = calculate_determinant(transformation_matrix)
+print(f"Determinant of the transformation matrix: {determinant}")
+```
+This value indicates how the transformation scales the image area.
+
+#### Rank: Image Rank and Data Compression
+
+**Concept**
+The rank of a matrix indicates the number of linearly independent rows or columns. In image compression, matrix rank helps approximate an image with fewer data.
+
+>Example:
+
+Here, we compute the rank of a matrix representing an image. A lower rank might indicate that the image can be approximated with fewer data.
+
+```python
+def matrix_rank(matrix):
+    def is_zero_row(row):
+        return all(value == 0 for value in row)
+
+    def row_echelon_form(matrix):
+        A = [row[:] for row in matrix]
+        m = len(A)
+        n = len(A[0])
+        rank = 0
+        for i in range(min(m, n)):
+            if A[i][i] != 0:
+                for j in range(i + 1, m):
+                    factor = A[j][i] / A[i][i]
+                    for k in range(i, n):
+                        A[j][k] -= factor * A[i][k]
+                rank += 1
+        return rank
+
+    return row_echelon_form(matrix)
+
+# Example matrix (image)
+image_matrix = [[1, 2], [3, 4]]
+rank = matrix_rank(image_matrix)
+print(f"Rank of the image matrix: {rank}")
+```
+## Matrix Operations Using `Python` Libraries
+
 
 ## Conclusion
 

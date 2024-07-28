@@ -2,10 +2,6 @@
 
 ## Introduction to Computational Linear Algebra
 
-തസ്മാത് കര്‍മണ്യവാധികാരസ്തേ മാ ഫലെഷു കദാചനം।
-മാ കര്‍മഫലഹേതുര്‍ഭൂര്‍മാ തെ സങ്കോऽസ്ത്വകര്‍മ്മണി।।
-
-
 Welcome to the Computational Linear Algebra course, a pivotal component of our Computational Mathematics for Engineering minor program. This course is meticulously designed to connect theoretical linear algebra concepts with their practical applications in Artificial Intelligence (AI) and Data Science.
 
 ### Course Themes

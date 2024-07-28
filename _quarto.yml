@@ -1,5 +1,7 @@
 project:
   type: book
+execute:
+  freeze: auto
 book:
   title: "Computational Linear Algebra"
   author: "Siju Swamy"
