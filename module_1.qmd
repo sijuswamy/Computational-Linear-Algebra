@@ -1871,6 +1871,67 @@ print(f"Rank of the image matrix: {rank}")
 ```
 ## Matrix Operations Using `Python` Libraries
 
+### Introduction
+
+In this section, we will explore the computational aspects of basic matrix algebra using Python. We will utilize the `SymPy` library for symbolic mathematics, which allows us to perform matrix operations and convert results into LaTeX format. Additionally, the `Pillow` (PIL) library will be used for image manipulation to demonstrate practical applications of these matrix operations in digital image processing. By the end of this section, you'll understand how to implement matrix operations and apply them to real-world problems such as image blending, sharpening, filtering, and solving systems of equations.
+
+### Introduction to SymPy
+
+`SymPy` is a powerful Python library designed for symbolic mathematics. It provides tools for algebraic operations, equation solving, and matrix handling in a symbolic form. This makes it ideal for educational purposes and theoretical work where exact results are needed.
+
+#### Key Matrix Functions in SymPy
+
+- **Matrix Addition**: Adds two matrices element-wise.
+- **Matrix Subtraction**: Subtracts one matrix from another element-wise.
+- **Matrix Multiplication**: Multiplies two matrices using the dot product.
+- **Matrix Power**: Raises a matrix to a given power using matrix multiplication.
+
+>**Example 1: Matrix Addition**
+
+**Pseudocode**
+
+```python
+FUNCTION matrix_add():
+    # Define matrices A and B
+    A = [[1, 2], [3, 4]]
+    B = [[5, 6], [7, 8]]
+
+    # Check if matrices A and B have the same dimensions
+    if dimensions_of(A) != dimensions_of(B):
+         raise ValueError("Matrices must have the same dimensions")
+
+    # Initialize result matrix with zeros
+    result = [[0 for _ in range(len(A[0]))] for _ in range(len(A))]
+
+    # Add corresponding elements from A and B
+    for i in range(len(A)):
+        for j in range(len(A[0])):
+            result[i][j] = A[i][j] + B[i][j]
+
+# Return the result matrix
+    return result
+ENDFUNCTION
+
+```{python}
+from sympy import Matrix
+
+# Define matrices A and B
+A = Matrix([[1, 2], [3, 4]])
+B = Matrix([[5, 6], [7, 8]])
+
+# Add matrices
+C = A + B
+
+# Print the result in symbolic form
+print("Matrix Addition Result:")
+print(C)
+
+# Convert to LaTeX code for documentation or presentation
+latex_code = C.to_latex()
+print("LaTeX Code for Addition Result:")
+print(latex_code)
+```
+
 
 ## Conclusion
 

@@ -250,7 +250,11 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#applications-of-matrix-operations-in-digital-image-processing" id="toc-applications-of-matrix-operations-in-digital-image-processing" class="nav-link" data-scroll-target="#applications-of-matrix-operations-in-digital-image-processing"><span class="header-section-number">2.9.1</span> Applications of Matrix Operations in Digital Image Processing</a></li>
   </ul></li>
-  <li><a href="#matrix-operations-using-python-libraries" id="toc-matrix-operations-using-python-libraries" class="nav-link" data-scroll-target="#matrix-operations-using-python-libraries"><span class="header-section-number">2.10</span> Matrix Operations Using <code>Python</code> Libraries</a></li>
+  <li><a href="#matrix-operations-using-python-libraries" id="toc-matrix-operations-using-python-libraries" class="nav-link" data-scroll-target="#matrix-operations-using-python-libraries"><span class="header-section-number">2.10</span> Matrix Operations Using <code>Python</code> Libraries</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">2.10.1</span> Introduction</a></li>
+  <li><a href="#introduction-to-sympy" id="toc-introduction-to-sympy" class="nav-link" data-scroll-target="#introduction-to-sympy"><span class="header-section-number">2.10.2</span> Introduction to SymPy</a></li>
+  </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">2.11</span> Conclusion</a></li>
   </ul>
 </nav>
@@ -1665,7 +1669,7 @@ Cautions When Using Control Flow Structures
 <p>Example:</p>
 </blockquote>
 <p>Consider two 2x2 grayscale images represented as matrices:</p>
-<div id="c3be78df" class="cell">
+<div id="0c8aefaa" class="cell">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>image1<span class="op">=</span> [[<span class="dv">100</span>, <span class="dv">150</span>],[<span class="dv">200</span>, <span class="dv">250</span>]]</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>image2<span class="op">=</span>[[<span class="dv">50</span>, <span class="dv">100</span>],[<span class="dv">100</span>, <span class="dv">150</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1674,7 +1678,7 @@ Cautions When Using Control Flow Structures
 <p>Ensure that the resulting pixel values do not exceed the maximum value allowed (255 for 8-bit images).</p>
 <p><strong>Python Implementation of image blending</strong></p>
 <p>Below is the Python code for blending two images using matrix addition:</p>
-<div id="4e8e47ae" class="cell">
+<div id="299282fd" class="cell">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> matrix_addition(image1, image2):</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>    rows <span class="op">=</span> <span class="bu">len</span>(image1)</span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>    cols <span class="op">=</span> <span class="bu">len</span>(image1[<span class="dv">0</span>])</span>
@@ -1726,7 +1730,7 @@ Image Blending as Basic Arithmetic with Libraries
 <div class="sourceCode" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>sharpened_image[i][j] <span class="op">=</span> original_image[i][j] <span class="op">-</span> blurred_image[i][j]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Python Implementation</strong></p>
 <p>Below is a simplified Python example of image sharpening using matrix subtraction:</p>
-<div id="0297ee9a" class="cell">
+<div id="ddf26686" class="cell">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Original image matrix (grayscale values)</span></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>original_image <span class="op">=</span> [</span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>],</span>
@@ -1794,7 +1798,7 @@ Image Blending as Basic Arithmetic with Libraries
 <div class="sourceCode" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>smoothed_image[i][j] <span class="op">=</span> <span class="bu">sum</span>(original_image[ii][jj] <span class="op">*</span> kernel[k][l] <span class="cf">for</span> <span class="bu">all</span> (ii, jj) <span class="kw">in</span> neighborhood around (i, j))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Python Implementation</strong></p>
 <p>Here’s a simplified Python example demonstrating convolution for image smoothing without external libraries:</p>
-<div id="595cb7f9" class="cell">
+<div id="80597303" class="cell">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Original image matrix (grayscale values)</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>original_image <span class="op">=</span> [</span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>],</span>
@@ -1897,6 +1901,68 @@ Image Blending as Basic Arithmetic with Libraries
 </section>
 <section id="matrix-operations-using-python-libraries" class="level2" data-number="2.10">
 <h2 data-number="2.10" class="anchored" data-anchor-id="matrix-operations-using-python-libraries"><span class="header-section-number">2.10</span> Matrix Operations Using <code>Python</code> Libraries</h2>
+<section id="introduction" class="level3" data-number="2.10.1">
+<h3 data-number="2.10.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">2.10.1</span> Introduction</h3>
+<p>In this section, we will explore the computational aspects of basic matrix algebra using Python. We will utilize the <code>SymPy</code> library for symbolic mathematics, which allows us to perform matrix operations and convert results into LaTeX format. Additionally, the <code>Pillow</code> (PIL) library will be used for image manipulation to demonstrate practical applications of these matrix operations in digital image processing. By the end of this section, you’ll understand how to implement matrix operations and apply them to real-world problems such as image blending, sharpening, filtering, and solving systems of equations.</p>
+</section>
+<section id="introduction-to-sympy" class="level3" data-number="2.10.2">
+<h3 data-number="2.10.2" class="anchored" data-anchor-id="introduction-to-sympy"><span class="header-section-number">2.10.2</span> Introduction to SymPy</h3>
+<p><code>SymPy</code> is a powerful Python library designed for symbolic mathematics. It provides tools for algebraic operations, equation solving, and matrix handling in a symbolic form. This makes it ideal for educational purposes and theoretical work where exact results are needed.</p>
+<section id="key-matrix-functions-in-sympy" class="level4" data-number="2.10.2.1">
+<h4 data-number="2.10.2.1" class="anchored" data-anchor-id="key-matrix-functions-in-sympy"><span class="header-section-number">2.10.2.1</span> Key Matrix Functions in SymPy</h4>
+<ul>
+<li><strong>Matrix Addition</strong>: Adds two matrices element-wise.</li>
+<li><strong>Matrix Subtraction</strong>: Subtracts one matrix from another element-wise.</li>
+<li><strong>Matrix Multiplication</strong>: Multiplies two matrices using the dot product.</li>
+<li><strong>Matrix Power</strong>: Raises a matrix to a given power using matrix multiplication.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Example 1: Matrix Addition</strong></p>
+</blockquote>
+<p><strong>Pseudocode</strong></p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>FUNCTION matrix_add():</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define matrices A and B</span></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]]</span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>    B <span class="op">=</span> [[<span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>]]</span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if matrices A and B have the same dimensions</span></span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> dimensions_of(A) <span class="op">!=</span> dimensions_of(B):</span>
+<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a>         <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Matrices must have the same dimensions"</span>)</span>
+<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize result matrix with zeros</span></span>
+<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> [[<span class="dv">0</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(A[<span class="dv">0</span>]))] <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(A))]</span>
+<span id="cb80-12"><a href="#cb80-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-13"><a href="#cb80-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add corresponding elements from A and B</span></span>
+<span id="cb80-14"><a href="#cb80-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(A)):</span>
+<span id="cb80-15"><a href="#cb80-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(A[<span class="dv">0</span>])):</span>
+<span id="cb80-16"><a href="#cb80-16" aria-hidden="true" tabindex="-1"></a>            result[i][j] <span class="op">=</span> A[i][j] <span class="op">+</span> B[i][j]</span>
+<span id="cb80-17"><a href="#cb80-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-18"><a href="#cb80-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the result matrix</span></span>
+<span id="cb80-19"><a href="#cb80-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
+<span id="cb80-20"><a href="#cb80-20" aria-hidden="true" tabindex="-1"></a>ENDFUNCTION</span>
+<span id="cb80-21"><a href="#cb80-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-22"><a href="#cb80-22" aria-hidden="true" tabindex="-1"></a>::: {<span class="co">#1071bfcc .cell}</span></span>
+<span id="cb80-23"><a href="#cb80-23" aria-hidden="true" tabindex="-1"></a>``` {.python .cell<span class="op">-</span>code}</span>
+<span id="cb80-24"><a href="#cb80-24" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
+<span id="cb80-25"><a href="#cb80-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-26"><a href="#cb80-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
+<span id="cb80-27"><a href="#cb80-27" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
+<span id="cb80-28"><a href="#cb80-28" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> Matrix([[<span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>]])</span>
+<span id="cb80-29"><a href="#cb80-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-30"><a href="#cb80-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Add matrices</span></span>
+<span id="cb80-31"><a href="#cb80-31" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> A <span class="op">+</span> B</span>
+<span id="cb80-32"><a href="#cb80-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-33"><a href="#cb80-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the result in symbolic form</span></span>
+<span id="cb80-34"><a href="#cb80-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Matrix Addition Result:"</span>)</span>
+<span id="cb80-35"><a href="#cb80-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(C)</span>
+<span id="cb80-36"><a href="#cb80-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-37"><a href="#cb80-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to LaTeX code for documentation or presentation</span></span>
+<span id="cb80-38"><a href="#cb80-38" aria-hidden="true" tabindex="-1"></a>latex_code <span class="op">=</span> C.to_latex()</span>
+<span id="cb80-39"><a href="#cb80-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"LaTeX Code for Addition Result:"</span>)</span>
+<span id="cb80-40"><a href="#cb80-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(latex_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>:::</p>
+</section>
+</section>
 </section>
 <section id="conclusion" class="level2" data-number="2.11">
 <h2 data-number="2.11" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">2.11</span> Conclusion</h2>
