@@ -397,7 +397,7 @@ Find the rank of the following matrices.
 
 **Mathematical Procedure:**
 
-To solve a system of linear equations represented as $A \mathbf{x} = \mathbf{b}$, where$A$ is the coefficient matrix, $\mathbf{x}$ is the vector of variables, and$\mathbf{b}$ is the constant vector, we can use Gaussian elimination to transform the augmented matrix $[A | \mathbf{b}]$ into its row echelon form (REF) and then perform back substitution to find the solution vector $\mathbf{x}$.
+To solve a system of linear equations represented as $A \mathbf{x} = \mathbf{b}$, where$A$ is the coefficient matrix, $\mathbf{x}$ is the vector of variables, and$\mathbf{b}$ is the constant vector, we can use Gaussian elimination to transform the augmented matrix $[A | \mathbf{b}]$ into its row echelon form (REF) and then perform back substitution to find the solution vector $\mathbf{x}$ @strang2022introduction.
 
 **Example:**
 
@@ -1308,7 +1308,7 @@ Functions are a fundamental concept in Python programming that enable code reuse
 
 **What is a Function?**
 
-A function is a named block of code designed to perform a specific task. Functions can take inputs, called parameters or arguments, and can return outputs, which are the results of the computation or task performed by the function. By defining functions, us can write code once and reuse it multiple times, which enhances both efficiency and readability.
+A function is a named block of code designed to perform a specific task. Functions can take inputs, called parameters or arguments, and can return outputs, which are the results of the computation or task performed by the function. By defining functions, we can write code once and reuse it multiple times, which enhances both efficiency and readability.
 
 **Defining a Function**
 
@@ -1912,6 +1912,7 @@ FUNCTION matrix_add():
     return result
 ENDFUNCTION
 ```
+Python implementation of the above pseudocode is given below:
 
 
 ```{python}
@@ -1933,8 +1934,238 @@ display(C)
 #print("LaTeX Code for Addition Result:")
 #print(latex_code)
 ```
+>*Example 2: Matrix Subtraction*
 
+*Pseudocode:*
 
+```python
+# Define matrices A and B
+A = [[5, 6], [7, 8]]
+B = [[1, 2], [3, 4]]
+
+# Check if matrices A and B have the same dimensions
+if dimensions_of(A) != dimensions_of(B):
+    raise ValueError("Matrices must have the same dimensions")
+
+# Initialize result matrix with zeros
+result = [[0 for _ in range(len(A[0]))] for _ in range(len(A))]
+
+# Subtract corresponding elements from A and B
+for i in range(len(A)):
+    for j in range(len(A[0])):
+        result[i][j] = A[i][j] - B[i][j]
+
+# Return the result matrix
+return result
+```
+Python implementation of the above pseudocode is given below:
+
+```{python}
+from sympy import Matrix
+# Define matrices A and B
+A = Matrix([[5, 6], [7, 8]])
+B = Matrix([[1, 2], [3, 4]])
+
+# Subtract matrices
+C = A - B
+
+# Print the result in symbolic form
+print("Matrix Subtraction Result:")
+display(C)
+
+# Convert to LaTeX code for documentation or presentation
+latex_code = sy.latex(C)
+print("LaTeX Code for Subtraction Result:")
+print(latex_code)
+```
+
+>**Example 3: Matrix Multiplication**
+
+*Pseudocode:*
+
+```python
+# Define matrices A and B
+A = [[1, 2], [3, 4]]
+B = [[5, 6], [7, 8]]
+
+# Check if the number of columns in A equals the number of rows in B
+if len(A[0]) != len(B):
+    raise ValueError("Number of columns in A must equal number of rows in B")
+
+# Initialize result matrix with zeros
+result = [[0 for _ in range(len(B[0]))] for _ in range(len(A))]
+
+# Multiply matrices A and B
+for i in range(len(A)):
+    for j in range(len(B[0])):
+        for k in range(len(B)):
+            result[i][j] += A[i][k] * B[k][j]
+
+# Return the result matrix
+return result
+
+```
+
+Python implementation of the above pseudocode is given below:
+
+```{python}
+# Define matrices A and B
+A = Matrix([[1, 2], [3, 4]])
+B = Matrix([[5, 6], [7, 8]])
+
+# Multiply matrices
+M = A * B
+
+# Print the result in symbolic form
+print("Matrix Multiplication Result:")
+display(M)
+
+# Convert to LaTeX code for documentation or presentation
+latex_code = sy.latex(M)
+print("LaTeX Code for Multiplication Result:")
+print(latex_code)
+```
+>**Example 3: Matrix Multiplication**
+
+*Pseudocode:*
+
+```python
+# Define matrices A and B
+A = [[1, 2], [3, 4]]
+B = [[5, 6], [7, 8]]
+
+# Check if the number of columns in A equals the number of rows in B
+if len(A[0]) != len(B):
+    raise ValueError("Number of columns in A must equal number of rows in B")
+
+# Initialize result matrix with zeros
+result = [[0 for _ in range(len(B[0]))] for _ in range(len(A))]
+
+# Multiply matrices A and B
+for i in range(len(A)):
+    for j in range(len(B[0])):
+        for k in range(len(B)):
+            result[i][j] += A[i][k] * B[k][j]
+
+# Return the result matrix
+return result
+```
+Python code for implementing the above pseudocode is shown below:
+
+```{python}
+# Define matrices A and B
+A = Matrix([[1, 2], [3, 4]])
+B = Matrix([[5, 6], [7, 8]])
+
+# Multiply matrices
+M = A * B
+
+# Print the result in symbolic form
+print("Matrix Multiplication Result:")
+display(M)
+
+# Convert to LaTeX code for documentation or presentation
+latex_code = sy.latex(M)
+print("LaTeX Code for Multiplication Result:")
+print(latex_code)
+```
+
+>**Example 4: Matrix Power**
+
+*Pseudocode:*
+
+```python
+# Define matrix A and power n
+A = [[1, 2], [3, 4]]
+n = 2
+
+# Initialize result matrix as identity matrix
+result = identity_matrix_of(len(A))
+
+# Compute A raised to the power of n
+for _ in range(n):
+    result = matrix_multiply(result, A)
+
+# Return the result matrix
+return result
+
+```
+Python implementation of the above pseudocode is shown below:
+
+```{python}
+# Define matrix A
+A = Matrix([[1, 2], [3, 4]])
+
+# Compute matrix A raised to the power of 2
+n = 2
+C = A**n
+
+# Print the result in symbolic form
+print("Matrix Power Result:")
+display(C)
+
+# Convert to LaTeX code for documentation or presentation
+latex_code = sy.latex(C)
+print("LaTeX Code for Power Result:")
+print(latex_code)
+```
+
+#### Introduction to PIL for Image Manipulation
+
+The `PIL` (Python Imaging Library), now known as `Pillow`, provides essential tools for opening, manipulating, and saving various image file formats. In this session, we will use Pillow to perform image operations such as resizing and blending to demonstrate the practical applications of these matrix operations in digital image processing.
+
+Matrix operations have significant applications in digital image processing. These operations can manipulate images in various ways, from blending to filtering. Below we will discuss how matrix addition, subtraction, and multiplication are used in real-time image processing tasks.
+
+1. **Matrix Addition: Image Blending**
+
+Matrix addition can be used to blend two images by adding their pixel values. This process can be straightforward or involve weighted blending.
+
+Example 1: Simple Image Blending
+
+```{python}
+import numpy as np
+from PIL import Image
+import urllib.request
+urllib.request.urlretrieve('http://lenna.org/len_top.jpg',"input.jpg")
+img1 = Image.open("input.jpg") #loading first image
+
+urllib.request.urlretrieve('https://www.keralatourism.org/images/destination/large/thekkekudi_cave_temple_in_pathanamthitta20131205062431_315_1.jpg',"input2.jpg")
+
+img2 = Image.open("input2.jpg")# loading second image
+
+# Resize second image to match the size of the first image
+img2 = img2.resize(img1.size)
+# Convert images to numpy arrays
+arr1 = np.array(img1)
+arr2 = np.array(img2)
+
+# Add the images
+blended_arr = arr1 + arr2
+
+# Clip the values to be in the valid range [0, 255]
+blended_arr = np.clip(blended_arr, 0, 255).astype(np.uint8)
+
+# Convert back to image
+blended_img = Image.fromarray(blended_arr)
+
+# Save or display the blended image
+#blended_img.save('blended_image.jpg')
+#blended_img.show()
+#blended_img #display the blended image
+```
+The input and output images are shown below:
+
+```{python}
+img1
+```
+
+```{python}
+img2
+```
+
+```{python}
+blended_img
+```
 ## Conclusion
 
 In this chapter, we transitioned from understanding fundamental matrix operations to applying them in practical scenarios, specifically in the realm of image processing. We began by covering essential matrix operations such as addition, subtraction, multiplication, and determinant calculations, providing both pseudocode and detailed explanations. This foundational knowledge was then translated into Python code, demonstrating how to perform these operations computationally.

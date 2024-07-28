@@ -2,7 +2,7 @@
 ---
 title: "Transforming Linear Algebra to Computational Language"
 execute: 
-  enabled: false
+  enabled: true
 ---
 ## Introduction 
 
