@@ -1665,7 +1665,7 @@ Cautions When Using Control Flow Structures
 <p>Example:</p>
 </blockquote>
 <p>Consider two 2x2 grayscale images represented as matrices:</p>
-<div id="a4356d96" class="cell">
+<div id="2ea2c784" class="cell">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>image1<span class="op">=</span> [[<span class="dv">100</span>, <span class="dv">150</span>],[<span class="dv">200</span>, <span class="dv">250</span>]]</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>image2<span class="op">=</span>[[<span class="dv">50</span>, <span class="dv">100</span>],[<span class="dv">100</span>, <span class="dv">150</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1674,7 +1674,7 @@ Cautions When Using Control Flow Structures
 <p>Ensure that the resulting pixel values do not exceed the maximum value allowed (255 for 8-bit images).</p>
 <p><strong>Python Implementation of image blending</strong></p>
 <p>Below is the Python code for blending two images using matrix addition:</p>
-<div id="16bf9ab5" class="cell">
+<div id="ec147556" class="cell">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> matrix_addition(image1, image2):</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>    rows <span class="op">=</span> <span class="bu">len</span>(image1)</span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>    cols <span class="op">=</span> <span class="bu">len</span>(image1[<span class="dv">0</span>])</span>
@@ -1726,7 +1726,7 @@ Image Blending as Basic Arithmetic with Libraries
 <div class="sourceCode" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>sharpened_image[i][j] <span class="op">=</span> original_image[i][j] <span class="op">-</span> blurred_image[i][j]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Python Implementation</strong></p>
 <p>Below is a simplified Python example of image sharpening using matrix subtraction:</p>
-<div id="4cf2b44d" class="cell">
+<div id="98f8f7f4" class="cell">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Original image matrix (grayscale values)</span></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>original_image <span class="op">=</span> [</span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>],</span>
@@ -1794,7 +1794,7 @@ Image Blending as Basic Arithmetic with Libraries
 <div class="sourceCode" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>smoothed_image[i][j] <span class="op">=</span> <span class="bu">sum</span>(original_image[ii][jj] <span class="op">*</span> kernel[k][l] <span class="cf">for</span> <span class="bu">all</span> (ii, jj) <span class="kw">in</span> neighborhood around (i, j))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Python Implementation</strong></p>
 <p>Here’s a simplified Python example demonstrating convolution for image smoothing without external libraries:</p>
-<div id="b298c263" class="cell">
+<div id="b7368a1c" class="cell">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Original image matrix (grayscale values)</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>original_image <span class="op">=</span> [</span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>],</span>
