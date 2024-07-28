@@ -4,7 +4,7 @@ title: "Transforming Linear Algebra to Computational Language"
 execute: 
   enabled: false
 ---
-# Introduction 
+## Introduction 
 
 In the first module, we established a solid foundation in matrix algebra by exploring pseudocode and implementing fundamental matrix operations using Python. We practiced key concepts such as matrix addition, subtraction, multiplication, and determinants through practical examples in image processing, leveraging the `SymPy` library for symbolic computation.
 
