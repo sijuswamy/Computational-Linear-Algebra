@@ -2166,6 +2166,130 @@ img2
 ```{python}
 blended_img
 ```
+>**Example 2: Weighted Image Blending**
+
+```{python}
+# Blend with weights
+alpha = 0.7
+blended_arr = alpha * arr1 + (1 - alpha) * arr2
+
+# Clip the values to be in the valid range [0, 255]
+blended_arr = np.clip(blended_arr, 0, 255).astype(np.uint8)
+
+# Convert back to image
+blended_img = Image.fromarray(blended_arr)
+
+# Save or display the weighted blended image
+#blended_img.save('weighted_blended_image.jpg')
+#blended_img.show()
+blended_img
+```
+
+#### Matrix Subtraction: Image Sharpening
+
+Matrix subtraction can be used to sharpen images by subtracting a blurred version of the image from the original.
+
+>**Example 1: Sharpening by Subtracting Blurred Image**
+
+```{python}
+from PIL import Image, ImageFilter
+# Convert image to grayscale for simplicity
+img_gray = img1.convert('L')
+arr = np.array(img_gray)
+
+# Apply Gaussian blur
+blurred_img = img_gray.filter(ImageFilter.GaussianBlur(radius=5))
+blurred_arr = np.array(blurred_img)
+
+# Sharpen the image by subtracting blurred image
+sharpened_arr = arr - blurred_arr
+
+# Clip the values to be in the valid range [0, 255]
+sharpened_arr = np.clip(sharpened_arr, 0, 255).astype(np.uint8)
+
+# Convert back to image
+sharpened_img = Image.fromarray(sharpened_arr)
+
+# Save or display the sharpened image
+#sharpened_img.save('sharpened_image.jpg')
+#sharpened_img.show()
+sharpened_img
+```
+
+#### Matrix Multiplication: Image Filtering (Convolution)
+
+Matrix multiplication is used in image filtering to apply convolution kernels for various effects.
+
+>**Example 1: Applying a Convolution Filter**
+
+```{python}
+# Define a simple convolution kernel (e.g., edge detection)
+kernel = np.array([
+    [1, 0, -1],
+    [1, 0, -1],
+    [1, 0, -1]
+])
+
+# Convert the image to grayscale for simplicity
+img_gray = img1.convert('L')
+arr = np.array(img_gray)
+
+# Apply convolution
+filtered_arr = np.zeros_like(arr)
+for i in range(1, arr.shape[0] - 1):
+    for j in range(1, arr.shape[1] - 1):
+        region = arr[i-1:i+2, j-1:j+2]
+        filtered_arr[i, j] = np.sum(region * kernel)
+
+# Convert back to image
+filtered_img = Image.fromarray(np.clip(filtered_arr, 0, 255).astype(np.uint8))
+
+# Save or display the filtered image
+#filtered_img.save('filtered_image.jpg')
+#filtered_img.show()
+filtered_img
+```
+
+>**Example 2: Applying a Gaussian Blur Filter**
+
+```{python}
+# Define a Gaussian blur filter
+blurred_img = img1.filter(ImageFilter.GaussianBlur(radius=5))
+
+# Save or display the blurred image
+#blurred_img.save('blurred_image.jpg')
+#blurred_img.show()
+blurred_img
+```
+
+#### Solving Systems of Equations and Applications
+
+**Introduction**
+
+Solving systems of linear equations is crucial in various image processing tasks, such as image transformation, camera calibration, and object detection. In this section, we will demonstrate how to solve systems of linear equations using Python and explore practical applications in image processing.
+
+>**Example 1: Solving a System of Equations**
+
+Consider the system:
+
+$$\begin{cases}
+2x + 3y& = 13 \\
+4x - y &= 7
+\end{cases}$$
+
+>**Python Implementation**
+
+```{python}
+from sympy import Matrix
+# Define the coefficient matrix and constant matrix
+A = Matrix([[2, 3], [4, -1]])
+B = Matrix([13, 7])
+# Solve the system of equations
+solution = A.solve_least_squares(B)
+# Print the solution
+print("Solution to the System of Equations:")
+print(solution)
+```
 ## Conclusion
 
 In this chapter, we transitioned from understanding fundamental matrix operations to applying them in practical scenarios, specifically in the realm of image processing. We began by covering essential matrix operations such as addition, subtraction, multiplication, and determinant calculations, providing both pseudocode and detailed explanations. This foundational knowledge was then translated into Python code, demonstrating how to perform these operations computationally.
