@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -69,6 +103,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -147,6 +210,11 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">2.1</span> Introduction</a></li>
+  <li><a href="#relearning-of-terms-and-operations-in-linear-algebra" id="toc-relearning-of-terms-and-operations-in-linear-algebra" class="nav-link" data-scroll-target="#relearning-of-terms-and-operations-in-linear-algebra"><span class="header-section-number">2.2</span> Relearning of Terms and Operations in Linear Algebra</a>
+  <ul class="collapse">
+  <li><a href="#matrix-addition-and-subtraction-in-data-analysis" id="toc-matrix-addition-and-subtraction-in-data-analysis" class="nav-link" data-scroll-target="#matrix-addition-and-subtraction-in-data-analysis"><span class="header-section-number">2.2.1</span> Matrix Addition and Subtraction in Data Analysis</a></li>
+  <li><a href="#more-on-matrix-product-and-its-applications" id="toc-more-on-matrix-product-and-its-applications" class="nav-link" data-scroll-target="#more-on-matrix-product-and-its-applications"><span class="header-section-number">2.2.2</span> More on Matrix Product and its Applications</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -178,8 +246,1490 @@ ul.task-list li input[type="checkbox"] {
 <p>As we begin the second module, <strong>“Transforming Linear Algebra to Computational Language,”</strong> our focus will shift towards applying these concepts with greater depth and actionable insight. This module is designed to bridge the theoretical knowledge from matrix algebra with practical computational applications. You will learn to interpret and utilize matrix operations, solve systems of equations, and analyze the rank of matrices within a variety of real-world contexts.</p>
 <p>A new concept we will introduce is the <strong>Rank-Nullity Theorem</strong>, which provides a fundamental relationship between the rank of a matrix and the dimensions of its null space. This theorem is crucial for understanding the solution spaces of linear systems and the properties of linear transformations. By applying this theorem, you will be able to gain deeper insights into the structure of solutions and the behavior of matrix transformations.</p>
 <p>This transition will not only reinforce your understanding of linear algebra but also enhance your ability to apply these concepts effectively in computational settings. Through engaging examples and practical exercises, you will gain valuable experience in transforming abstract mathematical principles into tangible solutions, setting a strong groundwork for advanced computational techniques.</p>
+</section>
+<section id="relearning-of-terms-and-operations-in-linear-algebra" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="relearning-of-terms-and-operations-in-linear-algebra"><span class="header-section-number">2.2</span> Relearning of Terms and Operations in Linear Algebra</h2>
+<p>In this section, we will revisit fundamental matrix operations such as addition, subtraction, scaling, and more through practical examples. Our goal is to transform theoretical linear algebra into modern computational applications. We will demonstrate these concepts using Python, focusing on practical and industrial applications.</p>
+<section id="matrix-addition-and-subtraction-in-data-analysis" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="matrix-addition-and-subtraction-in-data-analysis"><span class="header-section-number">2.2.1</span> Matrix Addition and Subtraction in Data Analysis</h3>
+<p>Matrix addition and subtraction are fundamental operations that help in combining datasets and analyzing differences.</p>
+<p><strong>Simple Example: Combining Quarterly Sales Data</strong></p>
+<p>We begin with quarterly sales data from different regions and combine them to get the total sales.</p>
+<p><strong>Tabular Data:</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Region</th>
+<th>Q1</th>
+<th>Q2</th>
+<th>Q3</th>
+<th>Q4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>2500</td>
+<td>2800</td>
+<td>3100</td>
+<td>2900</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>1500</td>
+<td>1600</td>
+<td>1700</td>
+<td>1800</td>
+</tr>
+</tbody>
+</table>
+<p><strong>From Scratch Python Implementation:</strong></p>
+<div id="e456027f" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Quarterly sales data</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sales_region_a <span class="op">=</span> np.array([<span class="dv">2500</span>, <span class="dv">2800</span>, <span class="dv">3100</span>, <span class="dv">2900</span>])</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sales_region_b <span class="op">=</span> np.array([<span class="dv">1500</span>, <span class="dv">1600</span>, <span class="dv">1700</span>, <span class="dv">1800</span>])</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine sales data</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>total_sales <span class="op">=</span> sales_region_a <span class="op">+</span> sales_region_b</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>quarters <span class="op">=</span> [<span class="st">'Q1'</span>, <span class="st">'Q2'</span>, <span class="st">'Q3'</span>, <span class="st">'Q4'</span>]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>plt.bar(quarters, total_sales, color<span class="op">=</span><span class="st">'skyblue'</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Quarter'</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Total Sales'</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Combined Quarterly Sales Data for Regions A and B'</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="module_2_files/figure-html/cell-2-output-1.png" width="601" height="449" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Using <code>pandas</code> to handle tabular data:</p>
+<div id="c921bf3c" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># DataFrames for quarterly sales data</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df_a <span class="op">=</span> pd.DataFrame({<span class="st">'Q1'</span>: [<span class="dv">2500</span>], <span class="st">'Q2'</span>: [<span class="dv">2800</span>], <span class="st">'Q3'</span>: [<span class="dv">3100</span>], <span class="st">'Q4'</span>: [<span class="dv">2900</span>]}, index<span class="op">=</span>[<span class="st">'Region A'</span>])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df_b <span class="op">=</span> pd.DataFrame({<span class="st">'Q1'</span>: [<span class="dv">1500</span>], <span class="st">'Q2'</span>: [<span class="dv">1600</span>], <span class="st">'Q3'</span>: [<span class="dv">1700</span>], <span class="st">'Q4'</span>: [<span class="dv">1800</span>]}, index<span class="op">=</span>[<span class="st">'Region B'</span>])</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine data</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>df_total <span class="op">=</span> df_a.add(df_b)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>df_total.T.plot(kind<span class="op">=</span><span class="st">'bar'</span>, color<span class="op">=</span><span class="st">'skyblue'</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Quarter'</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Total Sales'</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Combined Quarterly Sales Data for Regions A and B'</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="module_2_files/figure-html/cell-3-output-1.png" width="608" height="455" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can extend the this in to more advanced examples. Irrespective to the size of the data, for representation aggregation tasks matrix models are best options and are used in industry as a standard. Let us consider an advanced example to analyse difference in stock prices. For this example we are using a simulated data. The python code for this simulation process is shown below:</p>
+<div id="ca9c87ee" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated observed and predicted stock prices</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>observed_prices <span class="op">=</span> np.random.uniform(<span class="dv">100</span>, <span class="dv">200</span>, size<span class="op">=</span>(<span class="dv">100</span>, <span class="dv">5</span>))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>predicted_prices <span class="op">=</span> np.random.uniform(<span class="dv">95</span>, <span class="dv">210</span>, size<span class="op">=</span>(<span class="dv">100</span>, <span class="dv">5</span>))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the difference matrix</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>price_differences <span class="op">=</span> observed_prices <span class="op">-</span> predicted_prices</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.imshow(price_differences, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, aspect<span class="op">=</span><span class="st">'auto'</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Stock Price Differences'</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Stock Index'</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Day Index'</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="module_2_files/figure-html/cell-4-output-1.png" width="571" height="449" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Another important matrix operation relevant to data analytics and Machine Learning application is scaling. This is considered as a statistical tool to make various features (attributes) in to same scale so as to avoid unnecessary misleading impact in data analysis and its intepretation. In Machine Learning context, this pre-processing stage is inevitable so as to make the model relevant and usable.</p>
+<p><strong>Simple Example: Normalizing Employee Performance Data</strong></p>
+<p><strong>Tabular Data:</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Employee</th>
+<th>Metric A</th>
+<th>Metric B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>X</td>
+<td>80</td>
+<td>700</td>
+</tr>
+<tr class="even">
+<td>Y</td>
+<td>90</td>
+<td>800</td>
+</tr>
+<tr class="odd">
+<td>Z</td>
+<td>100</td>
+<td>900</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>110</td>
+<td>1000</td>
+</tr>
+<tr class="odd">
+<td>B</td>
+<td>120</td>
+<td>1100</td>
+</tr>
+</tbody>
+</table>
+<p>Using simple python code we can simulate the model for <code>min-max</code> scaling.</p>
+<div id="e519e730" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Employee performance data with varying scales</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([[<span class="dv">80</span>, <span class="dv">700</span>], [<span class="dv">90</span>, <span class="dv">800</span>], [<span class="dv">100</span>, <span class="dv">900</span>], [<span class="dv">110</span>, <span class="dv">1000</span>], [<span class="dv">120</span>, <span class="dv">1100</span>]])</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Manual scaling</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>min_vals <span class="op">=</span> np.<span class="bu">min</span>(data, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>max_vals <span class="op">=</span> np.<span class="bu">max</span>(data, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>scaled_data <span class="op">=</span> (data <span class="op">-</span> min_vals) <span class="op">/</span> (max_vals <span class="op">-</span> min_vals)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>plt.imshow(data, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Original Data'</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>plt.imshow(scaled_data, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Scaled Data'</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="module_2_files/figure-html/cell-5-output-1.png" width="657" height="431" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This method will confine the feature values (attributes) into the range <span class="math inline">\([0,1]\)</span>. So in effect all the features are scaled proportionally to the data spectrum.</p>
+<p>Similarly we can use the standard scaling (transformation to normal distribution) using the transformation <span class="math inline">\(\dfrac{x-\bar{x}}{n}\)</span>. The python code for this operation is given below:</p>
+<div id="d92cdf26" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard scaling from scratch</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> standard_scaling(data):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    mean <span class="op">=</span> np.mean(data, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    std <span class="op">=</span> np.std(data, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    scaled_data <span class="op">=</span> (data <span class="op">-</span> mean) <span class="op">/</span> std</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> scaled_data</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply standard scaling</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>scaled_data_scratch <span class="op">=</span> standard_scaling(data)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Standard Scaled Data (from scratch):</span><span class="ch">\n</span><span class="st">"</span>, scaled_data_scratch)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>plt.imshow(data, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Original Data'</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>plt.imshow(scaled_data_scratch, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Scaled Data'</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Standard Scaled Data (from scratch):
+ [[-1.41421356 -1.41421356]
+ [-0.70710678 -0.70710678]
+ [ 0.          0.        ]
+ [ 0.70710678  0.70710678]
+ [ 1.41421356  1.41421356]]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="module_2_files/figure-html/cell-6-output-2.png" width="668" height="431" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here we will use one more type of visualization to demonstrate the distribution of data.</p>
+<div id="b344fff3" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plots</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">7</span>))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot for original data</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>sns.histplot(data, kde<span class="op">=</span><span class="va">True</span>, bins<span class="op">=</span><span class="dv">10</span>, palette<span class="op">=</span><span class="st">"viridis"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Original Data Distribution'</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Value'</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot for standard scaled data</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>sns.histplot(scaled_data_scratch, kde<span class="op">=</span><span class="va">True</span>, bins<span class="op">=</span><span class="dv">10</span>, palette<span class="op">=</span><span class="st">"viridis"</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Standard Scaled Data Distribution'</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Value'</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="module_2_files/figure-html/cell-7-output-1.png" width="1332" height="662" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A scatter plot showing the impact of scaling is shown below.</p>
+<div id="3af402e6" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot original and scaled data</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">7</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Original Data</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(data[:, <span class="dv">0</span>], data[:, <span class="dv">1</span>], color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Original Data'</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Metric A'</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Metric B'</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard Scaled Data</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>plt.scatter(scaled_data_scratch[:, <span class="dv">0</span>], scaled_data_scratch[:, <span class="dv">1</span>], color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Standard Scaled Data'</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Metric A (Standard Scaled)'</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Metric B (Standard Scaled)'</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Min-Max Scaled Data</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>plt.scatter(scaled_data[:, <span class="dv">0</span>], scaled_data[:, <span class="dv">1</span>], color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Min-Max Scaled Data'</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Metric A (Min-Max Scaled)'</span>)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Metric B (Min-Max Scaled)'</span>)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="module_2_files/figure-html/cell-8-output-1.png" width="1334" height="662" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can use the <code>scikit-learn</code> library for do the same thing in a very simple handy approach. The <code>python</code> code for this job is shown below.</p>
+<div id="0311d86a" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Min-max scaling using sklearn</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> MinMaxScaler()</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>min_max_scaled_data_sklearn <span class="op">=</span> scaler.fit_transform(data)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Min-Max Scaled Data (using sklearn):</span><span class="ch">\n</span><span class="st">"</span>, min_max_scaled_data_sklearn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Min-Max Scaled Data (using sklearn):
+ [[0.   0.  ]
+ [0.25 0.25]
+ [0.5  0.5 ]
+ [0.75 0.75]
+ [1.   1.  ]]</code></pre>
+</div>
+</div>
+<div id="8eb42547" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard scaling using sklearn</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>scaled_data_sklearn <span class="op">=</span> scaler.fit_transform(data)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Standard Scaled Data (using sklearn):</span><span class="ch">\n</span><span class="st">"</span>, scaled_data_sklearn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Standard Scaled Data (using sklearn):
+ [[-1.41421356 -1.41421356]
+ [-0.70710678 -0.70710678]
+ [ 0.          0.        ]
+ [ 0.70710678  0.70710678]
+ [ 1.41421356  1.41421356]]</code></pre>
+</div>
+</div>
+<p>A scatter plot showing the impact on scaling is shown bellow.</p>
+<div id="4dc322ec" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot original and scaled data</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">7</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Original Data</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(data[:, <span class="dv">0</span>], data[:, <span class="dv">1</span>], color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Original Data'</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Metric A'</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Metric B'</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard Scaled Data</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>plt.scatter(scaled_data_sklearn[:, <span class="dv">0</span>], scaled_data_sklearn[:, <span class="dv">1</span>], color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Standard Scaled Data'</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Metric A (Standard Scaled)'</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Metric B (Standard Scaled)'</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Min-Max Scaled Data</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>plt.scatter(min_max_scaled_data_sklearn[:, <span class="dv">0</span>], min_max_scaled_data_sklearn[:, <span class="dv">1</span>], color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Min-Max Scaled Data'</span>)</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Metric A (Min-Max Scaled)'</span>)</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Metric B (Min-Max Scaled)'</span>)</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="module_2_files/figure-html/cell-11-output-1.png" width="1334" height="662" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="more-on-matrix-product-and-its-applications" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="more-on-matrix-product-and-its-applications"><span class="header-section-number">2.2.2</span> More on Matrix Product and its Applications</h3>
+<p>In the first module of our course, we introduced matrix products as scalar projections, focusing on how matrices interact through basic operations. In this section, we will expand on this by exploring different types of matrix products that have practical importance in various fields. One such product is the <em>Hadamard product</em>, which is particularly useful in applications ranging from image processing to neural networks and statistical analysis. We will cover the definition, properties, and examples of the Hadamard product, and then delve into practical applications with simulated data.</p>
+<section id="hadamard-product" class="level4" data-number="2.2.2.1">
+<h4 data-number="2.2.2.1" class="anchored" data-anchor-id="hadamard-product"><span class="header-section-number">2.2.2.1</span> Hadamard Product</h4>
+<p>The Hadamard product (or element-wise product) of two matrices is a binary operation that combines two matrices of the same dimensions to produce another matrix of the same dimensions, where each element is the product of corresponding elements in the original matrices.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition (Hadamard Product):
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For two matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of the same dimension <span class="math inline">\(m \times n\)</span>, the Hadamard product <span class="math inline">\(A \circ B\)</span> is defined as:</p>
+<p><span class="math display">\[(A \circ B)_{ij} = A_{ij} \cdot B_{ij}\]</span></p>
+<p>where <span class="math inline">\(\cdot\)</span> denotes element-wise multiplication.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Properties of Hadamard Product
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Commutativity</strong>: <span class="math display">\[A \circ B = B \circ A\]</span></p></li>
+<li><p><strong>Associativity</strong>: <span class="math display">\[(A \circ B) \circ C = A \circ (B \circ C)\]</span></p></li>
+<li><p><strong>Distributivity</strong>: <span class="math display">\[A \circ (B + C) = (A \circ B) + (A \circ C)\]</span></p></li>
+</ol>
+</div>
+</div>
+<p>Some simple examples to demonstrate the Hadamard product is given below.</p>
+<p>Example 1: Basic Hadamard Product</p>
+<p>Given matrices:</p>
+<p><span class="math display">\[A = \begin{pmatrix}
+1 &amp; 2 \\
+3 &amp; 4
+\end{pmatrix}, \quad
+B = \begin{pmatrix}
+5 &amp; 6 \\
+7 &amp; 8
+\end{pmatrix}\]</span></p>
+<p>The Hadamard product <span class="math inline">\(A \circ B\)</span> is: <span class="math display">\[A \circ B = \begin{pmatrix}
+1 \cdot 5 &amp; 2 \cdot 6 \\
+3 \cdot 7 &amp; 4 \cdot 8
+\end{pmatrix} = \begin{pmatrix}
+5 &amp; 12 \\
+21 &amp; 32
+\end{pmatrix}\]</span></p>
+<p>Example 2: Hadamard Product with Larger Matrices</p>
+<p>Given matrices:</p>
+<p><span class="math display">\[A = \begin{pmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9
+\end{pmatrix}, \quad
+B = \begin{pmatrix}
+9 &amp; 8 &amp; 7 \\
+6 &amp; 5 &amp; 4 \\
+3 &amp; 2 &amp; 1
+\end{pmatrix}\]</span></p>
+<p>The Hadamard product <span class="math inline">\(A \circ B\)</span> is:</p>
+<p><span class="math display">\[A \circ B = \begin{pmatrix}
+1 \cdot 9 &amp; 2 \cdot 8 &amp; 3 \cdot 7 \\
+4 \cdot 6 &amp; 5 \cdot 5 &amp; 6 \cdot 4 \\
+7 \cdot 3 &amp; 8 \cdot 2 &amp; 9 \cdot 1
+\end{pmatrix} = \begin{pmatrix}
+9 &amp; 16 &amp; 21 \\
+24 &amp; 25 &amp; 24 \\
+21 &amp; 16 &amp; 9
+\end{pmatrix}\]</span></p>
+<p>In the following code chunks the computational process of Hadamard product is implemented in <code>Python</code>. Here both the from the scratch and use of external module versions are included.</p>
+<p><strong>1. Compute Hadamard Product from Scratch (without Libraries)</strong></p>
+<p>Here’s how you can compute the Hadamard product manually:</p>
+<div id="bec74eae" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]]</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to compute Hadamard product</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hadamard_product(A, B):</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the number of rows and columns</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    num_rows <span class="op">=</span> <span class="bu">len</span>(A)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    num_cols <span class="op">=</span> <span class="bu">len</span>(A[<span class="dv">0</span>])</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize the result matrix</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> [[<span class="dv">0</span>]<span class="op">*</span>num_cols <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_rows)]</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute the Hadamard product</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_rows):</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(num_cols):</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>            result[i][j] <span class="op">=</span> A[i][j] <span class="op">*</span> B[i][j]</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Hadamard product</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>hadamard_product_result <span class="op">=</span> hadamard_product(A, B)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Display result</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hadamard Product (From Scratch):"</span>)</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> hadamard_product_result:</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hadamard Product (From Scratch):
+[7, 16, 27]
+[40, 55, 72]</code></pre>
+</div>
+</div>
+<p><strong>2. Compute Hadamard Product Using <code>SymPy</code></strong></p>
+<p>Here’s how to compute the Hadamard product using <code>SymPy</code>:</p>
+<div id="0c9720d5" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> sp.Matrix([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> sp.Matrix([[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]])</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Hadamard product using SymPy</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>Hadamard_product_sympy <span class="op">=</span> A.multiply_elementwise(B)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Display result</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hadamard Product (Using SymPy):"</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Hadamard_product_sympy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hadamard Product (Using SymPy):
+Matrix([[7, 16, 27], [40, 55, 72]])</code></pre>
+</div>
+</div>
+<p><strong>Practical Applications</strong></p>
+<p><em>Application 1: Image Masking</em></p>
+<p>The Hadamard product can be used for image masking. Here’s how you can apply a mask to an image and visualize it:</p>
+<div id="5079b926" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated large image (2D array) using NumPy</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> np.random.rand(<span class="dv">100</span>, <span class="dv">100</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated mask (binary matrix) using NumPy</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">2</span>, size<span class="op">=</span>(<span class="dv">100</span>, <span class="dv">100</span>))</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Hadamard product</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>masked_image <span class="op">=</span> image <span class="op">*</span> mask</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot original image and masked image</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(image, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Original Image'</span>)</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(masked_image, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Masked Image'</span>)</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="module_2_files/figure-html/cell-14-output-1.png" width="902" height="431" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Application 2: Element-wise Scaling in Neural Networks</p>
+<p>The Hadamard product can be used for dropout<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> in neural networks. A simple simulated example is given below.</p>
+<div id="5cc5e8de" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated large activations (2D array) using NumPy</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>activations <span class="op">=</span> np.random.rand(<span class="dv">100</span>, <span class="dv">100</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated dropout mask (binary matrix) using NumPy</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>dropout_mask <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">2</span>, size<span class="op">=</span>(<span class="dv">100</span>, <span class="dv">100</span>))</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply dropout</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>dropped_activations <span class="op">=</span> activations <span class="op">*</span> dropout_mask</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Original Activations:"</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(activations)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Dropout Mask:"</span>)</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dropout_mask)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Dropped Activations:"</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dropped_activations)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Original Activations:
+[[0.58212524 0.87041739 0.84460613 ... 0.33305495 0.44489585 0.8684023 ]
+ [0.5171853  0.29461735 0.82768228 ... 0.12264183 0.58393672 0.70770389]
+ [0.99267584 0.99084305 0.06019981 ... 0.01144968 0.55258449 0.34130822]
+ ...
+ [0.11864754 0.0353514  0.36088127 ... 0.28917025 0.24079385 0.97901097]
+ [0.90279698 0.30605417 0.17864954 ... 0.28654735 0.85245442 0.38944675]
+ [0.38824661 0.71542956 0.57709994 ... 0.78073156 0.51421234 0.45396759]]
+
+Dropout Mask:
+[[0 1 1 ... 0 0 1]
+ [0 1 0 ... 0 1 1]
+ [1 1 0 ... 0 1 1]
+ ...
+ [0 0 0 ... 0 1 0]
+ [0 0 1 ... 0 0 0]
+ [0 0 1 ... 0 1 1]]
+
+Dropped Activations:
+[[0.         0.87041739 0.84460613 ... 0.         0.         0.8684023 ]
+ [0.         0.29461735 0.         ... 0.         0.58393672 0.70770389]
+ [0.99267584 0.99084305 0.         ... 0.         0.55258449 0.34130822]
+ ...
+ [0.         0.         0.         ... 0.         0.24079385 0.        ]
+ [0.         0.         0.17864954 ... 0.         0.         0.        ]
+ [0.         0.         0.57709994 ... 0.         0.51421234 0.45396759]]</code></pre>
+</div>
+</div>
+<p>Application 3: Statistical Data Analysis</p>
+<p>In statistics, the Hadamard product can be applied to scale covariance matrices. Here’s how we can compute the covariance matrix using matrix operations and apply scaling.</p>
+<div id="b6ce1353" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated large dataset (2D array) using NumPy</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.random.rand(<span class="dv">100</span>, <span class="dv">10</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the mean of each column</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>mean <span class="op">=</span> np.mean(data, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Center the data</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>centered_data <span class="op">=</span> data <span class="op">-</span> mean</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the covariance matrix using matrix product operation</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>cov_matrix <span class="op">=</span> (centered_data.T <span class="op">@</span> centered_data) <span class="op">/</span> (centered_data.shape[<span class="dv">0</span>] <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>cov_matrix_sympy <span class="op">=</span> sp.Matrix(cov_matrix)</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated scaling factors (2D array) using SymPy Matrix</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>scaling_factors <span class="op">=</span> sp.Matrix(np.random.rand(<span class="dv">10</span>, <span class="dv">10</span>))</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Hadamard product</span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>scaled_cov_matrix <span class="op">=</span> cov_matrix_sympy.multiply(scaling_factors)</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Covariance Matrix:"</span>)</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cov_matrix_sympy)</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Scaling Factors:"</span>)</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(scaling_factors)</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Scaled Covariance Matrix:"</span>)</span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(scaled_cov_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Covariance Matrix:
+Matrix([[0.0788046044726513, -0.00304934769307527, -0.00438518174765039, -0.000723429073346924, 0.000803374298447625, 0.00124748238891765, 0.00695538023746061, 0.00372057419532430, 0.0196784466543289, 0.00122306548261182], [-0.00304934769307527, 0.0813043584162656, 0.00352425427336682, -0.0140928485080072, 0.0117609016492402, -0.00265003196732907, -0.00873317145710714, 0.00218919319630423, 0.00570894041030775, -0.0123997905969564], [-0.00438518174765039, 0.00352425427336682, 0.0921818688676055, -0.0155676542730362, 0.00395596377021573, 0.00665555489970176, -0.00872709828678629, 0.00847523798927913, 0.0172208497154383, -0.00576476393543306], [-0.000723429073346924, -0.0140928485080072, -0.0155676542730362, 0.0807272311518056, -0.000963525818138950, 0.00842337829627435, 0.00127194911551330, -0.0171608043807779, -0.0138205373468713, 0.0161272562285705], [0.000803374298447625, 0.0117609016492402, 0.00395596377021573, -0.000963525818138950, 0.0878380270467204, 0.0105149158463958, -0.0120501266433211, -0.00741973669480270, 0.0136667233050394, 0.000284972548212635], [0.00124748238891765, -0.00265003196732907, 0.00665555489970176, 0.00842337829627435, 0.0105149158463958, 0.0686654728705294, 0.000451231346577458, -0.0127125928344776, -0.000439083040863072, 0.00250267862707372], [0.00695538023746061, -0.00873317145710714, -0.00872709828678629, 0.00127194911551330, -0.0120501266433211, 0.000451231346577458, 0.0864350799305982, 0.0173649892388032, 0.00782968749450413, 0.000817413174329276], [0.00372057419532430, 0.00218919319630423, 0.00847523798927913, -0.0171608043807779, -0.00741973669480270, -0.0127125928344776, 0.0173649892388032, 0.0813070511542109, -0.00124860792561536, 0.00191301241748492], [0.0196784466543289, 0.00570894041030775, 0.0172208497154383, -0.0138205373468713, 0.0136667233050394, -0.000439083040863072, 0.00782968749450413, -0.00124860792561536, 0.0873076907958406, -0.00505191844723564], [0.00122306548261182, -0.0123997905969564, -0.00576476393543306, 0.0161272562285705, 0.000284972548212635, 0.00250267862707372, 0.000817413174329276, 0.00191301241748492, -0.00505191844723564, 0.0737550296176420]])
+
+Scaling Factors:
+Matrix([[0.507789002610705, 0.921690878055982, 0.460361788212539, 0.288628481892096, 0.599886865566931, 0.302308740150735, 0.839871215176559, 0.524370804289234, 0.870492384166042, 0.923823609486615], [0.164851717476652, 0.200547877818258, 0.352414435374929, 0.681814373370964, 0.198244189541824, 0.690440533605902, 0.567706278928956, 0.983535556033701, 0.344453440845208, 0.192300798089553], [0.434989880882950, 0.938513656639209, 0.415691798249556, 0.250077852267681, 0.905501099147395, 0.941820991508116, 0.262227591541917, 0.575452039248534, 0.282208818485910, 0.724471854073694], [0.684266108524500, 0.457048407840477, 0.989703669762338, 0.0628859531672193, 0.0595328767423046, 0.532621000141083, 0.405897364186952, 0.607531000551014, 0.207958022744720, 0.478302699996996], [0.817120656532643, 0.575594751844084, 0.106031062193213, 0.277106046538656, 0.485903110804279, 0.769294806228196, 0.557041577695262, 0.864387604760135, 0.722455297855395, 0.593773723831296], [0.733222500589801, 0.318030765170960, 0.583970281937878, 0.612678236705583, 0.0264928601779900, 0.467165124031230, 0.344184140106603, 0.228238704128403, 0.615655754573361, 0.855904623582136], [0.0179392913920881, 0.220711755774116, 0.997700197522840, 0.393575335358708, 0.706970188402990, 0.625256373625023, 0.797194444798163, 0.741922251471015, 0.705927901824568, 0.891106617218278], [0.692824778995113, 0.246437951162997, 0.0410274006888073, 0.180430222675926, 0.235163843425325, 0.775244633382779, 0.620613511243173, 0.164209348743754, 0.814171842255096, 0.185202022743113], [0.705955832791643, 0.654863272614590, 0.550499440853898, 0.616475656441232, 0.246462845994478, 0.461798302447226, 0.00725574649029903, 0.0717870813158890, 0.633057633834972, 0.0191253044376208], [0.212549324961594, 0.437494317039333, 0.170602265397828, 0.787720755526032, 0.963340024353493, 0.403951333967317, 0.642843972303609, 0.672282976220564, 0.144259859936059, 0.534795293446414]])
+
+Scaled Covariance Matrix:
+Matrix([[0.0555365860359203, 0.0843087066683074, 0.0516124666136401, 0.0370144466195614, 0.0548993133516368, 0.0352181528454364, 0.0726707592212043, 0.0443460839157702, 0.0880821054714757, 0.0781544409845931], [0.0141662598963970, 0.0132137531113229, 0.00686983325377819, 0.0468945334660998, 0.00608808742785663, 0.0527008039786046, 0.0309059533939443, 0.0673478849600986, 0.0277228913740219, -0.000553359384968160], [0.0525596561202971, 0.0893751717705075, 0.0265784872055315, 0.0325544198689644, 0.0772247291450799, 0.0925248983154047, 0.0153876450232525, 0.0419712880087382, 0.0379390938319807, 0.0550484099678484], [0.0329699861106105, 0.0149737018162077, 0.0686500763541874, -0.00215217417452348, -0.00377001366081024, 0.00920377416688273, 0.0230697801369717, 0.0349110422273528, -0.00809634691000363, 0.0369085158455256], [0.0872442104223120, 0.0648610085265480, 0.0159046829357060, 0.0425303473198425, 0.0426765038491216, 0.0772010810026637, 0.0466175116615435, 0.0830196683068967, 0.0697445379350362, 0.0548662962146574], [0.0592170163680293, 0.0363787139614395, 0.0520710715861782, 0.0453155211774012, 0.0133116279238411, 0.0407043876010553, 0.0282741522313684, 0.0316544799642594, 0.0437252997094916, 0.0738858341350427], [0.00893341818041582, 0.0190992677210985, 0.0881396109101017, 0.0335105389288471, 0.0566790430821010, 0.0509238697147681, 0.0728192191856582, 0.0485867501052424, 0.0726497910841540, 0.0730889473744647], [0.0349784684209331, 0.0195543734494121, 0.00111266678523600, 0.0160038639829561, 0.0383087119268520, 0.0639179613193340, 0.0566401995860282, 0.0166717496089375, 0.0675707297340882, 0.0180352157059382], [0.0796499980885057, 0.0932393752035491, 0.0607055529549898, 0.0692275985549450, 0.0562295136646491, 0.0712625142024691, 0.0289889997536078, 0.0376354792715316, 0.0897380833526092, 0.0385958815741101], [0.0226227272268173, 0.0311720632333534, 0.0219454489511987, 0.0487343603521803, 0.0650542084496490, 0.0258117777229984, 0.0492574323674319, 0.0458858825947619, 0.00984340249036105, 0.0450238908284251]])</code></pre>
+</div>
+</div>
+<section id="inner-product-of-matrices" class="level5" data-number="2.2.2.1.1">
+<h5 data-number="2.2.2.1.1" class="anchored" data-anchor-id="inner-product-of-matrices"><span class="header-section-number">2.2.2.1.1</span> Inner Product of Matrices</h5>
+<p>The inner product of two matrices is a generalized extension of the dot product, where each matrix is treated as a vector in a high-dimensional space. For two matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of the same dimension <span class="math inline">\(m \times n\)</span>, the inner product is defined as the sum of the element-wise products of the matrices.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition (Inner product)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For two matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of dimension <span class="math inline">\(m \times n\)</span>, the inner product <span class="math inline">\(\langle A, B \rangle\)</span> is given by:</p>
+<p><span class="math display">\[\langle A, B \rangle = \sum_{i=1}^{m} \sum_{j=1}^{n} A_{ij} \cdot B_{ij}\]</span></p>
+<p>where <span class="math inline">\(\cdot\)</span> denotes element-wise multiplication.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Properties
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Commutativity</strong>: <span class="math display">\[\langle A, B \rangle = \langle B, A \rangle\]</span></p></li>
+<li><p><strong>Linearity</strong>: <span class="math display">\[\langle A + C, B \rangle = \langle A, B \rangle + \langle C, B \rangle\]</span></p></li>
+<li><p><strong>Positive Definiteness</strong>: <span class="math display">\[\langle A, A \rangle \geq 0\]</span> with equality if and only if <span class="math inline">\(A\)</span> is a zero matrix.</p></li>
+</ol>
+</div>
+</div>
+<p>Some simple examples showing the mathematical process of calculating the inner product is given bellow.</p>
+<p><strong>Example 1: Basic Inner Product</strong></p>
+<p>Given matrices:</p>
+<p><span class="math display">\[A = \begin{pmatrix}
+1 &amp; 2 \\
+3 &amp; 4
+\end{pmatrix}, \quad
+B = \begin{pmatrix}
+5 &amp; 6 \\
+7 &amp; 8
+\end{pmatrix}\]</span></p>
+<p>The inner product <span class="math inline">\(\langle A, B \rangle\)</span> is:</p>
+<p><span class="math display">\[\langle A, B \rangle = 1 \cdot 5 + 2 \cdot 6 + 3 \cdot 7 + 4 \cdot 8 = 5 + 12 + 21 + 32 = 70\]</span></p>
+<p><strong>Example 2: Inner Product with Larger Matrices</strong></p>
+<p>Given matrices:</p>
+<p><span class="math display">\[A = \begin{pmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9
+\end{pmatrix}, \quad
+B = \begin{pmatrix}
+9 &amp; 8 &amp; 7 \\
+6 &amp; 5 &amp; 4 \\
+3 &amp; 2 &amp; 1
+\end{pmatrix}\]</span></p>
+<p>The inner product <span class="math inline">\(\langle A, B \rangle\)</span> is calculated as: <span class="math display">\[\begin{align*}
+langle A, B \rangle &amp;= 1 \cdot 9 + 2 \cdot 8 + 3 \cdot 7 + 4 \cdot 6 + 5 \cdot 5 + 6 \cdot 4 + 7 \cdot 3 + 8 \cdot 2 + 9 \cdot 1\\
+&amp;= 9 + 16 + 21 + 24 + 25 + 24 + 21 + 16 + 9\\
+&amp;= 175
+\end{align*}\]</span></p>
+<p>Now let’s look into the computational part of <em>inner product</em>.</p>
+<ol type="1">
+<li>Compute Inner Product from Scratch (without Libraries)</li>
+</ol>
+<p>Here’s how you can compute the inner product from the scratch:</p>
+<div id="1e51dfc7" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to compute inner product</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inner_product(A, B):</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the number of rows and columns</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    num_rows <span class="op">=</span> <span class="bu">len</span>(A)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    num_cols <span class="op">=</span> <span class="bu">len</span>(A[<span class="dv">0</span>])</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize the result</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute the inner product</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_rows):</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(num_cols):</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>            result <span class="op">+=</span> A[i][j] <span class="op">*</span> B[i][j]</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute inner product</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>inner_product_result <span class="op">=</span> inner_product(A, B)</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Display result</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Inner Product (From Scratch):"</span>)</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inner_product_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Inner Product (From Scratch):
+217</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Compute Inner Product Using <code>NumPy</code></li>
+</ol>
+<p>Here’s how to compute the inner product using Numpy:</p>
+<div id="786d9312" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]])</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># calculating innerproduct</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>inner_product <span class="op">=</span> (A<span class="op">*</span>B).<span class="bu">sum</span>() <span class="co"># calculate element-wise product, then column sum</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Inner Product (Using numpy):"</span>)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inner_product)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Inner Product (Using numpy):
+217</code></pre>
+</div>
+</div>
+<p>The same operation can be done using <code>NumPy</code> functions as follows.</p>
+<div id="597037f7" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np  </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> sp.Matrix([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> sp.Matrix([[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]])</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute element-wise product</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>elementwise_product <span class="op">=</span> A.multiply_elementwise(B)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate sum of each column</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>inner_product_sympy <span class="op">=</span> np.<span class="bu">sum</span>(elementwise_product)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Display result</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Inner Product (Using SymPy):"</span>)</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inner_product_sympy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Inner Product (Using SymPy):
+217</code></pre>
+</div>
+</div>
+<p>A vector dot product (in Physics) can be calculated using <code>SymPy</code> <code>.dot()</code> function as shown below.</p>
+<p>Let <span class="math inline">\(A=\begin{pmatrix}1&amp;2&amp;3\end{pmatrix}\)</span> and <span class="math inline">\(B=\begin{pmatrix}4&amp;5&amp;6\end{pmatrix}\)</span>, then the dot product, <span class="math inline">\(A\cdot B\)</span> is computed as:</p>
+<div id="bc98c63f" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>sp.Matrix([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>B<span class="op">=</span>sp.Matrix([<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>display(A.dot(B)) <span class="co"># calculate fot product of A and B</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle 32\)</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A word of caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In <code>SymPy</code> , <code>sp.Matrix([1,2,3])</code> create a column vector. But <code>np.array([1,2,3])</code> creates a row vector. So be careful while applying matrix/ dot product operations on these objects.</p>
+</div>
+</div>
+<p>The same dot product using <code>numpy</code> object can be done as follows:</p>
+<div id="54ea0d26" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>B<span class="op">=</span>np.array([<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>A.dot(B.T)<span class="co"># dot() stands for dot product B.T represents the transpose of B</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>np.int64(32)</code></pre>
+</div>
+</div>
+<p><strong>Practical Applications</strong></p>
+<p>Application 1: Signal Processing</p>
+<p>In signal processing, the inner product can be used to measure the similarity between two signals. Here the most popular measure of similarity is the <code>cosine</code> similarity. This measure is defined as:</p>
+<p><span class="math display">\[\cos \theta=\dfrac{A\cdot B}{||A|| ||B||}\]</span></p>
+<p>Now consider two digital signals are given. It’s cosine similarity measure can be calculated with a simulated data as shown below.</p>
+<div id="060aec46" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated large signals (1D array) using NumPy</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>signal1 <span class="op">=</span> np.sin(np.random.rand(<span class="dv">1000</span>))</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>signal2 <span class="op">=</span> np.cos(np.random.rand(<span class="dv">1000</span>))</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute inner product</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>inner_product_signal <span class="op">=</span> np.dot(signal1, signal2)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co">#cosine_sim=np.dot(signal1,signal2)/(np.linalg.norm(signal1)*np.linalg.norm(signal2))</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Display result</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>cosine_sim<span class="op">=</span>inner_product_signal<span class="op">/</span>(np.sqrt(np.dot(signal1,signal1))<span class="op">*</span>np.sqrt(np.dot(signal2,signal2)))</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Inner Product (Using numpy):"</span>)</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inner_product_signal)</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Similarity of signals:"</span>)</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cosine_sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Inner Product (Using numpy):
+391.51041380470053
+Similarity of signals:
+0.872168977673512</code></pre>
+</div>
+</div>
+<p>Application 2: Machine Learning - Feature Similarity</p>
+<p>In machine learning, the inner product is used to calculate the similarity between feature vectors.</p>
+<div id="b24f10da" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated feature vectors (2D array) using NumPy</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>features1 <span class="op">=</span> np.random.rand(<span class="dv">100</span>, <span class="dv">10</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>features2 <span class="op">=</span> np.random.rand(<span class="dv">100</span>, <span class="dv">10</span>)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute inner product for each feature vector</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>inner_products <span class="op">=</span> np.einsum(<span class="st">'ij,ij-&gt;i'</span>, features1, features2) <span class="co"># use Einstien's sum</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Inner Products of Feature Vectors:"</span>)</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inner_products)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Inner Products of Feature Vectors:
+[2.81741233 2.62363884 3.22438685 3.00407518 2.37872691 2.6345075
+ 1.26708857 1.74748851 4.22560221 4.3734001  4.10877682 0.90745771
+ 3.77361184 1.7504151  2.37090156 2.70042357 2.28094279 3.61939851
+ 3.304708   2.13495737 2.33297908 1.53996758 2.55447727 2.91760059
+ 1.81881275 2.04986701 2.5451474  2.11686084 2.75284726 1.7829855
+ 2.58831679 2.81808499 1.8402832  2.76613218 2.71553066 2.20121196
+ 2.73396654 2.302734   1.79445606 2.31814991 2.61718969 3.81856539
+ 2.83110142 1.61366989 2.81423207 1.33707233 2.07264082 2.42973896
+ 3.12110334 1.75918971 3.74149397 2.65291737 2.74713036 3.09235888
+ 2.46548244 2.02500099 2.39258534 2.6531278  2.24699046 1.97266018
+ 2.76254069 2.64218457 2.81384718 2.11208092 3.33427349 3.50829485
+ 2.29163997 1.71601606 2.80534326 2.91370394 2.53479679 3.28155336
+ 2.68244892 3.21573464 3.74308149 2.5007984  1.52641336 3.09086791
+ 1.81761184 2.59864199 5.27357839 2.6602584  1.65021457 1.9292059
+ 2.29726324 2.90951081 3.07057225 2.60270332 3.67316332 1.33076571
+ 2.56799624 3.29087449 3.12310182 1.75933129 2.36977394 2.49974945
+ 1.59356636 2.48762837 3.90518064 1.25650412]</code></pre>
+</div>
+</div>
+<p>Application 3: Covariance Matrix in Statistics</p>
+<p>The inner product can be used to compute covariance matrices for statistical data analysis. If <span class="math inline">\(X\)</span> is a given distribution and <span class="math inline">\(x=X-\bar{X}\)</span>. Then the covariance of <span class="math inline">\(X\)</span> can be calculated as <span class="math inline">\(cov(X)=\dfrac{1}{n-1}(x\cdot x^T)\)</span> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The python code a simulated data is shown below.</p>
+<div id="e169340c" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated large dataset (2D array) using NumPy</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.random.rand(<span class="dv">100</span>, <span class="dv">10</span>)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the mean of each column</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>mean <span class="op">=</span> np.mean(data, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Center the data</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>centered_data <span class="op">=</span> data <span class="op">-</span> mean</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the covariance matrix using matrix product operation</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>cov_matrix <span class="op">=</span> (centered_data.T <span class="op">@</span> centered_data) <span class="op">/</span> (centered_data.shape[<span class="dv">0</span>] <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>cov_matrix_sympy <span class="op">=</span> sp.Matrix(cov_matrix)</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Covariance Matrix:"</span>)</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cov_matrix_sympy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Covariance Matrix:
+Matrix([[0.0825756479399736, -0.00143884272188479, -0.0150845745963579, 0.00585740386082970, -0.00251308363581066, 0.00940370975476215, 0.00398346088173367, -0.0102104413919231, 0.00914400771098456, 0.00808298333143312], [-0.00143884272188479, 0.0741110541661852, 0.0184638661014915, -0.00456816171599506, 0.00602550674715550, -0.00903924982927731, 0.00408719119760089, 0.00700717611853449, 0.00510787223997128, 0.00358764646258043], [-0.0150845745963579, 0.0184638661014915, 0.0901800977789118, 0.00246026195148743, 0.00140040735741254, -0.00190303789992076, 0.00890333323490244, 0.00830075466048054, -0.00364038850035898, -0.00535124285813519], [0.00585740386082970, -0.00456816171599506, 0.00246026195148743, 0.0689042281287209, -0.00424351767668173, -0.00991662911796387, -0.000825736129267059, 0.000154908282187785, -0.0152701556062448, -0.000860187492745651], [-0.00251308363581066, 0.00602550674715550, 0.00140040735741254, -0.00424351767668173, 0.0828884760859893, -0.00572685468580185, -0.00546405915271126, -0.000168638811453311, 0.00241596496652660, -0.00251236659602759], [0.00940370975476215, -0.00903924982927731, -0.00190303789992076, -0.00991662911796387, -0.00572685468580185, 0.0787821878821962, -0.00609465542775232, -0.0125466762188460, -0.00346337406654995, 0.000831573891661168], [0.00398346088173367, 0.00408719119760089, 0.00890333323490244, -0.000825736129267059, -0.00546405915271126, -0.00609465542775232, 0.0873453533264268, 0.00726406322846968, 0.00306893162959867, 0.00251368272053239], [-0.0102104413919231, 0.00700717611853449, 0.00830075466048054, 0.000154908282187785, -0.000168638811453311, -0.0125466762188460, 0.00726406322846968, 0.0759990765409087, 0.00265209177691456, -0.0132428462111232], [0.00914400771098456, 0.00510787223997128, -0.00364038850035898, -0.0152701556062448, 0.00241596496652660, -0.00346337406654995, 0.00306893162959867, 0.00265209177691456, 0.0669519536301808, 0.0109221841227183], [0.00808298333143312, 0.00358764646258043, -0.00535124285813519, -0.000860187492745651, -0.00251236659602759, 0.000831573891661168, 0.00251368272053239, -0.0132428462111232, 0.0109221841227183, 0.0642255159262406]])</code></pre>
+</div>
+</div>
+<p>These examples demonstrate the use of inner product and dot product in various applications.</p>
+</section>
+</section>
+<section id="outer-product" class="level4" data-number="2.2.2.2">
+<h4 data-number="2.2.2.2" class="anchored" data-anchor-id="outer-product"><span class="header-section-number">2.2.2.2</span> Outer Product</h4>
+<p>The outer product of two vectors results in a matrix, and it is a way to combine these vectors into a higher-dimensional representation.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition (Outer Product)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For two vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> of dimensions <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> respectively, the outer product <span class="math inline">\(\mathbf{u} \otimes \mathbf{v}\)</span> is an <span class="math inline">\(m \times n\)</span> matrix defined as:</p>
+<p><span class="math display">\[(\mathbf{u} \otimes \mathbf{v})_{ij} = u_i \cdot v_j\]</span></p>
+<p>where <span class="math inline">\(\cdot\)</span> denotes the outer product operation. In matrix notation, for two column vectors <span class="math inline">\(u,v\)</span>, <span class="math display">\[u\otimes v=uv^T\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Properties
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Linearity</strong>: <span class="math display">\[(\mathbf{u} + \mathbf{w}) \otimes \mathbf{v} = (\mathbf{u} \otimes \mathbf{v}) + (\mathbf{w} \otimes \mathbf{v})\]</span></p></li>
+<li><p><strong>Distributivity</strong>: <span class="math display">\[\mathbf{u} \otimes (\mathbf{v} + \mathbf{w}) = (\mathbf{u} \otimes \mathbf{v}) + (\mathbf{u} \otimes \mathbf{w})\]</span></p></li>
+<li><p><strong>Associativity</strong>: <span class="math display">\[(\mathbf{u} \otimes \mathbf{v}) \otimes \mathbf{w} = \mathbf{u} \otimes (\mathbf{v} \otimes \mathbf{w})\]</span></p></li>
+</ol>
+</div>
+</div>
+<p>Some simple examples of outer product is given below.</p>
+<p><strong>Example 1: Basic Outer Product</strong></p>
+<p>Given vectors:</p>
+<p><span class="math display">\[\mathbf{u} = \begin{pmatrix}
+1 \\
+2
+\end{pmatrix}, \quad
+\mathbf{v} = \begin{pmatrix}
+3 \\
+4 \\
+5\end{pmatrix}\]</span></p>
+<p>The outer product <span class="math inline">\(\mathbf{u} \otimes \mathbf{v}\)</span> is:</p>
+<p><span class="math display">\[\mathbf{u} \otimes \mathbf{v} = \begin{pmatrix}
+1 \cdot 3 &amp; 1 \cdot 4 &amp; 1 \cdot 5 \\
+2 \cdot 3 &amp; 2 \cdot 4 &amp; 2 \cdot 5
+\end{pmatrix} = \begin{pmatrix}
+3 &amp; 4 &amp; 5 \\
+6 &amp; 8 &amp; 10
+\end{pmatrix}\]</span></p>
+<p><strong>Example 2: Outer Product with Larger Vectors</strong></p>
+<p>Given vectors: <span class="math display">\[\mathbf{u} = \begin{pmatrix}
+1 \\
+2 \\
+3
+\end{pmatrix}, \quad
+\mathbf{v} = \begin{pmatrix}
+4 \\
+5
+\end{pmatrix}\]</span></p>
+<p>The outer product <span class="math inline">\(\mathbf{u} \otimes \mathbf{v}\)</span> is:</p>
+<p><span class="math display">\[\mathbf{u} \otimes \mathbf{v} = \begin{pmatrix}
+1 \cdot 4 &amp; 1 \cdot 5 \\
+2 \cdot 4 &amp; 2 \cdot 5 \\
+3 \cdot 4 &amp; 3 \cdot 5
+\end{pmatrix} = \begin{pmatrix}
+4 &amp; 5 \\
+8 &amp; 10 \\
+12 &amp; 15
+\end{pmatrix}\]</span></p>
+<p><strong>1. Compute Outer Product of Vectors from Scratch (without Libraries)</strong></p>
+<p>Here’s how you can compute the outer product manually:</p>
+<div id="8e6a469a" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define vectors u and v</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to compute outer product</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> outer_product(u, v):</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize the result</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> [[a <span class="op">*</span> b <span class="cf">for</span> b <span class="kw">in</span> v] <span class="cf">for</span> a <span class="kw">in</span> u]</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute outer product</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>outer_product_result <span class="op">=</span> outer_product(u, v)</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Display result</span></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Outer Product of Vectors (From Scratch):"</span>)</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> outer_product_result:</span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Outer Product of Vectors (From Scratch):
+[3, 4, 5]
+[6, 8, 10]</code></pre>
+</div>
+</div>
+<p><strong>2. Compute Outer Product of Vectors Using SymPy</strong></p>
+<p>Here’s how to compute the outer product using <code>SymPy</code>:</p>
+<div id="b0bf8805" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define vectors u and v</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> sp.Matrix([<span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> sp.Matrix([<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute outer product using SymPy</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>outer_product_sympy <span class="op">=</span> u <span class="op">*</span> v.T</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Display result</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Outer Product of Vectors (Using SymPy):"</span>)</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(outer_product_sympy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Outer Product of Vectors (Using SymPy):
+Matrix([[3, 4, 5], [6, 8, 10]])</code></pre>
+</div>
+</div>
+<p><strong>Outer Product of Matrices</strong></p>
+<p>The outer product of two matrices extends the concept from vectors to higher-dimensional tensors. For two matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, the outer product results in a higher-dimensional tensor and is generally expressed as block matrices.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition (Outer Product of Matrices)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For two matrices <span class="math inline">\(A\)</span> of dimension <span class="math inline">\(m \times p\)</span> and <span class="math inline">\(B\)</span> of dimension <span class="math inline">\(q \times n\)</span>, the outer product <span class="math inline">\(A \otimes B\)</span> results in a tensor of dimension <span class="math inline">\(m \times q \times p \times n\)</span>. The entries of the tensor are given by:</p>
+<p><span class="math display">\[(A \otimes B)_{ijkl} = A_{ij} \cdot B_{kl}\]</span></p>
+<p>where <span class="math inline">\(\cdot\)</span> denotes the outer product operation.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Properties
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Linearity</strong>: <span class="math display">\[(A + C) \otimes B = (A \otimes B) + (C \otimes B)\]</span></p></li>
+<li><p><strong>Distributivity</strong>: <span class="math display">\[A \otimes (B + D) = (A \otimes B) + (A \otimes D)\]</span></p></li>
+<li><p><strong>Associativity</strong>:</p></li>
+</ol>
+<p><span class="math display">\[(A \otimes B) \otimes C = A \otimes (B \otimes C)\]</span></p>
+</div>
+</div>
+<p>Here are some simple examples to demonstrate the mathematical procedure to find outer product of matrices.</p>
+<p><strong>Example 1: Basic Outer Product of Matrices</strong></p>
+<p>Given matrices: <span class="math display">\[
+A = \begin{pmatrix}
+1 &amp; 2 \\
+3 &amp; 4
+\end{pmatrix}, \quad
+B = \begin{pmatrix}
+5 \\
+6
+\end{pmatrix}\]</span></p>
+<p>The outer product <span class="math inline">\(A \otimes B\)</span> is:</p>
+<p><span class="math display">\[A \otimes B = \begin{pmatrix}
+1 \cdot 5 &amp; 1 \cdot 6 \\
+2 \cdot 5 &amp; 2 \cdot 6 \\
+3 \cdot 5 &amp; 3 \cdot 6 \\
+4 \cdot 5 &amp; 4 \cdot 6
+\end{pmatrix} = \begin{pmatrix}
+5 &amp; 6 \\
+10 &amp; 12 \\
+15 &amp; 18 \\
+20 &amp; 24
+\end{pmatrix}\]</span></p>
+<p><strong>Example 2: Outer Product with Larger Matrices</strong></p>
+<p>Given matrices:</p>
+<p><span class="math display">\[A = \begin{pmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6
+\end{pmatrix}, \quad
+B = \begin{pmatrix}
+7 \\
+8
+\end{pmatrix}\]</span></p>
+<p>The outer product <span class="math inline">\(A \otimes B\)</span> is:</p>
+<p><span class="math display">\[A \otimes B = \begin{pmatrix}
+1 \cdot 7 &amp; 1 \cdot 8 \\
+2 \cdot 7 &amp; 2 \cdot 8 \\
+3 \cdot 7 &amp; 3 \cdot 8 \\
+4 \cdot 7 &amp; 4 \cdot 8 \\
+5 \cdot 7 &amp; 5 \cdot 8 \\
+6 \cdot 7 &amp; 6 \cdot 8
+\end{pmatrix} = \begin{pmatrix}
+7 &amp; 8 \\
+14 &amp; 16 \\
+21 &amp; 24 \\
+28 &amp; 32 \\
+35 &amp; 40 \\
+42 &amp; 48
+\end{pmatrix}\]</span></p>
+<p>**Example 3: Compute the outer product of the following vectors <span class="math inline">\(\mathbf{u} = [0, 1, 2]\)</span> and <span class="math inline">\(\mathbf{v} = [2, 3, 4]\)</span>.</p>
+<p>To find the outer product, we calculate each element <span class="math inline">\((i, j)\)</span> as the product of the <span class="math inline">\((i)\)</span>-th element of <span class="math inline">\(\mathbf{u}\)</span> and the <span class="math inline">\((j)\)</span>-th element of <span class="math inline">\(\mathbf{v}\)</span>. Mathematically:</p>
+<p><span class="math display">\[\mathbf{u} \otimes \mathbf{v} = \begin{bmatrix}
+0 \cdot 2 &amp; 0 \cdot 3 &amp; 0 \cdot 4 \\
+1 \cdot 2 &amp; 1 \cdot 3 &amp; 1 \cdot 4 \\
+2 \cdot 2 &amp; 2 \cdot 3 &amp; 2 \cdot 4
+\end{bmatrix}
+= \begin{bmatrix}
+0 &amp; 0 &amp; 0 \\
+2 &amp; 3 &amp; 4 \\
+4 &amp; 6 &amp; 8
+\end{bmatrix}\]</span></p>
+<p><strong>1. Compute Outer Product of Matrices from Scratch (without Libraries)</strong></p>
+<p>Here’s how you can compute the outer product manually:</p>
+<div id="de3e2992" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]]</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [[<span class="dv">5</span>], [<span class="dv">6</span>]]</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to compute outer product</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> outer_product_matrices(A, B):</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="bu">len</span>(A)</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> <span class="bu">len</span>(A[<span class="dv">0</span>])</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    q <span class="op">=</span> <span class="bu">len</span>(B)</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(B[<span class="dv">0</span>])</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> [[<span class="dv">0</span>] <span class="op">*</span> (n <span class="op">*</span> p) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(m <span class="op">*</span> q)]</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(m):</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(p):</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(q):</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> l <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>                    result[i<span class="op">*</span>q <span class="op">+</span> k][j<span class="op">*</span>n <span class="op">+</span> l] <span class="op">=</span> A[i][j] <span class="op">*</span> B[k][l]</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute outer product</span></span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>outer_product_result_matrices <span class="op">=</span> outer_product_matrices(A, B)</span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Display result</span></span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Outer Product of Matrices (From Scratch):"</span>)</span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> outer_product_result_matrices:</span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Outer Product of Matrices (From Scratch):
+[5, 10]
+[6, 12]
+[15, 20]
+[18, 24]</code></pre>
+</div>
+</div>
+<p>Here is the Python code to compute the outer product of these vectors using the <code>NumPy</code> function <code>.outer()</code>:</p>
+<div id="f2da1f22" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define vectors</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">3</span>,<span class="dv">4</span>]])</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> np.array([[<span class="dv">5</span>],[<span class="dv">4</span>]])</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute outer product</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>outer_product <span class="op">=</span> np.outer(u, v)</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Outer Product of u and v:"</span>)</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(outer_product)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Outer Product of u and v:
+[[ 5  4]
+ [10  8]
+ [15 12]
+ [20 16]]</code></pre>
+</div>
+</div>
+<p><strong>Example 3: Real-world Application in Recommendation Systems</strong></p>
+<p>In recommendation systems, the outer product can represent user-item interactions. A simple context is here. Let the user preferences of items is given as <span class="math inline">\(u=[4, 3, 5]\)</span> and the item scores is given by <span class="math inline">\(v=[2, 5, 4]\)</span>. Now the recommendation score can be calculated as the outer product of these two vectors. Calculation of this score is shown below. The outer product <span class="math inline">\(\mathbf{u} \otimes \mathbf{v}\)</span> is calculated as follows:</p>
+<p><span class="math display">\[\mathbf{u} \otimes \mathbf{v} = \begin{bmatrix}
+4 \cdot 2 &amp; 4 \cdot 5 &amp; 4 \cdot 4 \\
+3 \cdot 2 &amp; 3 \cdot 5 &amp; 3 \cdot 4 \\
+5 \cdot 2 &amp; 5 \cdot 5 &amp; 5 \cdot 4
+\end{bmatrix}
+= \begin{bmatrix}
+8 &amp; 20 &amp; 16 \\
+6 &amp; 15 &amp; 12 \\
+10 &amp; 25 &amp; 20
+\end{bmatrix}\]</span></p>
+<p>The python code for this task is given below.</p>
+<div id="800698d5" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the user and product ratings vectors</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>user_ratings <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>])</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>product_ratings <span class="op">=</span> np.array([<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>])</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the outer product</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>predicted_ratings <span class="op">=</span> np.outer(user_ratings, product_ratings)</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the predicted ratings matrix</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Predicted Ratings Matrix:"</span>)</span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(predicted_ratings)</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the result</span></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>plt.imshow(predicted_ratings, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, interpolation<span class="op">=</span><span class="st">'nearest'</span>)</span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Predicted Ratings Matrix (Recommendation System)'</span>)</span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Product Ratings'</span>)</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'User Ratings'</span>)</span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>plt.xticks(ticks<span class="op">=</span>np.arange(<span class="bu">len</span>(product_ratings)), labels<span class="op">=</span>product_ratings)</span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>plt.yticks(ticks<span class="op">=</span>np.arange(<span class="bu">len</span>(user_ratings)), labels<span class="op">=</span>user_ratings)</span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Predicted Ratings Matrix:
+[[ 8 20 16]
+ [ 6 15 12]
+ [10 25 20]]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="module_2_files/figure-html/cell-29-output-2.png" width="509" height="449" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Additional Properties &amp; Definitions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Definition and Properties</strong></p>
+<p>Given two vectors:</p>
+<ul>
+<li><span class="math inline">\(\mathbf{u} \in \mathbb{R}^m\)</span></li>
+<li><span class="math inline">\(\mathbf{v} \in \mathbb{R}^n\)</span></li>
+</ul>
+<p>The outer product <span class="math inline">\(\mathbf{u} \otimes \mathbf{v}\)</span> results in an <span class="math inline">\(m \times n\)</span> matrix where each element <span class="math inline">\((i, j)\)</span> of the matrix is calculated as: <span class="math display">\[(\mathbf{u} \otimes \mathbf{v})_{ij} = u_i \cdot v_j\]</span></p></li>
+<li><p><strong>Non-Symmetry</strong></p>
+<p>The outer product is generally not symmetric. For vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span>, the matrix <span class="math inline">\(\mathbf{u} \otimes \mathbf{v}\)</span> is not necessarily equal to <span class="math inline">\(\mathbf{v} \otimes \mathbf{u}\)</span>: <span class="math display">\[\mathbf{u} \otimes \mathbf{v} \neq \mathbf{v} \otimes \mathbf{u}\]</span></p></li>
+<li><p><strong>Rank of the Outer Product</strong></p>
+<p>The rank of the outer product matrix <span class="math inline">\(\mathbf{u} \otimes \mathbf{v}\)</span> is always 1, provided neither <span class="math inline">\(\mathbf{u}\)</span> nor <span class="math inline">\(\mathbf{v}\)</span> is a zero vector. This is because the matrix can be expressed as a single rank-1 matrix.</p></li>
+<li><p><strong>Distributive Property</strong></p>
+<p>The outer product is distributive over vector addition. For vectors <span class="math inline">\(\mathbf{u}_1, \mathbf{u}_2 \in \mathbb{R}^m\)</span> and <span class="math inline">\(\mathbf{v} \in \mathbb{R}^n\)</span>: <span class="math display">\[(\mathbf{u}_1 + \mathbf{u}_2) \otimes \mathbf{v} = (\mathbf{u}_1 \otimes \mathbf{v}) + (\mathbf{u}_2 \otimes \mathbf{v})\]</span></p></li>
+<li><p><strong>Associativity with Scalar Multiplication</strong></p>
+<p>The outer product is associative with scalar multiplication. For a scalar <span class="math inline">\(\alpha\)</span> and vectors <span class="math inline">\(\mathbf{u} \in \mathbb{R}^m\)</span> and <span class="math inline">\(\mathbf{v} \in \mathbb{R}^n\)</span>: <span class="math display">\[\alpha (\mathbf{u} \otimes \mathbf{v}) = (\alpha \mathbf{u}) \otimes \mathbf{v} = \mathbf{u} \otimes (\alpha \mathbf{v})\]</span></p></li>
+<li><p><strong>Matrix Trace</strong></p>
+<p>The trace of the outer product of two vectors is given by: <span class="math display">\[\text{tr}(\mathbf{u} \otimes \mathbf{v}) = (\mathbf{u}^T \mathbf{v}) \cdot (\mathbf{v}^T \mathbf{u})\]</span> Here, <span class="math inline">\(\text{tr}\)</span> denotes the trace of a matrix, which is the sum of its diagonal elements.</p></li>
+<li><p><strong>Matrix Norm</strong></p>
+<p>The Frobenius norm of the outer product matrix can be expressed in terms of the norms of the original vectors: <span class="math display">\[\| \mathbf{u} \otimes \mathbf{v} \|_F = \| \mathbf{u} \|_2 \cdot \| \mathbf{v} \|_2\]</span> where <span class="math inline">\(\| \cdot \|_2\)</span> denotes the Euclidean norm.</p></li>
+</ol>
+</div>
+</div>
+<p><strong>Example Calculation in Python</strong></p>
+<p>Here’s how to compute and visualize the outer product properties using Python:</p>
+<div id="ac99c86b" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define vectors</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">5</span>])</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute outer product</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>outer_product <span class="op">=</span> np.outer(u, v)</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Outer Product Matrix:"</span>)</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(outer_product)</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute and display rank</span></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>rank <span class="op">=</span> np.linalg.matrix_rank(outer_product)</span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Rank of Outer Product Matrix: </span><span class="sc">{</span>rank<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Frobenius norm</span></span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>frobenius_norm <span class="op">=</span> np.linalg.norm(outer_product, <span class="st">'fro'</span>)</span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Frobenius Norm: </span><span class="sc">{</span>frobenius_norm<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the result</span></span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>plt.imshow(outer_product, cmap<span class="op">=</span><span class="st">'viridis'</span>, interpolation<span class="op">=</span><span class="st">'nearest'</span>)</span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Outer Product Matrix'</span>)</span>
+<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Vector v'</span>)</span>
+<span id="cb48-28"><a href="#cb48-28" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Vector u'</span>)</span>
+<span id="cb48-29"><a href="#cb48-29" aria-hidden="true" tabindex="-1"></a>plt.xticks(ticks<span class="op">=</span>np.arange(<span class="bu">len</span>(v)), labels<span class="op">=</span>v)</span>
+<span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a>plt.yticks(ticks<span class="op">=</span>np.arange(<span class="bu">len</span>(u)), labels<span class="op">=</span>u)</span>
+<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Outer Product Matrix:
+[[ 4  5]
+ [ 8 10]
+ [12 15]]
+Rank of Outer Product Matrix: 1
+Frobenius Norm: 23.958297101421877</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="module_2_files/figure-html/cell-30-output-2.png" width="373" height="449" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="kronecker-product" class="level4" data-number="2.2.2.3">
+<h4 data-number="2.2.2.3" class="anchored" data-anchor-id="kronecker-product"><span class="header-section-number">2.2.2.3</span> Kronecker Product</h4>
+<p>In mathematics, the Kronecker product, sometimes denoted by <span class="math inline">\(\otimes\)</span>, is an operation on two matrices of arbitrary size resulting in a <em>block matrix</em>. It is a specialization of the tensor product (which is denoted by the same symbol) from vectors to matrices and gives the matrix of the tensor product linear map with respect to a standard choice of basis. The Kronecker product is to be distinguished from the usual matrix multiplication, which is an entirely different operation. The Kronecker product is also sometimes called <em>matrix direct product</em>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(A\)</span> is an <span class="math inline">\(m \times n\)</span> matrix and <span class="math inline">\(B\)</span> is a <span class="math inline">\(p \times q\)</span> matrix, then the Kronecker product <span class="math inline">\(A\otimes B\)</span> is the <span class="math inline">\(pm \times qn\)</span> block matrix defined as: Each <span class="math inline">\(a_{ij}\)</span> of <span class="math inline">\(A\)</span> is replaced by the matrix <span class="math inline">\(a_{ij}B\)</span>. Symbolically this will result in a block matrix defined by:</p>
+<p><span class="math display">\[A\otimes B=\begin{bmatrix}A \otimes B = \begin{bmatrix}
+a_{11}B &amp; a_{12}B &amp; \cdots &amp; a_{1n}B \\
+a_{21}B &amp; a_{22}B &amp; \cdots &amp; a_{2n}B \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{m1}B &amp; a_{m2}B &amp; \cdots &amp; a_{mn}B
+\end{bmatrix} \end{bmatrix}\]</span></p>
+</div>
+</div>
+<p>:::{.callout-note}</p>
+</section>
+<section id="properties-of-the-kronecker-product" class="level4" data-number="2.2.2.4">
+<h4 data-number="2.2.2.4" class="anchored" data-anchor-id="properties-of-the-kronecker-product"><span class="header-section-number">2.2.2.4</span> Properties of the Kronecker Product</h4>
+<ol type="1">
+<li><p><strong>Associativity</strong></p>
+<p>The Kronecker product is associative. For matrices <span class="math inline">\(A \in \mathbb{R}^{m \times n}\)</span>, <span class="math inline">\(B \in \mathbb{R}^{p \times q}\)</span>, and <span class="math inline">\(C \in \mathbb{R}^{r \times s}\)</span>: <span class="math display">\[(A \otimes B) \otimes C = A \otimes (B \otimes C)\]</span></p></li>
+<li><p><strong>Distributivity Over Addition</strong></p>
+<p>The Kronecker product distributes over matrix addition. For matrices <span class="math inline">\(A \in \mathbb{R}^{m \times n}\)</span>, <span class="math inline">\(B \in \mathbb{R}^{p \times q}\)</span>, and <span class="math inline">\(C \in \mathbb{R}^{p \times q}\)</span>: <span class="math display">\[A \otimes (B + C) = (A \otimes B) + (A \otimes C)\]</span></p></li>
+<li><p><strong>Mixed Product Property</strong></p>
+<p>The Kronecker product satisfies the mixed product property with the matrix product. For matrices <span class="math inline">\(A \in \mathbb{R}^{m \times n}\)</span>, <span class="math inline">\(B \in \mathbb{R}^{p \times q}\)</span>, <span class="math inline">\(C \in \mathbb{R}^{r \times s}\)</span>, and <span class="math inline">\(D \in \mathbb{R}^{r \times s}\)</span>: <span class="math display">\[(A \otimes B) (C \otimes D) = (A C) \otimes (B D)\]</span></p></li>
+<li><p><strong>Transpose</strong></p>
+<p>The transpose of the Kronecker product is given by: <span class="math display">\[(A \otimes B)^T = A^T \otimes B^T\]</span></p></li>
+<li><p><strong>Norm</strong></p>
+<p>The Frobenius norm of the Kronecker product can be computed as: <span class="math display">\[\| A \otimes B \|_F = \| A \|_F \cdot \| B \|_F\]</span> where $| |_F $ denotes the Frobenius norm. :::</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Frobenius Norm
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Frobenius norm, also known as the Euclidean norm for matrices, is a measure of a matrix’s magnitude. It is defined as the square root of the sum of the absolute squares of its elements. Mathematically, for a matrix <span class="math inline">\(A\)</span> with elements <span class="math inline">\(a_{ij}\)</span>, the Frobenius norm is given by:</p>
+<p><span class="math display">\[\|A\|_F = \sqrt{\sum_{i,j} |a_{ij}|^2}\]</span></p>
+</div>
+</div>
+<p>Example 1: Calculation of Frobenius Norm</p>
+<p>Consider the matrix <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[A = \begin{bmatrix}
+1 &amp; 2 \\
+3 &amp; 4
+\end{bmatrix}\]</span></p>
+<p>To compute the Frobenius norm:</p>
+<p><span class="math display">\[\|A\|_F = \sqrt{1^2 + 2^2 + 3^2 + 4^2}
+= \sqrt{1 + 4 + 9 + 16}
+= \sqrt{30}
+\approx 5.48\]</span></p>
+<p>Example 2: Frobenius Norm of a Sparse Matrix</p>
+<p>Consider the sparse matrix <span class="math inline">\(B\)</span>:</p>
+<p><span class="math display">\[B = \begin{bmatrix}
+0 &amp; 0 &amp; 0 \\
+0 &amp; 5 &amp; 0 \\
+0 &amp; 0 &amp; 0
+\end{bmatrix}\]</span></p>
+<p>To compute the Frobenius norm:</p>
+<p><span class="math display">\[\|B\|_F = \sqrt{0^2 + 0^2 + 0^2 + 5^2 + 0^2 + 0^2}
+= \sqrt{25}
+= 5\]</span></p>
+<p>Example 3: Frobenius Norm in a Large Matrix</p>
+<p>Consider the matrix <span class="math inline">\(C\)</span> of size $3 $:</p>
+<p><span class="math display">\[C = \begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9
+\end{bmatrix}\]</span></p>
+<p>To compute the Frobenius norm:</p>
+<p><span class="math display">\[\begin{align*}
+\|C\|_F &amp;= \sqrt{1^2 + 2^2 + 3^2 + 4^2 + 5^2 + 6^2 + 7^2 + 8^2 + 9^2}\\
+&amp;= \sqrt{1 + 4 + 9 + 16 + 25 + 36 + 49 + 64 + 81}
+&amp;= \sqrt{285}
+&amp;\approx 16.88
+\end{align*}\]</span></p>
+<p><strong>Applications of the Frobenius Norm</strong></p>
+<ul>
+<li><p><em>Application 1: Image Compression:</em> In image processing, the Frobenius norm can measure the difference between the original and compressed images, indicating how well the compression has preserved the original image quality.</p></li>
+<li><p><em>Application 2: Matrix Factorization:</em> In numerical analysis, Frobenius norm is used to evaluate the error in matrix approximations, such as in Singular Value Decomposition (SVD). A lower Frobenius norm of the error indicates a better approximation.</p></li>
+<li><p><em>Application 3: Error Measurement in Numerical Solutions:</em> In solving systems of linear equations, the Frobenius norm can be used to measure the error between the true solution and the computed solution, providing insight into the accuracy of numerical methods.</p></li>
+</ul>
+<p>The <code>linalg</code> sub module of <code>NumPy</code> library can be used to calculate various norms. Basically norm is the generalized form of Euclidean distance.</p>
+<div id="7a29c07d" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Simple Matrix</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>frobenius_norm_A <span class="op">=</span> np.linalg.norm(A, <span class="st">'fro'</span>)</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Frobenius Norm of A: </span><span class="sc">{</span>frobenius_norm_A<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Sparse Matrix</span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]])</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>frobenius_norm_B <span class="op">=</span> np.linalg.norm(B, <span class="st">'fro'</span>)</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Frobenius Norm of B: </span><span class="sc">{</span>frobenius_norm_B<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 3: Large Matrix</span></span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>frobenius_norm_C <span class="op">=</span> np.linalg.norm(C, <span class="st">'fro'</span>)</span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Frobenius Norm of C: </span><span class="sc">{</span>frobenius_norm_C<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Frobenius Norm of A: 5.48
+Frobenius Norm of B: 5.00
+Frobenius Norm of C: 16.88</code></pre>
+</div>
+</div>
+<p><strong>Frobenius norm of Kronecker product</strong></p>
+<p>Let us consider two matrices,</p>
+<p><span class="math display">\[A = \begin{bmatrix}
+1 &amp; 2 \\
+3 &amp; 4
+\end{bmatrix}\]</span></p>
+<p>and</p>
+<p><span class="math display">\[B = \begin{bmatrix}
+0 &amp; 5 \\
+6 &amp; 7
+\end{bmatrix}\]</span></p>
+<p>The Kronecker product <span class="math inline">\(C = A \otimes B\)</span> is:</p>
+<p><span class="math display">\[C = \begin{bmatrix}
+1 \cdot B &amp; 2 \cdot B \\
+3 \cdot B &amp; 4 \cdot B
+\end{bmatrix}
+= \begin{bmatrix}
+\begin{bmatrix}
+0 &amp; 5 \\
+6 &amp; 7
+\end{bmatrix} &amp; \begin{bmatrix}
+0 \cdot 2 &amp; 5 \cdot 2 \\
+6 \cdot 2 &amp; 7 \cdot 2
+\end{bmatrix} \\
+\begin{bmatrix}
+0 \cdot 3 &amp; 5 \cdot 3 \\
+6 \cdot 3 &amp; 7 \cdot 3
+\end{bmatrix} &amp; \begin{bmatrix}
+0 \cdot 4 &amp; 5 \cdot 4 \\
+6 \cdot 4 &amp; 7 \cdot 4
+\end{bmatrix}
+\end{bmatrix}\]</span></p>
+<p>This expands to:</p>
+<p><span class="math display">\[C = \begin{bmatrix}
+0 &amp; 5 &amp; 0 &amp; 10 \\
+6 &amp; 7 &amp; 12 &amp; 14 \\
+0 &amp; 15 &amp; 0 &amp; 20 \\
+18 &amp; 21 &amp; 24 &amp; 28
+\end{bmatrix}\]</span></p>
+<p><em>Computing the Frobenius Norm</em></p>
+<p>To compute the Frobenius norm of <span class="math inline">\(C\)</span>:</p>
+<p><span class="math display">\[\|C\|_F = \sqrt{\sum_{i=1}^{4} \sum_{j=1}^{4} |c_{ij}|^2}\]</span></p>
+<p><span class="math display">\[\|C\|_F = \sqrt{0^2 + 5^2 + 0^2 + 10^2 + 6^2 + 7^2 + 12^2 + 14^2 + 0^2 + 15^2 + 0^2 + 20^2 + 18^2 + 21^2 + 24^2 + 28^2}\]</span></p>
+<p><span class="math display">\[\|C\|_F = \sqrt{0 + 25 + 0 + 100 + 36 + 49 + 144 + 196 + 0 + 225 + 0 + 400 + 324 + 441 + 576 + 784}\]</span></p>
+<p><span class="math display">\[\|C\|_F = \sqrt{2896}\]</span> <span class="math display">\[\|C\|_F \approx 53.87\]</span></p>
 
 
+</section>
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>A regularization techniques in Deep learning. This approach deactivate some selected neurons to control model over-fitting<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Remember that the covariance of <span class="math inline">\(X\)</span> is defined as <span class="math inline">\(Cov(X)=\dfrac{\sum (X-\bar{X})^2}{n-1}\)</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
