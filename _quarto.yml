@@ -4,6 +4,7 @@ execute:
   freeze: auto
 book:
   title: "Computational Linear Algebra"
+  code-links: binder
   author: "Siju Swamy"
   date: "7/16/2024"
   chapters:
