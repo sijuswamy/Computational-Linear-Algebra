@@ -3,8 +3,8 @@ project:
 execute:
   freeze: auto
 book:
+  favicon: CME_logo.JPG
   title: "Computational Linear Algebra"
-  code-links: binder
   author: "Siju Swamy"
   date: "7/16/2024"
   chapters:
@@ -24,6 +24,9 @@ format:
   epub:
     cover-image: cover.png
 jupyter: python3
-
+body-header: | 
+  This page brought to you by Department of Mathematics
+margin-header: |
+  ![Computational Mathematics](CME_logo.JPG)
 
 
