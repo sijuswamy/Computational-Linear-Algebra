@@ -7,6 +7,12 @@ book:
   title: "Computational Linear Algebra"
   author: "Siju Swamy"
   date: "7/16/2024"
+  search: true
+  repo-url: https://github.com/sijuswamy/Computational-Linear-Algebra
+  repo-actions: [edit]
+  downloads: [pdf, epub]
+  sharing: [twitter, facebook]
+ 
   chapters:
     - index.qmd
     - intro.qmd
@@ -24,8 +30,6 @@ format:
   epub:
     cover-image: cover.png
 jupyter: python3
-body-header: | 
-  This page brought to you by Department of Mathematics
 margin-header: |
   ![Computational Mathematics](CME_logo.JPG)
 

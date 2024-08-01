@@ -6,7 +6,7 @@ execute:
 ---
 ## Introduction 
 
-In the first module, we established a solid foundation in matrix algebra by exploring pseudocode and implementing fundamental matrix operations using Python. We practiced key concepts such as matrix addition, subtraction, multiplication, and determinants through practical examples in image processing, leveraging the `SymPy` library for symbolic computation. 
+In the first module, we established a solid foundation in matrix algebra by exploring pseudocode and implementing fundamental matrix operations using `Python`. We practiced key concepts such as matrix addition, subtraction, multiplication, and determinants through practical examples in image processing, leveraging the `SymPy` library for symbolic computation. 
 
 As we begin the second module, **"Transforming Linear Algebra to Computational Language,"** our focus will shift towards applying these concepts with greater depth and actionable insight. This module is designed to bridge the theoretical knowledge from matrix algebra with practical computational applications. You will learn to interpret and utilize matrix operations, solve systems of equations, and analyze the rank of matrices within a variety of real-world contexts. 
 
@@ -16,7 +16,7 @@ This transition will not only reinforce your understanding of linear algebra but
 
 ## Relearning of Terms and Operations in Linear Algebra
 
-In this section, we will revisit fundamental matrix operations such as addition, subtraction, scaling, and more through practical examples. Our goal is to transform theoretical linear algebra into modern computational applications. We will demonstrate these concepts using Python, focusing on practical and industrial applications.
+In this section, we will revisit fundamental matrix operations such as addition, subtraction, scaling, and more through practical examples. Our goal is to transform theoretical linear algebra into modern computational applications. We will demonstrate these concepts using `Python`, focusing on practical and industrial applications.
 
 ### Matrix Addition and Subtraction in Data Analysis
 
@@ -24,18 +24,21 @@ Matrix addition and subtraction are fundamental operations that help in combinin
 
 **Simple Example: Combining Quarterly Sales Data**
 
-We begin with quarterly sales data from different regions and combine them to get the total sales.
+We begin with quarterly sales data from different regions and combine them to get the total sales. The sales data is given in @tbl-qtb. A ar plot of the total sales is shown in [Fig @fig-total1].
 
-**Tabular Data:**
 
 | Region | Q1   | Q2   | Q3   | Q4   |
 |--------|------|------|------|------|
 | A      | 2500 | 2800 | 3100 | 2900 |
 | B      | 1500 | 1600 | 1700 | 1800 |
 
-**From Scratch Python Implementation:**
+: Quarterly Sales Data {#tbl-qtb}
+
+**From Scratch `Python` Implementation:**
 
 ```{python}
+#| label: fig-total1
+#| fig-cap: "Computing Total Sales using `Numpy` aggregation method"
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -55,9 +58,11 @@ plt.title('Combined Quarterly Sales Data for Regions A and B')
 plt.show()
 ```
 
-Using `pandas` to handle tabular data:
+In the above `Python` code, we have performed the aggregation operation with the `NumPy` method. Same can be done in a more data analysis style using `pandas` inorder to handle tabular data meaningfully. In this approach, quarterly sales data of each region is stored as `DataFrames`(like an excel sheet). The we combine these two `DataFrames` into one. After that create a new row with index 'Total' and populate this row with sum of quarterly sales in Region A and Region B. Finally a bar plot is created using this 'Total' sales. Advantage of this approach is that we don't need the `matplotlib` library to create visualizations!. The EDA using this approach is shown in [Fig @fig-tot2].
 
 ```{python}
+#| label: fig-tot2
+#| fig-cap: "Computation of Total Sales using `Pandas` method"
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -66,19 +71,21 @@ df_a = pd.DataFrame({'Q1': [2500], 'Q2': [2800], 'Q3': [3100], 'Q4': [2900]}, in
 df_b = pd.DataFrame({'Q1': [1500], 'Q2': [1600], 'Q3': [1700], 'Q4': [1800]}, index=['Region B'])
 
 # Combine data
-df_total = df_a.add(df_b)
-
+df_combined = df_a.add(df_b, fill_value=0)
+df_combined.loc["Total"] = df_combined.sum(axis=0)
 # Visualization
-df_total.T.plot(kind='bar', color='skyblue')
+df_combined.loc["Total"].plot(kind='bar', color=['green'])
 plt.xlabel('Quarter')
 plt.ylabel('Total Sales')
 plt.title('Combined Quarterly Sales Data for Regions A and B')
 plt.show()
 ```
 
-We can extend the this in to more advanced examples. Irrespective to the size of the data, for representation aggregation tasks matrix models are best options and are used in industry as a standard. Let us consider an advanced example to analyse difference in stock prices. For this example we are using a simulated data. The python code for this simulation process is shown below: 
+We can extend this in to more advanced examples. Irrespective to the size of the data, for representation and aggregation tasks matrix models are best options and are used in industry as a standard. Let us consider an advanced example to analyse difference in stock prices. For this example we are using a simulated data. The python code for this simulation process is shown in [Fig @fig-sim].
 
 ```{python}
+#| label: fig-sim
+#| fig-cap: "Demonstration of Stock Price simulated from a Uniform Distribution"
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -102,7 +109,6 @@ Another important matrix operation relevant to data analytics and Machine Learni
 
 **Simple Example: Normalizing Employee Performance Data**
 
-**Tabular Data:**
 
 | Employee | Metric A   | Metric B   | 
 |--------|--------------|------------|
@@ -112,9 +118,37 @@ Another important matrix operation relevant to data analytics and Machine Learni
 | A      |110           |1000        |
 | B      |120           |1100        |
 
-Using simple python code we can simulate the model for `min-max` scaling.
+: Employee Performance Data {#tbl-EPD}
+
+Using simple python code we can simulate the model for `min-max` scaling. The formula for `min-max` scaling is:
+$$min_max(X)=\dfrac{X-min(X)}{max(X)-min(X)}$$
+
+For example, while applying the `min-max` scaling in the first value of Metric A, the scaled value is 
+$$min_max(80)\dfrac{80-80}{120-80}=0$$ 
+
+Similarly
+
+$$min_max(100)\dfrac{100-80}{120-80}=0.5$$
+
+When we apply this formula to Metric A and Metric B, the scaled output from @tbl-EPD will be as follows:
+
+| Employee | Metric A   | Metric B   | 
+|--------|--------------|------------|
+| X      | 0.00         | 0.00       | 
+| Y      | 0.25         | 0.25       | 
+| Z      | 0.50         | 0.50       |
+| A      | 0.75         | 0.75       |
+| B      | 1.00         | 1.00       |
+
+: Employee Performance Data {#tbl-EPDu}
+
+It is interesting to look into the scaled data! In the orginal table (@tbl-EPD) it is looked like Metric B is superior. But from the scaled table (@tbl-EPDu), it is clear that both the Metrics are representing same relative information. This will help us to identify the redundency in measure and so skip any one of the Metric before analysis!.
+
+The same can be achieved through a matrix operation. The `Python` implementation of this scaling process is shown in [Fig @fig-totalsales].
 
 ```{python}
+#| label: fig-totalsales
+#| fig-cap: "Total sales using `pandas` method"
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -127,7 +161,7 @@ max_vals = np.max(data, axis=0)
 scaled_data = (data - min_vals) / (max_vals - min_vals)
 
 # Visualization
-plt.figure(figsize=(10, 5))
+plt.figure(figsize=(8, 5))
 plt.subplot(1, 2, 1)
 plt.imshow(data, cmap='viridis')
 plt.title('Original Data')
@@ -141,12 +175,17 @@ plt.colorbar()
 plt.show()
 
 ```
+From the first sub plot, it is clear that there is a significant difference in the distributions (Metric A and Metric B values). But the second sub plot shows that both the distributions have same pattern and the values ranges between 0 and 1. In short the visualization is more appealing and self explanatory in this case.
 
- This method will confine the feature values (attributes) into the range $[0,1]$. So in effect all the features are scaled proportionally to the data spectrum.
+:::{.callout-note}
+The `min-max` scaling method will confine the feature values (attributes) into the range $[0,1]$. So in effect all the features are scaled proportionally to the data spectrum.
+:::
 
-Similarly we can use the standard scaling (transformation to normal distribution) using the transformation $\dfrac{x-\bar{x}}{\sigma}$. The python code for this operation is given below:
+Similarly, we can use the `standard scaling` (transformation to normal distribution) using the transformation $\dfrac{x-\bar{x}}{\sigma}$. Scaling table is given as a practice task to the reader. The python code for this operation is shown in [Fig @fig-minmax].
 
 ```{python}
+#| label: fig-minmax
+#| fig-cap: "Min-max scaling using basic python"
 # Standard scaling from scratch
 def standard_scaling(data):
     mean = np.mean(data, axis=0)
@@ -160,7 +199,7 @@ scaled_data_scratch = standard_scaling(data)
 print("Standard Scaled Data (from scratch):\n", scaled_data_scratch)
 
 # Visualization
-plt.figure(figsize=(10, 5))
+plt.figure(figsize=(6, 5))
 plt.subplot(1, 2, 1)
 plt.imshow(data, cmap='viridis')
 plt.title('Original Data')
@@ -173,13 +212,15 @@ plt.colorbar()
 
 plt.show()
 ```
-
-Here we will use one more type of visualization to demonstrate the distribution of data.
+To understand the effect of standard scaling, let us consider [Fig @fig-comp1]. This plot create the frequency distribution of the data as a histogram along with the density function. From the first sub-plot, it is clear that the distribution has multiple modes (peaks). When we apply the standard scaling, the distribution become un-modal(only one peek). This is demonstrated in the second sub-plot.
 
 ```{python}
+#| label: fig-comp1
+#| fig-cap: "Impact of standard scaling on the distribution"
+# Standard scaling from scratch
 import seaborn as sns
 # Create plots
-plt.figure(figsize=(14, 7))
+plt.figure(figsize=(6, 5))
 
 # Plot for original data
 plt.subplot(1, 2, 1)
@@ -199,11 +240,13 @@ plt.tight_layout()
 plt.show()
 ```
 
-A scatter plot showing the impact of scaling is shown below.
+A scatter plot showing the compare the impact of scaling on the given distribution is shown in [Fig @fig-scatter].
 
 ```{python}
+#| label: fig-scatter
+#| fig-cap: "Comparison of impact of scaling on the distribution"
 # Plot original and scaled data
-plt.figure(figsize=(14, 7))
+plt.figure(figsize=(6, 5))
 
 # Original Data
 plt.subplot(1, 3, 1)
@@ -230,6 +273,8 @@ plt.tight_layout()
 plt.show()
 ```
 
+From the [Fig @fig-scatter], it is clear that the scaling does not affect the pattern of the data, instead it just scale the distribution proportionally!
+
 We can use the `scikit-learn` library for do the same thing in a very simple handy approach. The `python` code for this job is shown below.
 
 ```{python}
@@ -251,11 +296,13 @@ scaled_data_sklearn = scaler.fit_transform(data)
 print("Standard Scaled Data (using sklearn):\n", scaled_data_sklearn)
 
 ```
-A scatter plot showing the impact on scaling is shown bellow.
+A scatter plot showing the impact on scaling is shown in [Fig @fig-comp2]. This plot compare the m`min-max` and `standard-scaling`.
 
 ```{python}
+#| label: fig-comp2
+#| fig-cap: "Camparison of Min-max and standard  scalings with original data"
 # Plot original and scaled data
-plt.figure(figsize=(14, 7))
+plt.figure(figsize=(6, 5))
 
 # Original Data
 plt.subplot(1, 3, 1)
@@ -422,9 +469,11 @@ print(Hadamard_product_sympy)
 
 *Application 1: Image Masking*
 
-The Hadamard product can be used for image masking. Here’s how you can apply a mask to an image and visualize it:
+The Hadamard product can be used for image masking. Here’s how you can apply a mask to an image and visualize it as shown in [Fig @fig-imgmask].
 
 ```{python}
+#| label: fig-imgmask
+#| fig-cap: "Demonstration of Masking in DIP using Hadamard Product"
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -471,7 +520,7 @@ print(dropped_activations)
 
 Application 3: Statistical Data Analysis
 
-In statistics, the Hadamard product can be applied to scale covariance matrices. Here’s how we can compute the covariance matrix using matrix operations and apply scaling.
+In statistics, the Hadamard product can be applied to scale covariance matrices. Here’s how we can compute the covariance matrix using matrix operations and apply scaling. Following `Python` code demonstrate this.
 
 ```{python}
 import sympy as sp
@@ -505,7 +554,7 @@ print("\nScaled Covariance Matrix:")
 print(scaled_cov_matrix)
 ```
 
-##### Inner Product of Matrices
+#### Inner Product of Matrices
 
 The inner product of two matrices is a generalized extension of the dot product, where each matrix is treated as a vector in a high-dimensional space. For two matrices $A$ and $B$ of the same dimension $m \times n$, the inner product is defined as the sum of the element-wise products of the matrices.
 
@@ -571,7 +620,7 @@ B = \begin{pmatrix}
 
 The inner product $\langle A, B \rangle$ is calculated as:
 \begin{align*}
-langle A, B \rangle &= 1 \cdot 9 + 2 \cdot 8 + 3 \cdot 7 + 4 \cdot 6 + 5 \cdot 5 + 6 \cdot 4 + 7 \cdot 3 + 8 \cdot 2 + 9 \cdot 1\\
+\langle A, B \rangle &= 1 \cdot 9 + 2 \cdot 8 + 3 \cdot 7 + 4 \cdot 6 + 5 \cdot 5 + 6 \cdot 4 + 7 \cdot 3 + 8 \cdot 2 + 9 \cdot 1\\
 &= 9 + 16 + 21 + 24 + 25 + 24 + 21 + 16 + 9\\
 &= 175
 \end{align*}
@@ -627,7 +676,7 @@ print("Inner Product (Using numpy):")
 print(inner_product)
 ```
 
-The same operation can be done using `NumPy` functions as follows.
+The same operation can be done using `SymPy` functions as follows.
 
 ```{python}
 import sympy as sp
@@ -668,7 +717,7 @@ The same dot product using `numpy` object can be done as follows:
 import numpy as np
 A=np.array([1,2,3])
 B=np.array([4,5,6])
-A.dot(B.T)# dot() stands for dot product B.T represents the transpose of B
+display(A.dot(B.T))# dot() stands for dot product B.T represents the transpose of B
 ```
 **Practical Applications**
 
@@ -713,7 +762,7 @@ inner_products = np.einsum('ij,ij->i', features1, features2) # use Einstien's su
 
 # Display results
 print("Inner Products of Feature Vectors:")
-print(inner_products)
+display(inner_products)
 ```
 
 Application 3: Covariance Matrix in Statistics
@@ -739,7 +788,7 @@ cov_matrix_sympy = sp.Matrix(cov_matrix)
 
 # Display results
 print("Covariance Matrix:")
-print(cov_matrix_sympy)
+display(cov_matrix_sympy)
 ```
 
 These examples demonstrate the use of inner product and dot product in various applications.
@@ -848,6 +897,7 @@ print("Outer Product of Vectors (From Scratch):")
 for row in outer_product_result:
     print(row)
 ```
+
 **2. Compute Outer Product of Vectors Using SymPy**
 
 Here’s how to compute the outer product using `SymPy`:
@@ -864,7 +914,7 @@ outer_product_sympy = u * v.T
 
 # Display result
 print("Outer Product of Vectors (Using SymPy):")
-print(outer_product_sympy)
+display(outer_product_sympy)
 ```
 
 **Outer Product of Matrices**
@@ -956,7 +1006,7 @@ $$A \otimes B = \begin{pmatrix}
 42 & 48
 \end{pmatrix}$$
 
-**Example 3: Compute the outer product of the following vectors $\mathbf{u} = [0, 1, 2]$ and $\mathbf{v} = [2, 3, 4]$.
+Example 3: Compute the outer product of the following vectors $\mathbf{u} = [0, 1, 2]$ and $\mathbf{v} = [2, 3, 4]$.
 
 To find the outer product, we calculate each element $(i, j)$ as the product of the $(i)$-th element of $\mathbf{u}$ and the $(j)$-th element of $\mathbf{v}$. Mathematically:
 
@@ -1005,7 +1055,7 @@ for row in outer_product_result_matrices:
     print(row)
 ```
 
-Here is the Python code to compute the outer product of these vectors using the `NumPy` function `.outer()`:
+Here is the `Python` code to compute the outer product of these vectors using the `NumPy` function `.outer()`:
 
 ```{python}
 import numpy as np
@@ -1018,7 +1068,7 @@ v = np.array([[5],[4]])
 outer_product = np.outer(u, v)
 
 print("Outer Product of u and v:")
-print(outer_product)
+display(outer_product)
 ```
 
 **Example 3: Real-world Application in Recommendation Systems**
@@ -1052,7 +1102,7 @@ predicted_ratings = np.outer(user_ratings, product_ratings)
 
 # Print the predicted ratings matrix
 print("Predicted Ratings Matrix:")
-print(predicted_ratings)
+display(predicted_ratings)
 
 # Plot the result
 plt.imshow(predicted_ratings, cmap='coolwarm', interpolation='nearest')
@@ -1110,11 +1160,13 @@ plt.show()
 
 :::
 
-**Example Calculation in Python**
+**Example Calculation in `Python`**
 
-Here’s how to compute and visualize the outer product properties using Python:
+Here’s how to compute and visualize the outer product properties using `Python`:
 
 ```{python}
+#| label: fig-op
+#| fig-cap: "Demonstration of Outer Product and its Properties"
 import numpy as np
 import matplotlib.pyplot as plt
 
