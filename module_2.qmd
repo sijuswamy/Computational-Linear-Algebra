@@ -144,7 +144,7 @@ plt.show()
 
  This method will confine the feature values (attributes) into the range $[0,1]$. So in effect all the features are scaled proportionally to the data spectrum.
 
-Similarly we can use the standard scaling (transformation to normal distribution) using the transformation $\dfrac{x-\bar{x}}{n}$. The python code for this operation is given below:
+Similarly we can use the standard scaling (transformation to normal distribution) using the transformation $\dfrac{x-\bar{x}}{\sigma}$. The python code for this operation is given below:
 
 ```{python}
 # Standard scaling from scratch
