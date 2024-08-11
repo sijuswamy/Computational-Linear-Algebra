@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Computational Linear Algebra - 2&nbsp; Transforming Linear Algebra to Computational Language</title>
+<title>2&nbsp; Transforming Linear Algebra to Computational Language – Computational Linear Algebra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -54,7 +54,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -76,6 +96,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -103,8 +126,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -142,13 +168,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./module_2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transforming Linear Algebra to Computational Language</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -164,34 +190,34 @@ window.Quarto = {
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/sijuswamy/Computational-Linear-Algebra" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
-      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="./Computational-Linear-Algebra.pdf">
-              <i class="bi bi-bi-file-pdf pe-1"></i>
+              <i class="bi bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="./Computational-Linear-Algebra.epub">
-              <i class="bi bi-bi-journal pe-1"></i>
+              <i class="bi bi-journal pe-1"></i>
             Download ePub
             </a>
           </li>
       </ul>
     </div>
     <div class="dropdown">
-      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
-              <i class="bi bi-bi-twitter pe-1"></i>
+              <i class="bi bi-twitter pe-1"></i>
             Twitter
             </a>
           </li>
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
-              <i class="bi bi-bi-facebook pe-1"></i>
+              <i class="bi bi-facebook pe-1"></i>
             Facebook
             </a>
           </li>
@@ -261,7 +287,7 @@ window.Quarto = {
   <li><a href="#more-on-matrix-product-and-its-applications" id="toc-more-on-matrix-product-and-its-applications" class="nav-link" data-scroll-target="#more-on-matrix-product-and-its-applications"><span class="header-section-number">2.2.2</span> More on Matrix Product and its Applications</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/sijuswamy/Computational-Linear-Algebra/edit/main/module_2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -300,13 +326,13 @@ window.Quarto = {
 <p>Matrix addition and subtraction are fundamental operations that help in combining datasets and analyzing differences.</p>
 <p><strong>Simple Example: Combining Quarterly Sales Data</strong></p>
 <p>We begin with quarterly sales data from different regions and combine them to get the total sales. The sales data is given in <a href="#tbl-qtb" class="quarto-xref">Table&nbsp;<span>2.1</span></a>. A ar plot of the total sales is shown in <a href="#fig-total1" class="quarto-xref">Fig&nbsp;<span>2.1</span></a>.</p>
-<div id="tbl-qtb" class="quarto-float anchored">
+<div id="tbl-qtb" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-qtb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;2.1: Quarterly Sales Data
 </figcaption>
 <div aria-describedby="tbl-qtb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Region</th>
@@ -356,7 +382,7 @@ Table&nbsp;2.1: Quarterly Sales Data
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Combined Quarterly Sales Data for Regions A and B'</span>)</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-total1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-total1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-total1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="module_2_files/figure-html/fig-total1-output-1.png" width="601" height="449" class="figure-img">
@@ -387,7 +413,7 @@ Figure&nbsp;2.1: Computing Total Sales using <code>Numpy</code> aggregation meth
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Combined Quarterly Sales Data for Regions A and B'</span>)</span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-tot2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-tot2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tot2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="module_2_files/figure-html/fig-tot2-output-1.png" width="601" height="455" class="figure-img">
@@ -419,7 +445,7 @@ Figure&nbsp;2.2: Computation of Total Sales using <code>Pandas</code> method
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Day Index'</span>)</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-sim" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-sim" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="module_2_files/figure-html/fig-sim-output-1.png" width="571" height="449" class="figure-img">
@@ -433,13 +459,13 @@ Figure&nbsp;2.3: Demonstration of Stock Price simulated from a Uniform Distribut
 </div>
 <p>Another important matrix operation relevant to data analytics and Machine Learning application is scaling. This is considered as a statistical tool to make various features (attributes) in to same scale so as to avoid unnecessary misleading impact in data analysis and its intepretation. In Machine Learning context, this pre-processing stage is inevitable so as to make the model relevant and usable.</p>
 <p><strong>Simple Example: Normalizing Employee Performance Data</strong></p>
-<div id="tbl-EPD" class="quarto-float anchored">
+<div id="tbl-EPD" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-EPD-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;2.2: Employee Performance Data
 </figcaption>
 <div aria-describedby="tbl-EPD-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Employee</th>
@@ -483,13 +509,13 @@ Table&nbsp;2.2: Employee Performance Data
 <p>Similarly</p>
 <p><span class="math display">\[min_max(100)\dfrac{100-80}{120-80}=0.5\]</span></p>
 <p>When we apply this formula to Metric A and Metric B, the scaled output from <a href="#tbl-EPD" class="quarto-xref">Table&nbsp;<span>2.2</span></a> will be as follows:</p>
-<div id="tbl-EPDu" class="quarto-float anchored">
+<div id="tbl-EPDu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-EPDu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;2.3: Employee Performance Data
 </figcaption>
 <div aria-describedby="tbl-EPDu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Employee</th>
@@ -556,7 +582,7 @@ Table&nbsp;2.3: Employee Performance Data
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-totalsales" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-totalsales" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-totalsales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="module_2_files/figure-html/fig-totalsales-output-1.png" width="572" height="431" class="figure-img">
@@ -618,7 +644,7 @@ Note
  [ 1.41421356  1.41421356]]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-minmax" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-minmax" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-minmax-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="module_2_files/figure-html/fig-minmax-output-2.png" width="499" height="431" class="figure-img">
@@ -654,7 +680,7 @@ Figure&nbsp;2.5: Min-max scaling using basic python
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-comp1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-comp1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-comp1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="module_2_files/figure-html/fig-comp1-output-1.png" width="593" height="470" class="figure-img">
@@ -695,7 +721,7 @@ Figure&nbsp;2.6: Impact of standard scaling on the distribution
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-scatter" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-scatter" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="module_2_files/figure-html/fig-scatter-output-1.png" width="593" height="470" class="figure-img">
@@ -709,7 +735,7 @@ Figure&nbsp;2.7: Comparison of impact of scaling on the distribution
 </div>
 <p>From the <a href="#fig-scatter" class="quarto-xref">Fig&nbsp;<span>2.7</span></a>, it is clear that the scaling does not affect the pattern of the data, instead it just scale the distribution proportionally!</p>
 <p>We can use the <code>scikit-learn</code> library for do the same thing in a very simple handy approach. The <code>python</code> code for this job is shown below.</p>
-<div id="04d49e56" class="cell" data-execution_count="8">
+<div id="13effdfe" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Min-max scaling using sklearn</span></span>
@@ -726,7 +752,7 @@ Figure&nbsp;2.7: Comparison of impact of scaling on the distribution
  [1.   1.  ]]</code></pre>
 </div>
 </div>
-<div id="636132a3" class="cell" data-execution_count="9">
+<div id="7f4e50b9" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard scaling using sklearn</span></span>
@@ -772,7 +798,7 @@ Figure&nbsp;2.7: Comparison of impact of scaling on the distribution
 <span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-comp2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-comp2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-comp2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="module_2_files/figure-html/fig-comp2-output-1.png" width="593" height="470" class="figure-img">
@@ -866,7 +892,7 @@ B = \begin{pmatrix}
 <p>In the following code chunks the computational process of Hadamard product is implemented in <code>Python</code>. Here both the from the scratch and use of external module versions are included.</p>
 <p><strong>1. Compute Hadamard Product from Scratch (without Libraries)</strong></p>
 <p>Here’s how you can compute the Hadamard product manually:</p>
-<div id="ffe31c09" class="cell" data-execution_count="11">
+<div id="4d6911ba" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]]</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]</span>
@@ -902,7 +928,7 @@ B = \begin{pmatrix}
 </div>
 <p><strong>2. Compute Hadamard Product Using <code>SymPy</code></strong></p>
 <p>Here’s how to compute the Hadamard product using <code>SymPy</code>:</p>
-<div id="e65cfeec" class="cell" data-execution_count="12">
+<div id="cd02123d" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
@@ -944,7 +970,7 @@ Matrix([[7, 16, 27], [40, 55, 72]])</code></pre>
 <span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Masked Image'</span>)</span>
 <span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-imgmask" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-imgmask" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-imgmask-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="module_2_files/figure-html/fig-imgmask-output-1.png" width="902" height="431" class="figure-img">
@@ -958,7 +984,7 @@ Figure&nbsp;2.9: Demonstration of Masking in DIP using Hadamard Product
 </div>
 <p>Application 2: Element-wise Scaling in Neural Networks</p>
 <p>The Hadamard product can be used for dropout<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> in neural networks. A simple simulated example is given below.</p>
-<div id="04c59ead" class="cell" data-execution_count="14">
+<div id="a377e900" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated large activations (2D array) using NumPy</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>activations <span class="op">=</span> np.random.rand(<span class="dv">100</span>, <span class="dv">100</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -977,36 +1003,36 @@ Figure&nbsp;2.9: Demonstration of Masking in DIP using Hadamard Product
 <span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dropped_activations)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Original Activations:
-[[0.22997159 0.566567   0.62393762 ... 0.55926448 0.35075384 0.83272353]
- [0.08417326 0.16590482 0.88557629 ... 0.13937374 0.66051563 0.91165041]
- [0.9577843  0.03932388 0.99283802 ... 0.93212702 0.81067419 0.44715559]
+[[0.73373371 0.17983442 0.61977526 ... 0.63266207 0.58431991 0.93313558]
+ [0.77374283 0.3964562  0.55551951 ... 0.5829423  0.45278329 0.0013893 ]
+ [0.17424554 0.58149484 0.85595545 ... 0.31750722 0.17752443 0.54384849]
  ...
- [0.8827783  0.03194161 0.66111555 ... 0.83783487 0.58293216 0.4717197 ]
- [0.76747705 0.42684331 0.00911029 ... 0.98008552 0.52943494 0.97673404]
- [0.39705599 0.96645383 0.82416876 ... 0.73132516 0.21326704 0.00183565]]
+ [0.72148995 0.66113504 0.68688103 ... 0.18051402 0.90885497 0.87582381]
+ [0.88794574 0.87614284 0.16161214 ... 0.48929195 0.38739995 0.38138559]
+ [0.20062066 0.08429577 0.77627954 ... 0.06794874 0.67096381 0.74136791]]
 
 Dropout Mask:
-[[1 1 1 ... 0 1 0]
- [0 0 0 ... 0 0 0]
- [0 1 1 ... 0 0 0]
+[[0 0 1 ... 1 0 1]
+ [1 1 0 ... 0 0 0]
+ [1 1 0 ... 1 0 0]
  ...
- [1 1 1 ... 1 0 0]
- [0 0 0 ... 0 1 0]
- [1 1 0 ... 1 0 0]]
+ [0 0 1 ... 1 1 1]
+ [1 0 0 ... 1 0 1]
+ [1 1 1 ... 0 1 0]]
 
 Dropped Activations:
-[[0.22997159 0.566567   0.62393762 ... 0.         0.35075384 0.        ]
- [0.         0.         0.         ... 0.         0.         0.        ]
- [0.         0.03932388 0.99283802 ... 0.         0.         0.        ]
+[[0.         0.         0.61977526 ... 0.63266207 0.         0.93313558]
+ [0.77374283 0.3964562  0.         ... 0.         0.         0.        ]
+ [0.17424554 0.58149484 0.         ... 0.31750722 0.         0.        ]
  ...
- [0.8827783  0.03194161 0.66111555 ... 0.83783487 0.         0.        ]
- [0.         0.         0.         ... 0.         0.52943494 0.        ]
- [0.39705599 0.96645383 0.         ... 0.73132516 0.         0.        ]]</code></pre>
+ [0.         0.         0.68688103 ... 0.18051402 0.90885497 0.87582381]
+ [0.88794574 0.         0.         ... 0.48929195 0.         0.38138559]
+ [0.20062066 0.08429577 0.77627954 ... 0.         0.67096381 0.        ]]</code></pre>
 </div>
 </div>
 <p>Application 3: Statistical Data Analysis</p>
 <p>In statistics, the Hadamard product can be applied to scale covariance matrices. Here’s how we can compute the covariance matrix using matrix operations and apply scaling. Following <code>Python</code> code demonstrate this.</p>
-<div id="d569e846" class="cell" data-execution_count="15">
+<div id="5d901a71" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1038,18 +1064,150 @@ Dropped Activations:
 <span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(scaled_cov_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Covariance Matrix:
-Matrix([[0.0795758925416919, -0.00794638222470975, 0.0165008550412147, -0.00997527620920743, 0.00460011542198440, 0.00757325228361970, 0.00717541466035020, -0.00580120628514387, 0.00351915321108916, -0.0112812659600408], [-0.00794638222470975, 0.0852718549852332, -0.000763093649804574, 0.0112525829696205, -0.00839168051732014, 0.000258457639536440, 0.00249695793870330, -0.00936971539556939, -0.000344603250849426, -0.00833797759611328], [0.0165008550412147, -0.000763093649804574, 0.0852973202752930, 0.00865787019080873, 0.00504209558646993, 0.00152688930280181, -0.00515632803106354, -0.00884601119283900, -0.0193616330716401, -0.0120539756789492], [-0.00997527620920743, 0.0112525829696205, 0.00865787019080873, 0.0866856060789251, -0.00119381118204788, 0.00135282281011423, -0.0161184154158819, -0.00415108968915755, 0.00121558752532097, -0.00562230186198406], [0.00460011542198440, -0.00839168051732014, 0.00504209558646993, -0.00119381118204788, 0.0746538242482053, -0.00395597166956513, 0.00679579999278287, 0.0152353839511856, 0.0153847762087956, 0.00565275364766329], [0.00757325228361970, 0.000258457639536440, 0.00152688930280181, 0.00135282281011423, -0.00395597166956513, 0.0779619593315443, -0.00768576159250601, 0.00530870498060629, -0.00643348527039134, -0.00651261834173361], [0.00717541466035020, 0.00249695793870330, -0.00515632803106354, -0.0161184154158819, 0.00679579999278287, -0.00768576159250601, 0.0860976441863659, 0.00315068371629884, 0.00386129359497033, -0.00741551583122442], [-0.00580120628514387, -0.00936971539556939, -0.00884601119283900, -0.00415108968915755, 0.0152353839511856, 0.00530870498060629, 0.00315068371629884, 0.0939900798393460, -0.00344949488895629, 0.0275872655855111], [0.00351915321108916, -0.000344603250849426, -0.0193616330716401, 0.00121558752532097, 0.0153847762087956, -0.00643348527039134, 0.00386129359497033, -0.00344949488895629, 0.0794451849597687, 0.00763804942616461], [-0.0112812659600408, -0.00833797759611328, -0.0120539756789492, -0.00562230186198406, 0.00565275364766329, -0.00651261834173361, -0.00741551583122442, 0.0275872655855111, 0.00763804942616461, 0.0853218316126179]])
+Matrix([[0.0752875609152474, 0.0204709051739372, -0.00338044835659810, 0.00654665006210952, -0.00754301807259432, -0.0121039882502813, 0.00739115865469882, -0.0156445058589369, -0.0112803054372167, 0.00691511209683726], [0.0204709051739372, 0.0736468613577077, -0.00222190043653278, 0.00479999913877675, 0.0102042374040673, -0.0142438291596703, 0.00365943820587304, -0.00417077794229056, -0.00770287208059021, 0.0144239798379939], [-0.00338044835659810, -0.00222190043653278, 0.0791260212903711, -0.00468100911216654, 0.0113598752586373, 0.00960631861702054, -0.00536873939587487, -0.00350929873847076, 0.00921737915753649, 0.00418601547008231], [0.00654665006210952, 0.00479999913877675, -0.00468100911216654, 0.0841989430333507, 0.00709374341863279, -0.00157324570067845, 0.0155543009187120, -0.00313386915788777, 0.00626059718886084, 0.00223353695601863], [-0.00754301807259432, 0.0102042374040673, 0.0113598752586373, 0.00709374341863279, 0.0902066393032316, 0.00753955984265907, -0.0168572211829676, -0.00339363441596490, -0.00326305455870224, 0.00584780358233719], [-0.0121039882502813, -0.0142438291596703, 0.00960631861702054, -0.00157324570067845, 0.00753955984265907, 0.0866777375837471, 0.00305882670904624, -0.000611895578957837, -0.0127076421290896, -0.0207247028904669], [0.00739115865469882, 0.00365943820587304, -0.00536873939587487, 0.0155543009187120, -0.0168572211829676, 0.00305882670904624, 0.0854411039073882, 0.0141301786661994, 0.00266503177070544, -0.00746914299337735], [-0.0156445058589369, -0.00417077794229056, -0.00350929873847076, -0.00313386915788777, -0.00339363441596490, -0.000611895578957837, 0.0141301786661994, 0.0883697167966604, 0.00483840400738378, 0.00830176761132793], [-0.0112803054372167, -0.00770287208059021, 0.00921737915753649, 0.00626059718886084, -0.00326305455870224, -0.0127076421290896, 0.00266503177070544, 0.00483840400738378, 0.0784757928489008, 0.0166145954413078], [0.00691511209683726, 0.0144239798379939, 0.00418601547008231, 0.00223353695601863, 0.00584780358233719, -0.0207247028904669, -0.00746914299337735, 0.00830176761132793, 0.0166145954413078, 0.0679593050087647]])
 
 Scaling Factors:
-Matrix([[0.000698608249296129, 0.147538058860979, 0.589841539156663, 0.493167673932408, 0.125170251875081, 0.838949064324447, 0.000509795359597054, 0.800915367090407, 0.849615469823469, 0.931679745099603], [0.506296918121315, 0.532849695230174, 0.366413579843035, 0.898874301205863, 0.814912244047332, 0.823560535604451, 0.104084628033813, 0.461262010561649, 0.660852824326496, 0.603226649537755], [0.678467185770659, 0.302247467712144, 0.818394166019331, 0.250971455211650, 0.321814534219137, 0.374322986948765, 0.790735818288110, 0.183238161930086, 0.750623339493345, 0.115868774205285], [0.997023364135551, 0.556988278332896, 0.223173950905379, 0.788637280042159, 0.637425573692701, 0.623097612733834, 0.0566324255079430, 0.979526518142176, 0.593961746043548, 0.826344172187031], [0.979380064450179, 0.246087085362555, 0.477526994723338, 0.597066263068252, 0.891243422484830, 0.353185224499699, 0.226255124463476, 0.556028566326306, 0.938225477533058, 0.650867190957659], [0.274418824457571, 0.833579653834722, 0.865836109328798, 0.249250997536120, 0.560931257096136, 0.581676529515191, 0.867290382323977, 0.924187372395245, 0.823281268227876, 0.356403329876314], [0.861484425620119, 0.227617379757503, 0.585383202982823, 0.226561293330172, 0.455767592108116, 0.783654919292573, 0.642772741805418, 0.136401483950031, 0.115513982135261, 0.868947118747339], [0.961768583942005, 0.0405451486087185, 0.769562054041545, 0.643782737949846, 0.856602984835971, 0.754096871085610, 0.895138186668232, 0.967546192201322, 0.365963178435534, 0.0478576455886517], [0.925933264850842, 0.929882522793427, 0.306490625644005, 0.814431125614851, 0.473876153839766, 0.897818339812642, 0.951591820969016, 0.859289018657691, 0.221663941996671, 0.381810284358447], [0.210119731514415, 0.613739895140120, 0.952988343774382, 0.00143361876738957, 0.401646569667403, 0.239178446124514, 0.527246140493292, 0.847306737975913, 0.450513747643559, 0.102001628292168]])
+Matrix([[0.843461482835600, 0.759557221614111, 0.198442953645009, 0.835492213654348, 0.948913315673660, 0.604255766417671, 0.291100937804408, 0.613193833902407, 0.910356811596380, 0.159759047168486], [0.0445800498596466, 0.322361698765019, 0.826220995402034, 0.797003126794477, 0.714813470332744, 0.266873197588188, 0.611165238708129, 0.447366978084153, 0.981465690230604, 0.221669960303076], [0.121460857159853, 0.340417162224007, 0.00824989605380566, 0.317174685799284, 0.270964585386441, 0.813316840486262, 0.313532253808257, 0.979825379729307, 0.691328164315131, 0.601021947013035], [0.819100779568661, 0.334202259576491, 0.897041728111001, 0.719752867613352, 0.0711052427650168, 0.0530023643080570, 0.687898008636725, 0.778062589443364, 0.0855683083342432, 0.651104416242512], [0.474231796181113, 0.355058899814792, 0.506929195706924, 0.185025054775504, 0.370613194244551, 0.285047095903980, 0.708097002503775, 0.567493083908326, 0.108477386989337, 0.354224890232546], [0.509724709214086, 0.368223048786836, 0.869519354849790, 0.195291456690164, 0.958909822388794, 0.297447695771989, 0.724912734535072, 0.821300607411575, 0.531377030770255, 0.200314375206407], [0.316668588668511, 0.275121641537186, 0.0674909339366736, 0.940047603915421, 0.384082769867746, 0.252736815746884, 0.184823465802744, 0.760530405839848, 0.376855607450698, 0.674934996846060], [0.356765710792225, 0.934295068885800, 0.187904152080262, 0.751594415654335, 0.480061496900696, 0.615502507767589, 0.554403470113527, 0.0849607140254535, 0.331637372447631, 0.799183646714448], [0.563131052983210, 0.965201680538604, 0.0900195610492295, 0.992919198595652, 0.865232274171802, 0.335520879107920, 0.589221706109361, 0.103959275429233, 0.440381610697401, 0.833093817622852], [0.710575703314534, 0.965478301128981, 0.998635329756145, 0.719020729253176, 0.204477510523891, 0.711375188278829, 0.558282503419059, 0.845420830773078, 0.283257370905971, 0.770439054149571]])
 
 Scaled Covariance Matrix:
-Matrix([[0.00535574758100759, 0.0121290875056354, 0.0541210123592927, 0.0337509320084198, 0.00622209755372175, 0.0679164503662556, 0.0161254459205048, 0.0517087086364221, 0.0737729136637214, 0.0748582619858058], [0.0367895003762547, 0.0432026271383086, 0.0108604459944408, 0.0707075473186029, 0.0576871714368397, 0.0600596845632741, -0.00427551072101028, 0.0233375303041573, 0.0410777828101972, 0.0486143568189977], [0.0380755722363250, 0.00821031694522523, 0.0576746551781652, 0.0164287875971822, 0.0158183805571325, 0.0222295067440278, 0.0343194712961251, 0.00507591214685743, 0.0751161740821418, 0.0222508721050437], [0.0792599247287593, 0.0501003770083542, 0.00765663964834279, 0.0700137039704459, 0.0530737471717372, 0.0425031815316397, -0.00205924670137889, 0.0743505877486096, 0.0512970545582456, 0.0555204832137184], [0.105954465210115, 0.0320798520460579, 0.0615275192910258, 0.0625226372356245, 0.0846235383884178, 0.0541365173458551, 0.0521344401530796, 0.0710991545633020, 0.0805410352654638, 0.0590862512544510], [0.0111998908464120, 0.0549704465282178, 0.0631344394400822, 0.0189148044647573, 0.0380979167452310, 0.0425788839882945, 0.0582913622777651, 0.0706831454706230, 0.0657227076660708, 0.0241725332859947], [0.0654660943107920, 0.00588297524347855, 0.0408620372227224, 0.0185881946757081, 0.0335355662070077, 0.0655721459617836, 0.0480713215959770, -0.00133199546043575, 0.00296436550717442, 0.0716415073157931], [0.0972032650879317, 0.0155918908068569, 0.0962595140530569, 0.0520959571355019, 0.0940956940290707, 0.0668355512226450, 0.0972651789448720, 0.110502613240924, 0.0448630444768877, 0.00502893287587017], [0.0763804699186412, 0.0728853249598920, 0.0193855300027456, 0.0684750720963466, 0.0443264810615919, 0.0714488515495478, 0.0616466955776639, 0.0748384171654116, 0.0183235593129507, 0.0438547227593814], [0.0308801806971775, 0.0419786689217348, 0.0767724160488224, 0.00365740241973957, 0.0438553985394108, 0.0161186611259273, 0.0570889471096762, 0.0810644604065994, 0.0218305648664999, -0.0137289579825114]])</code></pre>
+Matrix([[0.0549402297459667, 0.0408917097478584, 0.0267994751061075, 0.0680592658949050, 0.0582039843019759, 0.0361765187750496, 0.0136620859752957, 0.0518492259607449, 0.0741914075333091, 0.00211579335655054], [0.0273725937726413, 0.0421170156709337, 0.0751600588868140, 0.0806846083064577, 0.0576193123738856, 0.0351773696511533, 0.0523528428970903, 0.0549721103403071, 0.0840198357640002, 0.0259791976489145], [0.0183229224840948, 0.0378406050381389, 0.0120469407205536, 0.0255877995140750, 0.0348176218266922, 0.0701198672165126, 0.0390843619114720, 0.0852729514295636, 0.0574380642892846, 0.0539001852780745], [0.0856169835867082, 0.0445558004859266, 0.0862393746197494, 0.0895069126636786, 0.0258256080837801, 0.0131382183377970, 0.0712477553333110, 0.0839231341992957, 0.0227851288162082, 0.0712465273622842], [0.0436737826450440, 0.0332908323114805, 0.0694460672854549, 0.0112698987080783, 0.0346492338027794, 0.0324521821347407, 0.0781677397675489, 0.0654695414521228, 0.0181416517177383, 0.0336642086854939], [0.0156589827636788, -0.00845206465131266, 0.0419385841526106, -0.0263318096285226, 0.0523824812310253, 0.00593535317021539, 0.0390416263959149, 0.0532934188176180, 0.0178673232481678, -0.00528667930459530], [0.0403417208059922, 0.0373748168891954, 0.0137156589699005, 0.104277179057996, 0.0463446793810582, 0.0238775075262107, 0.0247111726992897, 0.0661005302516584, 0.0436793577015108, 0.0689597163791767], [0.0263296221214914, 0.0822364984647699, 0.0146416086771610, 0.0699634501835569, 0.0328891080052521, 0.0507560771988308, 0.0458838717329990, 0.00601162555509578, 0.0173909440527746, 0.0816892246756436], [0.0469330620214850, 0.0853807915481920, 0.00913090927379175, 0.0847884748711108, 0.0479812060000249, 0.0360476927504046, 0.0463729389647042, 0.0158935026532173, 0.0238466486312176, 0.0862488725335494], [0.0592658712061852, 0.0938696554508740, 0.0706896910954049, 0.0818227169168568, 0.0298477507232661, 0.0641943323368476, 0.0537467654097629, 0.0570361562872056, 0.0396637388085342, 0.0739857197001195]])</code></pre>
 </div>
 </div>
 </section>
-<section id="inner-product-of-matrices" class="level4" data-number="2.2.2.2">
-<h4 data-number="2.2.2.2" class="anchored" data-anchor-id="inner-product-of-matrices"><span class="header-section-number">2.2.2.2</span> Inner Product of Matrices</h4>
+<section id="practice-problems" class="level4" data-number="2.2.2.2">
+<h4 data-number="2.2.2.2" class="anchored" data-anchor-id="practice-problems"><span class="header-section-number">2.2.2.2</span> Practice Problems</h4>
+<p><strong>Problem 1: Basic Hadamard Product</strong></p>
+<p>Given matrices: <span class="math display">\[A=\begin{bmatrix}1&amp;2\\3&amp;4\end{bmatrix}\]</span> <span class="math display">\[B=\begin{bmatrix}5&amp;6\\7&amp;8\end{bmatrix}\]</span></p>
+<p>Find the Hadamard product <span class="math inline">\(C=A\circ B\)</span>.</p>
+<p><strong>Solution:</strong></p>
+<p><span class="math display">\[C=\begin{bmatrix}
+1\cdot5&amp;2\cdot6\\
+3\cdot7&amp;4\cdot8
+\end{bmatrix}=
+\begin{bmatrix}
+5&amp;12\\
+21&amp;32
+\end{bmatrix}\]</span></p>
+<p><strong>Problem 2: Hadamard Product with Identity Matrix</strong></p>
+<p>Given matrices: <span class="math display">\[A=\begin{bmatrix}1&amp;2&amp;3\\4&amp;5&amp;6\end{bmatrix}\]</span> <span class="math display">\[I=\begin{bmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\end{bmatrix}\]</span></p>
+<p>Find the Hadamard product <span class="math inline">\(C=A\circ I\)</span>.</p>
+<p><strong>Solution:</strong></p>
+<p><span class="math display">\[C=\begin{bmatrix}
+1\cdot1&amp;2\cdot0&amp;3\cdot0\\
+4\cdot0&amp;5\cdot1&amp;6\cdot0
+\end{bmatrix}=
+\begin{bmatrix}
+1&amp;0&amp;0\\
+0&amp;5&amp;0
+\end{bmatrix}\]</span></p>
+<p><strong>Problem 3: Hadamard Product with Zero Matrix</strong></p>
+<p>Given matrices: <span class="math display">\[A=\begin{bmatrix}3&amp;4\\5&amp;6\end{bmatrix}\]</span> <span class="math display">\[Z=\begin{bmatrix}0&amp;0\\0&amp;0\end{bmatrix}\]</span></p>
+<p>Find the Hadamard product <span class="math inline">\(C=A\circ Z\)</span>.</p>
+<p><strong>Solution:</strong></p>
+<p><span class="math display">\[C=\begin{bmatrix}
+3\cdot0&amp;4\cdot0\\
+5\cdot0&amp;6\cdot0
+\end{bmatrix}=
+\begin{bmatrix}
+0&amp;0\\
+0&amp;0
+\end{bmatrix}\]</span></p>
+<p><strong>Problem 4: Hadamard Product of Two Identity Matrices</strong></p>
+<p>Given identity matrices: <span class="math display">\[I_2=\begin{bmatrix}1&amp;0\\0&amp;1\end{bmatrix}\]</span> <span class="math display">\[I_3=\begin{bmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\end{bmatrix}\]</span></p>
+<p>Find the Hadamard product <span class="math inline">\(C=I_2\circ I_3\)</span> (extend <span class="math inline">\(I_2\)</span> to match dimensions of <span class="math inline">\(I_3\)</span>).</p>
+<p><strong>Solution:</strong></p>
+<p>Extend <span class="math inline">\(I_2\)</span> to <span class="math inline">\(I_3\)</span>: <span class="math display">\[I_2=\begin{bmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;0\end{bmatrix}\]</span></p>
+<p><span class="math display">\[C=\begin{bmatrix}
+1\cdot1&amp;0\cdot0&amp;0\cdot0\\
+0\cdot0&amp;1\cdot1&amp;0\cdot0\\
+0\cdot0&amp;0\cdot0&amp;0\cdot1
+\end{bmatrix}=
+\begin{bmatrix}
+1&amp;0&amp;0\\
+0&amp;1&amp;0\\
+0&amp;0&amp;0
+\end{bmatrix}\]</span></p>
+<p><strong>Problem 5: Hadamard Product with Random Matrices</strong></p>
+<p>Given random matrices: <span class="math display">\[A=\begin{bmatrix}2&amp;3\\1&amp;4\end{bmatrix}\]</span> <span class="math display">\[B=\begin{bmatrix}0&amp;5\\6&amp;2\end{bmatrix}\]</span></p>
+<p>Find the Hadamard product <span class="math inline">\(C=A\circ B\)</span>.</p>
+<p><strong>Solution:</strong></p>
+<p><span class="math display">\[C=\begin{bmatrix}
+2\cdot0&amp;3\cdot5\\
+1\cdot6&amp;4\cdot2
+\end{bmatrix}=
+\begin{bmatrix}
+0&amp;15\\
+6&amp;8
+\end{bmatrix}\]</span></p>
+<p><strong>Problem 6: Hadamard Product of 3x3 Matrices</strong></p>
+<p>Given matrices: <span class="math display">\[A=\begin{bmatrix}1&amp;2&amp;3\\4&amp;5&amp;6\\7&amp;8&amp;9\end{bmatrix}\]</span> <span class="math display">\[B=\begin{bmatrix}9&amp;8&amp;7\\6&amp;5&amp;4\\3&amp;2&amp;1\end{bmatrix}\]</span></p>
+<p>Find the Hadamard product <span class="math inline">\(C=A\circ B\)</span>.</p>
+<p><strong>Solution:</strong></p>
+<p><span class="math display">\[C=\begin{bmatrix}
+1\cdot9&amp;2\cdot8&amp;3\cdot7\\
+4\cdot6&amp;5\cdot5&amp;6\cdot4\\
+7\cdot3&amp;8\cdot2&amp;9\cdot1
+\end{bmatrix}=
+\begin{bmatrix}
+9&amp;16&amp;21\\
+24&amp;25&amp;24\\
+21&amp;16&amp;9
+\end{bmatrix}\]</span></p>
+<p><strong>Problem 7: Hadamard Product of Column Vectors</strong></p>
+<p>Given column vectors: <span class="math display">\[u=\begin{bmatrix}2\\3\end{bmatrix}\]</span> <span class="math display">\[v=\begin{bmatrix}5\\6\end{bmatrix}\]</span></p>
+<p>Find the Hadamard product <span class="math inline">\(w=u\circ v\)</span>.</p>
+<p><strong>Solution:</strong></p>
+<p><span class="math display">\[w=\begin{bmatrix}
+2\cdot5\\
+3\cdot6
+\end{bmatrix}=
+\begin{bmatrix}
+10\\
+18
+\end{bmatrix}\]</span></p>
+<p><strong>Problem 8: Hadamard Product with Non-Square Matrices</strong></p>
+<p>Given matrices: <span class="math display">\[A=\begin{bmatrix}1&amp;2\\3&amp;4\\5&amp;6\end{bmatrix}\]</span> <span class="math display">\[B=\begin{bmatrix}7&amp;8\\9&amp;10\end{bmatrix}\]</span></p>
+<p>Find the Hadamard product <span class="math inline">\(C=A\circ B\)</span> (extend <span class="math inline">\(B\)</span> to match dimensions of <span class="math inline">\(A\)</span>).</p>
+<p><strong>Solution:</strong></p>
+<p>Extend <span class="math inline">\(B\)</span> to match dimensions of <span class="math inline">\(A\)</span>: <span class="math display">\[B=\begin{bmatrix}7&amp;8\\9&amp;10\\7&amp;8\end{bmatrix}\]</span></p>
+<p><span class="math display">\[C=\begin{bmatrix}
+1\cdot7&amp;2\cdot8\\
+3\cdot9&amp;4\cdot10\\
+5\cdot7&amp;6\cdot8
+\end{bmatrix}=
+\begin{bmatrix}
+7&amp;16\\
+27&amp;40\\
+35&amp;48
+\end{bmatrix}\]</span></p>
+<p><strong>Problem 9: Hadamard Product in Image Processing</strong></p>
+<p>Given matrices representing image pixel values: <span class="math display">\[A=\begin{bmatrix}10&amp;20\\30&amp;40\end{bmatrix}\]</span> <span class="math display">\[B=\begin{bmatrix}0.5&amp;1.5\\2.0&amp;0.5\end{bmatrix}\]</span></p>
+<p>Find the Hadamard product <span class="math inline">\(C=A\circ B\)</span>.</p>
+<p><strong>Solution:</strong></p>
+<p><span class="math display">\[C=\begin{bmatrix}
+10\cdot0.5&amp;20\cdot1.5\\
+30\cdot2.0&amp;40\cdot0.5
+\end{bmatrix}=
+\begin{bmatrix}
+5&amp;30\\
+60&amp;20
+\end{bmatrix}\]</span></p>
+<p><strong>Problem 10: Hadamard Product in Statistical Data</strong></p>
+<p>Given matrices representing two sets of statistical data:</p>
+<p><span class="math display">\[A=\begin{bmatrix}5&amp;6&amp;7\\8&amp;9&amp;10\end{bmatrix}\]</span> <span class="math display">\[B=\begin{bmatrix}1&amp;2&amp;3\\4&amp;5&amp;6\end{bmatrix}\]</span></p>
+<p>Find the Hadamard product <span class="math inline">\(C=A\circ B\)</span>.</p>
+<p><strong>Solution:</strong></p>
+<p><span class="math display">\[C=\begin{bmatrix}
+5\cdot1&amp;6\cdot2&amp;7\cdot3\\
+8\cdot4&amp;9\cdot5&amp;10\cdot6
+\end{bmatrix}=
+\begin{bmatrix}
+5&amp;12&amp;21\\
+32&amp;45&amp;60
+\end{bmatrix}\]</span></p>
+</section>
+<section id="inner-product-of-matrices" class="level4" data-number="2.2.2.3">
+<h4 data-number="2.2.2.3" class="anchored" data-anchor-id="inner-product-of-matrices"><span class="header-section-number">2.2.2.3</span> Inner Product of Matrices</h4>
 <p>The inner product of two matrices is a generalized extension of the dot product, where each matrix is treated as a vector in a high-dimensional space. For two matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of the same dimension <span class="math inline">\(m \times n\)</span>, the inner product is defined as the sum of the element-wise products of the matrices.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1118,7 +1276,7 @@ B = \begin{pmatrix}
 <li>Compute Inner Product from Scratch (without Libraries)</li>
 </ol>
 <p>Here’s how you can compute the inner product from the scratch:</p>
-<div id="54e4ea04" class="cell" data-execution_count="16">
+<div id="c4fc2072" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]]</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]</span>
@@ -1154,7 +1312,7 @@ B = \begin{pmatrix}
 <li>Compute Inner Product Using <code>NumPy</code></li>
 </ol>
 <p>Here’s how to compute the inner product using Numpy:</p>
-<div id="4e41a4c0" class="cell" data-execution_count="17">
+<div id="083ca0f0" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
@@ -1170,7 +1328,7 @@ B = \begin{pmatrix}
 </div>
 </div>
 <p>The same operation can be done using <code>SymPy</code> functions as follows.</p>
-<div id="eb869d25" class="cell" data-execution_count="18">
+<div id="450793f4" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np  </span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
@@ -1193,7 +1351,7 @@ B = \begin{pmatrix}
 </div>
 <p>A vector dot product (in Physics) can be calculated using <code>SymPy</code> <code>.dot()</code> function as shown below.</p>
 <p>Let <span class="math inline">\(A=\begin{pmatrix}1&amp;2&amp;3\end{pmatrix}\)</span> and <span class="math inline">\(B=\begin{pmatrix}4&amp;5&amp;6\end{pmatrix}\)</span>, then the dot product, <span class="math inline">\(A\cdot B\)</span> is computed as:</p>
-<div id="ecdc4855" class="cell" data-execution_count="19">
+<div id="df79f5e4" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>sp.Matrix([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>B<span class="op">=</span>sp.Matrix([<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
@@ -1216,7 +1374,7 @@ A word of caution
 </div>
 </div>
 <p>The same dot product using <code>numpy</code> object can be done as follows:</p>
-<div id="161114f1" class="cell" data-execution_count="20">
+<div id="db90f654" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>B<span class="op">=</span>np.array([<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
@@ -1230,7 +1388,7 @@ A word of caution
 <p>In signal processing, the inner product can be used to measure the similarity between two signals. Here the most popular measure of similarity is the <code>cosine</code> similarity. This measure is defined as:</p>
 <p><span class="math display">\[\cos \theta=\dfrac{A\cdot B}{||A|| ||B||}\]</span></p>
 <p>Now consider two digital signals are given. It’s cosine similarity measure can be calculated with a simulated data as shown below.</p>
-<div id="ff2b2c5b" class="cell" data-execution_count="21">
+<div id="691baf23" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated large signals (1D array) using NumPy</span></span>
@@ -1248,14 +1406,14 @@ A word of caution
 <span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cosine_sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Inner Product (Using numpy):
-378.92096041969756
+374.59446014080385
 Similarity of signals:
-0.8573147544454834</code></pre>
+0.8618845952225159</code></pre>
 </div>
 </div>
 <p>Application 2: Machine Learning - Feature Similarity</p>
 <p>In machine learning, the inner product is used to calculate the similarity between feature vectors.</p>
-<div id="a757c819" class="cell" data-execution_count="22">
+<div id="a85ca1f6" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated feature vectors (2D array) using NumPy</span></span>
@@ -1272,31 +1430,31 @@ Similarity of signals:
 <pre><code>Inner Products of Feature Vectors:</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<pre><code>array([3.15664945, 2.00180102, 3.36586838, 2.76939548, 2.50277022,
-       2.00611298, 2.80986918, 1.87380046, 2.53044718, 2.66885576,
-       2.96770966, 2.58334676, 3.96112403, 3.04008642, 1.6460004 ,
-       2.31931556, 2.36572503, 2.25365152, 3.4230059 , 2.73648559,
-       1.8786891 , 3.45148184, 2.08891693, 2.44640939, 2.1615364 ,
-       2.45264108, 2.69543312, 0.78422069, 3.12958454, 2.35208282,
-       2.85440938, 3.80918786, 2.87513844, 2.90711334, 3.2600298 ,
-       4.1641631 , 3.27405885, 1.90848855, 2.40973486, 3.69808316,
-       2.3824568 , 2.55677319, 2.98230012, 2.48157572, 2.66365897,
-       1.11314587, 2.37694361, 2.79121176, 1.28502581, 3.4325152 ,
-       1.88465332, 1.5065408 , 2.71731619, 3.117934  , 2.61315028,
-       3.20550503, 3.16089709, 4.63613086, 3.66033093, 2.3612081 ,
-       2.42557008, 3.0072074 , 1.55527446, 3.89876278, 1.79637968,
-       3.24860133, 2.77940727, 1.40007361, 2.78149855, 2.14988155,
-       3.11558643, 1.98116562, 2.21314071, 1.76439012, 2.57730876,
-       2.44542099, 1.8887732 , 4.08637645, 2.74477935, 2.75930606,
-       2.38930671, 2.34214379, 2.15994021, 1.39793488, 1.21802357,
-       1.67754977, 2.51500577, 2.21484661, 2.96775757, 2.8994733 ,
-       3.21085764, 2.84043598, 2.63716796, 2.23077826, 2.45629603,
-       3.51142728, 3.90451442, 2.0778789 , 1.98015864, 3.26485185])</code></pre>
+<pre><code>array([4.04708955, 2.63928147, 2.53541479, 2.17195973, 2.56282959,
+       3.52058475, 2.71822347, 1.97695072, 2.48154926, 2.66416364,
+       3.43749876, 1.7620313 , 1.97646538, 2.58452245, 1.74511704,
+       3.25149421, 2.65699156, 2.55314098, 2.2909943 , 1.41057648,
+       3.19112566, 2.94601671, 2.94791944, 3.26962097, 3.18318141,
+       3.43656067, 2.81350389, 2.06540687, 1.91330471, 3.25592547,
+       4.85398004, 1.0077513 , 2.05652018, 2.92140888, 3.1203475 ,
+       3.01840941, 1.82408078, 2.88940953, 3.03978876, 1.87104664,
+       2.92841364, 2.47046367, 1.56900642, 2.98763903, 2.48010091,
+       3.2786198 , 1.25601258, 2.61791716, 3.23785519, 2.34166193,
+       2.52703326, 1.67668467, 2.31032531, 2.14715089, 1.61356354,
+       2.52383673, 2.33870964, 3.49936444, 2.44283606, 1.855816  ,
+       2.61279193, 3.0207745 , 2.33596097, 1.65129136, 2.07615616,
+       3.16240907, 2.13480593, 1.80706258, 2.74041855, 2.68539728,
+       3.42610914, 3.2211547 , 2.65591272, 1.98446089, 2.97947327,
+       3.159157  , 3.5844027 , 2.43444525, 3.24059184, 4.26326879,
+       1.80291139, 1.85950223, 3.25339973, 1.91635669, 1.81208023,
+       3.43314002, 3.47376785, 3.03893134, 1.82226842, 2.56777389,
+       3.10426649, 2.07400912, 2.04057591, 2.07281971, 2.04683387,
+       2.95782436, 1.94891489, 0.9088703 , 3.0124441 , 2.16246566])</code></pre>
 </div>
 </div>
 <p>Application 3: Covariance Matrix in Statistics</p>
 <p>The inner product can be used to compute covariance matrices for statistical data analysis. If <span class="math inline">\(X\)</span> is a given distribution and <span class="math inline">\(x=X-\bar{X}\)</span>. Then the covariance of <span class="math inline">\(X\)</span> can be calculated as <span class="math inline">\(cov(X)=\dfrac{1}{n-1}(x\cdot x^T)\)</span> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The python code a simulated data is shown below.</p>
-<div id="0ed1debb" class="cell" data-execution_count="23">
+<div id="36f0def0" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1320,13 +1478,13 @@ Similarity of signals:
 <pre><code>Covariance Matrix:</code></pre>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.0794986962247183 &amp; -0.00809946396242862 &amp; -0.00348272497283826 &amp; 8.91948556551664 \cdot 10^{-5} &amp; -0.0021079628018671 &amp; 0.00736775733945938 &amp; 0.000454387479845285 &amp; 0.00591500734940787 &amp; 0.00195069165653085 &amp; 0.0065124455786281\\-0.00809946396242862 &amp; 0.0800640343453701 &amp; -0.00493718453286232 &amp; -0.00536449254932995 &amp; 0.00195284199787805 &amp; 0.00431606478295968 &amp; 0.00137660972227023 &amp; -0.0148635686250851 &amp; -0.00160945561370558 &amp; 0.0117372390394342\\-0.00348272497283826 &amp; -0.00493718453286232 &amp; 0.0847649314191853 &amp; -0.0133077286410372 &amp; -0.00233736234962505 &amp; -0.00938854178794557 &amp; -0.00805037074900846 &amp; 0.0135438394992375 &amp; -0.0051338345178543 &amp; -0.00785999293014563\\8.91948556551664 \cdot 10^{-5} &amp; -0.00536449254932995 &amp; -0.0133077286410372 &amp; 0.0926010215176519 &amp; -0.00855016563193335 &amp; -0.00836574758569507 &amp; 0.011099910140588 &amp; 0.00847928851647991 &amp; -0.0105773770341401 &amp; 0.000415349017730401\\-0.0021079628018671 &amp; 0.00195284199787805 &amp; -0.00233736234962505 &amp; -0.00855016563193335 &amp; 0.0765839938601464 &amp; -0.000195672994368351 &amp; 0.00692566592088411 &amp; -0.00356880350182771 &amp; 0.00322585183810443 &amp; 0.00512526699201428\\0.00736775733945938 &amp; 0.00431606478295968 &amp; -0.00938854178794557 &amp; -0.00836574758569507 &amp; -0.000195672994368351 &amp; 0.0786833583525202 &amp; -0.0025248645592039 &amp; -0.000861027028735494 &amp; -0.00868999947815713 &amp; 0.00602770972634574\\0.000454387479845285 &amp; 0.00137660972227023 &amp; -0.00805037074900846 &amp; 0.011099910140588 &amp; 0.00692566592088411 &amp; -0.0025248645592039 &amp; 0.0858368332354103 &amp; 0.0050650075268386 &amp; 0.00642610179380155 &amp; 0.00178098874581631\\0.00591500734940787 &amp; -0.0148635686250851 &amp; 0.0135438394992375 &amp; 0.00847928851647991 &amp; -0.00356880350182771 &amp; -0.000861027028735494 &amp; 0.0050650075268386 &amp; 0.0877575142236589 &amp; 0.00578758219460693 &amp; -0.0103880809288969\\0.00195069165653085 &amp; -0.00160945561370558 &amp; -0.0051338345178543 &amp; -0.0105773770341401 &amp; 0.00322585183810443 &amp; -0.00868999947815713 &amp; 0.00642610179380155 &amp; 0.00578758219460693 &amp; 0.087050851981918 &amp; -0.0111685174276049\\0.0065124455786281 &amp; 0.0117372390394342 &amp; -0.00785999293014563 &amp; 0.000415349017730401 &amp; 0.00512526699201428 &amp; 0.00602770972634574 &amp; 0.00178098874581631 &amp; -0.0103880809288969 &amp; -0.0111685174276049 &amp; 0.0782840832334603\end{matrix}\right]\)</span></p>
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.0833442319601044 &amp; 0.00344883957561026 &amp; -0.00854286818416142 &amp; 0.00172339111490955 &amp; 0.00201343458981759 &amp; -0.0190355213166409 &amp; -0.00813296493322645 &amp; -0.00232460350376573 &amp; -0.00092605864320129 &amp; 0.00343138911867467\\0.00344883957561026 &amp; 0.0766081818424512 &amp; 0.00283985783508132 &amp; -0.00271648555655586 &amp; -0.00342957394919626 &amp; -0.00545208741097196 &amp; 0.00199493065821228 &amp; 0.0063633126374467 &amp; 0.00260906784645645 &amp; -0.00908564667974872\\-0.00854286818416142 &amp; 0.00283985783508132 &amp; 0.0856410968237151 &amp; -0.00723570624490213 &amp; -0.00760769800367462 &amp; 0.0138415679528151 &amp; 0.00305594373870077 &amp; -0.00528489473271367 &amp; 0.0142275536686283 &amp; -0.00238132220898133\\0.00172339111490955 &amp; -0.00271648555655586 &amp; -0.00723570624490213 &amp; 0.0770309678374639 &amp; 0.0009455020858707 &amp; -0.0100844615707339 &amp; -0.00548948488615893 &amp; 0.00262647477648263 &amp; -0.000168346333024942 &amp; -0.00440503168543343\\0.00201343458981759 &amp; -0.00342957394919626 &amp; -0.00760769800367462 &amp; 0.0009455020858707 &amp; 0.0708078486553861 &amp; -0.0119107949234972 &amp; 0.00571537500004625 &amp; 0.0121793888654297 &amp; 0.00352652609072728 &amp; -0.00615323874947273\\-0.0190355213166409 &amp; -0.00545208741097196 &amp; 0.0138415679528151 &amp; -0.0100844615707339 &amp; -0.0119107949234972 &amp; 0.0939408490357878 &amp; -0.00215853550556312 &amp; 0.00648656898370308 &amp; 0.00467713399980029 &amp; 0.000585238884019026\\-0.00813296493322645 &amp; 0.00199493065821228 &amp; 0.00305594373870077 &amp; -0.00548948488615893 &amp; 0.00571537500004625 &amp; -0.00215853550556312 &amp; 0.062138933433018 &amp; 0.00924214948231508 &amp; -0.00899618872255915 &amp; -0.00867052993526398\\-0.00232460350376573 &amp; 0.0063633126374467 &amp; -0.00528489473271367 &amp; 0.00262647477648263 &amp; 0.0121793888654297 &amp; 0.00648656898370308 &amp; 0.00924214948231508 &amp; 0.0731236339069208 &amp; -0.00539809888090055 &amp; -0.0142582541311912\\-0.00092605864320129 &amp; 0.00260906784645645 &amp; 0.0142275536686283 &amp; -0.000168346333024942 &amp; 0.00352652609072728 &amp; 0.00467713399980029 &amp; -0.00899618872255915 &amp; -0.00539809888090055 &amp; 0.0766399855909815 &amp; 0.00470461373091696\\0.00343138911867467 &amp; -0.00908564667974872 &amp; -0.00238132220898133 &amp; -0.00440503168543343 &amp; -0.00615323874947273 &amp; 0.000585238884019026 &amp; -0.00867052993526398 &amp; -0.0142582541311912 &amp; 0.00470461373091696 &amp; 0.0860626690078952\end{matrix}\right]\)</span></p>
 </div>
 </div>
 <p>These examples demonstrate the use of inner product and dot product in various applications.</p>
 </section>
-<section id="outer-product" class="level4" data-number="2.2.2.3">
-<h4 data-number="2.2.2.3" class="anchored" data-anchor-id="outer-product"><span class="header-section-number">2.2.2.3</span> Outer Product</h4>
+<section id="outer-product" class="level4" data-number="2.2.2.4">
+<h4 data-number="2.2.2.4" class="anchored" data-anchor-id="outer-product"><span class="header-section-number">2.2.2.4</span> Outer Product</h4>
 <p>The outer product of two vectors results in a matrix, and it is a way to combine these vectors into a higher-dimensional representation.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1401,7 +1559,7 @@ Properties
 \end{pmatrix}\]</span></p>
 <p><strong>1. Compute Outer Product of Vectors from Scratch (without Libraries)</strong></p>
 <p>Here’s how you can compute the outer product manually:</p>
-<div id="e67d4e23" class="cell" data-execution_count="24">
+<div id="3ce4a5a9" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define vectors u and v</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
@@ -1427,7 +1585,7 @@ Properties
 </div>
 <p><strong>2. Compute Outer Product of Vectors Using SymPy</strong></p>
 <p>Here’s how to compute the outer product using <code>SymPy</code>:</p>
-<div id="c41c07eb" class="cell" data-execution_count="25">
+<div id="9743292f" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define vectors u and v</span></span>
@@ -1545,7 +1703,7 @@ B = \begin{pmatrix}
 \end{bmatrix}\]</span></p>
 <p><strong>1. Compute Outer Product of Matrices from Scratch (without Libraries)</strong></p>
 <p>Here’s how you can compute the outer product manually:</p>
-<div id="b348fe89" class="cell" data-execution_count="26">
+<div id="6fccae7f" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]]</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [[<span class="dv">5</span>], [<span class="dv">6</span>]]</span>
@@ -1582,7 +1740,7 @@ B = \begin{pmatrix}
 </div>
 </div>
 <p>Here is the <code>Python</code> code to compute the outer product of these vectors using the <code>NumPy</code> function <code>.outer()</code>:</p>
-<div id="2e1658d3" class="cell" data-execution_count="27">
+<div id="0f823321" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define vectors</span></span>
@@ -1617,7 +1775,7 @@ B = \begin{pmatrix}
 10 &amp; 25 &amp; 20
 \end{bmatrix}\]</span></p>
 <p>The python code for this task is given below.</p>
-<div id="a0bce6fc" class="cell" data-execution_count="28">
+<div id="5856256e" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1684,7 +1842,7 @@ Additional Properties &amp; Definitions
 <li><p><strong>Associativity with Scalar Multiplication</strong></p>
 <p>The outer product is associative with scalar multiplication. For a scalar <span class="math inline">\(\alpha\)</span> and vectors <span class="math inline">\(\mathbf{u} \in \mathbb{R}^m\)</span> and <span class="math inline">\(\mathbf{v} \in \mathbb{R}^n\)</span>: <span class="math display">\[\alpha (\mathbf{u} \otimes \mathbf{v}) = (\alpha \mathbf{u}) \otimes \mathbf{v} = \mathbf{u} \otimes (\alpha \mathbf{v})\]</span></p></li>
 <li><p><strong>Matrix Trace</strong></p>
-<p>The trace of the outer product of two vectors is given by: <span class="math display">\[\text{tr}(\mathbf{u} \otimes \mathbf{v}) = (\mathbf{u}^T \mathbf{v}) \cdot (\mathbf{v}^T \mathbf{u})\]</span> Here, <span class="math inline">\(\text{tr}\)</span> denotes the trace of a matrix, which is the sum of its diagonal elements.</p></li>
+<p>The trace of the outer product of two vectors is given by: <span class="math display">\[\text{tr}(\mathbf{u} \otimes \mathbf{v}) = (\mathbf{u}^T \mathbf{v})= (\mathbf{v}^T \mathbf{u})\]</span> Here, <span class="math inline">\(\text{tr}\)</span> denotes the trace of a matrix, which is the sum of its diagonal elements.</p></li>
 <li><p><strong>Matrix Norm</strong></p>
 <p>The Frobenius norm of the outer product matrix can be expressed in terms of the norms of the original vectors: <span class="math display">\[\| \mathbf{u} \otimes \mathbf{v} \|_F = \| \mathbf{u} \|_2 \cdot \| \mathbf{v} \|_2\]</span> where <span class="math inline">\(\| \cdot \|_2\)</span> denotes the Euclidean norm.</p></li>
 </ol>
@@ -1733,7 +1891,7 @@ Rank of Outer Product Matrix: 1
 Frobenius Norm: 23.958297101421877</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-op" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-op" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-op-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="module_2_files/figure-html/fig-op-output-2.png" width="373" height="449" class="figure-img">
@@ -1746,8 +1904,8 @@ Figure&nbsp;2.10: Demonstration of Outer Product and its Properties
 </div>
 </div>
 </section>
-<section id="kronecker-product" class="level4" data-number="2.2.2.4">
-<h4 data-number="2.2.2.4" class="anchored" data-anchor-id="kronecker-product"><span class="header-section-number">2.2.2.4</span> Kronecker Product</h4>
+<section id="kronecker-product" class="level4" data-number="2.2.2.5">
+<h4 data-number="2.2.2.5" class="anchored"><span class="header-section-number">2.2.2.5</span> Kronecker Product</h4>
 <p>In mathematics, the Kronecker product, sometimes denoted by <span class="math inline">\(\otimes\)</span>, is an operation on two matrices of arbitrary size resulting in a <em>block matrix</em>. It is a specialization of the tensor product (which is denoted by the same symbol) from vectors to matrices and gives the matrix of the tensor product linear map with respect to a standard choice of basis. The Kronecker product is to be distinguished from the usual matrix multiplication, which is an entirely different operation. The Kronecker product is also sometimes called <em>matrix direct product</em>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1768,10 +1926,16 @@ a_{m1}B &amp; a_{m2}B &amp; \cdots &amp; a_{mn}B
 \end{bmatrix} \end{bmatrix}\]</span></p>
 </div>
 </div>
-<p>:::{.callout-note}</p>
-</section>
-<section id="properties-of-the-kronecker-product" class="level4" data-number="2.2.2.5">
-<h4 data-number="2.2.2.5" class="anchored" data-anchor-id="properties-of-the-kronecker-product"><span class="header-section-number">2.2.2.5</span> Properties of the Kronecker Product</h4>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Properties of the Kronecker Product
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li><p><strong>Associativity</strong></p>
 <p>The Kronecker product is associative. For matrices <span class="math inline">\(A \in \mathbb{R}^{m \times n}\)</span>, <span class="math inline">\(B \in \mathbb{R}^{p \times q}\)</span>, and <span class="math inline">\(C \in \mathbb{R}^{r \times s}\)</span>: <span class="math display">\[(A \otimes B) \otimes C = A \otimes (B \otimes C)\]</span></p></li>
@@ -1790,12 +1954,16 @@ a_{m1}B &amp; a_{m2}B &amp; \cdots &amp; a_{mn}B
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Frobenius Norm
+Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<hr>
+<section id="frobenius-norm" class="level4" data-number="2.2.2.6">
+<h4 data-number="2.2.2.6" class="anchored" data-anchor-id="frobenius-norm"><span class="header-section-number">2.2.2.6</span> Frobenius Norm</h4>
 <p>The Frobenius norm, also known as the Euclidean norm for matrices, is a measure of a matrix’s magnitude. It is defined as the square root of the sum of the absolute squares of its elements. Mathematically, for a matrix <span class="math inline">\(A\)</span> with elements <span class="math inline">\(a_{ij}\)</span>, the Frobenius norm is given by:</p>
 <p><span class="math display">\[\|A\|_F = \sqrt{\sum_{i,j} |a_{ij}|^2}\]</span></p>
+</section>
 </div>
 </div>
 <p>Example 1: Calculation of Frobenius Norm</p>
@@ -1841,7 +2009,7 @@ Frobenius Norm
 <li><p><em>Application 3: Error Measurement in Numerical Solutions:</em> In solving systems of linear equations, the Frobenius norm can be used to measure the error between the true solution and the computed solution, providing insight into the accuracy of numerical methods.</p></li>
 </ul>
 <p>The <code>linalg</code> sub module of <code>NumPy</code> library can be used to calculate various norms. Basically norm is the generalized form of Euclidean distance.</p>
-<div id="7aa71aef" class="cell" data-execution_count="30">
+<div id="f467efce" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Simple Matrix</span></span>
@@ -1909,8 +2077,554 @@ Frobenius Norm of C: 16.88</code></pre>
 <p><span class="math display">\[\|C\|_F = \sqrt{0^2 + 5^2 + 0^2 + 10^2 + 6^2 + 7^2 + 12^2 + 14^2 + 0^2 + 15^2 + 0^2 + 20^2 + 18^2 + 21^2 + 24^2 + 28^2}\]</span></p>
 <p><span class="math display">\[\|C\|_F = \sqrt{0 + 25 + 0 + 100 + 36 + 49 + 144 + 196 + 0 + 225 + 0 + 400 + 324 + 441 + 576 + 784}\]</span></p>
 <p><span class="math display">\[\|C\|_F = \sqrt{2896}\]</span> <span class="math display">\[\|C\|_F \approx 53.87\]</span></p>
+<hr>
+<p>In the previous block we have discussed the Frobenius norm and its applications. Now came back to the discussions on the Kronecker product. The Kronecker product is particularly useful in scenarios where interactions between different types of data need to be modeled comprehensively. In recommendation systems, it allows us to integrate user preferences with item relationships to improve recommendation accuracy.</p>
+<p>In addition to recommendation systems, Kronecker products are used in various fields such as:</p>
+<ul>
+<li>Signal Processing: For modeling multi-dimensional signals.</li>
+<li>Machine Learning: In building features for complex models.</li>
+<li>Communication Systems: For modeling network interactions.</li>
+</ul>
+<p>By understanding the Kronecker product and its applications, we can extend it to solve complex problems and enhance systems across different domains. To understand the practical use of Kronecker product in a Machine Learning scenario let us consider the following problem statement and its solution.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem statement
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the realm of recommendation systems, predicting user preferences for various product categories based on past interactions is a common challenge. Suppose we have data on user preferences for different products and categories. We can use this data to recommend the best products for each user by employing mathematical tools such as the Kronecker product. The User Preference and Category relationships are given in <a href="#tbl-UPM" class="quarto-xref">Table&nbsp;<span>2.4</span></a> and <a href="#tbl-CRM" class="quarto-xref">Table&nbsp;<span>2.5</span></a> .</p>
+<div id="tbl-UPM" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-UPM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.4: User Preference
+</figcaption>
+<div aria-describedby="tbl-UPM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>User/Item</th>
+<th>Electronics</th>
+<th>Clothing</th>
+<th>Books</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>User 1</td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>User 2</td>
+<td>2</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>User 3</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="tbl-CRM" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-CRM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.5: Category Relationships
+</figcaption>
+<div aria-describedby="tbl-CRM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Category/Feature</th>
+<th>Feature 1</th>
+<th>Feature 2</th>
+<th>Feature 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Electronics</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Clothing</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>Books</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Predict user preferences for different product categories using the Kronecker product matrix.</p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Solution Procedure</strong></p>
+</blockquote>
+<ol type="1">
+<li><p><em>Compute the Kronecker Product:</em> Calculate the Kronecker product of matrices <span class="math inline">\(U\)</span> and <span class="math inline">\(C\)</span> to obtain matrix <span class="math inline">\(K\)</span>.</p>
+<p>To model the problem, we use the Kronecker product of the user preference matrix <span class="math inline">\(U\)</span> and the category relationships matrix <span class="math inline">\(C\)</span>. This product allows us to predict the user’s rating for each category by combining their preferences with the category features.</p></li>
+</ol>
+<p><em>Formulating Matrices</em></p>
+<p>User Preference Matrix (U): - Dimension: <span class="math inline">\(3\times 3\)</span> (3 users, 3 items) - from the User preference data, we can create the User Preference Matrix as follows:</p>
+<p><span class="math display">\[U = \begin{pmatrix}5 &amp; 3 &amp; 4 \\2 &amp; 4 &amp; 5 \\3 &amp; 4 &amp; 4 \end{pmatrix}\]</span></p>
+<p>Category Relationships Matrix (C): - Dimension: <span class="math inline">\(3 \times 3\)</span> (3 categories) - from the Category Relationships data, we can create the Category Relationship Matrix as follows:</p>
+<p><span class="math display">\[C = \begin{pmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 1 \\ 0 &amp; 1 &amp; 1\end{pmatrix}\]</span></p>
+<p><em>Kronecker Product Calculation</em></p>
+<p>The Kronecker product <span class="math inline">\(K\)</span> of <span class="math inline">\(U\)</span> and <span class="math inline">\(C\)</span> is calculated as follows:</p>
+<ol type="1">
+<li><strong>Matrix Dimensions:</strong></li>
+</ol>
+<ul>
+<li><span class="math inline">\(U\)</span> is <span class="math inline">\(3 \times 3\)</span> (3 users, 3 items).</li>
+<li><span class="math inline">\(C\)</span> is <span class="math inline">\(3 \times 3\)</span> (3 categories, 3 features).</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Calculate Kronecker Product:</strong></li>
+</ol>
+<ul>
+<li>For each element <span class="math inline">\(u_{ij}\)</span> in <span class="math inline">\(U\)</span>, multiply by the entire matrix <span class="math inline">\(C\)</span>.</li>
+</ul>
+<p>The Kronecker product <span class="math inline">\(K\)</span> is computed as:</p>
+<p><span class="math display">\[K = U \otimes C\]</span></p>
+<p>Explicitly, the Kronecker product <span class="math inline">\(K\)</span> is:</p>
+<p><span class="math display">\[K = \begin{pmatrix}5 \cdot C &amp; 3 \cdot C &amp; 4 \cdot C \\ 2 \cdot C &amp; 4 \cdot C &amp; 5 \cdot C \\    3 \cdot C &amp; 4 \cdot C &amp; 4 \cdot C\end{pmatrix}\]</span></p>
+<p>As an example the blocks in first row are:</p>
+<p><span class="math display">\[5 \cdot C = \begin{pmatrix}
+   5 &amp; 0 &amp; 0 \\
+   0 &amp; 5 &amp; 5 \\
+   0 &amp; 5 &amp; 5
+   \end{pmatrix}, \quad
+   3 \cdot C = \begin{pmatrix}
+   3 &amp; 0 &amp; 0 \\
+   0 &amp; 3 &amp; 3 \\
+   0 &amp; 3 &amp; 3
+   \end{pmatrix}, \quad
+   4 \cdot C = \begin{pmatrix}
+   4 &amp; 0 &amp; 0 \\
+   0 &amp; 4 &amp; 4 \\
+   0 &amp; 4 &amp; 4
+   \end{pmatrix}\]</span></p>
+<p>Combining these blocks:</p>
+<p><span class="math display">\[K = \begin{pmatrix}
+   5 &amp; 0 &amp; 0 &amp; 3 &amp; 0 &amp; 0 &amp; 4 &amp; 0 &amp; 0\\
+   0 &amp; 5 &amp; 5 &amp; 0 &amp; 3 &amp; 3 &amp; 0 &amp; 4 &amp; 4\\
+   0 &amp; 5 &amp; 5 &amp; 0 &amp; 3 &amp; 3 &amp; 0 &amp; 4 &amp; 4\\
+   2 &amp; 0 &amp; 0 &amp; 4 &amp; 0 &amp; 0 &amp; 5 &amp; 0 &amp; 0\\
+   0 &amp; 2 &amp; 2 &amp; 0 &amp; 4 &amp; 4 &amp; 0 &amp; 5 &amp; 5\\
+   0 &amp; 2 &amp; 2 &amp; 0 &amp; 4 &amp; 4 &amp; 0 &amp; 5 &amp; 5\\
+   3 &amp; 0 &amp; 0 &amp; 4 &amp; 0 &amp; 0 &amp; 4 &amp; 0 &amp; 0\\
+   0 &amp; 3 &amp; 3 &amp; 0 &amp; 4 &amp; 4 &amp; 0 &amp; 4 &amp; 4\\
+   0 &amp; 3 &amp; 3 &amp; 0 &amp; 4 &amp; 4 &amp; 0 &amp; 4 &amp; 4\end{pmatrix}\]</span></p>
+<ol start="2" type="1">
+<li><p><strong>Interpret the Kronecker Product Matrix:</strong> The resulting matrix <span class="math inline">\(K\)</span> represents all possible combinations of user preferences and category features.</p></li>
+<li><p><strong>Predict Ratings:</strong> For each user, use matrix <span class="math inline">\(K\)</span> to predict the rating for each category by summing up the values in the corresponding rows.</p></li>
+<li><p><strong>Generate Recommendations:</strong> Identify the top categories with the highest predicted ratings for each user.</p></li>
+</ol>
+<p>The <code>python</code> code to solve this problem computationally is given below.</p>
+<div id="b9d53636" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the matrices</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>],</span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>]])</span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>],</span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]])</span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the Kronecker product</span></span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> np.kron(U, C)</span>
+<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame to visualize the Kronecker product matrix</span></span>
+<span id="cb55-18"><a href="#cb55-18" aria-hidden="true" tabindex="-1"></a>df_K <span class="op">=</span> pd.DataFrame(K, </span>
+<span id="cb55-19"><a href="#cb55-19" aria-hidden="true" tabindex="-1"></a>                    columns<span class="op">=</span>[<span class="st">'Electronics_F1'</span>, <span class="st">'Electronics_F2'</span>, <span class="st">'Electronics_F3'</span>, </span>
+<span id="cb55-20"><a href="#cb55-20" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'Clothing_F1'</span>, <span class="st">'Clothing_F2'</span>, <span class="st">'Clothing_F3'</span>, </span>
+<span id="cb55-21"><a href="#cb55-21" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'Books_F1'</span>, <span class="st">'Books_F2'</span>, <span class="st">'Books_F3'</span>],</span>
+<span id="cb55-22"><a href="#cb55-22" aria-hidden="true" tabindex="-1"></a>                    index<span class="op">=</span>[<span class="st">'User 1 Electronics'</span>, <span class="st">'User 1 Clothing'</span>, <span class="st">'User 1 Books'</span>, </span>
+<span id="cb55-23"><a href="#cb55-23" aria-hidden="true" tabindex="-1"></a>                           <span class="st">'User 2 Electronics'</span>, <span class="st">'User 2 Clothing'</span>, <span class="st">'User 2 Books'</span>, </span>
+<span id="cb55-24"><a href="#cb55-24" aria-hidden="true" tabindex="-1"></a>                           <span class="st">'User 3 Electronics'</span>, <span class="st">'User 3 Clothing'</span>, <span class="st">'User 3 Books'</span>])</span>
+<span id="cb55-25"><a href="#cb55-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-26"><a href="#cb55-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the Kronecker product matrix</span></span>
+<span id="cb55-27"><a href="#cb55-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Kronecker Product Matrix (K):</span><span class="ch">\n</span><span class="st">"</span>, df_K)</span>
+<span id="cb55-28"><a href="#cb55-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-29"><a href="#cb55-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict ratings and create recommendations</span></span>
+<span id="cb55-30"><a href="#cb55-30" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> recommend(user_index, top_n<span class="op">=</span><span class="dv">3</span>):</span>
+<span id="cb55-31"><a href="#cb55-31" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Recommend top_n categories for a given user based on Kronecker product matrix. """</span></span>
+<span id="cb55-32"><a href="#cb55-32" aria-hidden="true" tabindex="-1"></a>    user_ratings <span class="op">=</span> K[user_index <span class="op">*</span> <span class="bu">len</span>(C):(user_index <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> <span class="bu">len</span>(C), :]</span>
+<span id="cb55-33"><a href="#cb55-33" aria-hidden="true" tabindex="-1"></a>    predicted_ratings <span class="op">=</span> np.<span class="bu">sum</span>(user_ratings, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb55-34"><a href="#cb55-34" aria-hidden="true" tabindex="-1"></a>    recommendations <span class="op">=</span> np.argsort(predicted_ratings)[::<span class="op">-</span><span class="dv">1</span>][:top_n]</span>
+<span id="cb55-35"><a href="#cb55-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> recommendations</span>
+<span id="cb55-36"><a href="#cb55-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-37"><a href="#cb55-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Recommendations for User 1</span></span>
+<span id="cb55-38"><a href="#cb55-38" aria-hidden="true" tabindex="-1"></a>user_index <span class="op">=</span> <span class="dv">0</span>  <span class="co"># User 1</span></span>
+<span id="cb55-39"><a href="#cb55-39" aria-hidden="true" tabindex="-1"></a>top_n <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb55-40"><a href="#cb55-40" aria-hidden="true" tabindex="-1"></a>recommendations <span class="op">=</span> recommend(user_index, top_n)</span>
+<span id="cb55-41"><a href="#cb55-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-42"><a href="#cb55-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Top </span><span class="sc">{</span>top_n<span class="sc">}</span><span class="ss"> recommendations for User </span><span class="sc">{</span>user_index <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">:"</span>)</span>
+<span id="cb55-43"><a href="#cb55-43" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> rec <span class="kw">in</span> recommendations:</span>
+<span id="cb55-44"><a href="#cb55-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df_K.columns[rec])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Kronecker Product Matrix (K):
+                     Electronics_F1  Electronics_F2  Electronics_F3  \
+User 1 Electronics               5               0               0   
+User 1 Clothing                  0               5               5   
+User 1 Books                     0               5               5   
+User 2 Electronics               2               0               0   
+User 2 Clothing                  0               2               2   
+User 2 Books                     0               2               2   
+User 3 Electronics               3               0               0   
+User 3 Clothing                  0               3               3   
+User 3 Books                     0               3               3   
+
+                    Clothing_F1  Clothing_F2  Clothing_F3  Books_F1  Books_F2  \
+User 1 Electronics            3            0            0         4         0   
+User 1 Clothing               0            3            3         0         4   
+User 1 Books                  0            3            3         0         4   
+User 2 Electronics            4            0            0         5         0   
+User 2 Clothing               0            4            4         0         5   
+User 2 Books                  0            4            4         0         5   
+User 3 Electronics            4            0            0         4         0   
+User 3 Clothing               0            4            4         0         4   
+User 3 Books                  0            4            4         0         4   
+
+                    Books_F3  
+User 1 Electronics         0  
+User 1 Clothing            4  
+User 1 Books               4  
+User 2 Electronics         0  
+User 2 Clothing            5  
+User 2 Books               5  
+User 3 Electronics         0  
+User 3 Clothing            4  
+User 3 Books               4  
+
+Top 3 recommendations for User 1:
+Electronics_F2
+Electronics_F3
+Books_F3</code></pre>
+</div>
+</div>
+<p>A simple visualization of this recomendation system is shown in <a href="#fig-reco" class="quarto-xref">Fig&nbsp;<span>2.11</span></a>.</p>
+<div id="cell-fig-reco" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_recommendations(user_index):</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Plot the predicted ratings for each category for a given user. """</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>    user_ratings <span class="op">=</span> K[user_index <span class="op">*</span> <span class="bu">len</span>(C):(user_index <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> <span class="bu">len</span>(C), :]</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>    predicted_ratings <span class="op">=</span> np.<span class="bu">sum</span>(user_ratings, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>    categories <span class="op">=</span> df_K.columns</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>    plt.bar(categories, predicted_ratings)</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'Categories'</span>)</span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'Predicted Ratings'</span>)</span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="ss">f'Predicted Ratings for User </span><span class="sc">{</span>user_index <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>    plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot recommendations for User 1</span></span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>plot_recommendations(user_index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-reco" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-reco-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="module_2_files/figure-html/fig-reco-output-1.png" width="510" height="513" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-reco-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.11: EDA for the Recommendation System
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>This micro project illustrate one of the popular use of Kronecker product on ML application.</p>
+<section id="matrix-measures-of-practical-importance" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="matrix-measures-of-practical-importance"><span class="header-section-number">2.2.3</span> Matrix Measures of Practical Importance</h3>
+<p>Matrix measures, such as rank and determinant, play crucial roles in linear algebra. While both rank and determinant provide valuable insights into the properties of a matrix, they serve different purposes. Understanding their roles and applications is essential for solving complex problems in computer science, engineering, and applied mathematics.</p>
+<section id="determinant" class="level4" data-number="2.2.3.1">
+<h4 data-number="2.2.3.1" class="anchored" data-anchor-id="determinant"><span class="header-section-number">2.2.3.1</span> Determinant</h4>
+<p>Determinant of a <span class="math inline">\(2\times 2\)</span> matrix <span class="math inline">\(A=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)</span> is defined as <span class="math inline">\(|A|=ad-bc\)</span>. Determinant of higher order square matrices can be found using the Laplace method or Sarrus method.</p>
+<p>The determinant of a matrix provides information about the matrix’s invertibility and scaling factor for volume transformation. Specifically:</p>
+<ol type="1">
+<li><p><em>Invertibility:</em> A matrix is invertible if and only if its determinant is non-zero.</p></li>
+<li><p><em>Volume Scaling:</em> The absolute value of the determinant gives the scaling factor by which the matrix transforms volume.</p></li>
+<li><p><em>Parallelism:</em> If the determinant of a matrix composed of vectors is zero, the vectors are linearly dependent, meaning they are parallel or redundant.</p></li>
+<li><p><em>Redundancy:</em> A zero determinant indicates that the vectors span a space of lower dimension than the number of vectors, showing redundancy.</p></li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Least Possible Values of Determinant
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><em>Least Positive Determinant:</em> For a <span class="math inline">\(1\times 1\)</span> matrix, the smallest non-zero determinant is any positive value, typically <span class="math inline">\(\epsilon\)</span>, where <span class="math inline">\(\epsilon\)</span> is a small positive number.</li>
+<li>Least Non-Zero Determinant: For higher-dimensional matrices, the smallest non-zero determinant is a non-zero value that represents the smallest area or volume spanned by the matrix’s rows or columns. For example a <span class="math inline">\(2\times 2\)</span> matrix with determinant <span class="math inline">\(\epsilon\)</span> could be: <span class="math display">\[B=\begin{pmatrix}\epsilon&amp;0\\ 0&amp;\epsilon\end{pmatrix}\]</span> Here, <span class="math inline">\(\epsilon\)</span> is a small positive number, indicating a very small but <em>non-zero</em> area.</li>
+</ol>
+</div>
+</div>
+<p>Now let’s look into the most important matrix measure for advanced application in Linear Algebra.</p>
+<p>As we know the matrix is basically a representation tool that make things abstract- remove unnecessary details. Then the matrix itself can be represented in many ways. This is the real story telling with this most promising mathematical structure. Consider a context of collecting feedback about a product in three aspects- cost, quality and practicality. For simplicity in calculation, we consider responses from 3 customers only. The data is shown in <a href="#tbl-RT" class="quarto-xref">Table&nbsp;<span>2.6</span></a>.</p>
+<div id="tbl-RT" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-RT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.6: User rating of a consumer product
+</figcaption>
+<div aria-describedby="tbl-RT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>User</th>
+<th>Cost</th>
+<th>Quality</th>
+<th>Practicality</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>User-1</td>
+<td>1</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>User-2</td>
+<td>3</td>
+<td>2</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>User-3</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>It’s perfect and nice looking. But both mathematics and a computer can’t handle this table as it is. So we create an abstract representation of this data- the rating matrix. Using the traditional approach, let’s represent this rating data as: <span class="math display">\[A=\begin{bmatrix}1&amp;4&amp;5\\3&amp;2&amp;5\\2&amp;1&amp;3\end{bmatrix}\]</span></p>
+<p>Now both the column names and row indices were removed and the data is transformed into the abstract form. This representation has both advantages and disadvantages. Be positive! So we are focused only in the advantages.</p>
+<p>Just consider the product. Its sales fully based on its features. So the product sales perspective will be represented in terms of the features- cost, quality and practicality. These features are columns of our rating matrix. Definitly peaple will have different rating for these features. Keeping all these in mind let’s introduce the concept of <em>linear combination</em>. This leads to a new matrix product as shown below. <span class="math display">\[\begin{align*}
+Ax&amp;=\begin{bmatrix}1&amp;4&amp;5\\3&amp;2&amp;5\\2&amp;1&amp;3\end{bmatrix}x\\
+&amp;=\begin{bmatrix}1&amp;4&amp;5\\3&amp;2&amp;5\\2&amp;1&amp;3\end{bmatrix}\cdot\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}\\
+&amp;=\begin{bmatrix}1\\3\\2\end{bmatrix}x_1+\begin{bmatrix}1\\3\\2\end{bmatrix}x_1+\begin{bmatrix}4\\2\\1\end{bmatrix}x_2+\begin{bmatrix}5\\5\\3\end{bmatrix}x_3
+\end{align*}\]</span></p>
+<p>As the number of users increases, the product sales perspective become more informative. In short the span of the features define the feature space of the product. In real cases, a manufacture wants to know what are the features really inflence the customers. This new matrix product will help the manufactures to identify that features!</p>
+<p>So we are going to define this new matrix product as the feature space, that will provide more insights to this context as:</p>
+<p><span class="math display">\[A=CR\]</span></p>
+<p>Where <span class="math inline">\(C\)</span> is the column space and <span class="math inline">\(R\)</span> is the row reduced Echelon form of <span class="math inline">\(A\)</span>. But the product is not the usual scalar projection, Instead the weight of linear combination of elements in the column space.</p>
+<p>Let’s formally illustrate this in our example. From the first observation itself, it is clear that last column is just the sum of first and second columns (That is in our context the feature ‘practicality’ is just depends on ‘cost’ and ‘quality’. meaningful?). So only first columns are independent and so spans the column space.</p>
+<p><span class="math display">\[C=\begin{bmatrix}1&amp;4\\3&amp;2\\2&amp;1\end{bmatrix}\]</span></p>
+<p>Now look into the matrix <span class="math inline">\(R\)</span>. Applying elementary row tansformations, <span class="math inline">\(A\)</span> will transformed into:</p>
+<p><span class="math display">\[R=\begin{bmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\\0&amp;0&amp;0\end{bmatrix}\]</span></p>
+<p>Hence we can form a decomposition for the given rating matrix, <span class="math inline">\(A\)</span> as: <span class="math display">\[\begin{align*}
+A&amp;=CR\\
+&amp;=\begin{bmatrix}1&amp;4\\3&amp;2\\2&amp;1\end{bmatrix}\begin{bmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\\\mbox{}&amp;&amp;\end{bmatrix}
+\end{align*}\]</span></p>
+<p>This decomposition says that there are only two independent features (columns) and the third feature (column) is the sum of first two features (columns).</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretation of the <span class="math inline">\(R\)</span> matrix
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Each column in the <span class="math inline">\(R\)</span> matrix represents the weights for linear combination of vectors in the column space to get that column in <span class="math inline">\(A\)</span>. In this example, third column of <span class="math inline">\(R\)</span> is <span class="math inline">\(\begin{bmatrix}1\\1\end{bmatrix}\)</span>. This means that third column of <span class="math inline">\(A\)</span> will be <span class="math inline">\(1\times C_1+1\times C_2\)</span> of the column space, <span class="math inline">\(C\)</span>!</p>
+</div>
+</div>
+<p>This first matrix decompostion donate a new type of matrix product (outer product) and a new measure- the number of independent columns and number of independent rows. This count is called the <em>rank</em> of the matrix <span class="math inline">\(A\)</span>. In the case of features, if the rank of the column space is less than the number of features then definitly a less number of feature set will perfectly represent the data. This will help us to reduce the dimension of the dataset and there by reducing computational complexities in data analysis and machine Learning jobs.</p>
+<p>In the above discussion, we consider only the columns of <span class="math inline">\(A\)</span>. Now we will mention the row space. It is the set of all linearly independent rows of <span class="math inline">\(A\)</span>. For any matrix <span class="math inline">\(A\)</span>, both the row space and column space are of same rank. This correspondance is a helpful result in many practical applications.</p>
+<p>Now we consider a stable equation, <span class="math inline">\(Ax=0\)</span>. With the usual notation of dot product, it implies that <span class="math inline">\(x\)</span> is orthogonal to <span class="math inline">\(A\)</span>. Set of all those independent vectors which are orthogonal to <span class="math inline">\(A\)</span> constitute a new space of interest. It is called the <em>null space</em> of <span class="math inline">\(A\)</span>. If <span class="math inline">\(A\)</span> represents a linear transformation, then the null space will be populated by those non-zero vectors which are <em>nullified</em> by the transformation <span class="math inline">\(A\)</span>. As a summary of this discussion, the row space and null space of a matrix <span class="math inline">\(A\)</span> creates an orthogonal system. Considering the relationship between <span class="math inline">\(A\)</span> and <span class="math inline">\(A^T\)</span>, it is clear that row space of <span class="math inline">\(A\)</span> is same as the column space of <span class="math inline">\(A^T\)</span> and vice verse are. So we can restate the orthogonality as: ‘the null space of <span class="math inline">\(A\)</span> is orthogonal to the column space of <span class="math inline">\(A^T\)</span>’ and ‘the null space of <span class="math inline">\(A^T\)</span> is orthogonal to the column space of <span class="math inline">\(A\)</span>’. Mathematically this property can be represents as follows.</p>
+<div id="note-ortho" class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[\begin{align*}
+\mathcal{N}(A)&amp;\perp \mathcal{C}(A^T)\\
+\mathcal{N}(A^T)&amp;\perp \mathcal{C}(A)
+\end{align*}\]</span></p>
+</div>
+</div>
+<p>In the given example, solving <span class="math inline">\(Ax=0\)</span> we get <span class="math inline">\(x=\begin{bmatrix}1&amp;1&amp;-1\end{bmatrix}^T\)</span>.</p>
+<p>So the rank of <span class="math inline">\(\mathcal{N}(A)=1\)</span>. Already we have rank of <span class="math inline">\(A=2\)</span>. This leads to an interesting result:</p>
+<p><span class="math display">\[\text{Rank}(A)+\text{Rank}(\mathcal{N}(A))=3\]</span></p>
+<p>This observation can be framed as a theorem.</p>
+</section>
+</section>
+<section id="rank-nullity-theorem" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="rank-nullity-theorem"><span class="header-section-number">2.2.4</span> Rank Nullity Theorem</h3>
+<p>The rank-nullity theorem is a fundamental theorem in linear algebra that is important for understanding the connections between mathematical operations in engineering, physics, and computer science. It states that the sum of the rank and nullity of a matrix equals the number of columns in the matrix. The rank is the maximum number of linearly independent columns, and the nullity is the dimension of the nullspace.</p>
+<div id="thm-RNT" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.1 (Rank Nullitty Theorem)</strong></span> The Rank-Nullity Theorem states that for any <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span>, the following relationship holds:</p>
+<p><span class="math display">\[
+\text{Rank}(A) + \text{Nullity}(A) = n
+\]</span></p>
+<p>where: - <strong>Rank</strong> of <span class="math inline">\(A\)</span> is the dimension of the column space of <span class="math inline">\(A\)</span>, which is also equal to the dimension of the row space of <span class="math inline">\(A\)</span>. - <strong>Nullity</strong> of <span class="math inline">\(A\)</span> is the dimension of the null space of <span class="math inline">\(A\)</span>, which is the solution space to the homogeneous system <span class="math inline">\(A \mathbf{x} = \mathbf{0}\)</span>.</p>
+</div>
+<p><em>Steps to Formulate for Matrix <span class="math inline">\(A\)</span></em></p>
+<ol type="1">
+<li><p><strong>Find the Rank of <span class="math inline">\(A\)</span></strong>: The rank of a matrix is the maximum number of linearly independent columns (or rows). It can be determined by transforming <span class="math inline">\(A\)</span> into its row echelon form or reduced row echelon form (RREF).</p></li>
+<li><p><strong>Find the Nullity of <span class="math inline">\(A\)</span></strong>: The nullity is the dimension of the solution space of <span class="math inline">\(A \mathbf{x} = \mathbf{0}\)</span>. This can be found by solving the homogeneous system and counting the number of free variables.</p></li>
+<li><p><strong>Apply the Rank-Nullity Theorem</strong>: Use the rank-nullity theorem to verify the relationship.</p></li>
+</ol>
+<hr>
+<p><em>Example 1:</em> Calculate the rank and nullity of <span class="math inline">\(A=\begin{bmatrix}
+   1 &amp; 4 &amp; 5 \\
+   3 &amp; 2 &amp; 5 \\
+   2 &amp; 1 &amp; 3
+   \end{bmatrix}\)</span> and verify the rank nullity theorem.</p>
+<ol type="1">
+<li><p><strong>Row Echelon Form</strong>:</p>
+<p>Perform Gaussian elimination on <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[A = \begin{bmatrix}
+1 &amp; 4 &amp; 5 \\
+3 &amp; 2 &amp; 5 \\
+2 &amp; 1 &amp; 3
+\end{bmatrix}\]</span></p>
+<p>Perform row operations to get it to row echelon form:</p>
+<ul>
+<li><p>Subtract 3 times row 1 from row 2: <span class="math display">\[\begin{bmatrix}
+1 &amp; 4 &amp; 5 \\
+0 &amp; -10 &amp; -10 \\
+2 &amp; 1 &amp; 3
+\end{bmatrix}\]</span></p></li>
+<li><p>Subtract 2 times row 1 from row 3: <span class="math display">\[\begin{bmatrix}
+1 &amp; 4 &amp; 5 \\
+0 &amp; -10 &amp; -10 \\
+0 &amp; -7 &amp; -7
+\end{bmatrix}\]</span></p></li>
+<li><p>Add <span class="math inline">\(\frac{7}{10}\)</span> times row 2 to row 3: <span class="math display">\[\begin{bmatrix}
+1 &amp; 4 &amp; 5 \\
+0 &amp; -10 &amp; -10 \\
+0 &amp; 0 &amp; 0
+\end{bmatrix}\]</span></p></li>
+</ul>
+<p>The matrix is now in row echelon form.</p>
+<p><strong>Rank</strong> is the number of non-zero rows, which is 2.</p></li>
+<li><p><strong>Find the Nullity</strong>: The matrix <span class="math inline">\(A\)</span> has 3 columns. The number of free variables in the solution of <span class="math inline">\(A \mathbf{x} = \mathbf{0}\)</span> is <span class="math inline">\(3 - \text{Rank}\)</span>.</p>
+<p>So, <span class="math display">\[\text{Nullity}(A) = 3 - 2 = 1\]</span></p></li>
+<li><p><strong>Apply the Rank-Nullity Theorem</strong>: <span class="math display">\[\text{Rank}(A) + \text{Nullity}(A) = 2 + 1 = 3\]</span></p>
+<p>This matches the number of columns of <span class="math inline">\(A\)</span>, confirming the theorem.</p></li>
+</ol>
+</section>
+<section id="fundamental-subspaces" class="level3" data-number="2.2.5">
+<h3 data-number="2.2.5" class="anchored" data-anchor-id="fundamental-subspaces"><span class="header-section-number">2.2.5</span> Fundamental Subspaces</h3>
+<p>In section <span class="citation" data-cites="note-ortho">(<a href="references.html#ref-note-ortho" role="doc-biblioref"><strong>note-ortho?</strong></a>)</span>, we have seen that for any matrix <span class="math inline">\(A\)</span>, there is two pairs of inter-related orthogonal spaces. This leads to the concept of Fundamental sup spaces.</p>
+<p>Matrices are not just arrays of numbers; they can represent linear transformations too. A linear transformation maps vectors from one vector space to another while preserving vector addition and scalar multiplication. The matrix <span class="math inline">\(A\)</span> can be viewed as a representation of a linear transformation <span class="math inline">\(T\)</span> from <span class="math inline">\(\mathbb{R}^m\)</span> to <span class="math inline">\(\mathbb{R}^m\)</span> where:</p>
+<p><span class="math display">\[T(\mathbf{x}) = A \mathbf{x}\]</span></p>
+<p>In this context:</p>
+<ul>
+<li>The column space of <span class="math inline">\(A\)</span> represents the range of <span class="math inline">\(T\)</span>, which is the set of all possible outputs.</li>
+<li>The null space of <span class="math inline">\(A\)</span> represents the kernel of <span class="math inline">\(T\)</span>, which is the set of vectors that are mapped to the zero vector.</li>
+</ul>
+<p><strong>The Four Fundamental Subspaces</strong></p>
+<p>Understanding the four fundamental subspaces helps in analyzing the properties of a linear transformation. These subspaces are:</p>
+<div id="def-FFS" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2.1 (Four Fundamental Subspaces)</strong></span> Let <span class="math inline">\(T:\mathbb{R^n}\longrightarrow \mathbb{R^m}\)</span> be a linear transformation and <span class="math inline">\(A\)</span> represents the matrix of transformation. The four fundamental subspaces are defined as:</p>
+<ol type="1">
+<li><p><strong>Column Space (Range)</strong>: The set of all possible outputs of the transformation. For matrix <span class="math inline">\(A\)</span>, this is the span of its columns. It represents the image of <span class="math inline">\(\mathbb{R}^n\)</span> under <span class="math inline">\(T\)</span>.</p></li>
+<li><p><strong>Null Space (Kernel)</strong>: The set of all vectors that are mapped to the zero vector by the transformation. For matrix <span class="math inline">\(A\)</span>, this is the solution space of <span class="math inline">\(A \mathbf{x} = \mathbf{0}\)</span>.</p></li>
+<li><p><strong>Row Space</strong>: The span of the rows of <span class="math inline">\(A\)</span>. This space is crucial because it helps in understanding the rank of <span class="math inline">\(A\)</span>. The dimension of the row space is equal to the rank of <span class="math inline">\(A\)</span>, which represents the maximum number of linearly independent rows.</p></li>
+<li><p><strong>Left Null Space</strong>: The set of all vectors <span class="math inline">\(\mathbf{y}\)</span> such that <span class="math inline">\(A^T \mathbf{y} = \mathbf{0}\)</span>. It provides insight into the orthogonal complement of the row space.</p></li>
+</ol>
+</div>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    MatrixA[Matrix A] --&gt;|Contains Columns| ColumnSpace[Column Space]
+    MatrixA --&gt;|Contains Rows| RowSpace[Row Space]
+    MatrixA --&gt;|Contains Vectors Mapping to Zero| NullSpace[Null Space]
+    MatrixA --&gt;|Contains Vectors Orthogonal to Row Space| LeftNullSpace[Left Null Space]
+    ColumnSpace --&gt;|Orthogonal Complement| NullSpace
+    RowSpace --&gt;|Orthogonal Complement| LeftNullSpace
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>This idea is depicted as a ‘Big picture of the four sub spaces of a matrix’ in the Strang’s text book on Linear algebra for every one <span class="citation" data-cites="strang2020linear">(<a href="references.html#ref-strang2020linear" role="doc-biblioref">Strang 2020</a>)</span>. This ‘Big Picture’ is shown in <a href="#fig-big-pic" class="quarto-xref">Fig-&nbsp;<span>2.12</span></a>.</p>
+<div id="fig-big-pic" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-big-pic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://i.pinimg.com/originals/fb/c5/f9/fbc5f91d82681dd7341dda6915d11e92.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;2.12: The Big Pictue of Fundamental Subspaces"><img src="https://i.pinimg.com/originals/fb/c5/f9/fbc5f91d82681dd7341dda6915d11e92.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-big-pic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.12: The Big Pictue of Fundamental Subspaces
+</figcaption>
+</figure>
+</div>
+<p>A video session from Strang’s session is here:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/rwLOfdfc4dw?si=DsJb8KJTF05hHc76" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<section id="practice-problems-1" class="level4" data-number="2.2.5.1">
+<h4 data-number="2.2.5.1" class="anchored" data-anchor-id="practice-problems-1"><span class="header-section-number">2.2.5.1</span> Practice Problems</h4>
+</section>
+<section id="rank-and-solution-of-system-of-linear-equations" class="level4" data-number="2.2.5.2">
+<h4 data-number="2.2.5.2" class="anchored" data-anchor-id="rank-and-solution-of-system-of-linear-equations"><span class="header-section-number">2.2.5.2</span> Rank and Solution of System of Linear Equations</h4>
+<p>In linear algebra, the rank of a matrix is a crucial concept for understanding the structure of a system of linear equations. It provides insight into the solutions of these systems, helping us determine the number of independent equations and the nature of the solution space.</p>
+<div id="def-soln" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2.2 (Rank and System Consistency)</strong></span> The rank of a matrix <span class="math inline">\(A\)</span> is defined as the maximum number of linearly independent rows or columns. When solving a system of linear equations represented by <span class="math inline">\(A\mathbf{x} = \mathbf{b}\)</span>, where <span class="math inline">\(A\)</span> is an <span class="math inline">\(m \times n\)</span> matrix and <span class="math inline">\(\mathbf{b}\)</span> is a vector, the rank of <span class="math inline">\(A\)</span> plays a crucial role in determining the solution’s existence and uniqueness.</p>
+<p><strong>Consistency of the System</strong></p>
+<ol type="1">
+<li><strong>Consistent System:</strong> A system of linear equations is consistent if there exists at least one solution. This occurs if the rank of the coefficient matrix <span class="math inline">\(A\)</span> is equal to the rank of the augmented matrix <span class="math inline">\([A|\mathbf{b}]\)</span>. Mathematically, this can be expressed as: <span class="math display">\[\text{rank}(A) = \text{rank}([A|\mathbf{b}])\]</span> If this condition is met, the system has solutions. The solutions can be:
+<ul>
+<li><strong>Unique</strong> if the rank equals the number of variables.</li>
+<li><strong>Infinitely many</strong> if the rank is less than the number of variables.</li>
+</ul></li>
+<li><strong>Inconsistent System:</strong> A system is inconsistent if there are no solutions. This occurs when: <span class="math display">\[\text{rank}(A) \ne \text{rank}([A|\mathbf{b}])\]</span> In this case, the equations represent parallel or conflicting constraints that cannot be satisfied simultaneously.</li>
+</ol>
+</div>
 
 
+</section>
+</section>
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-strang2020linear" class="csl-entry" role="listitem">
+Strang, Gilbert. 2020. <em>Linear Algebra for Everyone</em>. SIAM.
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -1958,18 +2672,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2001,7 +2704,47 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -2036,7 +2779,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -2312,7 +3059,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./module_1.html" class="pagination-link  aria-label=" &lt;span="" for="" linear="" algebra&lt;="" span&gt;"="">
+      <a href="./module_1.html" class="pagination-link" aria-label="Python for Linear Algebra">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python for Linear Algebra</span></span>
       </a>          
   </div>
@@ -2323,8 +3070,40 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox","openEffect":"zoom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sijuswamy/Computational-Linear-Algebra/edit/main/module_2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+</body></html>

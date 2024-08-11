@@ -553,6 +553,210 @@ print(scaling_factors)
 print("\nScaled Covariance Matrix:")
 print(scaled_cov_matrix)
 ```
+#### Practice Problems
+
+**Problem 1: Basic Hadamard Product**
+
+Given matrices:
+$$A=\begin{bmatrix}1&2\\3&4\end{bmatrix}$$
+$$B=\begin{bmatrix}5&6\\7&8\end{bmatrix}$$
+
+Find the Hadamard product $C=A\circ B$.
+
+**Solution:**
+
+$$C=\begin{bmatrix}
+1\cdot5&2\cdot6\\
+3\cdot7&4\cdot8
+\end{bmatrix}=
+\begin{bmatrix}
+5&12\\
+21&32
+\end{bmatrix}$$
+
+**Problem 2: Hadamard Product with Identity Matrix**
+
+Given matrices:
+$$A=\begin{bmatrix}1&2&3\\4&5&6\end{bmatrix}$$
+$$I=\begin{bmatrix}1&0&0\\0&1&0\end{bmatrix}$$
+
+Find the Hadamard product $C=A\circ I$.
+
+**Solution:**
+
+$$C=\begin{bmatrix}
+1\cdot1&2\cdot0&3\cdot0\\
+4\cdot0&5\cdot1&6\cdot0
+\end{bmatrix}=
+\begin{bmatrix}
+1&0&0\\
+0&5&0
+\end{bmatrix}$$
+
+**Problem 3: Hadamard Product with Zero Matrix**
+
+Given matrices:
+$$A=\begin{bmatrix}3&4\\5&6\end{bmatrix}$$
+$$Z=\begin{bmatrix}0&0\\0&0\end{bmatrix}$$
+
+Find the Hadamard product $C=A\circ Z$.
+
+**Solution:**
+
+$$C=\begin{bmatrix}
+3\cdot0&4\cdot0\\
+5\cdot0&6\cdot0
+\end{bmatrix}=
+\begin{bmatrix}
+0&0\\
+0&0
+\end{bmatrix}$$
+
+**Problem 4: Hadamard Product of Two Identity Matrices**
+
+Given identity matrices:
+$$I_2=\begin{bmatrix}1&0\\0&1\end{bmatrix}$$
+$$I_3=\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}$$
+
+Find the Hadamard product $C=I_2\circ I_3$ (extend $I_2$ to match dimensions of $I_3$).
+
+**Solution:**
+
+Extend $I_2$ to $I_3$:
+$$I_2=\begin{bmatrix}1&0&0\\0&1&0\\0&0&0\end{bmatrix}$$
+
+$$C=\begin{bmatrix}
+1\cdot1&0\cdot0&0\cdot0\\
+0\cdot0&1\cdot1&0\cdot0\\
+0\cdot0&0\cdot0&0\cdot1
+\end{bmatrix}=
+\begin{bmatrix}
+1&0&0\\
+0&1&0\\
+0&0&0
+\end{bmatrix}$$
+
+**Problem 5: Hadamard Product with Random Matrices**
+
+Given random matrices:
+$$A=\begin{bmatrix}2&3\\1&4\end{bmatrix}$$
+$$B=\begin{bmatrix}0&5\\6&2\end{bmatrix}$$
+
+Find the Hadamard product $C=A\circ B$.
+
+**Solution:**
+
+$$C=\begin{bmatrix}
+2\cdot0&3\cdot5\\
+1\cdot6&4\cdot2
+\end{bmatrix}=
+\begin{bmatrix}
+0&15\\
+6&8
+\end{bmatrix}$$
+
+**Problem 6: Hadamard Product of 3x3 Matrices**
+
+Given matrices:
+$$A=\begin{bmatrix}1&2&3\\4&5&6\\7&8&9\end{bmatrix}$$
+$$B=\begin{bmatrix}9&8&7\\6&5&4\\3&2&1\end{bmatrix}$$
+
+Find the Hadamard product $C=A\circ B$.
+
+**Solution:**
+
+$$C=\begin{bmatrix}
+1\cdot9&2\cdot8&3\cdot7\\
+4\cdot6&5\cdot5&6\cdot4\\
+7\cdot3&8\cdot2&9\cdot1
+\end{bmatrix}=
+\begin{bmatrix}
+9&16&21\\
+24&25&24\\
+21&16&9
+\end{bmatrix}$$
+
+**Problem 7: Hadamard Product of Column Vectors**
+
+Given column vectors:
+$$u=\begin{bmatrix}2\\3\end{bmatrix}$$
+$$v=\begin{bmatrix}5\\6\end{bmatrix}$$
+
+Find the Hadamard product $w=u\circ v$.
+
+**Solution:**
+
+$$w=\begin{bmatrix}
+2\cdot5\\
+3\cdot6
+\end{bmatrix}=
+\begin{bmatrix}
+10\\
+18
+\end{bmatrix}$$
+
+**Problem 8: Hadamard Product with Non-Square Matrices**
+
+Given matrices:
+$$A=\begin{bmatrix}1&2\\3&4\\5&6\end{bmatrix}$$
+$$B=\begin{bmatrix}7&8\\9&10\end{bmatrix}$$
+
+Find the Hadamard product $C=A\circ B$ (extend $B$ to match dimensions of $A$).
+
+**Solution:**
+
+Extend $B$ to match dimensions of $A$:
+$$B=\begin{bmatrix}7&8\\9&10\\7&8\end{bmatrix}$$
+
+$$C=\begin{bmatrix}
+1\cdot7&2\cdot8\\
+3\cdot9&4\cdot10\\
+5\cdot7&6\cdot8
+\end{bmatrix}=
+\begin{bmatrix}
+7&16\\
+27&40\\
+35&48
+\end{bmatrix}$$
+
+**Problem 9: Hadamard Product in Image Processing**
+
+Given matrices representing image pixel values:
+$$A=\begin{bmatrix}10&20\\30&40\end{bmatrix}$$
+$$B=\begin{bmatrix}0.5&1.5\\2.0&0.5\end{bmatrix}$$
+
+Find the Hadamard product $C=A\circ B$.
+
+**Solution:**
+
+$$C=\begin{bmatrix}
+10\cdot0.5&20\cdot1.5\\
+30\cdot2.0&40\cdot0.5
+\end{bmatrix}=
+\begin{bmatrix}
+5&30\\
+60&20
+\end{bmatrix}$$
+
+**Problem 10: Hadamard Product in Statistical Data**
+
+Given matrices representing two sets of statistical data:
+
+$$A=\begin{bmatrix}5&6&7\\8&9&10\end{bmatrix}$$
+$$B=\begin{bmatrix}1&2&3\\4&5&6\end{bmatrix}$$
+
+Find the Hadamard product $C=A\circ B$.
+
+**Solution:**
+
+$$C=\begin{bmatrix}
+5\cdot1&6\cdot2&7\cdot3\\
+8\cdot4&9\cdot5&10\cdot6
+\end{bmatrix}=
+\begin{bmatrix}
+5&12&21\\
+32&45&60
+\end{bmatrix}$$
 
 #### Inner Product of Matrices
 
@@ -1149,7 +1353,7 @@ plt.show()
 6. **Matrix Trace**
 
    The trace of the outer product of two vectors is given by:
-   $$\text{tr}(\mathbf{u} \otimes \mathbf{v}) = (\mathbf{u}^T \mathbf{v}) \cdot (\mathbf{v}^T \mathbf{u})$$
+   $$\text{tr}(\mathbf{u} \otimes \mathbf{v}) = (\mathbf{u}^T \mathbf{v})= (\mathbf{v}^T \mathbf{u})$$
    Here, $\text{tr}$ denotes the trace of a matrix, which is the sum of its diagonal elements.
 
 7. **Matrix Norm**
@@ -1249,7 +1453,9 @@ a_{m1}B & a_{m2}B & \cdots & a_{mn}B
 
 :::{.callout-tip}
 
-### Frobenius Norm
+----
+
+#### Frobenius Norm
 
 The Frobenius norm, also known as the Euclidean norm for matrices, is a measure of a matrix's magnitude. It is defined as the square root of the sum of the absolute squares of its elements. Mathematically, for a matrix $A$ with elements $a_{ij}$, the Frobenius norm is given by:
 
@@ -1396,4 +1602,456 @@ $$\|C\|_F = \sqrt{0 + 25 + 0 + 100 + 36 + 49 + 144 + 196 + 0 + 225 + 0 + 400 + 3
 $$\|C\|_F = \sqrt{2896}$$
 $$\|C\|_F \approx 53.87$$
 
+----
 
+In the previous block we have discussed the Frobenius norm and its applications. Now came back to the discussions on the Kronecker product. The Kronecker product is particularly useful in scenarios where interactions between different types of data need to be modeled comprehensively. In recommendation systems, it allows us to integrate user preferences with item relationships to improve recommendation accuracy.
+
+In addition to recommendation systems, Kronecker products are used in various fields such as:
+
+-  Signal Processing: For modeling multi-dimensional signals.
+- Machine Learning: In building features for complex models.
+- Communication Systems: For modeling network interactions.
+
+By understanding the Kronecker product and its applications, we can extend it to solve complex problems and enhance systems across different domains. To understand the practical use of Kronecker product in a Machine Learning scenario let us consider the following problem statement and its solution.
+
+:::{.callout-note}
+### Problem statement
+In the realm of recommendation systems, predicting user preferences for various product categories based on past interactions is a common challenge. Suppose we have data on user preferences for different products and categories. We can use this data to recommend the best products for each user by employing mathematical tools such as the Kronecker product. The User Preference and Category relationships are given in @tbl-UPM and @tbl-CRM
+.
+
+
+| User/Item  | Electronics | Clothing | Books |
+|------------|-------------|----------|-------|
+| User 1     | 5           | 3        | 4     |
+| User 2     | 2           | 4        | 5     |
+| User 3     | 3           | 4        | 4     |
+
+: User Preference {#tbl-UPM}
+
+
+| Category/Feature | Feature 1 | Feature 2 | Feature 3 |
+|------------------|-----------|-----------|-----------|
+| Electronics      | 1         | 0         | 0         |
+| Clothing         | 0         | 1         | 1         |
+| Books            | 0         | 1         | 1         |
+
+: Category Relationships {#tbl-CRM}
+
+ Predict user preferences for different product categories using the Kronecker product matrix.
+:::
+
+>**Solution Procedure**
+
+1. *Compute the Kronecker Product:*
+   Calculate the Kronecker product of matrices $U$ and $C$ to obtain matrix $K$.
+
+   To model the problem, we use the Kronecker product of the user preference matrix $U$ and the category relationships matrix $C$. This product allows us to predict the user’s rating for each category by combining their preferences with the category features.
+
+  *Formulating Matrices*
+
+   User Preference Matrix (U):
+   - Dimension: $3\times 3$ (3 users, 3 items)
+   - from the User preference data, we can create the User Preference Matrix as follows:
+
+  $$U = \begin{pmatrix}5 & 3 & 4 \\2 & 4 & 5 \\3 & 4 & 4 \end{pmatrix}$$
+
+   Category Relationships Matrix (C):
+   - Dimension: $3 \times 3$ (3 categories)
+   - from the Category Relationships data, we can create the Category Relationship Matrix as follows:
+
+  $$C = \begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 1 & 1\end{pmatrix}$$
+
+  *Kronecker Product Calculation*
+
+The Kronecker product $K$ of $U$ and $C$ is calculated as follows:
+
+  1. **Matrix Dimensions:**
+   - $U$ is $3 \times 3$ (3 users, 3 items).
+   - $C$ is $3 \times 3$ (3 categories, 3 features).
+
+  2. **Calculate Kronecker Product:**
+   - For each element $u_{ij}$ in $U$, multiply by the entire matrix $C$.
+
+   The Kronecker product $K$ is computed as:
+
+  $$K = U \otimes C$$
+
+   Explicitly, the Kronecker product $K$ is:
+
+  $$K = \begin{pmatrix}5 \cdot C & 3 \cdot C & 4 \cdot C \\ 2 \cdot C & 4 \cdot C & 5 \cdot C \\    3 \cdot C & 4 \cdot C & 4 \cdot C\end{pmatrix}$$
+
+   As an example the blocks in first row are:
+
+  $$5 \cdot C = \begin{pmatrix}
+   5 & 0 & 0 \\
+   0 & 5 & 5 \\
+   0 & 5 & 5
+   \end{pmatrix}, \quad
+   3 \cdot C = \begin{pmatrix}
+   3 & 0 & 0 \\
+   0 & 3 & 3 \\
+   0 & 3 & 3
+   \end{pmatrix}, \quad
+   4 \cdot C = \begin{pmatrix}
+   4 & 0 & 0 \\
+   0 & 4 & 4 \\
+   0 & 4 & 4
+   \end{pmatrix}$$
+
+   Combining these blocks:
+
+  $$K = \begin{pmatrix}
+   5 & 0 & 0 & 3 & 0 & 0 & 4 & 0 & 0\\
+   0 & 5 & 5 & 0 & 3 & 3 & 0 & 4 & 4\\
+   0 & 5 & 5 & 0 & 3 & 3 & 0 & 4 & 4\\
+   2 & 0 & 0 & 4 & 0 & 0 & 5 & 0 & 0\\
+   0 & 2 & 2 & 0 & 4 & 4 & 0 & 5 & 5\\
+   0 & 2 & 2 & 0 & 4 & 4 & 0 & 5 & 5\\
+   3 & 0 & 0 & 4 & 0 & 0 & 4 & 0 & 0\\
+   0 & 3 & 3 & 0 & 4 & 4 & 0 & 4 & 4\\
+   0 & 3 & 3 & 0 & 4 & 4 & 0 & 4 & 4\end{pmatrix}$$
+
+2. **Interpret the Kronecker Product Matrix:**
+   The resulting matrix $K$ represents all possible combinations of user preferences and category features.
+
+3. **Predict Ratings:**
+   For each user, use matrix $K$ to predict the rating for each category by summing up the values in the corresponding rows.
+
+4. **Generate Recommendations:**
+   Identify the top categories with the highest predicted ratings for each user.
+
+The `python` code to solve this problem computationally is given below.
+
+```{python}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Define the matrices
+U = np.array([[5, 3, 4],
+              [2, 4, 5],
+              [3, 4, 4]])
+
+C = np.array([[1, 0, 0],
+              [0, 1, 1],
+              [0, 1, 1]])
+
+# Compute the Kronecker product
+K = np.kron(U, C)
+
+# Create a DataFrame to visualize the Kronecker product matrix
+df_K = pd.DataFrame(K, 
+                    columns=['Electronics_F1', 'Electronics_F2', 'Electronics_F3', 
+                             'Clothing_F1', 'Clothing_F2', 'Clothing_F3', 
+                             'Books_F1', 'Books_F2', 'Books_F3'],
+                    index=['User 1 Electronics', 'User 1 Clothing', 'User 1 Books', 
+                           'User 2 Electronics', 'User 2 Clothing', 'User 2 Books', 
+                           'User 3 Electronics', 'User 3 Clothing', 'User 3 Books'])
+
+# Print the Kronecker product matrix
+print("Kronecker Product Matrix (K):\n", df_K)
+
+# Predict ratings and create recommendations
+def recommend(user_index, top_n=3):
+    """ Recommend top_n categories for a given user based on Kronecker product matrix. """
+    user_ratings = K[user_index * len(C):(user_index + 1) * len(C), :]
+    predicted_ratings = np.sum(user_ratings, axis=0)
+    recommendations = np.argsort(predicted_ratings)[::-1][:top_n]
+    return recommendations
+
+# Recommendations for User 1
+user_index = 0  # User 1
+top_n = 3
+recommendations = recommend(user_index, top_n)
+
+print(f"\nTop {top_n} recommendations for User {user_index + 1}:")
+for rec in recommendations:
+    print(df_K.columns[rec])
+```
+
+A simple visualization of this recomendation system is shown in [Fig @fig-reco].
+
+```{python}
+#| label: fig-reco
+#| fig-cap: "EDA for the Recommendation System"
+# Visualization
+def plot_recommendations(user_index):
+    """ Plot the predicted ratings for each category for a given user. """
+    user_ratings = K[user_index * len(C):(user_index + 1) * len(C), :]
+    predicted_ratings = np.sum(user_ratings, axis=0)
+    categories = df_K.columns
+    plt.figure(figsize=(6, 5))
+    plt.bar(categories, predicted_ratings)
+    plt.xlabel('Categories')
+    plt.ylabel('Predicted Ratings')
+    plt.title(f'Predicted Ratings for User {user_index + 1}')
+    plt.xticks(rotation=45)
+    plt.show()
+
+# Plot recommendations for User 1
+plot_recommendations(user_index)
+```
+
+This micro project illustrate one of the popular use of Kronecker product on ML application.
+
+### Matrix Measures of Practical Importance
+
+Matrix measures, such as rank and determinant, play crucial roles in linear algebra. While both rank and determinant provide valuable insights into the properties of a matrix, they serve different purposes. Understanding their roles and applications is essential for solving complex problems in computer science, engineering, and applied mathematics.
+
+#### Determinant
+
+Determinant of a $2\times 2$ matrix $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$ is defined as $|A|=ad-bc$. Determinant of higher order square matrices can be found using the Laplace method or Sarrus method.
+
+The determinant of a matrix provides information about the matrix's invertibility and scaling factor for volume transformation. Specifically:
+
+1. *Invertibility:* A matrix is invertible if and only if its determinant is non-zero.
+
+2. *Volume Scaling:* The absolute value of the determinant gives the scaling factor by which the matrix transforms volume.
+3. *Parallelism:* If the determinant of a matrix composed of vectors is zero, the vectors are linearly dependent, meaning they are parallel or redundant.
+4. *Redundancy:*  A zero determinant indicates that the vectors span a space of lower dimension than the number of vectors, showing redundancy.
+
+:::{.callout-important}
+## Least Possible Values of Determinant
+
+1. *Least Positive Determinant:* For a $1\times 1$ matrix, the smallest non-zero determinant is any positive value, typically $\epsilon$, where  $\epsilon$ is a small positive number.
+2. Least Non-Zero Determinant: For higher-dimensional matrices, the smallest non-zero determinant is a non-zero value that represents the smallest area or volume spanned by the matrix's rows or columns. For example a $2\times 2$ matrix with determinant $\epsilon$ could be:
+$$B=\begin{pmatrix}\epsilon&0\\ 0&\epsilon\end{pmatrix}$$
+Here, $\epsilon$ is a small positive number, indicating a very small but *non-zero* area.
+:::
+
+Now let's look into the most important matrix measure for advanced application in Linear Algebra.
+
+As we know the matrix is basically a representation tool that make things abstract- remove unnecessary details. Then the matrix itself can be represented in many ways. This is the real story telling with this most promising mathematical structure. Consider a context of collecting feedback about a product in three aspects- cost, quality and practicality. For simplicity in calculation, we consider responses from 3 customers only. The data is shown in @tbl-RT.
+
+| User   | Cost | Quality | Practicality |
+|--------|------|---------|--------------|
+| User-1 | 1    | 4       | 5            |
+| User-2 | 3    | 2       | 5            |
+| User-3 | 2    | 1       | 3            |
+
+: User rating of a consumer product {#tbl-RT}
+
+It's perfect and nice looking. But both mathematics and a computer can't handle this table as it is. So we create an abstract representation of this data- the rating matrix. Using the traditional approach, let's represent this rating data as:
+$$A=\begin{bmatrix}1&4&5\\3&2&5\\2&1&3\end{bmatrix}$$
+
+Now both the column names and row indices were removed and the data is transformed into the abstract form. This representation has both advantages and disadvantages. Be positive! So we are focused only in the advantages.
+
+Just consider the product. Its sales fully based on its features. So the product sales perspective will be represented in terms of the features- cost, quality and practicality. These features are columns of our rating matrix. Definitly peaple will have different rating for these features. Keeping all these in mind let's introduce the concept of *linear combination*. This leads to a new matrix product as shown below.
+\begin{align*}
+Ax&=\begin{bmatrix}1&4&5\\3&2&5\\2&1&3\end{bmatrix}x\\
+&=\begin{bmatrix}1&4&5\\3&2&5\\2&1&3\end{bmatrix}\cdot\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}\\
+&=\begin{bmatrix}1\\3\\2\end{bmatrix}x_1+\begin{bmatrix}1\\3\\2\end{bmatrix}x_1+\begin{bmatrix}4\\2\\1\end{bmatrix}x_2+\begin{bmatrix}5\\5\\3\end{bmatrix}x_3
+\end{align*}
+
+As the number of users increases, the product sales perspective become more informative. In short the span of the features define the feature space of the product. In real cases, a manufacture wants to know what are the features really inflence the customers. This new matrix product will help the manufactures to identify that features! 
+
+So we are going to define this new matrix product as the feature space, that will provide more insights to this context as:
+
+$$A=CR$$
+
+Where $C$ is the column space and $R$ is the row reduced Echelon form of $A$. But the product is not the usual scalar projection, Instead the weight of linear combination of elements in the column space.
+
+Let's formally illustrate this in our example. From the first observation itself, it is clear that last column is just the sum of first and second columns (That is in our context the feature 'practicality' is just depends on 'cost' and 'quality'. meaningful?). So only first columns are independent and so spans the column space. 
+
+$$C=\begin{bmatrix}1&4\\3&2\\2&1\end{bmatrix}$$
+
+Now look into the matrix $R$. Applying elementary row tansformations, $A$ will transformed into:
+
+$$R=\begin{bmatrix}1&0&1\\0&1&1\\0&0&0\end{bmatrix}$$
+
+Hence we can form a decomposition for the given rating matrix, $A$ as:
+\begin{align*}
+A&=CR\\
+&=\begin{bmatrix}1&4\\3&2\\2&1\end{bmatrix}\begin{bmatrix}1&0&1\\0&1&1\\\mbox{}&&\end{bmatrix}
+\end{align*}
+
+
+This decomposition says that there are only two independent features (columns) and the third feature (column) is the sum of first two features (columns). 
+
+:::{.callout-important}
+#### Interpretation of the $R$ matrix
+
+Each column in the $R$ matrix represents the weights for linear combination of vectors in the column space to get that column in $A$. In this example, third column of $R$ is $\begin{bmatrix}1\\1\end{bmatrix}$. This means that third column of $A$ will be $1\times C_1+1\times C_2$ of the column space, $C$!
+:::
+
+This first matrix decompostion donate a new type of matrix product (outer product) and a new measure- the number of independent columns and number of independent rows. This count is called the *rank* of the matrix $A$. In the case of features, if the rank of the column space is less than the number of features then definitly a less number of feature set will perfectly represent the data. This will help us to reduce the dimension of the dataset and there by reducing computational complexities in data analysis and machine Learning jobs.
+
+In the above discussion, we consider only the columns of $A$. Now we will mention the row space. It is the set of all linearly independent rows of $A$. For any matrix $A$, both the row space and column space are of same rank. This correspondance is a helpful result in many practical applications. 
+
+Now we consider a stable equation, $Ax=0$. With the usual notation of dot product, it implies that $x$ is orthogonal to $A$. Set of all those independent vectors which are orthogonal to $A$ constitute a new space of interest. It is called the *null space* of $A$. If $A$ represents a linear transformation, then the null space will be populated by those non-zero vectors which are *nullified* by the transformation $A$. As a summary of this discussion, the row space and null space of a matrix $A$ creates an orthogonal system. Considering the relationship between $A$ and $A^T$, it is clear that row space of $A$ is same as the column space of $A^T$ and vice verse are. So we can restate the orthogonality as: 'the null space of $A$ is orthogonal to the column space of $A^T$' and 'the null space of $A^T$ is orthogonal to the column space of $A$'. Mathematically this property can be represents as follows.
+
+::: {#note-ortho .callout-note}
+
+\begin{align*}
+\mathcal{N}(A)&\perp \mathcal{C}(A^T)\\
+\mathcal{N}(A^T)&\perp \mathcal{C}(A)
+\end{align*}
+:::
+
+In the given example, solving $Ax=0$  we get $x=\begin{bmatrix}1&1&-1\end{bmatrix}^T$. 
+
+So the rank of $\mathcal{N}(A)=1$. Already we have rank of $A=2$. This leads to an interesting result:
+
+$$\text{Rank}(A)+\text{Rank}(\mathcal{N}(A))=3$$
+
+This observation can be framed as a theorem.
+
+### Rank Nullity Theorem
+
+The rank-nullity theorem is a fundamental theorem in linear algebra that is important for understanding the connections between mathematical operations in engineering, physics, and computer science. It states that the sum of the rank and nullity of a matrix equals the number of columns in the matrix. The rank is the maximum number of linearly independent columns, and the nullity is the dimension of the nullspace. 
+
+:::{#thm-RNT }
+
+#### Rank Nullitty Theorem
+
+The Rank-Nullity Theorem states that for any $m \times n$ matrix $A$, the following relationship holds:
+
+$$
+\text{Rank}(A) + \text{Nullity}(A) = n
+$$
+
+where:
+- **Rank** of $A$ is the dimension of the column space of $A$, which is also equal to the dimension of the row space of $A$.
+- **Nullity** of $A$ is the dimension of the null space of $A$, which is the solution space to the homogeneous system $A \mathbf{x} = \mathbf{0}$.
+:::
+
+*Steps to Formulate for Matrix $A$*
+
+1. **Find the Rank of $A$**:
+   The rank of a matrix is the maximum number of linearly independent columns (or rows). It can be determined by transforming $A$ into its row echelon form or reduced row echelon form (RREF).
+
+2. **Find the Nullity of $A$**:
+   The nullity is the dimension of the solution space of $A \mathbf{x} = \mathbf{0}$. This can be found by solving the homogeneous system and counting the number of free variables.
+
+3. **Apply the Rank-Nullity Theorem**:
+   Use the rank-nullity theorem to verify the relationship.
+
+-----
+
+*Example 1:* Calculate the rank and nullity of $A=\begin{bmatrix}
+   1 & 4 & 5 \\
+   3 & 2 & 5 \\
+   2 & 1 & 3
+   \end{bmatrix}$ and verify the rank nullity theorem.
+
+1. **Row Echelon Form**:
+
+   Perform Gaussian elimination on $A$:
+
+   $$A = \begin{bmatrix}
+   1 & 4 & 5 \\
+   3 & 2 & 5 \\
+   2 & 1 & 3
+   \end{bmatrix}$$
+
+   Perform row operations to get it to row echelon form:
+
+   - Subtract 3 times row 1 from row 2:
+     $$\begin{bmatrix}
+     1 & 4 & 5 \\
+     0 & -10 & -10 \\
+     2 & 1 & 3
+     \end{bmatrix}$$
+
+   - Subtract 2 times row 1 from row 3:
+     $$\begin{bmatrix}
+     1 & 4 & 5 \\
+     0 & -10 & -10 \\
+     0 & -7 & -7
+     \end{bmatrix}$$
+
+   - Add $\frac{7}{10}$ times row 2 to row 3:
+     $$\begin{bmatrix}
+     1 & 4 & 5 \\
+     0 & -10 & -10 \\
+     0 & 0 & 0
+     \end{bmatrix}$$
+
+   The matrix is now in row echelon form.
+
+   **Rank** is the number of non-zero rows, which is 2.
+
+2. **Find the Nullity**:
+   The matrix $A$ has 3 columns. The number of free variables in the solution of $A \mathbf{x} = \mathbf{0}$ is $3 - \text{Rank}$. 
+
+   So,
+   $$\text{Nullity}(A) = 3 - 2 = 1$$
+
+3. **Apply the Rank-Nullity Theorem**:
+   $$\text{Rank}(A) + \text{Nullity}(A) = 2 + 1 = 3$$
+
+   This matches the number of columns of $A$, confirming the theorem.
+
+### Fundamental Subspaces
+
+In section @note-ortho, we have seen that for any matrix $A$, there is two pairs of inter-related orthogonal spaces. This leads to the concept of Fundamental sup spaces. 
+
+Matrices are not just arrays of numbers; they can represent linear transformations too. A linear transformation maps vectors from one vector space to another while preserving vector addition and scalar multiplication. The matrix $A$ can be viewed as a representation of a linear transformation $T$ from $\mathbb{R}^m$ to $\mathbb{R}^m$ where:
+
+$$T(\mathbf{x}) = A \mathbf{x}$$
+
+In this context:
+
+- The column space of $A$ represents the range of $T$, which is the set of all possible outputs.
+- The null space of $A$ represents the kernel of $T$, which is the set of vectors that are mapped to the zero vector.
+
+**The Four Fundamental Subspaces**
+
+Understanding the four fundamental subspaces helps in analyzing the properties of a linear transformation. These subspaces are:
+
+:::{#def-FFS}
+#### Four Fundamental Subspaces
+
+Let $T:\mathbb{R^n}\longrightarrow \mathbb{R^m}$ be a linear transformation and $A$ represents the matrix of transformation. The four fundamental subspaces are defined as:
+
+1. **Column Space (Range)**: The set of all possible outputs of the transformation. For matrix $A$, this is the span of its columns. It represents the image of $\mathbb{R}^n$ under $T$.
+
+2. **Null Space (Kernel)**: The set of all vectors that are mapped to the zero vector by the transformation. For matrix $A$, this is the solution space of $A \mathbf{x} = \mathbf{0}$.
+
+3. **Row Space**: The span of the rows of $A$. This space is crucial because it helps in understanding the rank of $A$. The dimension of the row space is equal to the rank of $A$, which represents the maximum number of linearly independent rows.
+
+4. **Left Null Space**: The set of all vectors $\mathbf{y}$ such that $A^T \mathbf{y} = \mathbf{0}$. It provides insight into the orthogonal complement of the row space.
+:::
+
+```{mermaid}
+graph TD
+    MatrixA[Matrix A] -->|Contains Columns| ColumnSpace[Column Space]
+    MatrixA -->|Contains Rows| RowSpace[Row Space]
+    MatrixA -->|Contains Vectors Mapping to Zero| NullSpace[Null Space]
+    MatrixA -->|Contains Vectors Orthogonal to Row Space| LeftNullSpace[Left Null Space]
+    ColumnSpace -->|Orthogonal Complement| NullSpace
+    RowSpace -->|Orthogonal Complement| LeftNullSpace
+```
+This idea is depicted as a 'Big picture of the four sub spaces of a matrix' in the Strang's text book on Linear algebra for every one [@strang2020linear]. This 'Big Picture' is shown in [Fig- @fig-big-pic].
+
+![The Big Pictue of Fundamental Subspaces](https://i.pinimg.com/originals/fb/c5/f9/fbc5f91d82681dd7341dda6915d11e92.png){#fig-big-pic fig-align="center" width=80% .lightbox}
+
+A video session from Strang's session is here:
+
+{{< video https://youtu.be/rwLOfdfc4dw?si=DsJb8KJTF05hHc76 >}}
+
+
+#### Practice Problems
+
+#### Rank and Solution of System of Linear Equations
+
+In linear algebra, the rank of a matrix is a crucial concept for understanding the structure of a system of linear equations. It provides insight into the solutions of these systems, helping us determine the number of independent equations and the nature of the solution space.
+
+:::{#def-soln}
+
+#### Rank and System Consistency
+
+The rank of a matrix $A$ is defined as the maximum number of linearly independent rows or columns. When solving a system of linear equations represented by $A\mathbf{x} = \mathbf{b}$, where $A$ is an $m \times n$ matrix and $\mathbf{b}$ is a vector, the rank of $A$ plays a crucial role in determining the solution's existence and uniqueness.
+
+**Consistency of the System**
+
+1. **Consistent System:** A system of linear equations is consistent if there exists at least one solution. This occurs if the rank of the coefficient matrix $A$ is equal to the rank of the augmented matrix $[A|\mathbf{b}]$. Mathematically, this can be expressed as:
+   $$\text{rank}(A) = \text{rank}([A|\mathbf{b}])$$
+   If this condition is met, the system has solutions. The solutions can be:
+   - **Unique** if the rank equals the number of variables.
+   - **Infinitely many** if the rank is less than the number of variables.
+
+2. **Inconsistent System:** A system is inconsistent if there are no solutions. This occurs when:
+   $$\text{rank}(A) \ne \text{rank}([A|\mathbf{b}])$$
+   In this case, the equations represent parallel or conflicting constraints that cannot be satisfied simultaneously.
+:::
