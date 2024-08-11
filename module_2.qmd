@@ -1448,18 +1448,20 @@ a_{m1}B & a_{m2}B & \cdots & a_{mn}B
 
    The Frobenius norm of the Kronecker product can be computed as:
   $$\| A \otimes B \|_F = \| A \|_F \cdot \| B \|_F$$
-   where $\| \cdot \|_F $ denotes the Frobenius norm.
-  :::
+   where $\| \cdot \|_F$ denotes the Frobenius norm.
+:::
+
+----
 
 :::{.callout-tip}
 
-----
 
 #### Frobenius Norm
 
 The Frobenius norm, also known as the Euclidean norm for matrices, is a measure of a matrix's magnitude. It is defined as the square root of the sum of the absolute squares of its elements. Mathematically, for a matrix $A$ with elements $a_{ij}$, the Frobenius norm is given by:
 
 $$\|A\|_F = \sqrt{\sum_{i,j} |a_{ij}|^2}$$
+
 :::
 
 Example 1: Calculation of Frobenius Norm
