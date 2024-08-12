@@ -829,6 +829,193 @@ The inner product $\langle A, B \rangle$ is calculated as:
 &= 175
 \end{align*}
 
+#### Practice Problems
+
+**Problem 1: Inner Product of 2x2 Matrices**
+
+Given matrices:
+$$A=\begin{bmatrix}1&2\\3&4\end{bmatrix}$$
+$$B=\begin{bmatrix}5&6\\7&8\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+\langle A,B \rangle &= \sum_{i,j} A_{ij} B_{ij} \\
+&= 1\cdot5 + 2\cdot6 + 3\cdot7 + 4\cdot8 \\
+&= 5 + 12 + 21 + 32 \\
+&= 70
+\end{align*}
+
+---
+
+**Problem 2: Inner Product of 3x3 Matrices**
+
+Given matrices:
+$$A=\begin{bmatrix}1&0&2\\3&4&5\\6&7&8\end{bmatrix}$$
+$$B=\begin{bmatrix}8&7&6\\5&4&3\\2&1&0\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+\langle A,B \rangle &= \sum_{i,j} A_{ij} B_{ij} \\
+&= 1\cdot8 + 0\cdot7 + 2\cdot6 + \\
+&\quad 3\cdot5 + 4\cdot4 + 5\cdot3 + \\
+&\quad 6\cdot2 + 7\cdot1 + 8\cdot0 \\
+&= 8 + 0 + 12 + 15 + 16 + 15 + 12 + 7 + 0 \\
+&= 85
+\end{align*}
+
+---
+
+**Problem 3: Inner Product of Diagonal Matrices**
+
+Given diagonal matrices:
+$$A=\begin{bmatrix}2&0&0\\0&3&0\\0&0&4\end{bmatrix}$$
+$$B=\begin{bmatrix}5&0&0\\0&6&0\\0&0&7\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+\langle A,B \rangle &= \sum_{i,j} A_{ij} B_{ij} \\
+&= 2\cdot5 + 0\cdot0 + 0\cdot0 + \\
+&\quad 0\cdot0 + 3\cdot6 + 0\cdot0 + \\
+&\quad 0\cdot0 + 0\cdot0 + 4\cdot7 \\
+&= 10 + 0 + 0 + 0 + 18 + 0 + 0 + 0 + 28 \\
+&= 56
+\end{align*}
+
+---
+
+**Problem 4: Inner Product of Column Vectors**
+
+Given column vectors:
+$$u=\begin{bmatrix}1\\2\\3\end{bmatrix}$$
+$$v=\begin{bmatrix}4\\5\\6\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+\langle u,v \rangle &= \sum_{i} u_i v_i \\
+&= 1\cdot4 + 2\cdot5 + 3\cdot6 \\
+&= 4 + 10 + 18 \\
+&= 32
+\end{align*}
+
+---
+
+**Problem 5: Inner Product with Random Matrices**
+
+Given matrices:
+$$A=\begin{bmatrix}3&2\\1&4\end{bmatrix}$$
+$$B=\begin{bmatrix}5&7\\8&6\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+\langle A,B \rangle &= \sum_{i,j} A_{ij} B_{ij} \\
+&= 3\cdot5 + 2\cdot7 + \\
+&\quad 1\cdot8 + 4\cdot6 \\
+&= 15 + 14 + 8 + 24 \\
+&= 61
+\end{align*}
+
+---
+
+**Problem 6: Inner Product of 2x3 and 3x2 Matrices**
+
+Given matrices:
+$$A=\begin{bmatrix}1&2&3\\4&5&6\end{bmatrix}$$
+$$B=\begin{bmatrix}7&8\\9&10\\11&12\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+\langle A,B \rangle &= \sum_{i,j} A_{ij} B_{ij} \\
+&= 1\cdot7 + 2\cdot8 + 3\cdot11 + \\
+&\quad 4\cdot9 + 5\cdot10 + 6\cdot12 \\
+&= 7 + 16 + 33 + 36 + 50 + 72 \\
+&= 214
+\end{align*}
+
+---
+
+**Problem 7: Inner Product with Transpose Operation**
+
+Given matrices:
+$$A=\begin{bmatrix}2&3\\4&5\end{bmatrix}$$
+$$B=\begin{bmatrix}6&7\\8&9\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+\langle A,B \rangle &= \sum_{i,j} A_{ij} B_{ij} \\
+&= 2\cdot6 + 3\cdot7 + \\
+&\quad 4\cdot8 + 5\cdot9 \\
+&= 12 + 21 + 32 + 45 \\
+&= 110
+\end{align*}
+
+---
+
+**Problem 8: Inner Product of Symmetric Matrices**
+
+Given symmetric matrices:
+$$A=\begin{bmatrix}1&2\\2&3\end{bmatrix}$$
+$$B=\begin{bmatrix}4&5\\5&6\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+\langle A,B \rangle &= \sum_{i,j} A_{ij} B_{ij} \\
+&= 1\cdot4 + 2\cdot5 + \\
+&\quad 2\cdot5 + 3\cdot6 \\
+&= 4 + 10 + 10 + 18 \\
+&= 42
+\end{align*}
+
+---
+
+**Problem 9: Inner Product with Complex Matrices**
+
+Given matrices:
+$$A=\begin{bmatrix}1+i&2-i\\3+i&4-i\end{bmatrix}$$
+$$B=\begin{bmatrix}5-i&6+i\\7-i&8+i\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+\langle A,B \rangle &= \sum_{i,j} \text{Re}(A_{ij} \overline{B_{ij}}) \\
+&= (1+i)\cdot(5+i) + (2-i)\cdot(6-i) + \\
+&\quad (3+i)\cdot(7+i) + (4-i)\cdot(8+i) \\
+&= (5+i+5i-i^2) + (12-i-6i+i^2) + \\
+&\quad (21+i+7i-i^2) + (32+i-8i-i^2) \\
+&= 5+5 + 12 - 6 + 21 + 32 - 2 \\
+&= 62
+\end{align*}
+
+---
+
+**Problem 10: Inner Product of 4x4 Matrices**
+
+Given matrices:
+$$A=\begin{bmatrix}1&2&3&4\\5&6&7&8\\9&10&11&12\\13&14&15&16\end{bmatrix}$$
+$$B=\begin{bmatrix}16&15&14&13\\12&11&10&9\\8&7&6&5\\4&3&2&1\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+\langle A,B \rangle &= \sum_{i,j} A_{ij} B_{ij} \\
+&= 1\cdot16 + 2\cdot15 + 3\cdot14 + 4\cdot13 + \\
+&\quad 5\cdot12 + 6\cdot11 + 7\cdot10 + 8\cdot9 + \\
+&\quad 9\cdot8 + 10\cdot7 + 11\cdot6 + 12\cdot5 + \\
+&\quad 13\cdot4 + 14\cdot3 + 15\cdot2 + 16\cdot1 \\
+&= 16 + 30 + 42 + 52 + 60 + 66 + 70 + 72 + \\
+&\quad 72 + 70 + 66 + 60 + 52 + 42 + 30 + 16 \\
+&= 696
+\end{align*}
+
+----
+
 Now let's look into the computational part of *inner product*.
 
 1. Compute Inner Product from Scratch (without Libraries)
@@ -1077,6 +1264,232 @@ $$\mathbf{u} \otimes \mathbf{v} = \begin{pmatrix}
 8 & 10 \\
 12 & 15
 \end{pmatrix}$$
+
+
+#### Practice Problems
+
+**Find the outer product of A and B where A and B are given as follows:**
+
+**Problem 1:**
+
+Find the outer product of:
+$$A=\begin{bmatrix}1\\2\end{bmatrix}$$
+$$B=\begin{bmatrix}3&4\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}1\\2\end{bmatrix} \otimes \begin{bmatrix}3&4\end{bmatrix} \\
+&= \begin{bmatrix}
+1 \cdot 3 & 1 \cdot 4 \\
+2 \cdot 3 & 2 \cdot 4
+\end{bmatrix} \\
+&= \begin{bmatrix}
+3 & 4 \\
+6 & 8
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 2:**
+
+Find the outer product of:
+$$A=\begin{bmatrix}1\\2\\3\end{bmatrix}$$
+$$B=\begin{bmatrix}4&5&6\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}1\\2\\3\end{bmatrix} \otimes \begin{bmatrix}4&5&6\end{bmatrix} \\
+&= \begin{bmatrix}
+1 \cdot 4 & 1 \cdot 5 & 1 \cdot 6 \\
+2 \cdot 4 & 2 \cdot 5 & 2 \cdot 6 \\
+3 \cdot 4 & 3 \cdot 5 & 3 \cdot 6
+\end{bmatrix} \\
+&= \begin{bmatrix}
+4 & 5 & 6 \\
+8 & 10 & 12 \\
+12 & 15 & 18
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 3:**
+
+Find the outer product of:
+$$A=\begin{bmatrix}1&2\end{bmatrix}$$
+$$B=\begin{bmatrix}3\\4\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}1&2\end{bmatrix} \otimes \begin{bmatrix}3\\4\end{bmatrix} \\
+&= \begin{bmatrix}
+1 \cdot 3 & 1 \cdot 4 \\
+2 \cdot 3 & 2 \cdot 4
+\end{bmatrix} \\
+&= \begin{bmatrix}
+3 & 4 \\
+6 & 8
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 4:**
+
+Find the outer product of:
+$$A=\begin{bmatrix}0\\1\end{bmatrix}$$
+$$B=\begin{bmatrix}1&-1\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}0\\1\end{bmatrix} \otimes \begin{bmatrix}1&-1\end{bmatrix} \\
+&= \begin{bmatrix}
+0 \cdot 1 & 0 \cdot -1 \\
+1 \cdot 1 & 1 \cdot -1
+\end{bmatrix} \\
+&= \begin{bmatrix}
+0 & 0 \\
+1 & -1
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 5:**
+
+Find the outer product of:
+$$A=\begin{bmatrix}2\\3\end{bmatrix}$$
+$$B=\begin{bmatrix}5&-2\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}2\\3\end{bmatrix} \otimes \begin{bmatrix}5&-2\end{bmatrix} \\
+&= \begin{bmatrix}
+2 \cdot 5 & 2 \cdot -2 \\
+3 \cdot 5 & 3 \cdot -2
+\end{bmatrix} \\
+&= \begin{bmatrix}
+10 & -4 \\
+15 & -6
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 6:**
+
+Find the outer product of:
+$$A=\begin{bmatrix}1\\0\\1\end{bmatrix}$$
+$$B=\begin{bmatrix}2&-1&0\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}1\\0\\1\end{bmatrix} \otimes \begin{bmatrix}2&-1&0\end{bmatrix} \\
+&= \begin{bmatrix}
+1 \cdot 2 & 1 \cdot -1 & 1 \cdot 0 \\
+0 \cdot 2 & 0 \cdot -1 & 0 \cdot 0 \\
+1 \cdot 2 & 1 \cdot -1 & 1 \cdot 0
+\end{bmatrix} \\
+&= \begin{bmatrix}
+2 & -1 & 0 \\
+0 & 0 & 0 \\
+2 & -1 & 0
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 7:**
+
+Find the outer product of:
+$$A=\begin{bmatrix}1\\-1\end{bmatrix}$$
+$$B=\begin{bmatrix}2&0\\3&-1\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &=\begin{bmatrix}1\\-1\end{bmatrix}\otimes \begin{bmatrix}2&0\\3&-1\end{bmatrix}\\
+&= \begin{bmatrix}
+2 & 3&0&-1 \\
+-2&-3&0&1
+\end{bmatrix}
+\end{align*}
+---
+
+**Problem 8:**
+
+Find the outer product of:
+$$A=\begin{bmatrix}3\\4\end{bmatrix}$$
+$$B=\begin{bmatrix}1&-2&3\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}3\\4\end{bmatrix} \otimes \begin{bmatrix}1&-2&3\end{bmatrix} \\
+&= \begin{bmatrix}
+3 \cdot 1 & 3 \cdot -2 & 3 \cdot 3 \\
+4 \cdot 1 & 4 \cdot -2 & 4 \cdot 3
+\end{bmatrix} \\
+&= \begin{bmatrix}
+3 & -6 & 9 \\
+4 & -8 & 12
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 9:**
+
+Find the outer product of:
+$$A=\begin{bmatrix}2\\3\\-1\end{bmatrix}$$
+$$B=\begin{bmatrix}4&-2\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}2\\3\\-1\end{bmatrix} \otimes \begin{bmatrix}4&-2\end{bmatrix} \\
+&= \begin{bmatrix}
+2 \cdot 4 & 2 \cdot -2 \\
+3 \cdot 4 & 3 \cdot -2 \\
+-1 \cdot 4 & -1 \cdot -2
+\end{bmatrix} \\
+&= \begin{bmatrix}
+8 & -4 \\
+12 & -6 \\
+-4 & 2
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 10:**
+
+Find the outer product of:
+$$A=\begin{bmatrix}0\\5\end{bmatrix}$$
+$$B=\begin{bmatrix}3&1\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}0\\5\end{bmatrix} \otimes \begin{bmatrix}3&1\end{bmatrix} \\
+&= \begin{bmatrix}
+0 \cdot 3 & 0 \cdot 1 \\
+5 \cdot 3 & 5 \cdot 1
+\end{bmatrix} \\
+&= \begin{bmatrix}
+0 & 0 \\
+15 & 5
+\end{bmatrix}
+\end{align*}
+
+----
 
 **1. Compute Outer Product of Vectors from Scratch (without Libraries)**
 
@@ -1603,6 +2016,406 @@ $$\|C\|_F = \sqrt{0 + 25 + 0 + 100 + 36 + 49 + 144 + 196 + 0 + 225 + 0 + 400 + 3
 
 $$\|C\|_F = \sqrt{2896}$$
 $$\|C\|_F \approx 53.87$$
+
+----
+
+#### Practice Problems
+
+**Find the Kronecker product of A and B where A and B are given as follows:**
+
+**Problem 1:**
+
+Find the Kronecker product of:
+$$A=\begin{bmatrix}1&2\\3&4\end{bmatrix}$$
+$$B=\begin{bmatrix}0&1\\1&0\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}1&2\\3&4\end{bmatrix} \otimes \begin{bmatrix}0&1\\1&0\end{bmatrix} \\
+&= \begin{bmatrix}
+1 \cdot \begin{bmatrix}0&1\\1&0\end{bmatrix} & 2 \cdot \begin{bmatrix}0&1\\1&0\end{bmatrix} \\
+3 \cdot \begin{bmatrix}0&1\\1&0\end{bmatrix} & 4 \cdot \begin{bmatrix}0&1\\1&0\end{bmatrix}
+\end{bmatrix} \\
+&= \begin{bmatrix}
+0 & 1 & 0 & 2 \\
+1 & 0 & 3 & 4 \\
+0 & 3 & 0 & 4 \\
+1 & 4 & 1 & 0
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 2:**
+
+Find the Kronecker product of:
+$$A=\begin{bmatrix}1&0\\0&1\end{bmatrix}$$
+$$B=\begin{bmatrix}2&3\\4&5\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}1&0\\0&1\end{bmatrix} \otimes \begin{bmatrix}2&3\\4&5\end{bmatrix} \\
+&= \begin{bmatrix}
+1 \cdot \begin{bmatrix}2&3\\4&5\end{bmatrix} & 0 \cdot \begin{bmatrix}2&3\\4&5\end{bmatrix} \\
+0 \cdot \begin{bmatrix}2&3\\4&5\end{bmatrix} & 1 \cdot \begin{bmatrix}2&3\\4&5\end{bmatrix}
+\end{bmatrix} \\
+&= \begin{bmatrix}
+2 & 3 & 0 & 0 \\
+4 & 5 & 0 & 0 \\
+0 & 0 & 2 & 3 \\
+0 & 0 & 4 & 5
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 3:**
+
+Find the Kronecker product of:
+$$A=\begin{bmatrix}1&2\end{bmatrix}$$
+$$B=\begin{bmatrix}3\\4\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}1&2\end{bmatrix} \otimes \begin{bmatrix}3\\4\end{bmatrix} \\
+&= \begin{bmatrix}
+1 \cdot \begin{bmatrix}3\\4\end{bmatrix} & 2 \cdot \begin{bmatrix}3\\4\end{bmatrix}
+\end{bmatrix} \\
+&= \begin{bmatrix}
+3 & 6 \\
+4 & 8
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 4:**
+
+Find the Kronecker product of:
+$$A=\begin{bmatrix}0&1\end{bmatrix}$$
+$$B=\begin{bmatrix}1&-1\\2&0\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}0&1\end{bmatrix} \otimes \begin{bmatrix}1&-1\\2&0\end{bmatrix} \\
+&= \begin{bmatrix}
+0 \cdot \begin{bmatrix}1&-1\\2&0\end{bmatrix} & 1 \cdot \begin{bmatrix}1&-1\\2&0\end{bmatrix}
+\end{bmatrix} \\
+&= \begin{bmatrix}
+0 & 0 \\
+0 & 0 \\
+1 & -1 \\
+2 & 0
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 5:**
+
+Find the Kronecker product of:
+$$A=\begin{bmatrix}2\\3\end{bmatrix}$$
+$$B=\begin{bmatrix}4&-2\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}2\\3\end{bmatrix} \otimes \begin{bmatrix}4&-2\end{bmatrix} \\
+&= \begin{bmatrix}
+2 \cdot \begin{bmatrix}4&-2\end{bmatrix} \\
+3 \cdot \begin{bmatrix}4&-2\end{bmatrix}
+\end{bmatrix} \\
+&= \begin{bmatrix}
+8 & -4 \\
+12 & -6
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 6:**
+
+Find the Kronecker product of:
+$$A=\begin{bmatrix}1&-1\\0&2\end{bmatrix}$$
+$$B=\begin{bmatrix}0&1\\1&0\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}1&-1\\0&2\end{bmatrix} \otimes \begin{bmatrix}0&1\\1&0\end{bmatrix} \\
+&= \begin{bmatrix}
+1 \cdot \begin{bmatrix}0&1\\1&0\end{bmatrix} & -1 \cdot \begin{bmatrix}0&1\\1&0\end{bmatrix} \\
+0 \cdot \begin{bmatrix}0&1\\1&0\end{bmatrix} & 2 \cdot \begin{bmatrix}0&1\\1&0\end{bmatrix}
+\end{bmatrix} \\
+&= \begin{bmatrix}
+0 & 1 & 0 & -1 \\
+1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 2 \\
+0 & 2 & 0 & 0
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 7:**
+
+Find the Kronecker product of:
+$$A=\begin{bmatrix}2\end{bmatrix}$$
+$$B=\begin{bmatrix}3&4\\5&6\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}2\end{bmatrix} \otimes \begin{bmatrix}3&4\\5&6\end{bmatrix} \\
+&= 2 \cdot \begin{bmatrix}3&4\\5&6\end{bmatrix} \\
+&= \begin{bmatrix}
+6 & 8 \\
+10 & 12
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 8:**
+
+Find the Kronecker product of:
+$$A=\begin{bmatrix}0&1\end{bmatrix}$$
+$$B=\begin{bmatrix}1&0\\0&1\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}0&1\end{bmatrix} \otimes \begin{bmatrix}1&0\\0&1\end{bmatrix} \\
+&= \begin{bmatrix}
+0 \cdot \begin{bmatrix}1&0\\0&1\end{bmatrix} & 1 \cdot \begin{bmatrix}1&0\\0&1\end{bmatrix}
+\end{bmatrix} \\
+&= \begin{bmatrix}
+0 & 0 \\
+0 & 1
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 9:**
+
+Find the Kronecker product of:
+$$A=\begin{bmatrix}1&0\\0&1\end{bmatrix}$$
+$$B=\begin{bmatrix}1&1\\1&1\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}1&0\\0&1\end{bmatrix} \otimes \begin{bmatrix}1&1\\1&1\end{bmatrix} \\
+&= \begin{bmatrix}
+1 \cdot \begin{bmatrix}1&1\\1&1\end{bmatrix} & 0 \cdot \begin{bmatrix}1&1\\1&1\end{bmatrix} \\
+0 \cdot \begin{bmatrix}1&1\\1&1\end{bmatrix} & 1 \cdot \begin{bmatrix}1&1\\1&1\end{bmatrix}
+\end{bmatrix} \\
+&= \begin{bmatrix}
+1 & 1 & 0 & 0 \\
+1 & 1 & 0 & 0 \\
+0 & 0 & 1 & 1 \\
+0 & 0 & 1 & 1
+\end{bmatrix}
+\end{align*}
+
+---
+
+**Problem 10:**
+
+Find the Kronecker product of:
+$$A=\begin{bmatrix}2&-1\\3&4\end{bmatrix}$$
+$$B=\begin{bmatrix}0&5\\-2&3\end{bmatrix}$$
+
+**Solution:**
+
+\begin{align*}
+A \otimes B &= \begin{bmatrix}2&-1\\3&4\end{bmatrix} \otimes \begin{bmatrix}0&5\\-2&3\end{bmatrix} \\
+&= \begin{bmatrix}
+2 \cdot \begin{bmatrix}0&5\\-2&3\end{bmatrix} & -1 \cdot \begin{bmatrix}0&5\\-2&3\end{bmatrix} \\
+3 \cdot \begin{bmatrix}0&5\\-2&3\end{bmatrix} & 4 \cdot \begin{bmatrix}0&5\\-2&3\end{bmatrix}
+\end{bmatrix} \\
+&= \begin{bmatrix}
+0 & 10 & 0 & -5 \\
+-4 & 6 & -6 & -9 \\
+0 & 15 & 0 & 12 \\
+-6 & 9 & -8 & 12
+\end{bmatrix}
+\end{align*}
+
+----
+
+#### **Connection Between Outer Product and Kronecker Product**
+
+**Outer Product**
+
+**Definition:**
+
+The outer product of two vectors $\mathbf{u}$ and $\mathbf{v}$, where $\mathbf{u} \in \mathbb{R}^m$ and $\mathbf{v} \in \mathbb{R}^n$, is a matrix $\mathbf{M} \in \mathbb{R}^{m \times n}$ defined as:
+
+$$
+\mathbf{M} = \mathbf{u} \otimes \mathbf{v}
+$$
+
+where $\mathbf{M}_{ij} = u_i \cdot v_j$.
+
+**Example:**
+
+Let $\mathbf{u} = \begin{bmatrix}1\\2\end{bmatrix}$ and $\mathbf{v} = \begin{bmatrix}3\\4\end{bmatrix}$.
+
+The outer product is:
+
+$$
+\mathbf{u} \otimes \mathbf{v} = \begin{bmatrix}1 \cdot 3 & 1 \cdot 4 \\ 2 \cdot 3 & 2 \cdot 4\end{bmatrix} = \begin{bmatrix}3 & 4 \\ 6 & 8\end{bmatrix}
+$$
+
+**Kronecker Product**
+
+**Definition:**
+
+The Kronecker product of two matrices $\mathbf{A} \in \mathbb{R}^{m \times n}$ and $\mathbf{B} \in \mathbb{R}^{p \times q}$ is a matrix $\mathbf{C} \in \mathbb{R}^{(mp) \times (nq)}$ defined as:
+
+$$
+\mathbf{C} = \mathbf{A} \otimes \mathbf{B}
+$$
+
+where each element of $\mathbf{A}$ is multiplied by the entire matrix $\mathbf{B}$.
+
+**Example:**
+
+Let $\mathbf{A} = \begin{bmatrix}1&2\\3&4\end{bmatrix}$ and $\mathbf{B} = \begin{bmatrix}0&1\\1&0\end{bmatrix}$.
+
+The Kronecker product is:
+
+$$
+\mathbf{A} \otimes \mathbf{B} = \begin{bmatrix}
+1 \cdot \begin{bmatrix}0&1\\1&0\end{bmatrix} & 2 \cdot \begin{bmatrix}0&1\\1&0\end{bmatrix} \\
+3 \cdot \begin{bmatrix}0&1\\1&0\end{bmatrix} & 4 \cdot \begin{bmatrix}0&1\\1&0\end{bmatrix}
+\end{bmatrix} = \begin{bmatrix}
+0 & 1 & 0 & 2 \\
+1 & 0 & 3 & 4 \\
+0 & 3 & 0 & 4 \\
+1 & 4 & 1 & 0
+\end{bmatrix}
+$$
+
+#### Connection Between Outer Product and Kronecker Product
+
+1. **Conceptual Connection:**
+
+   - The **outer product** is a special case of the **Kronecker product**. Specifically, if $\mathbf{A}$ is a column vector and $\mathbf{B}$ is a row vector, then $\mathbf{A}$ is a $m \times 1$ matrix and $\mathbf{B}$ is a $1 \times n$ matrix. The Kronecker product of these two matrices will yield the same result as the outer product of these vectors.
+
+   - For matrices $\mathbf{A}$ and $\mathbf{B}$, the Kronecker product involves taking the outer product of each element of $\mathbf{A}$ with the entire matrix $\mathbf{B}$.
+
+2. **Mathematical Formulation:**
+
+   - Let $\mathbf{A} = \begin{bmatrix}a_{11} & a_{12}\\ a_{21} & a_{22}\end{bmatrix}$ and $\mathbf{B} = \begin{bmatrix}b_{11} & b_{12}\\ b_{21} & b_{22}\end{bmatrix}$. Then:
+
+   $$
+   \mathbf{A} \otimes \mathbf{B} = \begin{bmatrix}
+   a_{11} \mathbf{B} & a_{12} \mathbf{B} \\
+   a_{21} \mathbf{B} & a_{22} \mathbf{B}
+   \end{bmatrix}
+   $$
+
+   - If $\mathbf{A} = \mathbf{u} \mathbf{v}^T$ where $\mathbf{u}$ is a column vector and $\mathbf{v}^T$ is a row vector, then the Kronecker product of $\mathbf{u}$ and $\mathbf{v}^T$ yields the same result as the outer product $\mathbf{u} \otimes \mathbf{v}$.
+
+3. **Practical Example:**
+
+   - **Outer Product Example:** For $\mathbf{u} = \begin{bmatrix}1\\2\end{bmatrix}$ and $\mathbf{v} = \begin{bmatrix}3\\4\end{bmatrix}$, the outer product is:
+
+     $$
+     \mathbf{u} \otimes \mathbf{v} = \begin{bmatrix}3 & 4 \\ 6 & 8\end{bmatrix}
+     $$
+
+   - **Kronecker Product Example:** For $\mathbf{A} = \begin{bmatrix}1&2\end{bmatrix}$ and $\mathbf{B} = \begin{bmatrix}3\\4\end{bmatrix}$, the Kronecker product is:
+
+     $$
+     \mathbf{A} \otimes \mathbf{B} = \begin{bmatrix}3 & 6 \\ 4 & 8\end{bmatrix}
+     $$
+
+:::{.callout-note}
+**Summary**
+
+- The **outer product** is a specific case of the **Kronecker product** where one of the matrices is a vector (either row or column). 
+- The **Kronecker product** generalizes the outer product to matrices and is more versatile in applications involving tensor products and higher-dimensional constructs.
+
+:::
+
+#### Matrix Multiplication as Kronecker Product
+
+Given matrices $\mathbf{A}$ and $\mathbf{B}$, where:
+- $\mathbf{A}$ is an $m \times n$ matrix
+- $\mathbf{B}$ is an $n \times p$ matrix
+
+The product $\mathbf{C} = \mathbf{A} \mathbf{B}$ can be expressed using Kronecker products as:
+
+$$
+\mathbf{C} = \sum_{k=1}^n (\mathbf{A}_{:,k} \otimes \mathbf{B}_{k,:})
+$$
+
+where:
+- $\mathbf{A}_{:,k}$ denotes the $k$-th column of matrix $\mathbf{A}$
+- $\mathbf{B}_{k,:}$ denotes the $k$-th row of matrix $\mathbf{B}$
+
+**Example:**
+
+Let:
+
+$$
+\mathbf{A} = \begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix}
+$$
+
+and:
+
+$$
+\mathbf{B} = \begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}
+$$
+
+To find $\mathbf{C} = \mathbf{A} \mathbf{B}$ using Kronecker products:
+
+1. **Compute the Kronecker Product of Columns of $\mathbf{A}$ and Rows of $\mathbf{B}$:**
+
+   - For column $\mathbf{A}_{:,1} = \begin{bmatrix} 1 \\ 3 \end{bmatrix}$ and row $\mathbf{B}_{1,:} = \begin{bmatrix} 0 & 1 \end{bmatrix}$:
+     $$
+     \mathbf{A}_{:,1} \otimes \mathbf{B}_{1,:} = \begin{bmatrix}
+     0 & 1 \\
+     0 & 3
+     \end{bmatrix}
+     $$
+
+   - For column $\mathbf{A}_{:,2} = \begin{bmatrix} 2 \\ 4 \end{bmatrix}$ and row $\mathbf{B}_{2,:} = \begin{bmatrix} 1 & 0 \end{bmatrix}$:
+     $$\mathbf{A}_{:,2} \otimes \mathbf{B}_{2,:} = \begin{bmatrix}
+     2 & 0 \\
+     4 & 0
+     \end{bmatrix}$$
+     
+2. **Sum the Kronecker Products:**
+
+   $$\mathbf{C} = \begin{bmatrix}
+   0 & 1 \\
+   0 & 3
+   \end{bmatrix}
+   +
+   \begin{bmatrix}
+   2 & 0 \\
+   4 & 0
+   \end{bmatrix}
+   =
+   \begin{bmatrix}
+   2 & 1 \\
+   4 & 3
+   \end{bmatrix}$$
 
 ----
 
