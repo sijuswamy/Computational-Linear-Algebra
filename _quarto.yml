@@ -23,9 +23,18 @@ bibliography: references.bib
 
 format:
   html:
+    code-overflow: wrap
     theme: cosmo
   pdf:
+    include-in-header: 
+      text: |
+        \usepackage{fvextra}
+        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+          commandchars=\\\{\},
+          breaklines, breaknonspaceingroup, breakanywhere
+        }
     documentclass: scrreprt
+    
   epub:
     cover-image: cover.png
 jupyter: python3
