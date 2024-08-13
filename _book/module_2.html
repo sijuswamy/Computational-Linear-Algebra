@@ -738,7 +738,7 @@ Figure&nbsp;2.7: Comparison of impact of scaling on the distribution
 </div>
 <p>From the <a href="#fig-scatter" class="quarto-xref">Fig&nbsp;<span>2.7</span></a>, it is clear that the scaling does not affect the pattern of the data, instead it just scale the distribution proportionally!</p>
 <p>We can use the <code>scikit-learn</code> library for do the same thing in a very simple handy approach. The <code>python</code> code for this job is shown below.</p>
-<div id="f5b5f9f1" class="cell" data-execution_count="8">
+<div id="24b7fa69" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Min-max scaling using sklearn</span></span>
@@ -755,7 +755,7 @@ Figure&nbsp;2.7: Comparison of impact of scaling on the distribution
  [1.   1.  ]]</code></pre>
 </div>
 </div>
-<div id="8069be82" class="cell" data-execution_count="9">
+<div id="e9df50ac" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard scaling using sklearn</span></span>
@@ -895,7 +895,7 @@ B = \begin{pmatrix}
 <p>In the following code chunks the computational process of Hadamard product is implemented in <code>Python</code>. Here both the from the scratch and use of external module versions are included.</p>
 <p><strong>1. Compute Hadamard Product from Scratch (without Libraries)</strong></p>
 <p>Here’s how you can compute the Hadamard product manually:</p>
-<div id="2c3e8be7" class="cell" data-execution_count="11">
+<div id="e3b391f4" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]]</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]</span>
@@ -931,7 +931,7 @@ B = \begin{pmatrix}
 </div>
 <p><strong>2. Compute Hadamard Product Using <code>SymPy</code></strong></p>
 <p>Here’s how to compute the Hadamard product using <code>SymPy</code>:</p>
-<div id="4ebbf412" class="cell" data-execution_count="12">
+<div id="e12ca607" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
@@ -987,7 +987,7 @@ Figure&nbsp;2.9: Demonstration of Masking in DIP using Hadamard Product
 </div>
 <p>Application 2: Element-wise Scaling in Neural Networks</p>
 <p>The Hadamard product can be used for dropout<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> in neural networks. A simple simulated example is given below.</p>
-<div id="0bb6784a" class="cell" data-execution_count="14">
+<div id="7e316a15" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated large activations (2D array) using NumPy</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>activations <span class="op">=</span> np.random.rand(<span class="dv">100</span>, <span class="dv">100</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1006,36 +1006,36 @@ Figure&nbsp;2.9: Demonstration of Masking in DIP using Hadamard Product
 <span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dropped_activations)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Original Activations:
-[[0.64026227 0.76956123 0.87096166 ... 0.80087879 0.56674223 0.59461324]
- [0.30410355 0.84225754 0.65825903 ... 0.01962549 0.20937198 0.63775379]
- [0.23753085 0.2325709  0.53147015 ... 0.63541451 0.08584686 0.04256902]
+[[0.43110109 0.9605894  0.19839161 ... 0.62774112 0.85525961 0.24345318]
+ [0.38262027 0.50385263 0.75218775 ... 0.53831619 0.39560785 0.95143045]
+ [0.03918691 0.42585876 0.59179604 ... 0.76238652 0.39279858 0.57125036]
  ...
- [0.50168878 0.36077815 0.86325113 ... 0.68588356 0.67695924 0.486907  ]
- [0.69594464 0.44587902 0.45258132 ... 0.44179261 0.42973648 0.79390392]
- [0.8068572  0.63185716 0.99017731 ... 0.3676388  0.98701785 0.80908442]]
+ [0.59213423 0.52008524 0.99787329 ... 0.14993573 0.61050902 0.98309788]
+ [0.11083071 0.40063535 0.90879185 ... 0.07150626 0.29702552 0.44382216]
+ [0.66152882 0.29368749 0.45063374 ... 0.30413723 0.21226899 0.73498845]]
 
 Dropout Mask:
-[[1 1 1 ... 0 0 1]
- [1 0 1 ... 1 1 0]
- [1 1 0 ... 1 1 1]
+[[1 1 1 ... 1 1 0]
+ [0 0 0 ... 0 1 1]
+ [0 0 1 ... 1 1 1]
  ...
- [1 0 1 ... 1 0 0]
- [0 1 0 ... 0 1 1]
- [1 0 1 ... 0 1 0]]
+ [1 1 0 ... 1 1 0]
+ [0 0 0 ... 1 1 1]
+ [0 1 0 ... 0 0 0]]
 
 Dropped Activations:
-[[0.64026227 0.76956123 0.87096166 ... 0.         0.         0.59461324]
- [0.30410355 0.         0.65825903 ... 0.01962549 0.20937198 0.        ]
- [0.23753085 0.2325709  0.         ... 0.63541451 0.08584686 0.04256902]
+[[0.43110109 0.9605894  0.19839161 ... 0.62774112 0.85525961 0.        ]
+ [0.         0.         0.         ... 0.         0.39560785 0.95143045]
+ [0.         0.         0.59179604 ... 0.76238652 0.39279858 0.57125036]
  ...
- [0.50168878 0.         0.86325113 ... 0.68588356 0.         0.        ]
- [0.         0.44587902 0.         ... 0.         0.42973648 0.79390392]
- [0.8068572  0.         0.99017731 ... 0.         0.98701785 0.        ]]</code></pre>
+ [0.59213423 0.52008524 0.         ... 0.14993573 0.61050902 0.        ]
+ [0.         0.         0.         ... 0.07150626 0.29702552 0.44382216]
+ [0.         0.29368749 0.         ... 0.         0.         0.        ]]</code></pre>
 </div>
 </div>
 <p>Application 3: Statistical Data Analysis</p>
 <p>In statistics, the Hadamard product can be applied to scale covariance matrices. Here’s how we can compute the covariance matrix using matrix operations and apply scaling. Following <code>Python</code> code demonstrate this.</p>
-<div id="1f257dc1" class="cell" data-execution_count="15">
+<div id="3bfd7836" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1067,13 +1067,13 @@ Dropped Activations:
 <span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(scaled_cov_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Covariance Matrix:
-Matrix([[0.0729693776642854, 0.000730341630080134, 0.00739036986242709, -0.00549644651952633, -0.000665656450312375, 0.0126137906806305, 0.0118670471476311, 0.00726798974938121, 0.000736905219235306, -0.00103151302332524], [0.000730341630080134, 0.0814092925146469, -0.00575907708807595, -0.0102129991581277, -0.0147901919247220, -0.000108811156334314, -0.00107739714405559, 0.00434898544634943, 0.00282763626797188, 0.00370771263686864], [0.00739036986242709, -0.00575907708807595, 0.0739963733988442, 0.00610778084867669, 0.00309754816786559, -0.00511545207101653, 0.00441611263094737, -0.00965748072340793, -0.000726780334205562, 0.00774336581145331], [-0.00549644651952633, -0.0102129991581277, 0.00610778084867669, 0.0934894483502506, -0.00825092777022921, -0.000971832375968498, -0.00609556917532903, 0.00193139373939309, -0.00112174824558485, 0.00821047414853254], [-0.000665656450312375, -0.0147901919247220, 0.00309754816786559, -0.00825092777022921, 0.105119248948870, 0.00175735673923294, 0.0167739909700276, 0.0126282271661100, -0.0166427368664897, -0.00806223916123852], [0.0126137906806305, -0.000108811156334314, -0.00511545207101653, -0.000971832375968498, 0.00175735673923294, 0.0741854582734042, -0.00278791292745024, 0.0109438634306045, 0.00548266578475650, -0.0237467777525226], [0.0118670471476311, -0.00107739714405559, 0.00441611263094737, -0.00609556917532903, 0.0167739909700276, -0.00278791292745024, 0.0688307983951865, -0.00747418322303339, 0.00468819924172680, 0.00163926833945775], [0.00726798974938121, 0.00434898544634943, -0.00965748072340793, 0.00193139373939309, 0.0126282271661100, 0.0109438634306045, -0.00747418322303339, 0.0932316461107946, -0.0112983171777451, 0.00107169457269159], [0.000736905219235306, 0.00282763626797188, -0.000726780334205562, -0.00112174824558485, -0.0166427368664897, 0.00548266578475650, 0.00468819924172680, -0.0112983171777451, 0.0880841631834525, 0.000383618170879474], [-0.00103151302332524, 0.00370771263686864, 0.00774336581145331, 0.00821047414853254, -0.00806223916123852, -0.0237467777525226, 0.00163926833945775, 0.00107169457269159, 0.000383618170879474, 0.0755232045815929]])
+Matrix([[0.0812764583768554, 0.00500703463331708, -0.000269113274961067, 0.00160462025680827, 0.00521630892776529, -0.0209892888157644, 0.00318682447926591, 0.00487615901276718, 0.00896964249360398, -0.00647910367881815], [0.00500703463331708, 0.0796498497138399, -0.00681575549018655, -0.00467765807699807, -0.000760776706293832, -0.0118619914396947, 0.00850930025159578, 0.000264607685951584, -0.00904648331219162, 0.00316767713137316], [-0.000269113274961067, -0.00681575549018655, 0.100072264787336, -0.00507565302539471, -0.00342067702382066, -0.00927157842970038, 4.14309864608228e-5, -0.00830310321981713, -0.00270622469601425, 0.000406650885084675], [0.00160462025680827, -0.00467765807699807, -0.00507565302539471, 0.0747331878441700, 0.00239320824198646, 0.000851025859638388, -0.000525432335989092, 0.00728634050067426, 0.00138079056966920, 0.00336871520165573], [0.00521630892776529, -0.000760776706293832, -0.00342067702382066, 0.00239320824198646, 0.0688879274104361, 0.00209632963753183, 0.00803365141251596, -0.000432709740201797, 0.0111114596326265, -0.00264817410049926], [-0.0209892888157644, -0.0118619914396947, -0.00927157842970038, 0.000851025859638388, 0.00209632963753183, 0.0852007501533190, 0.000452495898748010, -0.000205344044875876, -0.00655081710005965, -0.000972633594578991], [0.00318682447926591, 0.00850930025159578, 4.14309864608228e-5, -0.000525432335989092, 0.00803365141251596, 0.000452495898748010, 0.0871505205844957, 0.00205500625376725, 0.00575043507239606, -0.00988369670711902], [0.00487615901276718, 0.000264607685951584, -0.00830310321981713, 0.00728634050067426, -0.000432709740201797, -0.000205344044875876, 0.00205500625376725, 0.0821350737345772, 0.0180274707577776, -0.00565866858484473], [0.00896964249360398, -0.00904648331219162, -0.00270622469601425, 0.00138079056966920, 0.0111114596326265, -0.00655081710005965, 0.00575043507239606, 0.0180274707577776, 0.0814717463670540, 0.000859891165959895], [-0.00647910367881815, 0.00316767713137316, 0.000406650885084675, 0.00336871520165573, -0.00264817410049926, -0.000972633594578991, -0.00988369670711902, -0.00565866858484473, 0.000859891165959895, 0.0750314204040190]])
 
 Scaling Factors:
-Matrix([[0.975236076618470, 0.322886788212725, 0.316049868301596, 0.322658357417747, 0.0825849342105986, 0.960074674529219, 0.0812647640939193, 0.428970735050851, 0.997518456067237, 0.740119434262617], [0.243515134680139, 0.773503141892218, 0.989972045687980, 0.847112397754438, 0.373817083418363, 0.616853414564299, 0.0572573100967729, 0.318361220506418, 0.990288988589229, 0.714221543105829], [0.109677471515340, 0.838002820971531, 0.428732239453047, 0.772221819845008, 0.925310393328781, 0.0180678534190870, 0.857005427683340, 0.951196963748881, 0.483415707965806, 0.318606446199184], [0.915730328843721, 0.796651178444092, 0.414029738208337, 0.410538616269379, 0.338569972016058, 0.386550280143866, 0.619838329037456, 0.241576299560527, 0.387109878523660, 0.841672754329983], [0.481722181343537, 0.00871625408696175, 0.850442507682302, 0.436756311400137, 0.975907703513839, 0.689647128685080, 0.193109772819780, 0.926980336445855, 0.756764241969320, 0.0597123455401070], [0.469705173075601, 0.980633318440705, 0.0343666483420413, 0.164472784777727, 0.838440400836500, 0.522750601927250, 0.598876586742611, 0.751648450347819, 0.456560194562558, 0.237362376489586], [0.612283518713683, 0.983292208071908, 0.463128037219969, 0.364516594327414, 0.601325409457592, 0.640430902442595, 0.518535554404755, 0.599062323422571, 0.693335443528554, 0.0674191511443278], [0.826471999214103, 0.490937229572802, 0.758394309696874, 0.151308746218146, 0.208387567892999, 0.887651430160360, 0.0195381183110304, 0.927526234280199, 0.818632425539247, 0.205349154635106], [0.744512017729562, 0.323796962800278, 0.102048893592587, 0.539964435678497, 0.947081233974183, 0.977726378876537, 0.640825959314023, 0.465740779197346, 0.613662981060141, 0.573116667983084], [0.739494878169871, 0.139072144016613, 0.682530767189939, 0.344648891757063, 0.887096257615861, 0.869699687889351, 0.505258994555402, 0.811071110207617, 0.244352450306528, 0.283779783824907]])
+Matrix([[0.671276418498564, 0.910881660265699, 0.633568391776262, 0.827051790012678, 0.841438512561855, 0.387800113765733, 0.697447606082070, 0.834959609649783, 0.306072866541163, 0.314309146781824], [0.878290959072219, 0.0863670878889733, 0.0468229122320889, 0.501559424034473, 0.364610639107014, 0.852112935362514, 0.774396816077030, 0.209470608823769, 0.536873788371305, 0.190143434296042], [0.332567184503942, 0.984884595053813, 0.913239125749027, 0.463960450050345, 0.820135734049371, 0.811474802113511, 0.185126744091142, 0.312766610202738, 0.476207113752980, 0.825857980014848], [0.837319776587560, 0.247172214220221, 0.463098240624693, 0.794138815668337, 0.707478227440425, 0.0280389341841401, 0.889204247295864, 0.472149039250697, 0.547572748738046, 0.0186466824407898], [0.166189800072979, 0.524511697985711, 0.189981121683745, 0.0199704325009137, 0.0976014455537976, 0.571327686755270, 0.206889403429776, 0.121022547268119, 0.918969867823133, 0.353532059552532], [0.0997971934795162, 0.200457866086242, 0.108139160930725, 0.756659709849358, 0.0836560103776007, 0.605299489349789, 0.323273129074095, 0.574100574778615, 0.401619228256997, 0.900677821907877], [0.212811512936416, 0.143658726005119, 0.285093614803406, 0.245673434784977, 0.995232838227352, 0.211251944087595, 0.829562423208590, 0.0818172668523454, 0.895769811404923, 0.0612816426226911], [0.932833547932509, 0.763601927768246, 0.981581942568820, 0.790768924097581, 0.238065281964605, 0.226957786008847, 0.337207281824226, 0.792843016665206, 0.512806121801518, 0.582805176955001], [0.919324624391486, 0.456296559826883, 0.504546771517035, 0.425372671338621, 0.859546169400120, 0.706426151870244, 0.805813768116061, 0.749590298219352, 0.0214929683940350, 0.523373037781376], [0.686240638039130, 0.821730337863789, 0.757110864858002, 0.394059869892086, 0.890102201759680, 0.159361034459071, 0.866776015628348, 0.666394921202775, 0.339847898430835, 0.297635718327984]])
 
 Scaled Covariance Matrix:
-Matrix([[0.0857802379826772, 0.0536359258049705, 0.0349242939831743, 0.0348650967463187, 0.0296363056425029, 0.0885250893553093, 0.0225704301367996, 0.0594571403640677, 0.0945894672786473, 0.0576325337801000], [0.0111584694364554, 0.0525151238566497, 0.0671626715495382, 0.0571507426070406, 0.0134061643479380, 0.0457696320483965, -0.00625495541566967, 0.0122061510847679, 0.0688217340341655, 0.0508381062665328], [0.0185105097814407, 0.0602598148338210, 0.0332782849963820, 0.0600913860392102, 0.0745527484414153, 0.00698237909738671, 0.0705544879847895, 0.0718536400350446, 0.0364149059080921, 0.0291391755480103], [0.0771030016510961, 0.0646304684764923, 0.0265590982801727, 0.0292034003437559, 0.0271237802713298, 0.0223280473285566, 0.0602825030285913, 0.0186830029086951, 0.0155316531539607, 0.0702204961790664], [0.0423516243385556, 0.00319032077190864, 0.0826624862267399, 0.0287214995057415, 0.0883531878303574, 0.0591862311604739, 0.0121974532127221, 0.102194797840669, 0.0731304661705878, -0.0184218203548212], [0.0403748851775142, 0.0727959077784135, -0.00331242676788407, 0.00801336246541623, 0.0445846971300334, 0.0442042743277129, 0.0310831261742845, 0.0494399140306418, 0.0494136390389255, 0.0229866941523476], [0.0536535783927450, 0.0650127353710817, 0.0440294434606597, 0.0377471798783109, 0.0623586317508094, 0.0620193007083203, 0.0418564143931756, 0.0587437774607601, 0.0668486906351841, 0.0108877012690576], [0.0849379692220941, 0.0449105927320139, 0.0812006172527662, 0.0123307456634875, 0.0206276293297703, 0.0925184178554513, -0.00599989162360625, 0.0933192016128817, 0.0866577578505562, 0.0228557159148874], [0.0542545255135289, 0.0337916992452989, -0.00885574200646302, 0.0429381879635107, 0.0726485704211541, 0.0728227715913325, 0.0578238901011386, 0.0226121352471690, 0.0408072696762010, 0.0502841962227120], [0.0512510784665302, 0.00497296068417289, 0.0555491820540166, 0.0317272294791514, 0.0520361278429689, 0.0546954206787600, 0.0353510234235068, 0.0481734639070968, 0.0133249053899141, 0.0271267035397397]])</code></pre>
+Matrix([[0.0680095370142616, 0.0760757979009389, 0.0562623044707951, 0.0610041410354123, 0.0761577578891470, 0.0329713863814676, 0.0621343199653735, 0.0646988461358378, 0.0280251454976512, 0.0150484069671854], [0.0617380740477353, 0.000693743484603466, -0.00239658190315263, 0.0279224550532372, 0.0268639439766097, 0.0525075082056368, 0.0583636116892212, 0.00585840232304657, 0.0416643893033212, -0.00306640065379132], [0.0114247468473983, 0.0855835409907568, 0.0777013600560661, 0.0241274139277208, 0.0707612894573440, 0.0638625954682834, 0.000248279402894554, 0.0131763642869812, 0.0301263881868068, 0.0654783705893868], [0.0686053050967048, 0.0248431252247471, 0.0415673387486682, 0.0642138868910116, 0.0540558694941537, -0.000449553374757518, 0.0698341569245663, 0.0438497325218262, 0.0434660299916766, 0.00436889040777478], [0.0250611173517800, 0.0421787680272953, 0.0200346545118430, 0.0125224469421706, 0.0249844785740460, 0.0483187423327823, 0.0326505163135228, 0.0206751538964939, 0.0713307383297267, 0.0302240944169082], [-0.0248125957073754, -0.0147657727035584, -0.0164289652521547, 0.0343542760814730, -0.0277509346725300, 0.0222887841706428, -0.00262334146622258, 0.0209751560618556, 0.0192315726769662, 0.0571758449088881], [0.0295345091870745, 0.0164444362288081, 0.0260687089845816, 0.0285952781672337, 0.0896378451759150, 0.0347336645234440, 0.0792176171733741, 0.0119239648064843, 0.0887255182380338, 0.0124980373907480], [0.0964984764059957, 0.0644094089882235, 0.0848085673466699, 0.0768288533815062, 0.0345426802741186, 0.0261201032017106, 0.0474150768186610, 0.0798305366131516, 0.0436147666674698, 0.0502692418107052], [0.0930541479854354, 0.0620536540664895, 0.0659220700144994, 0.0486501251514921, 0.0843517008135170, 0.0589926348155969, 0.0774039654353374, 0.0793906452712785, 0.0213750321211475, 0.0506729318137451], [0.0457498062377480, 0.0503281832747943, 0.0462352304668903, 0.0213350685924075, 0.0544212073388827, 0.00770165918617951, 0.0557637162112204, 0.0414426202039112, 0.0126940462438665, 0.0160307627946351]])</code></pre>
 </div>
 </div>
 </section>
@@ -1397,7 +1397,7 @@ B = \begin{pmatrix}
 <li>Compute Inner Product from Scratch (without Libraries)</li>
 </ol>
 <p>Here’s how you can compute the inner product from the scratch:</p>
-<div id="387f531d" class="cell" data-execution_count="16">
+<div id="1b3544e7" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]]</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]</span>
@@ -1433,7 +1433,7 @@ B = \begin{pmatrix}
 <li>Compute Inner Product Using <code>NumPy</code></li>
 </ol>
 <p>Here’s how to compute the inner product using Numpy:</p>
-<div id="52acc70a" class="cell" data-execution_count="17">
+<div id="dffc3b94" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
@@ -1449,7 +1449,7 @@ B = \begin{pmatrix}
 </div>
 </div>
 <p>The same operation can be done using <code>SymPy</code> functions as follows.</p>
-<div id="0bd45a08" class="cell" data-execution_count="18">
+<div id="cc121eee" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np  </span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
@@ -1472,7 +1472,7 @@ B = \begin{pmatrix}
 </div>
 <p>A vector dot product (in Physics) can be calculated using <code>SymPy</code> <code>.dot()</code> function as shown below.</p>
 <p>Let <span class="math inline">\(A=\begin{pmatrix}1&amp;2&amp;3\end{pmatrix}\)</span> and <span class="math inline">\(B=\begin{pmatrix}4&amp;5&amp;6\end{pmatrix}\)</span>, then the dot product, <span class="math inline">\(A\cdot B\)</span> is computed as:</p>
-<div id="cd75ee0b" class="cell" data-execution_count="19">
+<div id="7974f5e6" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>sp.Matrix([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>B<span class="op">=</span>sp.Matrix([<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
@@ -1495,7 +1495,7 @@ A word of caution
 </div>
 </div>
 <p>The same dot product using <code>numpy</code> object can be done as follows:</p>
-<div id="6cae6ee3" class="cell" data-execution_count="20">
+<div id="bc16076c" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>B<span class="op">=</span>np.array([<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
@@ -1509,7 +1509,7 @@ A word of caution
 <p>In signal processing, the inner product can be used to measure the similarity between two signals. Here the most popular measure of similarity is the <code>cosine</code> similarity. This measure is defined as:</p>
 <p><span class="math display">\[\cos \theta=\dfrac{A\cdot B}{||A|| ||B||}\]</span></p>
 <p>Now consider two digital signals are given. It’s cosine similarity measure can be calculated with a simulated data as shown below.</p>
-<div id="6d7e9476" class="cell" data-execution_count="21">
+<div id="e0712e05" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated large signals (1D array) using NumPy</span></span>
@@ -1527,14 +1527,14 @@ A word of caution
 <span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cosine_sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Inner Product (Using numpy):
-367.654441519414
+394.30811537547874
 Similarity of signals:
-0.8639061149239184</code></pre>
+0.872598925101995</code></pre>
 </div>
 </div>
 <p>Application 2: Machine Learning - Feature Similarity</p>
 <p>In machine learning, the inner product is used to calculate the similarity between feature vectors.</p>
-<div id="315906c3" class="cell" data-execution_count="22">
+<div id="a0e573b3" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated feature vectors (2D array) using NumPy</span></span>
@@ -1551,31 +1551,31 @@ Similarity of signals:
 <pre><code>Inner Products of Feature Vectors:</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<pre><code>array([2.5288277 , 3.03624927, 3.08700851, 2.03569512, 2.35955331,
-       3.06842303, 2.15981249, 3.21036827, 3.04572863, 2.01703766,
-       1.57686896, 2.70403087, 2.00333226, 1.85279232, 1.72034542,
-       3.17835079, 2.08879369, 2.80029903, 2.52589866, 1.10275833,
-       1.5545643 , 1.38365203, 1.16326986, 2.79827876, 1.26414644,
-       3.52464914, 2.68624672, 4.14523288, 4.41017261, 1.89511455,
-       3.37593409, 1.73431152, 1.64856165, 2.49233186, 4.44946641,
-       1.93799888, 3.33211675, 2.50615795, 2.22515482, 1.77540205,
-       1.92481091, 2.42940862, 3.08504525, 3.1738857 , 2.87423425,
-       1.75771397, 2.41288145, 2.28083167, 2.63585307, 1.7517995 ,
-       2.22119114, 2.5629353 , 3.07453517, 2.95009741, 1.90978323,
-       3.1649874 , 2.20768325, 2.24689054, 3.22690247, 3.11228117,
-       2.31230249, 1.97083466, 2.99732129, 2.29305771, 1.84843333,
-       1.14866874, 3.30964173, 1.71544056, 2.87843091, 3.34420129,
-       1.6973944 , 1.83245513, 1.54720533, 2.81876177, 4.27153139,
-       3.37250322, 1.26541627, 1.717298  , 2.66243121, 3.04806279,
-       1.89539232, 2.04874884, 4.29390638, 2.36549111, 2.00961141,
-       2.79452803, 2.87494035, 3.5216662 , 3.35179109, 2.91261353,
-       3.54222625, 1.80976768, 2.91690006, 2.45563315, 1.69861112,
-       2.67799474, 3.78334832, 1.99782652, 1.88921031, 3.02724701])</code></pre>
+<pre><code>array([2.54042211, 2.05271057, 1.503931  , 3.80519488, 1.5797682 ,
+       2.21960794, 2.01276448, 3.35449314, 2.21665038, 2.84706076,
+       3.93059597, 1.05205646, 2.84287804, 2.99724766, 2.6596021 ,
+       1.68897402, 1.51036584, 2.95216626, 2.57697063, 1.10758134,
+       4.08716468, 1.75946646, 2.701376  , 3.30677629, 1.83170095,
+       3.54524647, 2.40476821, 2.47648035, 1.7870856 , 2.76301671,
+       2.60721648, 1.55003322, 2.94559795, 3.6941436 , 1.91100282,
+       3.03973353, 0.99570698, 2.91791043, 4.42654395, 2.93739857,
+       1.42318218, 2.91357073, 3.18895271, 2.50845327, 1.79904501,
+       3.16788163, 2.4186797 , 2.79671554, 3.38651547, 1.96653609,
+       2.76871644, 1.89990418, 1.55157481, 2.19399093, 4.48551967,
+       2.914151  , 2.82278008, 3.83589922, 2.17911658, 3.67982775,
+       3.18112758, 2.15645605, 2.16953379, 1.99575135, 1.80856192,
+       2.20775369, 1.58577969, 2.83667244, 2.17010738, 3.31808577,
+       3.1786583 , 2.58719264, 3.76427724, 2.71816455, 1.62767756,
+       2.19458538, 2.27863873, 2.28055664, 1.86680546, 3.9481688 ,
+       3.61586107, 1.74053817, 2.3806172 , 2.47445854, 2.14706365,
+       2.92582514, 1.19354423, 2.90165849, 3.17114615, 1.65040293,
+       3.22821432, 2.91690558, 1.39841539, 2.16404693, 2.75230557,
+       2.71373856, 4.28787958, 2.34137686, 3.53065068, 2.55237056])</code></pre>
 </div>
 </div>
 <p>Application 3: Covariance Matrix in Statistics</p>
 <p>The inner product can be used to compute covariance matrices for statistical data analysis. If <span class="math inline">\(X\)</span> is a given distribution and <span class="math inline">\(x=X-\bar{X}\)</span>. Then the covariance of <span class="math inline">\(X\)</span> can be calculated as <span class="math inline">\(cov(X)=\dfrac{1}{n-1}(x\cdot x^T)\)</span> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The python code a simulated data is shown below.</p>
-<div id="b79bd85b" class="cell" data-execution_count="23">
+<div id="40b1850b" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1599,7 +1599,7 @@ Similarity of signals:
 <pre><code>Covariance Matrix:</code></pre>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.0869693219285008 &amp; 0.0133663741401984 &amp; 0.00310019689488409 &amp; 0.00562410830490852 &amp; -0.0071381938140168 &amp; -0.00607528134304122 &amp; 0.000263503228497556 &amp; -0.0156329319882971 &amp; -0.00393309427394664 &amp; 0.000407075873239086\\0.0133663741401984 &amp; 0.0776643839523594 &amp; 0.00586611602998755 &amp; -0.000233415621806054 &amp; -0.010993511295418 &amp; -0.00917207964643278 &amp; -0.0111875173716305 &amp; 2.3203088479024 \cdot 10^{-5} &amp; 0.00722020279915368 &amp; -0.00409157220500579\\0.00310019689488409 &amp; 0.00586611602998755 &amp; 0.0806645843060175 &amp; 0.00851690804626804 &amp; -0.00629382280918929 &amp; -0.00388744305009673 &amp; -0.0103255432197749 &amp; -0.0221162457798288 &amp; -0.009066239621275 &amp; 0.0116913858082244\\0.00562410830490852 &amp; -0.000233415621806054 &amp; 0.00851690804626804 &amp; 0.0845259581730982 &amp; -0.0032072297426573 &amp; -0.00656570278799279 &amp; 0.0107643245477655 &amp; -0.00238973820629326 &amp; -0.0105952837148413 &amp; -0.00383230436895427\\-0.0071381938140168 &amp; -0.010993511295418 &amp; -0.00629382280918929 &amp; -0.0032072297426573 &amp; 0.0783154086049323 &amp; -0.00474316191300877 &amp; 0.00334782325910481 &amp; 0.00958313467826837 &amp; 0.00363947797579238 &amp; -0.00287238996473061\\-0.00607528134304122 &amp; -0.00917207964643278 &amp; -0.00388744305009673 &amp; -0.00656570278799279 &amp; -0.00474316191300877 &amp; 0.0850841660724737 &amp; 0.0145552810171285 &amp; 0.00513503953959644 &amp; 0.00905682524124218 &amp; -0.00571556439070577\\0.000263503228497556 &amp; -0.0111875173716305 &amp; -0.0103255432197749 &amp; 0.0107643245477655 &amp; 0.00334782325910481 &amp; 0.0145552810171285 &amp; 0.0965022450143718 &amp; 0.0125766630446133 &amp; -0.00567768356944832 &amp; 0.0074485453325055\\-0.0156329319882971 &amp; 2.3203088479024 \cdot 10^{-5} &amp; -0.0221162457798288 &amp; -0.00238973820629326 &amp; 0.00958313467826837 &amp; 0.00513503953959644 &amp; 0.0125766630446133 &amp; 0.0801085315724964 &amp; 0.0163177562526976 &amp; -0.000296572837803074\\-0.00393309427394664 &amp; 0.00722020279915368 &amp; -0.009066239621275 &amp; -0.0105952837148413 &amp; 0.00363947797579238 &amp; 0.00905682524124218 &amp; -0.00567768356944832 &amp; 0.0163177562526976 &amp; 0.0817724369369977 &amp; -0.00858414707781748\\0.000407075873239086 &amp; -0.00409157220500579 &amp; 0.0116913858082244 &amp; -0.00383230436895427 &amp; -0.00287238996473061 &amp; -0.00571556439070577 &amp; 0.0074485453325055 &amp; -0.000296572837803074 &amp; -0.00858414707781748 &amp; 0.0946024854894809\end{matrix}\right]\)</span></p>
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.0710202831571061 &amp; 0.00158487341578739 &amp; -0.00652986181463745 &amp; -0.00740216971093776 &amp; -0.00902407361749458 &amp; -0.00317273880097321 &amp; -0.00831280143964333 &amp; -0.0176043777669471 &amp; 0.0036802579964986 &amp; -0.0132056268787696\\0.00158487341578739 &amp; 0.0721783149649481 &amp; 0.00563753283063512 &amp; -0.00608121224393345 &amp; 0.012296560839458 &amp; 0.00142484006258389 &amp; 0.0149700962631293 &amp; -0.00561045252852658 &amp; -0.00387052691821577 &amp; 0.00369941696602926\\-0.00652986181463745 &amp; 0.00563753283063512 &amp; 0.0941728199381982 &amp; -0.00793966837030519 &amp; -2.46790699728146 \cdot 10^{-5} &amp; -0.00343722303469936 &amp; 0.00498527761884348 &amp; 0.00739981699633468 &amp; 0.00871497562843839 &amp; -0.0022502901141473\\-0.00740216971093776 &amp; -0.00608121224393345 &amp; -0.00793966837030519 &amp; 0.0856707028248038 &amp; 0.00252280079443104 &amp; -0.00479416558964771 &amp; -0.00740112453840713 &amp; -0.0118478047984786 &amp; 0.00616308763188607 &amp; 0.00577818363211193\\-0.00902407361749458 &amp; 0.012296560839458 &amp; -2.46790699728146 \cdot 10^{-5} &amp; 0.00252280079443104 &amp; 0.0753709691875362 &amp; -0.000291009920300096 &amp; 0.00941100753431335 &amp; 0.00388420149906033 &amp; -0.0132000710990938 &amp; -0.00918814848532229\\-0.00317273880097321 &amp; 0.00142484006258389 &amp; -0.00343722303469936 &amp; -0.00479416558964771 &amp; -0.000291009920300096 &amp; 0.0722711376507097 &amp; -0.00032552527725091 &amp; 0.00885671554524928 &amp; -0.0103790815911359 &amp; 0.00519112633658535\\-0.00831280143964333 &amp; 0.0149700962631293 &amp; 0.00498527761884348 &amp; -0.00740112453840713 &amp; 0.00941100753431335 &amp; -0.00032552527725091 &amp; 0.0832294053399609 &amp; 0.00155914608294672 &amp; -0.00789139732315651 &amp; 0.00530558011600096\\-0.0176043777669471 &amp; -0.00561045252852658 &amp; 0.00739981699633468 &amp; -0.0118478047984786 &amp; 0.00388420149906033 &amp; 0.00885671554524928 &amp; 0.00155914608294672 &amp; 0.085285371358736 &amp; 0.0159206540859659 &amp; -0.0101543601021929\\0.0036802579964986 &amp; -0.00387052691821577 &amp; 0.00871497562843839 &amp; 0.00616308763188607 &amp; -0.0132000710990938 &amp; -0.0103790815911359 &amp; -0.00789139732315651 &amp; 0.0159206540859659 &amp; 0.105700216352733 &amp; -0.0105367795247261\\-0.0132056268787696 &amp; 0.00369941696602926 &amp; -0.0022502901141473 &amp; 0.00577818363211193 &amp; -0.00918814848532229 &amp; 0.00519112633658535 &amp; 0.00530558011600096 &amp; -0.0101543601021929 &amp; -0.0105367795247261 &amp; 0.0961317170746173\end{matrix}\right]\)</span></p>
 </div>
 </div>
 <p>These examples demonstrate the use of inner product and dot product in various applications.</p>
@@ -1836,7 +1836,7 @@ A \otimes B &amp;= \begin{bmatrix}0\\5\end{bmatrix} \otimes \begin{bmatrix}3&amp
 <hr>
 <p><strong>1. Compute Outer Product of Vectors from Scratch (without Libraries)</strong></p>
 <p>Here’s how you can compute the outer product manually:</p>
-<div id="6732cd87" class="cell" data-execution_count="24">
+<div id="8d8622d1" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define vectors u and v</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
@@ -1862,7 +1862,7 @@ A \otimes B &amp;= \begin{bmatrix}0\\5\end{bmatrix} \otimes \begin{bmatrix}3&amp
 </div>
 <p><strong>2. Compute Outer Product of Vectors Using SymPy</strong></p>
 <p>Here’s how to compute the outer product using <code>SymPy</code>:</p>
-<div id="22da9c66" class="cell" data-execution_count="25">
+<div id="bf67b2e6" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define vectors u and v</span></span>
@@ -1980,7 +1980,7 @@ B = \begin{pmatrix}
 \end{bmatrix}\]</span></p>
 <p><strong>1. Compute Outer Product of Matrices from Scratch (without Libraries)</strong></p>
 <p>Here’s how you can compute the outer product manually:</p>
-<div id="a78c59ea" class="cell" data-execution_count="26">
+<div id="42dd6d71" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrices A and B</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]]</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [[<span class="dv">5</span>], [<span class="dv">6</span>]]</span>
@@ -2017,7 +2017,7 @@ B = \begin{pmatrix}
 </div>
 </div>
 <p>Here is the <code>Python</code> code to compute the outer product of these vectors using the <code>NumPy</code> function <code>.outer()</code>:</p>
-<div id="3b051a49" class="cell" data-execution_count="27">
+<div id="28a7413b" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define vectors</span></span>
@@ -2052,7 +2052,7 @@ B = \begin{pmatrix}
 10 &amp; 25 &amp; 20
 \end{bmatrix}\]</span></p>
 <p>The python code for this task is given below.</p>
-<div id="c8ea979c" class="cell" data-execution_count="28">
+<div id="11de2257" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2285,7 +2285,7 @@ Frobenius Norm
 <li><p><em>Application 3: Error Measurement in Numerical Solutions:</em> In solving systems of linear equations, the Frobenius norm can be used to measure the error between the true solution and the computed solution, providing insight into the accuracy of numerical methods.</p></li>
 </ul>
 <p>The <code>linalg</code> sub module of <code>NumPy</code> library can be used to calculate various norms. Basically norm is the generalized form of Euclidean distance.</p>
-<div id="2ce8f955" class="cell" data-execution_count="30">
+<div id="53e62a83" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Simple Matrix</span></span>
@@ -2772,7 +2772,7 @@ Table&nbsp;2.5: Category Relationships
 <li><p><strong>Generate Recommendations:</strong> Identify the top categories with the highest predicted ratings for each user.</p></li>
 </ol>
 <p>The <code>python</code> code to solve this problem computationally is given below.</p>
-<div id="1b44034a" class="cell" data-execution_count="31">
+<div id="23b4c5c3" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -3130,7 +3130,7 @@ Figure&nbsp;2.12: The Big Pictue of Fundamental Subspaces
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/rwLOfdfc4dw?si=DsJb8KJTF05hHc76" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <section id="practice-problems-4" class="level4" data-number="2.2.5.1">
 <h4 data-number="2.2.5.1" class="anchored" data-anchor-id="practice-problems-4"><span class="header-section-number">2.2.5.1</span> Practice Problems</h4>
-<p><strong>Problem 1:</strong> Express the vector <span class="math inline">\(\matrix{(1,-2,5)}\)</span> as a linear combination of the vectors <span class="math inline">\((1,1,1)\)</span>, <span class="math inline">\((1,2,3)\)</span> and <span class="math inline">\((2,-1,1)\)</span>.</p>
+<p><strong>Problem 1:</strong> Express the vector <span class="math inline">\((1,-2,5)\)</span> as a linear combination of the vectors <span class="math inline">\((1,1,1)\)</span>, <span class="math inline">\((1,2,3)\)</span> and <span class="math inline">\((2,-1,1)\)</span>.</p>
 <p><strong>Problem 2:</strong> Show that the feature vector <span class="math inline">\((2,-5,3)\)</span> is not linearly associated with the features <span class="math inline">\((1,-3,2)\)</span>, <span class="math inline">\((2,-4,-1)\)</span> and <span class="math inline">\((1,-5,7)\)</span>.</p>
 <p><strong>Problem 3:</strong> Show that the feature vectors <span class="math inline">\((1,1,1)\)</span>, <span class="math inline">\((1,2,3)\)</span> and <span class="math inline">\((2,-1,1)\)</span> are non-redundant.</p>
 <p><strong>Problem 4:</strong> Prove that the features <span class="math inline">\((1,-1,1)\)</span>, <span class="math inline">\((0,1,2)\)</span> and <span class="math inline">\((3,0,-1)\)</span> form basis for the feature space.</p>
@@ -3156,7 +3156,7 @@ Important
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>Three Parts of the <em>Fundamental theorem</em></strong> The fundamental theorem of linear algebra relates all four of the fundamental subspaces in a number of different ways. There are main parts to the theorem:</p>
-<p><strong>Part 1:(rank nullity theorem)</strong> The column and row spaces of an <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(A\)</span> both have dimension <span class="math inline">\(r\)</span>, the rank of the matrix. The nullspace has dimension <span class="math inline">\(n−r\)</span>, and the left nullspace has dimension <span class="math inline">\(m−r\)</span>.</p>
+<p><strong>Part 1:(Rank nullity theorem)</strong> The column and row spaces of an <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(A\)</span> both have dimension <span class="math inline">\(r\)</span>, the rank of the matrix. The nullspace has dimension <span class="math inline">\(n−r\)</span>, and the left nullspace has dimension <span class="math inline">\(m−r\)</span>.</p>
 <p><strong>Part 2:(Orthogonal subspaces)</strong> The nullspace and row space are orthogonal. The left nullspace and the column space are also orthogonal.</p>
 <p><strong>Part 3:(Matrix decomposition)</strong> The final part of the fundamental theorem of linear algebra constructs an orthonormal basis, and demonstrates a singular value decomposition: any matrix <span class="math inline">\(M\)</span> can be written in the form <span class="math inline">\(M=U\Sigma V^T\)</span> , where <span class="math inline">\(U_{m\times m}\)</span> and <span class="math inline">\(V_{n\times n}\)</span> are unitary matrices, <span class="math inline">\(\Sigma_{m\times n}\)</span> matrix with nonnegative values on the diagonal.</p>
 <p>This part of the fundamental theorem allows one to immediately find a basis of the subspace in question. This can be summarized in the following table.</p>
@@ -3678,7 +3678,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false,"closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

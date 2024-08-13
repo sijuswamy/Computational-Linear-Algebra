@@ -2779,7 +2779,7 @@ A video session from Strang's session is here:
 
 #### Practice Problems
 
-**Problem 1:** Express the vector $\matrix{(1,-2,5)}$ as a linear combination of the vectors $(1,1,1)$, $(1,2,3)$ and $(2,-1,1)$.
+**Problem 1:** Express the vector $(1,-2,5)$ as a linear combination of the vectors $(1,1,1)$, $(1,2,3)$ and $(2,-1,1)$.
 
 **Problem 2:** Show that the feature vector $(2,-5,3)$ is not linearly associated with the features $(1,-3,2)$, $(2,-4,-1)$ and $(1,-5,7)$.
 
