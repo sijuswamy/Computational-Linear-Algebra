@@ -651,7 +651,7 @@ else:
     print("b is greater than or equal to a")
 ```
 #### Comments
-Use comments to explain usr code. Comments begin with the `#` symbol and extend to the end of the line. Write comments that are clear and concise. See the example:
+Use comments to explain user code. Comments begin with the `#` symbol and extend to the end of the line. Write comments that are clear and concise. See the example:
 
 ```python
 # This is a comment

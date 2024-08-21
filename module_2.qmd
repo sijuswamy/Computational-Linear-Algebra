@@ -3,6 +3,7 @@
 title: "Transforming Linear Algebra to Computational Language"
 execute: 
   enabled: true
+jupyter: python3
 ---
 ## Introduction 
 
@@ -329,6 +330,9 @@ plt.tight_layout()
 plt.show()
 ```
 
+```{python}
+
+```
 ### More on Matrix Product and its Applications
 
 In the first module of our course, we introduced matrix products as scalar projections, focusing on how matrices interact through basic operations. In this section, we will expand on this by exploring different types of matrix products that have practical importance in various fields. One such product is the *Hadamard product*, which is particularly useful in applications ranging from image processing to neural networks and statistical analysis. We will cover the definition, properties, and examples of the Hadamard product, and then delve into practical applications with simulated data.
@@ -365,50 +369,21 @@ Example 1: Basic Hadamard Product
 
 Given matrices:
 
-$$A = \begin{pmatrix}
-1 & 2 \\
-3 & 4
-\end{pmatrix}, \quad
-B = \begin{pmatrix}
-5 & 6 \\
-7 & 8
-\end{pmatrix}$$
+$$A = \begin{pmatrix}1 & 2 \\3 & 4\end{pmatrix}, \quad B = \begin{pmatrix}5 & 6 \\7 & 8\end{pmatrix}$$
 
 The Hadamard product $A \circ B$ is:
-$$A \circ B = \begin{pmatrix}
-1 \cdot 5 & 2 \cdot 6 \\
-3 \cdot 7 & 4 \cdot 8
-\end{pmatrix} = \begin{pmatrix}
-5 & 12 \\
-21 & 32
-\end{pmatrix}$$
+
+$$A \circ B = \begin{pmatrix}1 \cdot 5 & 2 \cdot 6 \\3 \cdot 7 & 4 \cdot 8\end{pmatrix} = \begin{pmatrix}5 & 12 \\21 & 32\end{pmatrix}$$
 
 Example 2: Hadamard Product with Larger Matrices
 
 Given matrices:
 
-$$A = \begin{pmatrix}
-1 & 2 & 3 \\
-4 & 5 & 6 \\
-7 & 8 & 9
-\end{pmatrix}, \quad
-B = \begin{pmatrix}
-9 & 8 & 7 \\
-6 & 5 & 4 \\
-3 & 2 & 1
-\end{pmatrix}$$
+$$A = \begin{pmatrix}1 & 2 & 3 \\4 & 5 & 6 \\7 & 8 & 9\end{pmatrix}, \quad B = \begin{pmatrix}9 & 8 & 7 \\6 & 5 & 4 \\3 & 2 & 1\end{pmatrix}$$
 
 The Hadamard product $A \circ B$ is:
 
-$$A \circ B = \begin{pmatrix}
-1 \cdot 9 & 2 \cdot 8 & 3 \cdot 7 \\
-4 \cdot 6 & 5 \cdot 5 & 6 \cdot 4 \\
-7 \cdot 3 & 8 \cdot 2 & 9 \cdot 1
-\end{pmatrix} = \begin{pmatrix}
-9 & 16 & 21 \\
-24 & 25 & 24 \\
-21 & 16 & 9
-\end{pmatrix}$$
+$$A \circ B = \begin{pmatrix}1 \cdot 9 & 2 \cdot 8 & 3 \cdot 7 \\4 \cdot 6 & 5 \cdot 5 & 6 \cdot 4 \\7 \cdot 3 & 8 \cdot  & 9 \cdot 1\end{pmatrix} = \begin{pmatrix}9 & 16 & 21 \\24 & 25 & 24 \\21 & 16 & 9\end{pmatrix}$$
 
 In the following code chunks the computational process of Hadamard product is implemented in `Python`. Here both the from the scratch and use of external module versions are included.
 
@@ -553,6 +528,7 @@ print(scaling_factors)
 print("\nScaled Covariance Matrix:")
 print(scaled_cov_matrix)
 ```
+
 #### Practice Problems
 
 **Problem 1: Basic Hadamard Product**
@@ -565,14 +541,7 @@ Find the Hadamard product $C=A\circ B$.
 
 **Solution:**
 
-$$C=\begin{bmatrix}
-1\cdot5&2\cdot6\\
-3\cdot7&4\cdot8
-\end{bmatrix}=
-\begin{bmatrix}
-5&12\\
-21&32
-\end{bmatrix}$$
+$$C=\begin{bmatrix}1\cdot 5&2\cdot 6\\3\cdot7&4\cdot 8 \end{bmatrix}=\begin{bmatrix}5&12\\21&32\end{bmatrix}$$
 
 **Problem 2: Hadamard Product with Identity Matrix**
 
@@ -584,14 +553,7 @@ Find the Hadamard product $C=A\circ I$.
 
 **Solution:**
 
-$$C=\begin{bmatrix}
-1\cdot1&2\cdot0&3\cdot0\\
-4\cdot0&5\cdot1&6\cdot0
-\end{bmatrix}=
-\begin{bmatrix}
-1&0&0\\
-0&5&0
-\end{bmatrix}$$
+$$C=\begin{bmatrix}1\cdot1&2\cdot 0&3\cdot 0\\4\cdot 0&5\cdot 1&6\cdot 0 \end{bmatrix}= \begin{bmatrix} 1&0&0\\0&5&0\end{bmatrix}$$
 
 **Problem 3: Hadamard Product with Zero Matrix**
 
@@ -603,14 +565,7 @@ Find the Hadamard product $C=A\circ Z$.
 
 **Solution:**
 
-$$C=\begin{bmatrix}
-3\cdot0&4\cdot0\\
-5\cdot0&6\cdot0
-\end{bmatrix}=
-\begin{bmatrix}
-0&0\\
-0&0
-\end{bmatrix}$$
+$$C=\begin{bmatrix}3\cdot 0&4\cdot 0\\ 5\cdot 0&6\cdot 0 \end{bmatrix}=\begin{bmatrix}0&0\\0&0\end{bmatrix}$$
 
 **Problem 4: Hadamard Product of Two Identity Matrices**
 
@@ -625,16 +580,7 @@ Find the Hadamard product $C=I_2\circ I_3$ (extend $I_2$ to match dimensions of 
 Extend $I_2$ to $I_3$:
 $$I_2=\begin{bmatrix}1&0&0\\0&1&0\\0&0&0\end{bmatrix}$$
 
-$$C=\begin{bmatrix}
-1\cdot1&0\cdot0&0\cdot0\\
-0\cdot0&1\cdot1&0\cdot0\\
-0\cdot0&0\cdot0&0\cdot1
-\end{bmatrix}=
-\begin{bmatrix}
-1&0&0\\
-0&1&0\\
-0&0&0
-\end{bmatrix}$$
+$$C=\begin{bmatrix}1\cdot 1&0\cdot 0&0\cdot 0\\0\cdot 0&1\cdot 1&0\cdot 0\\0\cdot 0&0\cdot 0&0\cdot 1\end{bmatrix}=\begin{bmatrix}1&0&0\\0&1&0\\0&0&0\end{bmatrix}$$
 
 **Problem 5: Hadamard Product with Random Matrices**
 
@@ -646,14 +592,7 @@ Find the Hadamard product $C=A\circ B$.
 
 **Solution:**
 
-$$C=\begin{bmatrix}
-2\cdot0&3\cdot5\\
-1\cdot6&4\cdot2
-\end{bmatrix}=
-\begin{bmatrix}
-0&15\\
-6&8
-\end{bmatrix}$$
+$$C=\begin{bmatrix}2\cdot 0&3\cdot 5\\1\cdot 6&4\cdot 2\end{bmatrix}=\begin{bmatrix}0&15\\6&8\end{bmatrix}$$
 
 **Problem 6: Hadamard Product of 3x3 Matrices**
 
@@ -665,16 +604,7 @@ Find the Hadamard product $C=A\circ B$.
 
 **Solution:**
 
-$$C=\begin{bmatrix}
-1\cdot9&2\cdot8&3\cdot7\\
-4\cdot6&5\cdot5&6\cdot4\\
-7\cdot3&8\cdot2&9\cdot1
-\end{bmatrix}=
-\begin{bmatrix}
-9&16&21\\
-24&25&24\\
-21&16&9
-\end{bmatrix}$$
+$$C=\begin{bmatrix}1\cdot 9&2\cdot 8&3\cdot 7\\4\cdot 6&5\cdot 5&6\cdot 4\\7\cdot 3&8\cdot 2&9\cdot 1\end{bmatrix}=\begin{bmatrix}9&16&21\\24&25&24\\21&16&9\end{bmatrix}$$
 
 **Problem 7: Hadamard Product of Column Vectors**
 
@@ -686,14 +616,7 @@ Find the Hadamard product $w=u\circ v$.
 
 **Solution:**
 
-$$w=\begin{bmatrix}
-2\cdot5\\
-3\cdot6
-\end{bmatrix}=
-\begin{bmatrix}
-10\\
-18
-\end{bmatrix}$$
+$$w=\begin{bmatrix}2\cdot 5\\3\cdot 6\end{bmatrix}=\begin{bmatrix}10\\18\end{bmatrix}$$
 
 **Problem 8: Hadamard Product with Non-Square Matrices**
 
@@ -708,16 +631,7 @@ Find the Hadamard product $C=A\circ B$ (extend $B$ to match dimensions of $A$).
 Extend $B$ to match dimensions of $A$:
 $$B=\begin{bmatrix}7&8\\9&10\\7&8\end{bmatrix}$$
 
-$$C=\begin{bmatrix}
-1\cdot7&2\cdot8\\
-3\cdot9&4\cdot10\\
-5\cdot7&6\cdot8
-\end{bmatrix}=
-\begin{bmatrix}
-7&16\\
-27&40\\
-35&48
-\end{bmatrix}$$
+$$C=\begin{bmatrix}1\cdot 7&2\cdot 8\\3\cdot 9&4\cdot 10\\5\cdot 7&6\cdot 8\end{bmatrix}=\begin{bmatrix}7&16\\27&40\\35&48\end{bmatrix}$$
 
 **Problem 9: Hadamard Product in Image Processing**
 
@@ -729,14 +643,7 @@ Find the Hadamard product $C=A\circ B$.
 
 **Solution:**
 
-$$C=\begin{bmatrix}
-10\cdot0.5&20\cdot1.5\\
-30\cdot2.0&40\cdot0.5
-\end{bmatrix}=
-\begin{bmatrix}
-5&30\\
-60&20
-\end{bmatrix}$$
+$$C=\begin{bmatrix}10\cdot 0.5&20\cdot 1.5\\30\cdot 2.0&40\cdot 0.5\end{bmatrix}=\begin{bmatrix}5&30\\60&20\end{bmatrix}$$
 
 **Problem 10: Hadamard Product in Statistical Data**
 
@@ -749,14 +656,7 @@ Find the Hadamard product $C=A\circ B$.
 
 **Solution:**
 
-$$C=\begin{bmatrix}
-5\cdot1&6\cdot2&7\cdot3\\
-8\cdot4&9\cdot5&10\cdot6
-\end{bmatrix}=
-\begin{bmatrix}
-5&12&21\\
-32&45&60
-\end{bmatrix}$$
+$$C=\begin{bmatrix}5\cdot 1&6\cdot 2&7\cdot 3\\8\cdot 4&9\cdot 5&10\cdot 6\end{bmatrix}=\begin{bmatrix}5&12&21\\32&45&60\end{bmatrix}$$
 
 #### Inner Product of Matrices
 
@@ -794,14 +694,7 @@ Some simple examples showing the mathematical process of calculating the inner p
 
 Given matrices:
 
-$$A = \begin{pmatrix}
-1 & 2 \\
-3 & 4
-\end{pmatrix}, \quad
-B = \begin{pmatrix}
-5 & 6 \\
-7 & 8
-\end{pmatrix}$$
+$$A = \begin{pmatrix}1 & 2 \\3 & 4\end{pmatrix}, \quad B = \begin{pmatrix}5 & 6 \\7 & 8\end{pmatrix}$$
 
 The inner product $\langle A, B \rangle$ is:
 
@@ -811,16 +704,7 @@ $$\langle A, B \rangle = 1 \cdot 5 + 2 \cdot 6 + 3 \cdot 7 + 4 \cdot 8 = 5 + 12 
 
 Given matrices:
 
-$$A = \begin{pmatrix}
-1 & 2 & 3 \\
-4 & 5 & 6 \\
-7 & 8 & 9
-\end{pmatrix}, \quad
-B = \begin{pmatrix}
-9 & 8 & 7 \\
-6 & 5 & 4 \\
-3 & 2 & 1
-\end{pmatrix}$$
+$$A = \begin{pmatrix}1 & 2 & 3 \\4 & 5 & 6 \\7 & 8 & 9\end{pmatrix}, \quad B = \begin{pmatrix}9 & 8 & 7 \\6 & 5 & 4 \\3 & 2 & 1\end{pmatrix}$$
 
 The inner product $\langle A, B \rangle$ is calculated as:
 \begin{align*}
@@ -1221,49 +1105,20 @@ Some simple examples of outer product is given below.
 
 Given vectors:
 
-$$\mathbf{u} = \begin{pmatrix}
-1 \\
-2
-\end{pmatrix}, \quad
-\mathbf{v} = \begin{pmatrix}
-3 \\
-4 \\
-5\end{pmatrix}$$
+$$\mathbf{u} = \begin{pmatrix}1 \\2\end{pmatrix}, \quad\mathbf{v} = \begin{pmatrix}3 \\4 \\5\end{pmatrix}$$
 
 The outer product $\mathbf{u} \otimes \mathbf{v}$ is:
 
-$$\mathbf{u} \otimes \mathbf{v} = \begin{pmatrix}
-1 \cdot 3 & 1 \cdot 4 & 1 \cdot 5 \\
-2 \cdot 3 & 2 \cdot 4 & 2 \cdot 5
-\end{pmatrix} = \begin{pmatrix}
-3 & 4 & 5 \\
-6 & 8 & 10
-\end{pmatrix}$$
+$$\mathbf{u} \otimes \mathbf{v} = \begin{pmatrix}1 \cdot 3 & 1 \cdot 4 & 1 \cdot 5 \\2 \cdot 3 & 2 \cdot 4 & 2 \cdot 5\end{pmatrix} = \begin{pmatrix}3 & 4 & 5 \\6 & 8 & 10\end{pmatrix}$$
 
 **Example 2: Outer Product with Larger Vectors**
 
 Given vectors:
-$$\mathbf{u} = \begin{pmatrix}
-1 \\
-2 \\
-3
-\end{pmatrix}, \quad
-\mathbf{v} = \begin{pmatrix}
-4 \\
-5
-\end{pmatrix}$$
+$$\mathbf{u} = \begin{pmatrix}1 \\2 \\3\end{pmatrix}, \quad\mathbf{v} = \begin{pmatrix}4 \\5\end{pmatrix}$$
 
 The outer product $\mathbf{u} \otimes \mathbf{v}$ is:
 
-$$\mathbf{u} \otimes \mathbf{v} = \begin{pmatrix}
-1 \cdot 4 & 1 \cdot 5 \\
-2 \cdot 4 & 2 \cdot 5 \\
-3 \cdot 4 & 3 \cdot 5
-\end{pmatrix} = \begin{pmatrix}
-4 & 5 \\
-8 & 10 \\
-12 & 15
-\end{pmatrix}$$
+$$\mathbf{u} \otimes \mathbf{v} = \begin{pmatrix}1 \cdot 4 & 1 \cdot 5 \\2 \cdot 4 & 2 \cdot 5 \\3 \cdot 4 & 3 \cdot 5\end{pmatrix} = \begin{pmatrix}4 & 5 \\8 & 10 \\12 & 15\end{pmatrix}$$
 
 
 #### Practice Problems
@@ -1568,75 +1423,27 @@ Here are some simple examples to demonstrate the mathematical procedure to find 
 **Example 1: Basic Outer Product of Matrices**
 
 Given matrices:
-$$
-A = \begin{pmatrix}
-1 & 2 \\
-3 & 4
-\end{pmatrix}, \quad
-B = \begin{pmatrix}
-5 \\
-6
-\end{pmatrix}$$
+$$A = \begin{pmatrix}1 & 2 \\3 & 4\end{pmatrix}, \quad B = \begin{pmatrix}5 \\6\end{pmatrix}$$
 
 The outer product $A \otimes B$ is:
 
-$$A \otimes B = \begin{pmatrix}
-1 \cdot 5 & 1 \cdot 6 \\
-2 \cdot 5 & 2 \cdot 6 \\
-3 \cdot 5 & 3 \cdot 6 \\
-4 \cdot 5 & 4 \cdot 6
-\end{pmatrix} = \begin{pmatrix}
-5 & 6 \\
-10 & 12 \\
-15 & 18 \\
-20 & 24
-\end{pmatrix}$$
+$$A \otimes B = \begin{pmatrix}1 \cdot 5 & 1 \cdot 6 \\2 \cdot 5 & 2 \cdot 6 \\3 \cdot 5 & 3 \cdot 6 \\4 \cdot 5 & 4 \cdot 6\end{pmatrix} = \begin{pmatrix}5 & 6 \\10 & 12 \\15 & 18 \\20 & 24\end{pmatrix}$$
 
 **Example 2: Outer Product with Larger Matrices**
 
 Given matrices:
 
-$$A = \begin{pmatrix}
-1 & 2 & 3 \\
-4 & 5 & 6
-\end{pmatrix}, \quad
-B = \begin{pmatrix}
-7 \\
-8
-\end{pmatrix}$$
+$$A = \begin{pmatrix}1 & 2 & 3 \\4 & 5 & 6\end{pmatrix}, \quad B = \begin{pmatrix}7 \\8\end{pmatrix}$$
 
 The outer product $A \otimes B$ is:
 
-$$A \otimes B = \begin{pmatrix}
-1 \cdot 7 & 1 \cdot 8 \\
-2 \cdot 7 & 2 \cdot 8 \\
-3 \cdot 7 & 3 \cdot 8 \\
-4 \cdot 7 & 4 \cdot 8 \\
-5 \cdot 7 & 5 \cdot 8 \\
-6 \cdot 7 & 6 \cdot 8
-\end{pmatrix} = \begin{pmatrix}
-7 & 8 \\
-14 & 16 \\
-21 & 24 \\
-28 & 32 \\
-35 & 40 \\
-42 & 48
-\end{pmatrix}$$
+$$A \otimes B = \begin{pmatrix}1 \cdot 7 & 1 \cdot 8 \\2 \cdot 7 & 2 \cdot 8 \\3 \cdot 7 & 3 \cdot 8 \\4 \cdot 7 & 4 \cdot 8 \\5 \cdot 7 & 5 \cdot 8 \\6 \cdot 7 & 6 \cdot 8\end{pmatrix} = \begin{pmatrix}7 & 8 \\14 & 16 \\21 & 24 \\28 & 32 \\35 & 40 \\42 & 48\end{pmatrix}$$
 
 Example 3: Compute the outer product of the following vectors $\mathbf{u} = [0, 1, 2]$ and $\mathbf{v} = [2, 3, 4]$.
 
 To find the outer product, we calculate each element $(i, j)$ as the product of the $(i)$-th element of $\mathbf{u}$ and the $(j)$-th element of $\mathbf{v}$. Mathematically:
 
-$$\mathbf{u} \otimes \mathbf{v} = \begin{bmatrix}
-0 \cdot 2 & 0 \cdot 3 & 0 \cdot 4 \\
-1 \cdot 2 & 1 \cdot 3 & 1 \cdot 4 \\
-2 \cdot 2 & 2 \cdot 3 & 2 \cdot 4
-\end{bmatrix}
-= \begin{bmatrix}
-0 & 0 & 0 \\
-2 & 3 & 4 \\
-4 & 6 & 8
-\end{bmatrix}$$
+$$\mathbf{u} \otimes \mathbf{v} = \begin{bmatrix}0 \cdot 2 & 0 \cdot 3 & 0 \cdot 4 \\1 \cdot 2 & 1 \cdot 3 & 1 \cdot 4 \\2 \cdot 2 & 2 \cdot 3 & 2 \cdot 4\end{bmatrix}= \begin{bmatrix}0 & 0 & 0 \\2 & 3 & 4 \\4 & 6 & 8\end{bmatrix}$$
 
 **1. Compute Outer Product of Matrices from Scratch (without Libraries)**
 
@@ -1693,16 +1500,7 @@ display(outer_product)
 In recommendation systems, the outer product can represent user-item interactions. A simple context is here. Let the user preferences of items is given as $u=[4, 3, 5]$ and the item scores is given by $v=[2, 5, 4]$. Now the recommendation score can be calculated as the outer product of these two vectors. Calculation of this score is shown below.
 The outer product $\mathbf{u} \otimes \mathbf{v}$ is calculated as follows:
 
-$$\mathbf{u} \otimes \mathbf{v} = \begin{bmatrix}
-4 \cdot 2 & 4 \cdot 5 & 4 \cdot 4 \\
-3 \cdot 2 & 3 \cdot 5 & 3 \cdot 4 \\
-5 \cdot 2 & 5 \cdot 5 & 5 \cdot 4
-\end{bmatrix}
-= \begin{bmatrix}
-8 & 20 & 16 \\
-6 & 15 & 12 \\
-10 & 25 & 20
-\end{bmatrix}$$
+$$\mathbf{u} \otimes \mathbf{v} = \begin{bmatrix}4 \cdot 2 & 4 \cdot 5 & 4 \cdot 4 \\3 \cdot 2 & 3 \cdot 5 & 3 \cdot 4 \\5 \cdot 2 & 5 \cdot 5 & 5 \cdot 4\end{bmatrix}= \begin{bmatrix}8 & 20 & 16 \\6 & 15 & 12 \\10 & 25 & 20\end{bmatrix}$$
 
 The python code for this task is given below.
 
@@ -1825,12 +1623,7 @@ In mathematics, the Kronecker product, sometimes denoted by $\otimes$, is an ope
 If $A$ is an $m \times n$ matrix and $B$ is a $p \times q$ matrix, then the Kronecker product $A\otimes B$ is the $pm \times qn$ block matrix defined as: Each
 $a_{ij}$ of $A$ is replaced by the matrix $a_{ij}B$. Symbolically this will result in a block matrix defined by:
 
-$$A\otimes B=\begin{bmatrix}A \otimes B = \begin{bmatrix}
-a_{11}B & a_{12}B & \cdots & a_{1n}B \\
-a_{21}B & a_{22}B & \cdots & a_{2n}B \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{m1}B & a_{m2}B & \cdots & a_{mn}B
-\end{bmatrix} \end{bmatrix}$$
+$$A\otimes B=\begin{bmatrix}A \otimes B = \begin{bmatrix}a_{11}B & a_{12}B & \cdots & a_{1n}B \\a_{21}B & a_{22}B & \cdots & a_{2n}B \\\vdots & \vdots & \ddots & vdots \\a_{m1}B & a_{m2}B & \cdots & a_{mn}B\end{bmatrix} \end{bmatrix}$$
 :::
 
 :::{.callout-note}
@@ -1881,43 +1674,27 @@ Example 1: Calculation of Frobenius Norm
 
 Consider the matrix $A$:
 
-$$A = \begin{bmatrix}
-1 & 2 \\
-3 & 4
-\end{bmatrix}$$
+$$A = \begin{bmatrix}1 & 2 \\3 & 4\end{bmatrix}$$
 
 To compute the Frobenius norm:
 
-$$\|A\|_F = \sqrt{1^2 + 2^2 + 3^2 + 4^2}
-= \sqrt{1 + 4 + 9 + 16}
-= \sqrt{30}
-\approx 5.48$$
+$$\|A\|_F = \sqrt{1^2 + 2^2 + 3^2 + 4^2}= \sqrt{1 + 4 + 9 + 16}= \sqrt{30}\approx 5.48$$
 
 Example 2: Frobenius Norm of a Sparse Matrix
 
 Consider the sparse matrix $B$:
 
-$$B = \begin{bmatrix}
-0 & 0 & 0 \\
-0 & 5 & 0 \\
-0 & 0 & 0
-\end{bmatrix}$$
+$$B = \begin{bmatrix}0 & 0 & 0 \\0 & 5 & 0 \\0 & 0 & 0\end{bmatrix}$$
 
 To compute the Frobenius norm:
 
-$$\|B\|_F = \sqrt{0^2 + 0^2 + 0^2 + 5^2 + 0^2 + 0^2}
-= \sqrt{25}
-= 5$$
+$$\|B\|_F = \sqrt{0^2 + 0^2 + 0^2 + 5^2 + 0^2 + 0^2}= \sqrt{25}= 5$$
 
 Example 3: Frobenius Norm in a Large Matrix
 
 Consider the matrix $C$ of size $3 \times 3 $:
 
-$$C = \begin{bmatrix}
-1 & 2 & 3 \\
-4 & 5 & 6 \\
-7 & 8 & 9
-\end{bmatrix}$$
+$$C = \begin{bmatrix}1 & 2 & 3 \\4 & 5 & 6 \\7 & 8 & 9\end{bmatrix}$$
 
 To compute the Frobenius norm:
 
@@ -1960,49 +1737,19 @@ print(f"Frobenius Norm of C: {frobenius_norm_C:.2f}")
 
 Let us consider two matrices,
 
-$$A = \begin{bmatrix}
-1 & 2 \\
-3 & 4
-\end{bmatrix}$$
+$$A = \begin{bmatrix}1 & 2 \\3 & 4\end{bmatrix}$$
 
 and
 
-$$B = \begin{bmatrix}
-0 & 5 \\
-6 & 7
-\end{bmatrix}$$
+$$B = \begin{bmatrix}0 & 5 \\6 & 7\end{bmatrix}$$
 
 The Kronecker product $C = A \otimes B$ is:
 
-$$C = \begin{bmatrix}
-1 \cdot B & 2 \cdot B \\
-3 \cdot B & 4 \cdot B
-\end{bmatrix}
-= \begin{bmatrix}
-\begin{bmatrix}
-0 & 5 \\
-6 & 7
-\end{bmatrix} & \begin{bmatrix}
-0 \cdot 2 & 5 \cdot 2 \\
-6 \cdot 2 & 7 \cdot 2
-\end{bmatrix} \\
-\begin{bmatrix}
-0 \cdot 3 & 5 \cdot 3 \\
-6 \cdot 3 & 7 \cdot 3
-\end{bmatrix} & \begin{bmatrix}
-0 \cdot 4 & 5 \cdot 4 \\
-6 \cdot 4 & 7 \cdot 4
-\end{bmatrix}
-\end{bmatrix}$$
+$$C = \begin{bmatrix}1 \cdot B & 2 \cdot B \\3 \cdot B & 4 \cdot B\end{bmatrix}= \begin{bmatrix}\begin{bmatrix}0 & 5 \\6 & 7\end{bmatrix} & \begin{bmatrix}0 \cdot 2 & 5 \cdot 2 \\6 \cdot 2 & 7 \cdot 2\end{bmatrix} \\\begin{bmatrix}0 \cdot 3 & 5 \cdot 3 \\6 \cdot 3 & 7 \cdot 3\end{bmatrix} & \begin{bmatrix}0 \cdot 4 & 5 \cdot 4 \\6 \cdot 4 & 7 \cdot 4\end{bmatrix}\end{bmatrix}$$
 
 This expands to:
 
-$$C = \begin{bmatrix}
-0 & 5 & 0 & 10 \\
-6 & 7 & 12 & 14 \\
-0 & 15 & 0 & 20 \\
-18 & 21 & 24 & 28
-\end{bmatrix}$$
+$$C = \begin{bmatrix}0 & 5 & 0 & 10 \\6 & 7 & 12 & 14 \\0 & 15 & 0 & 20 \\18 & 21 & 24 & 28\end{bmatrix}$$
 
 *Computing the Frobenius Norm*
 
@@ -2259,12 +2006,7 @@ A \otimes B &= \begin{bmatrix}2&-1\\3&4\end{bmatrix} \otimes \begin{bmatrix}0&5\
 
    - Let $\mathbf{A} = \begin{bmatrix}a_{11} & a_{12}\\ a_{21} & a_{22}\end{bmatrix}$ and $\mathbf{B} = \begin{bmatrix}b_{11} & b_{12}\\ b_{21} & b_{22}\end{bmatrix}$. Then:
 
-   $$
-   \mathbf{A} \otimes \mathbf{B} = \begin{bmatrix}
-   a_{11} \mathbf{B} & a_{12} \mathbf{B} \\
-   a_{21} \mathbf{B} & a_{22} \mathbf{B}
-   \end{bmatrix}
-   $$
+   $$\mathbf{A} \otimes \mathbf{B} = \begin{bmatrix} a_{11} \mathbf{B} & a_{12} \mathbf{B} \\ a_{21} \mathbf{B} & a_{22} \mathbf{B} \end{bmatrix}$$
 
    - If $\mathbf{A} = \mathbf{u} \mathbf{v}^T$ where $\mathbf{u}$ is a column vector and $\mathbf{v}^T$ is a row vector, then the Kronecker product of $\mathbf{u}$ and $\mathbf{v}^T$ yields the same result as the outer product $\mathbf{u} \otimes \mathbf{v}$.
 
@@ -2285,9 +2027,7 @@ Given matrices $\mathbf{A}$ and $\mathbf{B}$, where:
 
 The product $\mathbf{C} = \mathbf{A} \mathbf{B}$ can be expressed using Kronecker products as:
 
-$$
-\mathbf{C} = \sum_{k=1}^n (\mathbf{A}_{:,k} \otimes \mathbf{B}_{k,:})
-$$
+$$\mathbf{C} = \sum_{k=1}^n (\mathbf{A}_{:,k} \otimes \mathbf{B}_{k,:})$$
 
 where:
 - $\mathbf{A}_{:,k}$ denotes the $k$-th column of matrix $\mathbf{A}$
@@ -2297,56 +2037,25 @@ where:
 
 Let:
 
-$$
-\mathbf{A} = \begin{bmatrix}
-1 & 2 \\
-3 & 4
-\end{bmatrix}
-$$
+$$\mathbf{A} = \begin{bmatrix}1 & 2 \\3 & 4\end{bmatrix}$$
 
 and:
 
-$$
-\mathbf{B} = \begin{bmatrix}
-0 & 1 \\
-1 & 0
-\end{bmatrix}
-$$
+$$\mathbf{B} = \begin{bmatrix}0 & 1 \\1 & 0\end{bmatrix}$$
 
 To find $\mathbf{C} = \mathbf{A} \mathbf{B}$ using Kronecker products:
 
 1. **Compute the Kronecker Product of Columns of $\mathbf{A}$ and Rows of $\mathbf{B}$:**
 
    - For column $\mathbf{A}_{:,1} = \begin{bmatrix} 1 \\ 3 \end{bmatrix}$ and row $\mathbf{B}_{1,:} = \begin{bmatrix} 0 & 1 \end{bmatrix}$:
-     $$
-     \mathbf{A}_{:,1} \otimes \mathbf{B}_{1,:} = \begin{bmatrix}
-     0 & 1 \\
-     0 & 3
-     \end{bmatrix}
-     $$
+     $$\mathbf{A}_{:,1} \otimes \mathbf{B}_{1,:} = \begin{bmatrix}     0 & 1 \\     0 & 3     \end{bmatrix}$$
 
    - For column $\mathbf{A}_{:,2} = \begin{bmatrix} 2 \\ 4 \end{bmatrix}$ and row $\mathbf{B}_{2,:} = \begin{bmatrix} 1 & 0 \end{bmatrix}$:
-     $$\mathbf{A}_{:,2} \otimes \mathbf{B}_{2,:} = \begin{bmatrix}
-     2 & 0 \\
-     4 & 0
-     \end{bmatrix}$$
+     $$\mathbf{A}_{:,2} \otimes \mathbf{B}_{2,:} = \begin{bmatrix}2 & 0 \\ 4 & 0\end{bmatrix}$$
      
 2. **Sum the Kronecker Products:**
 
-   $$\mathbf{C} = \begin{bmatrix}
-   0 & 1 \\
-   0 & 3
-   \end{bmatrix}
-   +
-   \begin{bmatrix}
-   2 & 0 \\
-   4 & 0
-   \end{bmatrix}
-   =
-   \begin{bmatrix}
-   2 & 1 \\
-   4 & 3
-   \end{bmatrix}$$
+   $$\mathbf{C} = \begin{bmatrix}0 & 1 \\ 0 & 3\end{bmatrix} +\begin{bmatrix} 2 & 0 \\ 4 & 0 \end{bmatrix}  = \begin{bmatrix} 2 & 1 \\ 4 & 3\end{bmatrix}$$
 
 ----
 
@@ -2428,34 +2137,11 @@ The Kronecker product $K$ of $U$ and $C$ is calculated as follows:
 
    As an example the blocks in first row are:
 
-  $$5 \cdot C = \begin{pmatrix}
-   5 & 0 & 0 \\
-   0 & 5 & 5 \\
-   0 & 5 & 5
-   \end{pmatrix}, \quad
-   3 \cdot C = \begin{pmatrix}
-   3 & 0 & 0 \\
-   0 & 3 & 3 \\
-   0 & 3 & 3
-   \end{pmatrix}, \quad
-   4 \cdot C = \begin{pmatrix}
-   4 & 0 & 0 \\
-   0 & 4 & 4 \\
-   0 & 4 & 4
-   \end{pmatrix}$$
+  $$5 \cdot C = \begin{pmatrix}   5 & 0 & 0 \\   0 & 5 & 5 \\   0 & 5 & 5   \end{pmatrix}, \quad    3 \cdot C = \begin{pmatrix}   3 & 0 & 0 \\   0 & 3 & 3 \\   0 & 3 & 3   \end{pmatrix}, \quad   4 \cdot C = \begin{pmatrix}   4 & 0 & 0 \\   0 & 4 & 4 \\   0 & 4 & 4   \end{pmatrix}$$
 
    Combining these blocks:
 
-  $$K = \begin{pmatrix}
-   5 & 0 & 0 & 3 & 0 & 0 & 4 & 0 & 0\\
-   0 & 5 & 5 & 0 & 3 & 3 & 0 & 4 & 4\\
-   0 & 5 & 5 & 0 & 3 & 3 & 0 & 4 & 4\\
-   2 & 0 & 0 & 4 & 0 & 0 & 5 & 0 & 0\\
-   0 & 2 & 2 & 0 & 4 & 4 & 0 & 5 & 5\\
-   0 & 2 & 2 & 0 & 4 & 4 & 0 & 5 & 5\\
-   3 & 0 & 0 & 4 & 0 & 0 & 4 & 0 & 0\\
-   0 & 3 & 3 & 0 & 4 & 4 & 0 & 4 & 4\\
-   0 & 3 & 3 & 0 & 4 & 4 & 0 & 4 & 4\end{pmatrix}$$
+  $$K = \begin{pmatrix}   5 & 0 & 0 & 3 & 0 & 0 & 4 & 0 & 0\\   0 & 5 & 5 & 0 & 3 & 3 & 0 & 4 & 4\\   0 & 5 & 5 & 0 & 3 & 3 & 0 & 4 & 4\\   2 & 0 & 0 & 4 & 0 & 0 & 5 & 0 & 0\\   0 & 2 & 2 & 0 & 4 & 4 & 0 & 5 & 5\\   0 & 2 & 2 & 0 & 4 & 4 & 0 & 5 & 5\\   3 & 0 & 0 & 4 & 0 & 0 & 4 & 0 & 0\\   0 & 3 & 3 & 0 & 4 & 4 & 0 & 4 & 4\\   0 & 3 & 3 & 0 & 4 & 4 & 0 & 4 & 4\end{pmatrix}$$
 
 2. **Interpret the Kronecker Product Matrix:**
    The resulting matrix $K$ represents all possible combinations of user preferences and category features.
@@ -2586,7 +2272,7 @@ Just consider the product. Its sales fully based on its features. So the product
 \begin{align*}
 Ax&=\begin{bmatrix}1&4&5\\3&2&5\\2&1&3\end{bmatrix}x\\
 &=\begin{bmatrix}1&4&5\\3&2&5\\2&1&3\end{bmatrix}\cdot\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}\\
-&=\begin{bmatrix}1\\3\\2\end{bmatrix}x_1+\begin{bmatrix}1\\3\\2\end{bmatrix}x_1+\begin{bmatrix}4\\2\\1\end{bmatrix}x_2+\begin{bmatrix}5\\5\\3\end{bmatrix}x_3
+&=\begin{bmatrix}\begin{bmatrix}1\\3\\2\end{bmatrix}x_1+\begin{bmatrix}4\\2\\1\end{bmatrix}x_2+\begin{bmatrix}5\\5\\3\end{bmatrix}x_3
 \end{align*}
 
 As the number of users increases, the product sales perspective become more informative. In short the span of the features define the feature space of the product. In real cases, a manufacture wants to know what are the features really inflence the customers. This new matrix product will help the manufactures to identify that features! 
@@ -2674,44 +2360,24 @@ where:
 
 -----
 
-*Example 1:* Calculate the rank and nullity of $A=\begin{bmatrix}
-   1 & 4 & 5 \\
-   3 & 2 & 5 \\
-   2 & 1 & 3
-   \end{bmatrix}$ and verify the rank nullity theorem.
+*Example 1:* Calculate the rank and nullity of $A=\begin{bmatrix}   1 & 4 & 5 \\   3 & 2 & 5 \\   2 & 1 & 3   \end{bmatrix}$ and verify the rank nullity theorem.
 
 1. **Row Echelon Form**:
 
    Perform Gaussian elimination on $A$:
 
-   $$A = \begin{bmatrix}
-   1 & 4 & 5 \\
-   3 & 2 & 5 \\
-   2 & 1 & 3
-   \end{bmatrix}$$
+   $$A = \begin{bmatrix} 1 & 4 & 5 \\  3 & 2 & 5 \\   2 & 1 & 3   \end{bmatrix}$$
 
    Perform row operations to get it to row echelon form:
 
    - Subtract 3 times row 1 from row 2:
-     $$\begin{bmatrix}
-     1 & 4 & 5 \\
-     0 & -10 & -10 \\
-     2 & 1 & 3
-     \end{bmatrix}$$
+     $$\begin{bmatrix}     1 & 4 & 5 \\     0 & -10 & -10 \\     2 & 1 & 3     \end{bmatrix}$$
 
    - Subtract 2 times row 1 from row 3:
-     $$\begin{bmatrix}
-     1 & 4 & 5 \\
-     0 & -10 & -10 \\
-     0 & -7 & -7
-     \end{bmatrix}$$
+     $$\begin{bmatrix}     1 & 4 & 5 \\     0 & -10 & -10 \\     0 & -7 & -7     \end{bmatrix}$$
 
    - Add $\frac{7}{10}$ times row 2 to row 3:
-     $$\begin{bmatrix}
-     1 & 4 & 5 \\
-     0 & -10 & -10 \\
-     0 & 0 & 0
-     \end{bmatrix}$$
+     $$\begin{bmatrix}     1 & 4 & 5 \\     0 & -10 & -10 \\     0 & 0 & 0     \end{bmatrix}$$
 
    The matrix is now in row echelon form.
 
@@ -2831,6 +2497,109 @@ This can be summarized in the following table.
 
 :::
 
+#### Computational methods to find all the four fundamental subspaces of a matrix
+
+There are different approaches to find the four fundamental subspaces of a matrix using `Python`. Simplest method is just convert our mathematical procedure into `Python` functions and call them to find respective spaces. This method is illustrated below.
+
+```{python}
+# importing numpy library for numerical computation
+import numpy as np
+# define the function create the row-reduced Echelon form of given matrix
+def row_echelon_form(A):
+    """Convert matrix A to its row echelon form."""
+    A = A.astype(float)
+    rows, cols = A.shape
+    for i in range(min(rows, cols)):
+        # Pivot: find the maximum element in the current column
+        max_row = np.argmax(np.abs(A[i:, i])) + i
+        if A[max_row, i] == 0:
+            continue  # Skip if the column is zero
+        # Swap the current row with the max_row
+        A[[i, max_row]] = A[[max_row, i]]
+        # Eliminate entries below the pivot
+        for j in range(i + 1, rows):
+            factor = A[j, i] / A[i, i]
+            A[j, i:] -= factor * A[i, i:]
+    return A
+
+# define function to generate null space from the row-reduced echelon form
+def null_space_of_matrix(A, rtol=1e-5):
+    """Compute the null space of a matrix A using row reduction."""
+    A_reduced = row_echelon_form(A)
+    rows, cols = A_reduced.shape
+    # Identify pivot columns
+    pivots = []
+    for i in range(rows):
+        for j in range(cols):
+            if np.abs(A_reduced[i, j]) > rtol:
+                pivots.append(j)
+                break
+    free_vars = set(range(cols)) - set(pivots)
+    
+    null_space = []
+    for free_var in free_vars:
+        null_vector = np.zeros(cols)
+        null_vector[free_var] = 1
+        for pivot, row in zip(pivots, A_reduced[:len(pivots)]):
+            null_vector[pivot] = -row[free_var]
+        null_space.append(null_vector)
+    
+    return np.array(null_space).T
+
+# define the function to generate the row-space of A
+
+def row_space_of_matrix(A):
+    """Compute the row space of a matrix A using row reduction."""
+    A_reduced = row_echelon_form(A)
+    # The non-zero rows of the reduced matrix form the row space
+    non_zero_rows = A_reduced[~np.all(A_reduced == 0, axis=1)]
+    return non_zero_rows
+
+# define the function to generate the column space of A
+
+def column_space_of_matrix(A):
+    """Compute the column space of a matrix A using row reduction."""
+    A_reduced = row_echelon_form(A)
+    rows, cols = A_reduced.shape
+    # Identify pivot columns
+    pivots = []
+    for i in range(rows):
+        for j in range(cols):
+            if np.abs(A_reduced[i, j]) > 1e-5:
+                pivots.append(j)
+                break
+    column_space = A[:, pivots]
+    return column_space
+```
+
+#### Examples:
+
+1. Find all the fundamental subspaces of $A=\begin{pmatrix}1&2&3\\ 4&5&6\\7&8&9\end{pmatrix}$.
+
+```{python}
+A = np.array([[1, 2, 3],
+              [4, 5, 6],
+              [7, 8, 9]])
+
+print("Matrix A:")
+print(A)
+
+# Null Space
+null_space_A = null_space_of_matrix(A)
+print("\nNull Space of A:")
+print(null_space_A)
+
+# Row Space
+row_space_A = row_space_of_matrix(A)
+print("\nRow Space of A:")
+print(row_space_A)
+
+# Column Space
+column_space_A = column_space_of_matrix(A)
+print("\nColumn Space of A:")
+print(column_space_A)
+```
+
 #### Rank and Solution of System of Linear Equations
 
 In linear algebra, the rank of a matrix is a crucial concept for understanding the structure of a system of linear equations. It provides insight into the solutions of these systems, helping us determine the number of independent equations and the nature of the solution space.
@@ -2852,4 +2621,189 @@ The rank of a matrix $A$ is defined as the maximum number of linearly independen
 2. **Inconsistent System:** A system is inconsistent if there are no solutions. This occurs when:
    $$\text{rank}(A) \ne \text{rank}([A|\mathbf{b}])$$
    In this case, the equations represent parallel or conflicting constraints that cannot be satisfied simultaneously.
+:::
+
+:::{.callout-note}
+
+### Use of Null space in creation of general solution from particular solution
+
+If the system $AX=b$ has many solutions, then the general solution of the system can be found using a particular solution and the elements in the null space of the coefficient matrix $A$ as
+
+$$X=x_p+tX_N$$
+
+where $X$ is the general solution and $t$ is a free variable (parameter) and $X_N\in N(A)$.
+
+:::
+
+#### Computational method to solve system of linear equations.
+
+If for a system $AX=b$, $det(A)\neq 0$, then the system has a unique solution and can be found by `solve()` function from `NumPy`. If the system is consistant and many solutions, then computationally we will generate the general solution using the $N(A)$. A detailed `Python` code is given below.
+
+```{python}
+import numpy as np
+
+def check_consistency(A, b):
+    """
+    Check the consistency of a linear system Ax = b and return the solution if consistent.
+    
+    Parameters:
+    A (numpy.ndarray): Coefficient matrix.
+    b (numpy.ndarray): Right-hand side vector.
+    
+    Returns:
+    tuple: A tuple with consistency status, particular solution (if consistent), and null space (if infinite solutions).
+    """
+    A = np.array(A)
+    b = np.array(b)
+    
+    # Augment the matrix A with vector b
+    augmented_matrix = np.column_stack((A, b))
+    
+    # Compute ranks
+    rank_A = np.linalg.matrix_rank(A)
+    rank_augmented = np.linalg.matrix_rank(augmented_matrix)
+    
+    # Check for consistency
+    if rank_A == rank_augmented:
+        if rank_A == A.shape[1]:
+            # Unique solution
+            solution = np.linalg.solve(A, b)
+            return "Consistent and has a unique solution", solution, None
+        else:
+            # Infinitely many solutions
+            particular_solution = np.linalg.lstsq(A, b, rcond=None)[0]
+            null_space = null_space_of_matrix(A)
+            return "Consistent but has infinitely many solutions", particular_solution, null_space
+    else:
+        return "Inconsistent system (no solution)", None, None
+
+def null_space_of_matrix(A):
+    """
+    Compute the null space of matrix A, which gives the set of solutions to Ax = 0.
+    
+    Parameters:
+    A (numpy.ndarray): Coefficient matrix.
+    
+    Returns:
+    numpy.ndarray: Basis for the null space of A.
+    """
+    u, s, vh = np.linalg.svd(A)
+    null_mask = (s <= 1e-10)  # Singular values near zero
+    null_space = np.compress(null_mask, vh, axis=0)
+    return null_space.T
+
+```
+
+>*Example 1:* Solve \begin{align*}2x-y+z&=1\\ x+2y&=3\\ 3x+2y+z&=4\end{align*}
+
+```{python}
+# Example usage 1: System with a unique solution
+A1 = np.array([[2, -1, 1], [1, 0, 2], [3, 2, 1]])
+b1 = np.array([1, 3, 4])
+
+status1, solution1, null_space1 = check_consistency(A1, b1)
+print("Example 1 - Status:", status1)
+
+if solution1 is not None:
+    print("Solution:", solution1)
+if null_space1 is not None:
+    print("Null Space:", null_space1)
+```
+>*Example 2:* Solve the system of equations, \begin{align*}x+2y+z&=3\\ 2x+4y+2z&=6\\ x+y+z&=2\end{align*}
+
+```{python}
+
+# Example usage 2: System with infinitely many solutions
+A2 = np.array([[1, 2, 1], [2, 4, 2], [1, 1, 1]])
+b2 = np.array([3, 6, 2])
+
+status2, solution2, null_space2 = check_consistency(A2, b2)
+print("\nExample 2 - Status:", status2)
+
+if solution2 is not None:
+    print("Particular Solution:", solution2)
+if null_space2 is not None:
+    print("Null Space (Basis for infinite solutions):", null_space2)
+```
+
+:::{.callout-note}
+
+### Connection between fundamental subspaces and Singular Value Decomposition
+
+Every non zero matrix can be expressed as a decomposition known as the SVD as follows:
+
+\begin{align}
+  \mathbf{A} &=
+  \mathbf{U} \, \Sigma \, \mathbf{V}^{*} \\
+%
+ &=
+% U 
+  \left[ \begin{array}{cc}
+     \color{blue}{\mathbf{U}_{\mathcal{R}}} & \color{red}{\mathbf{U}_{\mathcal{N}}}
+  \end{array} \right]  
+% Sigma
+  \left[ \begin{array}{cccc|cc}
+     \sigma_{1} & 0 & \dots &  &   & \dots &  0 \\
+     0 & \sigma_{2}  \\
+     \vdots && \ddots \\
+       & & & \sigma_{\rho} \\\hline
+       & & & & 0 & \\
+     \vdots &&&&&\ddots \\
+     0 & & &   &   &  & 0 \\
+  \end{array} \right]
+% V 
+  \left[ \begin{array}{c}
+     \color{blue}{\mathbf{V}_{\mathcal{R}}}^{*} \\ 
+     \color{red}{\mathbf{V}_{\mathcal{N}}}^{*}
+  \end{array} \right]  \\
+%
+  & =
+% U
+   \left[ \begin{array}{cccccccc}
+    \color{blue}{u_{1}} & \dots & \color{blue}{u_{\rho}} & \color{red}{u_{\rho+1}} & \dots & \color{red}{u_{m}}
+  \end{array} \right]
+% Sigma
+  \left[ \begin{array}{cc}
+     \mathbf{S}_{\rho\times \rho} & \mathbf{0} \\
+     \mathbf{0} & \mathbf{0} 
+  \end{array} \right]
+% V
+   \left[ \begin{array}{c}
+    \color{blue}{v_{1}^{*}} \\ 
+    \vdots \\
+    \color{blue}{v_{\rho}^{*}} \\
+    \color{red}{v_{\rho+1}^{*}} \\
+    \vdots \\ 
+    \color{red}{v_{n}^{*}}
+  \end{array} \right]
+%
+\end{align}
+
+The column vectors form spans for the subspaces:
+
+\begin{align} 
+% R A
+\color{blue}{\mathcal{R} \left( \mathbf{A} \right)} &=
+\text{span} \left\{
+ \color{blue}{u_{1}}, \dots , \color{blue}{u_{\rho}}
+\right\} \\
+% R A*
+\color{blue}{\mathcal{R} \left( \mathbf{A}^{*} \right)} &=
+\text{span} \left\{
+ \color{blue}{v_{1}}, \dots , \color{blue}{v_{\rho}}
+\right\} \\
+% N A*
+\color{red}{\mathcal{N} \left( \mathbf{A}^{*} \right)} &=
+\text{span} \left\{
+\color{red}{u_{\rho+1}}, \dots , \color{red}{u_{m}}
+\right\} \\
+% N A
+\color{red}{\mathcal{N} \left( \mathbf{A} \right)} &=
+\text{span} \left\{
+\color{red}{v_{\rho+1}}, \dots , \color{red}{v_{n}}
+\right\} \\
+%
+\end{align}
+
+The conclusion is that the full SVD provides an orthonormal span for not only the two null spaces, but also both range spaces.
 :::
