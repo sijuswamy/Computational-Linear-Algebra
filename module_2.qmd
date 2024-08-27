@@ -176,6 +176,7 @@ plt.colorbar()
 plt.show()
 
 ```
+
 From the first sub plot, it is clear that there is a significant difference in the distributions (Metric A and Metric B values). But the second sub plot shows that both the distributions have same pattern and the values ranges between 0 and 1. In short the visualization is more appealing and self explanatory in this case.
 
 :::{.callout-note}
@@ -213,6 +214,7 @@ plt.colorbar()
 
 plt.show()
 ```
+
 To understand the effect of standard scaling, let us consider [Fig @fig-comp1]. This plot create the frequency distribution of the data as a histogram along with the density function. From the first sub-plot, it is clear that the distribution has multiple modes (peaks). When we apply the standard scaling, the distribution become un-modal(only one peek). This is demonstrated in the second sub-plot.
 
 ```{python}
@@ -297,6 +299,7 @@ scaled_data_sklearn = scaler.fit_transform(data)
 print("Standard Scaled Data (using sklearn):\n", scaled_data_sklearn)
 
 ```
+
 A scatter plot showing the impact on scaling is shown in [Fig @fig-comp2]. This plot compare the m`min-max` and `standard-scaling`.
 
 ```{python}
@@ -330,9 +333,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-```{python}
 
-```
 ### More on Matrix Product and its Applications
 
 In the first module of our course, we introduced matrix products as scalar projections, focusing on how matrices interact through basic operations. In this section, we will expand on this by exploring different types of matrix products that have practical importance in various fields. One such product is the *Hadamard product*, which is particularly useful in applications ranging from image processing to neural networks and statistical analysis. We will cover the definition, properties, and examples of the Hadamard product, and then delve into practical applications with simulated data.
@@ -673,7 +674,7 @@ where $\cdot$ denotes element-wise multiplication.
 :::
 
 
-::: {.callout-important}
+:::{.callout-important}
 ### Properties
 
 1.  **Commutativity**: 
@@ -1082,6 +1083,7 @@ $$(\mathbf{u} \otimes \mathbf{v})_{ij} = u_i \cdot v_j$$
 
 where $\cdot$ denotes the outer product operation. In matrix notation, for two column vectors $u,v$, 
 $$u\otimes v=uv^T$$
+
 :::
 
 
@@ -2434,15 +2436,8 @@ Let $T:\mathbb{R^n}\longrightarrow \mathbb{R^m}$ be a linear transformation and 
 4. **Left Null Space**: The set of all vectors $\mathbf{y}$ such that $A^T \mathbf{y} = \mathbf{0}$. It provides insight into the orthogonal complement of the row space.
 :::
 
-```{mermaid}
-graph TD
-    MatrixA[Matrix A] -->|Contains Columns| ColumnSpace[Column Space]
-    MatrixA -->|Contains Rows| RowSpace[Row Space]
-    MatrixA -->|Contains Vectors Mapping to Zero| NullSpace[Null Space]
-    MatrixA -->|Contains Vectors Orthogonal to Row Space| LeftNullSpace[Left Null Space]
-    ColumnSpace -->|Orthogonal Complement| NullSpace
-    RowSpace -->|Orthogonal Complement| LeftNullSpace
-```
+
+
 This idea is depicted as a 'Big picture of the four sub spaces of a matrix' in the Strang's text book on Linear algebra for every one [@strang2020linear]. This 'Big Picture' is shown in [Fig- @fig-big-pic].
 
 ![The Big Pictue of Fundamental Subspaces](https://i.pinimg.com/originals/fb/c5/f9/fbc5f91d82681dd7341dda6915d11e92.png){#fig-big-pic fig-align="center" width=80% .lightbox}
@@ -2722,6 +2717,7 @@ if solution1 is not None:
 if null_space1 is not None:
     print("Null Space:", null_space1)
 ```
+
 >*Example 2:* Solve the system of equations, \begin{align*}
 x+2y+z&=3\\
 2x+4y+2z&=6\\

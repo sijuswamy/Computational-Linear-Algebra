@@ -2,7 +2,9 @@
 title: "Python for Linear Algebra"
 execute: 
   enabled: true
+jupyter: python3
 ---
+
 ## Pseudocode: the new language for algorithm design
 
 Pseudocode is a way to describe algorithms in a structured but plain language. It helps in planning the logic without worrying about the syntax of a specific programming language. In this module, we'll use Python-flavored pseudocode to describe various matrix operations.
