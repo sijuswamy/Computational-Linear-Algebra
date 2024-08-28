@@ -1812,7 +1812,7 @@ plt.show()
 
 **Barchart**
 
-Bar charts are another useful visualization tool for analyzing categories in data. To visualize categorical columns, we first should count the values. We can use the counter method from the collections modules to generate a dictionary of count values for each category in a categorical column. Let’s do this for the Legendary column:
+Bar charts are another useful visualization tool for analyzing categories in data. To visualize categorical columns, we first should count the values. We can use the counter method from the collections modules to generate a dictionary of count values for each category in a categorical column. Let’s do this for the Legendary column.
 
 ```{python}
 from collections import Counter 
@@ -1821,7 +1821,7 @@ print(Counter(df[('Legendary')]))
 ```
 
 :::{.callout-tip}
- We can filter this dictionary using the `most_common` method. Let’s look at the 10 most common nationality values ( you can also use the `least_common` method to analyze infrequent nationality values):
+ We can filter this dictionary using the `most_common` method. Let’s look at the 10 most common nationality values ( you can also use the `least_common` method to analyze infrequent nationality values)
  :::
 
  ```{python}
@@ -1873,7 +1873,7 @@ plt.boxplot(df['Speed'],patch_artist=True, notch=True,labels=['Speed'])
 plt.show()
 ```
 
-### ## Data Visualization With Seaborn
+### Data Visualization With Seaborn
 
 `Seaborn` is a library built on top of `Matplotlib` that enables more sophisticated visualization and aesthetic plot formatting. Once you’ve mastered Matplotlib, you may want to move up to Seaborn for more complex visualizations.
 
