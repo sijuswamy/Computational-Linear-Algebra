@@ -1821,18 +1821,14 @@ print(Counter(df[('Legendary')]))
 ```
 
 :::{.callout-note}
- We can filter this dictionary using the `most_common` method. Let’s look at the 10 most common nationality values ( you can also use the `least_common` method to analyze infrequent nationality values)
+ We can filter this dictionary using the `most_common` method. Let’s look at the 10 most common nationality values (you can also use the `least_common` method to analyze infrequent nationality values)
 :::
 
 ```{python}
- Legendary_dict = dict(Counter(df[('Legendary')]).most_common(2))
-
+Legendary_dict = dict(Counter(df[('Legendary')]).most_common(2))
 plt.bar(Legendary_dict.keys(), Legendary_dict.values())
-
 plt.xlabel('Legendary')
-
 plt.ylabel('Frequency')
-
 plt.title('Bar Plot of Ten Most Common Legendary')
 #plt.xticks(rotation=90)
 plt.show()
@@ -1867,7 +1863,7 @@ plt.show()
 **Box plots**
  Box plots are helpful in visualizing the statistical summaries. The following code demonstrate the way of creating the box plot.
 
- ```{python}
+```{python}
  plt.title("Five point summary of Speed")
 plt.boxplot(df['Speed'],patch_artist=True, notch=True,labels=['Speed'])
 plt.show()
