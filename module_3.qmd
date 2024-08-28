@@ -1820,11 +1820,11 @@ from collections import Counter
 print(Counter(df[('Legendary')]))
 ```
 
-:::{.callout-tip}
+:::{.callout-note}
  We can filter this dictionary using the `most_common` method. Let’s look at the 10 most common nationality values ( you can also use the `least_common` method to analyze infrequent nationality values)
 :::
 
- ```{python}
+```{python}
  Legendary_dict = dict(Counter(df[('Legendary')]).most_common(2))
 
 plt.bar(Legendary_dict.keys(), Legendary_dict.values())
