@@ -18,6 +18,7 @@ book:
     - module_1.qmd
     - module_2.qmd
     - module_3.qmd
+    - module_4.qmd
     - references.qmd
 
 bibliography: references.bib

@@ -1,0 +1,1143 @@
+---
+title: "Linear Algebra for Advanced Applications"
+execute: 
+  enabled: true
+jupyter: python3
+---
+
+## Introduction
+
+Matrix decomposition plays a pivotal role in computational linear algebra, forming the backbone of numerous modern applications in fields such as data science, machine learning, computer vision, and signal processing. The core idea behind matrix decomposition is to break down complex matrices into simpler, structured components that allow for more efficient computation. Techniques such as LU, QR, Singular Value Decomposition (SVD), and Eigenvalue decompositions not only reduce computational complexity but also provide deep insights into the geometry and structure of data. These methods are essential in solving systems of linear equations, performing dimensionality reduction, and extracting meaningful features from data. For instance, LU decomposition is widely used to solve large linear systems, while QR decomposition plays a key role in solving least squares problems—a fundamental task in machine learning models.
+
+In emerging fields like big data analytics and artificial intelligence, matrix decomposition techniques are indispensable for processing and analyzing high-dimensional datasets. SVD and Principal Component Analysis (PCA), for example, are extensively used for data compression and noise reduction, making machine learning algorithms more efficient by reducing the number of variables while retaining key information. Additionally, sparse matrix decompositions allow for the handling of enormous datasets where most entries are zero, optimizing memory usage and computation time. As data science and machine learning continue to evolve, mastering these matrix decomposition techniques provides not only a computational advantage but also deeper insights into the structure and relationships within data, enhancing the performance of algorithms in real-world applications.
+
+## LU Decomposition
+
+LU decomposition is a powerful tool in linear algebra that elegantly unravels the complexity of solving systems of linear equations. At its core, LU decomposition expresses a matrix $A$ as the product of two distinct matrices: $L$ (a lower triangular matrix with ones on the diagonal) and $U$ (an upper triangular matrix). This decomposition transforms the problem of solving $Ax = b$ into a two-step process: first, solving $Ly = b$ for $y$, followed by $Ux = y$ for $x$. This systematic approach not only simplifies computations but also provides insightful perspectives on the relationships between the equations involved.
+
+The magic of LU decomposition lies in its utilization of elementary transformations—operations that allow us to manipulate the rows of a matrix to achieve a row-reduced echelon form. These transformations include row swaps, scaling, and adding multiples of one row to another. By applying these operations, we can gradually transform the original matrix $A$ into the upper triangular matrix $U$, while simultaneously capturing the essence of these transformations in the lower triangular matrix $L$. This interplay of $L$ and $U$ not only enhances computational efficiency but also unveils the deeper structural relationships within the matrix. 
+
+Moreover, the beauty of matrix multiplication shines through in LU decomposition. The product $A = LU$ showcases how two simpler matrices can combine to reconstruct a more complex one, demonstrating the power of linear combinations in solving equations. As we delve into LU decomposition, we embark on a journey that highlights the synergy between algebraic manipulation and geometric interpretation, empowering us to tackle intricate problems with grace and precision.
+Given a square matrix $A$, the LU decomposition expresses $A$ as a product of a lower triangular matrix $L$ and an upper triangular matrix $U$:
+$$A = LU$$
+
+Where:
+- $L$ is a lower triangular matrix with 1's on the diagonal and other elements like $l_{21}, l_{31}, l_{32}, \dots$,
+- $U$ is an upper triangular matrix with elements $u_{11}, u_{12}, u_{13}, u_{22}, u_{23}, u_{33}, \dots$.
+
+### Step-by-Step Procedure
+
+Let’s assume $A$ is a $3 \times 3$ matrix for simplicity:
+$$A = \begin{pmatrix}a_{11} & a_{12} & a_{13} \\a_{21} & a_{22} & a_{23} \\a_{31} & a_{32} & a_{33}\end{pmatrix}$$
+
+We need to find matrices $L$ and $U$, where:
+
+- $L = \begin{pmatrix} 
+1 & 0 & 0 \\
+l_{21} & 1 & 0 \\
+l_{31} & l_{32} & 1
+\end{pmatrix}$
+
+- $U = \begin{pmatrix} 
+u_{11} & u_{12} & u_{13} \\
+0 & u_{22} & u_{23} \\
+0 & 0 & u_{33}
+\end{pmatrix}$
+
+The product of $L$ and $U$ gives:
+$$LU = \begin{pmatrix} 1 & 0 & 0 \\l_{21} & 1 & 0 \\l_{31} & l_{32} & 1\end{pmatrix}\begin{pmatrix} u_{11} & u_{12} & u_{13} \\0 & u_{22} & u_{23} \\0 & 0 & u_{33}\end{pmatrix}=\begin{pmatrix} u_{11} & u_{12} & u_{13} \\l_{21}u_{11} & l_{21}u_{12} + u_{22} & l_{21}u_{13} + u_{23} \\l_{31}u_{11} & l_{31}u_{12} + l_{32}u_{22} & l_{31}u_{13} + l_{32}u_{23} + u_{33}\end{pmatrix}$$
+
+By equating this with $A$, we can set up a system of equations to solve for $l_{ij}$ and $u_{ij}$.
+
+>Step 1: Solve for $u_{11}, u_{12}, u_{13}$
+
+From the first row of $A = LU$, we have:
+$$u_{11} = a_{11}$$
+$$u_{12} = a_{12}$$
+$$u_{13} = a_{13}$$
+
+>Step 2: Solve for $l_{21}$ and $u_{22}, u_{23}$
+
+From the second row, we get:
+$$l_{21}u_{11} = a_{21} \quad \Rightarrow \quad l_{21} = \frac{a_{21}}{u_{11}}$$
+$$l_{21}u_{12} + u_{22} = a_{22} \quad \Rightarrow \quad u_{22} = a_{22} - l_{21}u_{12}$$
+$$l_{21}u_{13} + u_{23} = a_{23} \quad \Rightarrow \quad u_{23} = a_{23} - l_{21}u_{13}$$
+
+>Step 3: Solve for $l_{31}, l_{32}$ and $u_{33}$
+
+From the third row, we get:
+$$l_{31}u_{11} = a_{31} \quad \Rightarrow \quad l_{31} = \frac{a_{31}}{u_{11}}$$
+$$l_{31}u_{12} + l_{32}u_{22} = a_{32} \quad \Rightarrow \quad l_{32} = \frac{a_{32} - l_{31}u_{12}}{u_{22}}$$
+$$l_{31}u_{13} + l_{32}u_{23} + u_{33} = a_{33} \quad \Rightarrow \quad u_{33} = a_{33} - l_{31}u_{13} - l_{32}u_{23}$$
+
+**Final Result**
+
+Thus, the LU decomposition is given by the matrices:
+- $L = \begin{pmatrix} 
+1 & 0 & 0 \\
+l_{21} & 1 & 0 \\
+l_{31} & l_{32} & 1
+\end{pmatrix}$
+- $U = \begin{pmatrix} 
+u_{11} & u_{12} & u_{13} \\
+0 & u_{22} & u_{23} \\
+0 & 0 & u_{33}
+\end{pmatrix}$
+
+Where:
+- $u_{11} = a_{11}, u_{12} = a_{12}, u_{13} = a_{13}$
+- $l_{21} = \frac{a_{21}}{u_{11}}, u_{22} = a_{22} - l_{21}u_{12}, u_{23} = a_{23} - l_{21}u_{13}$
+- $l_{31} = \frac{a_{31}}{u_{11}}, l_{32} = \frac{a_{32} - l_{31}u_{12}}{u_{22}}, u_{33} = a_{33} - l_{31}u_{13} - l_{32}u_{23}$
+
+### Example
+
+Let’s decompose the following matrix:
+$$A = \begin{pmatrix} 4 & 3 & 2 \\6 & 3 & 1 \\2 & 1 & 3\end{pmatrix}$$
+
+Following the steps outlined above:
+
+- $u_{11} = 4, u_{12} = 3, u_{13} = 2$
+- $l_{21} = \frac{6}{4} = 1.5$, so:
+  - $u_{22} = 3 - 1.5 \times 3 = -1.5$
+  - $u_{23} = 1 - 1.5 \times 2 = -2$
+- $l_{31} = \frac{2}{4} = 0.5$, so:
+  - $l_{32} = \frac{1 - 0.5 \times 3}{-1.5} = 0.67$
+  - $u_{33} = 3 - 0.5 \times 2 - 0.67 \times (-2) = 2.67$
+
+Thus, the decomposition is:
+- $L = \begin{pmatrix} 
+1 & 0 & 0 \\
+1.5 & 1 & 0 \\
+0.5 & 0.67 & 1
+\end{pmatrix}$
+- $U = \begin{pmatrix} 
+4 & 3 & 2 \\
+0 & -1.5 & -2 \\
+0 & 0 & 2.67
+\end{pmatrix}$
+
+### Python Implementation
+
+```{python}
+import numpy as np
+from scipy.linalg import lu
+
+# Define matrix A
+A = np.array([[4, 3, 2],
+              [6, 3, 1],
+              [2, 1, 3]])
+
+# Perform LU decomposition
+P, L, U = lu(A)
+
+# Print the results
+print("L = \n", L)
+print("U = \n", U)
+```
+
+:::{.callout-note}
+
+### Note
+
+Since there are many row transformations that reduce a given matrix into row echelon form. So the LU decomposition is not unique.
+
+:::
+
+
+
+### LU Decomposition Practice Problems with Solutions
+
+**Problem 1:**
+Decompose the matrix 
+$$ A = \begin{pmatrix} 4 & 3 \\ 6 & 3 \end{pmatrix} $$
+into the product of a lower triangular matrix $L$ and an upper triangular matrix $U$.
+
+**Solution:**
+
+Let 
+$$ L = \begin{pmatrix} 1 & 0 \\ l_{21} & 1 \end{pmatrix}, \quad U = \begin{pmatrix} u_{11} & u_{12} \\ 0 & u_{22} \end{pmatrix}. $$
+
+We have:
+
+1. From the first row: $u_{11} = 4$ and $u_{12} = 3$.
+2. From the second row: $6 = l_{21} \cdot 4$ gives $l_{21} = \frac{6}{4} = 1.5$.
+3. Finally, $3 = 1.5 \cdot 3 + u_{22}$ gives $u_{22} = 3 - 4.5 = -1.5$.
+
+Thus, we have:
+$$ L = \begin{pmatrix} 1 & 0 \\ 1.5 & 1 \end{pmatrix}, \quad U = \begin{pmatrix} 4 & 3 \\ 0 & -1.5 \end{pmatrix}. $$
+
+**Problem 2:**
+Given the matrix 
+$$ A = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 5 & 8 \\ 4 & 5 & 6 \end{pmatrix}, $$
+perform LU decomposition to find matrices $L$ and $U$.
+
+**Solution:**
+
+Let 
+$$ L = \begin{pmatrix} 1 & 0 & 0 \\ l_{21} & 1 & 0 \\ l_{31} & l_{32} & 1 \end{pmatrix}, \quad U = \begin{pmatrix} u_{11} & u_{12} & u_{13} \\ 0 & u_{22} & u_{23} \\ 0 & 0 & u_{33} \end{pmatrix}. $$
+
+We have:
+
+1. From Row 1: $u_{11} = 1, u_{12} = 2, u_{13} = 3$.
+2. From Row 2: $2 = l_{21} \cdot 1$ gives $l_{21} = 2$.
+   - For Row 2: $5 = l_{21} \cdot 2 + u_{22}$ gives $5 = 4 + u_{22} \Rightarrow u_{22} = 1$.
+   - $8 = l_{21} \cdot 3 + u_{23} \Rightarrow 8 = 6 + u_{23} \Rightarrow u_{23} = 2$.
+3. From Row 3: $4 = l_{31} \cdot 1 \Rightarrow l_{31} = 4$.
+   - $5 = l_{31} \cdot 2 + l_{32} \cdot 1 \Rightarrow 5 = 8 + l_{32} \Rightarrow l_{32} = -3$.
+   - Finally, $6 = l_{31} \cdot 3 + l_{32} \cdot 2 + u_{33} \Rightarrow 6 = 12 - 6 + u_{33} \Rightarrow u_{33} = 0$.
+
+Thus,
+$$ L = \begin{pmatrix} 1 & 0 & 0 \\ 2 & 1 & 0 \\ 4 & -3 & 1 \end{pmatrix}, \quad U = \begin{pmatrix} 1 & 2 & 3 \\ 0 & 1 & 2 \\ 0 & 0 & 0 \end{pmatrix}. $$
+
+**Problem 3:**
+Perform LU decomposition of the matrix 
+$$ A = \begin{pmatrix} 2 & 1 & 1 \\ 4 & -6 & 0 \\ -2 & 7 & 2 \end{pmatrix}, $$
+and verify the decomposition by checking $A = LU$.
+
+**Solution:**
+
+Let 
+$$ L = \begin{pmatrix} 1 & 0 & 0 \\ l_{21} & 1 & 0 \\ l_{31} & l_{32} & 1 \end{pmatrix}, \quad U = \begin{pmatrix} u_{11} & u_{12} & u_{13} \\ 0 & u_{22} & u_{23} \\ 0 & 0 & u_{33} \end{pmatrix}. $$
+
+We have:
+
+1. From Row 1: $u_{11} = 2, u_{12} = 1, u_{13} = 1$.
+2. From Row 2: $4 = l_{21} \cdot 2 \Rightarrow l_{21} = 2$.
+   - $-6 = 2 \cdot 1 + u_{22} \Rightarrow u_{22} = -8$.
+   - $0 = 2 \cdot 1 + u_{23} \Rightarrow u_{23} = -2$.
+3. From Row 3: $-2 = l_{31} \cdot 2 \Rightarrow l_{31} = -1$.
+   - $7 = -1 \cdot 1 + l_{32} \cdot -8 \Rightarrow 7 = -1 - 8l_{32} \Rightarrow l_{32} = -1$.
+   - Finally, $2 = -1 \cdot 1 + -1 \cdot -2 + u_{33} \Rightarrow 2 = 1 + u_{33} \Rightarrow u_{33} = 1$.
+
+Thus,
+$$ L = \begin{pmatrix} 1 & 0 & 0 \\ 2 & 1 & 0 \\ -1 & -1 & 1 \end{pmatrix}, \quad U = \begin{pmatrix} 2 & 1 & 1 \\ 0 & -8 & -2 \\ 0 & 0 & 1 \end{pmatrix}. $$
+
+**Problem 4:**
+For the matrix 
+$$ A = \begin{pmatrix} 3 & 1 & 6 \\ 2 & 1 & 1 \\ 1 & 2 & 2 \end{pmatrix}, $$
+find the LU decomposition and use it to solve the system $Ax = b$ where $b = \begin{pmatrix} 9 \\ 5 \\ 4 \end{pmatrix}$.
+
+**Solution:**
+
+Let 
+$$ L = \begin{pmatrix} 1 & 0 & 0 \\ l_{21} & 1 & 0 \\ l_{31} & l_{32} & 1 \end{pmatrix}, \quad U = \begin{pmatrix} u_{11} & u_{12} & u_{13} \\ 0 & u_{22} & u_{23} \\ 0 & 0 & u_{33} \end{pmatrix}. $$
+
+We have:
+
+1. From Row 1: $u_{11} = 3, u_{12} = 1, u_{13} = 6$.
+2. From Row 2: $2 = l_{21} \cdot 3 \Rightarrow l_{21} = \frac{2}{3}$.
+   - $1 = \frac{2}{3} \cdot 1 + u_{22} \Rightarrow 1 = \frac{2}{3} + u_{22} \Rightarrow u_{22} = \frac{1}{3}$.
+   - $1 = \frac{2}{3} \cdot 6 + u_{23} \Rightarrow 1 = 4 + u_{23} \Rightarrow u_{23} = -3$.
+3. From Row 3: $1 = l_{31} \cdot 3 \Rightarrow l_{31} = \frac{1}{3}$.
+   - $2 = \frac{1}{3} \cdot 1 + l_{32} \cdot \frac{1}{3} \Rightarrow 2 = \frac{1}{3} + \frac{1}{3} l_{32} \Rightarrow l_{32} = 6$.
+   - Finally, $2 = \frac{1}{3} \cdot 6 + 6 \cdot -3 + u_{33} \Rightarrow 2 = 2 - 18 + u_{33} \Rightarrow u_{33} = 18$.
+
+Thus,
+$$ L = \begin{pmatrix} 1 & 0 & 0 \\ \frac{2}{3} & 1 & 0 \\ \frac{1}{3} & 6 & 1 \end{pmatrix}, \quad U = \begin{pmatrix} 3 & 1 & 6 \\ 0 & \frac{1}{3} & -3 \\ 0 & 0 & 18 \end{pmatrix}. $$
+
+Now, to solve $Ax = b$, we first solve $Ly = b$:
+$$ \begin{pmatrix} 1 & 0 & 0 \\ \frac{2}{3} & 1 & 0 \\ \frac{1}{3} & 6 & 1 \end{pmatrix} \begin{pmatrix} y_1 \\ y_2 \\ y_3 \end{pmatrix} = \begin{pmatrix} 9 \\ 5 \\ 4 \end{pmatrix} $$
+
+Solving this gives:
+1. $y_1 = 9$
+2. $\frac{2}{3} \cdot 9 + y_2 = 5 \Rightarrow 6 + y_2 = 5 \Rightarrow y_2 = -1$
+3. $\frac{1}{3} \cdot 9 + 6 \cdot -1 + y_3 = 4 \Rightarrow 3 - 6 + y_3 = 4 \Rightarrow y_3 = 7$
+
+Next, solve $Ux = y$:
+$$ \begin{pmatrix} 3 & 1 & 6 \\ 0 & \frac{1}{3} & -3 \\ 0 & 0 & 18 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 9 \\ -1 \\ 7 \end{pmatrix} $$
+
+1. From Row 3: $18x_3 = 7 \Rightarrow x_3 = \frac{7}{18}$
+2. From Row 2: $\frac{1}{3}x_2 - 3x_3 = -1 \Rightarrow \frac{1}{3}x_2 - \frac{21}{18} = -1 \Rightarrow \frac{1}{3}x_2 = -\frac{18}{18} + \frac{21}{18} = \frac{3}{18} \Rightarrow x_2 = \frac{1}{3}$
+3. From Row 1: $3x_1 + x_2 + 6x_3 = 9 \Rightarrow 3x_1 + \frac{1}{3} + \frac{42}{18} = 9 \Rightarrow 3x_1 + \frac{1}{3} + \frac{7}{3} = 9 \Rightarrow 3x_1 = 9 - \frac{8}{3} = \frac{27 - 8}{3} = \frac{19}{3} \Rightarrow x_1 = \frac{19}{9}$
+
+Thus, the solution to $Ax = b$ is 
+$$ x = \begin{pmatrix} \frac{19}{9} \\ \frac{1}{3} \\ \frac{7}{18} \end{pmatrix}. $$
+
+## LU Decomposition Practice Problems
+
+**Problem 1:**
+Decompose the matrix 
+$$ A = \begin{pmatrix} 4 & 3 \\ 6 & 3 \end{pmatrix} $$
+into the product of a lower triangular matrix $L$ and an upper triangular matrix $U$.
+
+**Problem 2:**
+Given the matrix 
+$$ A = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 5 & 8 \\ 4 & 5 & 6 \end{pmatrix}, $$
+perform LU decomposition to find matrices $L$ and $U$.
+
+**Problem 3:**
+Perform LU decomposition of the matrix 
+$$ A = \begin{pmatrix} 2 & 1 & 1 \\ 4 & -6 & 0 \\ -2 & 7 & 2 \end{pmatrix}, $$
+and verify the decomposition by checking $A = LU$.
+
+**Problem 4:**
+For the matrix 
+$$ A = \begin{pmatrix} 3 & 1 & 6 \\ 2 & 1 & 1 \\ 1 & 2 & 2 \end{pmatrix}, $$
+find the LU decomposition and use it to solve the system $Ax = b$ where $b = \begin{pmatrix} 9 \\ 5 \\ 4 \end{pmatrix}$.
+
+**Problem 5:**
+Decompose the matrix 
+$$ A = \begin{pmatrix} 1 & 3 & 1 \\ 2 & 6 & 1 \\ 1 & 1 & 4 \end{pmatrix} $$
+into $L$ and $U$, and solve the system $Ax = \begin{pmatrix} 5 \\ 9 \\ 6 \end{pmatrix}$.
+
+**Problem 6:**
+Given the matrix 
+$$ A = \begin{pmatrix} 7 & 3 \\ 2 & 5 \end{pmatrix}, $$
+perform LU decomposition and use the result to solve $Ax = b$ for $b = \begin{pmatrix} 10 \\ 7 \end{pmatrix}$.
+
+**Problem 7:**
+Find the LU decomposition of the matrix 
+$$ A = \begin{pmatrix} 2 & -1 & 1 \\ -2 & 2 & -1 \\ 4 & -1 & 3 \end{pmatrix}, $$
+and use it to solve $Ax = b$ where $b = \begin{pmatrix} 1 \\ -1 \\ 7 \end{pmatrix}$.
+
+**Problem 8:**
+Perform LU decomposition of the matrix 
+$$ A = \begin{pmatrix} 5 & 2 & 1 \\ 10 & 4 & 3 \\ 15 & 8 & 6 \end{pmatrix}. $$
+
+**Problem 9:**
+Use LU decomposition to find the solution to the system $Ax = b$ where
+$$ A = \begin{pmatrix} 1 & 1 & 1 \\ 2 & 3 & 5 \\ 4 & 6 & 8 \end{pmatrix}, \quad b = \begin{pmatrix} 6 \\ 15 \\ 30 \end{pmatrix}. $$
+
+**Problem 10:**
+Decompose the matrix 
+$$ A = \begin{pmatrix} 6 & -2 & 2 \\ 12 & -8 & 6 \\ -6 & 3 & -3 \end{pmatrix} $$
+into $L$ and $U$, and verify that $A = LU$.
+
+## Matrix Approach to Create LU Decomposition
+
+LU decomposition can be performed using _elementary matrix operations_. In this method, we iteratively apply elementary matrices to reduce the given matrix $A$ into an upper triangular matrix $U$, while keeping track of the transformations to form the lower triangular matrix $L$.
+
+The LU decomposition can be written as:
+$$A = LU$$
+
+
+where:
+- $L$ is the product of the inverses of the elementary matrices.
+- $U$ is the upper triangular matrix obtained after applying the row operations.
+
+**Example: LU Decomposition of a 3x3 Matrix**
+
+Given the matrix:
+$$
+A = \begin{pmatrix} 
+2 & 1 & 1 \\
+4 & -6 & 0 \\
+-2 & 7 & 2 
+\end{pmatrix}
+$$
+
+We will decompose $A$ into $L$ and $U$ using elementary row operations.
+
+>Step 1: Applying Elementary Matrices
+
+We want to perform row operations to reduce $A$ into upper triangular form.
+
+>Step 1.1: Eliminate the $a_{21}$ entry (below the pivot in column 1)
+
+To eliminate the $4$ in position $a_{21}$, perform the operation:
+$$R_2 \rightarrow R_2 - 2R_1$$
+
+This corresponds to multiplying $A$ by the elementary matrix:
+$$E_1 = \begin{pmatrix}1 & 0 & 0 \\-2 & 1 & 0 \\0 & 0 & 1\end{pmatrix}$$
+
+After this row operation, the matrix becomes:
+$$
+E_1 A = \begin{pmatrix} 
+2 & 1 & 1 \\
+0 & -8 & -2 \\
+-2 & 7 & 2 
+\end{pmatrix}
+$$
+
+>Step 1.2: Eliminate the $a_{31}$ entry
+
+To eliminate the $-2$ in position $a_{31}$, perform the operation:
+$$R_3 \rightarrow R_3 + R_1$$
+
+This corresponds to multiplying the matrix by another elementary matrix:
+$$
+E_2 = \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+1 & 0 & 1
+\end{pmatrix}
+$$
+
+Now, the matrix becomes:
+$$
+E_2 E_1 A = \begin{pmatrix} 
+2 & 1 & 1 \\
+0 & -8 & -2 \\
+0 & 8 & 3
+\end{pmatrix}
+$$
+
+>Step 1.3: Eliminate the $a_{32}$ entry
+
+Finally, to eliminate the $8$ in position $a_{32}$, perform the operation:
+$$
+R_3 \rightarrow R_3 + R_2
+$$
+
+This corresponds to multiplying the matrix by the third elementary matrix:
+
+$$
+E_3 = \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 1 & 1
+\end{pmatrix}
+$$
+
+After applying this operation, the matrix becomes:
+$$
+E_3 E_2 E_1 A = \begin{pmatrix} 
+2 & 1 & 1 \\
+0 & -8 & -2 \\
+0 & 0 & 1
+\end{pmatrix}
+$$
+
+This is the upper triangular matrix $U$.
+
+>Step 2: Construct the Lower Triangular Matrix $L$
+
+The lower triangular matrix $L$ is formed by taking the inverses of the elementary matrices $E_1, E_2, E_3$. Each inverse corresponds to the inverse of the row operations we applied.
+
+- $E_1^{-1}$ corresponds to adding back $2R_1$ to $R_2$, so:
+$$
+E_1^{-1} = \begin{pmatrix}
+1 & 0 & 0 \\
+2 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+$$
+
+- $E_2^{-1}$ corresponds to subtracting $R_1$ from $R_3$, so:
+$$
+E_2^{-1} = \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+-1 & 0 & 1
+\end{pmatrix}
+$$
+
+- $E_3^{-1}$ corresponds to subtracting $R_2$ from $R_3$, so:
+$$
+E_3^{-1} = \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & -1 & 1
+\end{pmatrix}
+$$
+
+Now, the lower triangular matrix $L$ is obtained by multiplying these inverses in reverse order:
+$$
+L = E_3^{-1} E_2^{-1} E_1^{-1} = \begin{pmatrix}
+1 & 0 & 0 \\
+2 & 1 & 0 \\
+-1 & -1 & 1
+\end{pmatrix}
+$$
+
+Thus, the LU decomposition of $A$ is:
+$$
+L = \begin{pmatrix}
+1 & 0 & 0 \\
+2 & 1 & 0 \\
+-1 & -1 & 1
+\end{pmatrix}, 
+\quad U = \begin{pmatrix} 
+2 & 1 & 1 \\
+0 & -8 & -2 \\
+0 & 0 & 1 
+\end{pmatrix}
+$$
+
+**Verification**
+
+Now, we check if $A = LU$.
+
+Multiply $L$ and $U$:
+
+```{python}
+import numpy as np
+
+L = np.array([[1, 0, 0],
+              [2, 1, 0],
+              [-1, -1, 1]])
+
+U = np.array([[2, 1, 1],
+              [0, -8, -2],
+              [0, 0, 1]])
+
+A = L @ U
+A
+```
+
+# Spectral Decomposition
+
+## Introduction
+
+Spectral decomposition, also known as eigenvalue decomposition, is a powerful tool in computational linear algebra that breaks down a matrix into its eigenvalues and eigenvectors. This technique allows matrices to be represented in terms of their fundamental components, making it easier to analyze and manipulate them. It is especially useful for symmetric matrices, which are common in various applications. Spectral decomposition facilitates solving systems of equations, optimizing functions, and performing transformations in a simplified, structured manner, as it allows operations to be performed on the eigenvalues, which often leads to more efficient computations.
+
+The importance of spectral decomposition extends across a wide range of fields, including computer science, engineering, and data science. In machine learning, for instance, it forms the backbone of algorithms like Principal Component Analysis (PCA), which is used for dimensionality reduction. It also plays a vital role in numerical stability when dealing with large matrices and is central to many optimization problems, such as those found in machine learning and physics. Spectral decomposition not only provides a deeper understanding of the properties of matrices but also offers practical benefits in improving the efficiency and accuracy of numerical algorithms.
+
+## Spectral Decomposition: Detailed Concepts
+
+###  Eigenvalues and Eigenvectors
+The core idea behind spectral decomposition is that it expresses a matrix in terms of its eigenvalues and eigenvectors. For a square matrix $A \in \mathbb{R}^{n \times n}$, an eigenvalue $\lambda \in \mathbb{R}$ and an eigenvector $v \in \mathbb{R}^{n}$ satisfy the following equation:
+
+$$
+A v = \lambda v
+$$
+
+This implies that when the matrix $A$ acts on the vector $v$, it only scales the vector by $\lambda$, but does not change its direction. The eigenvector $v$ represents the direction of this scaling, while the eigenvalue $\lambda$ represents the magnitude of the scaling.
+
+:::{.callout-note}
+## Properties of Eigen values
+
+- If $\lambda$ is an eigenvalue of $A$, then it satisfies the characteristic polynomial:
+
+  $$
+  p(\lambda) = \text{det}(A - \lambda I) = 0.
+  $$
+
+- The sum of the eigenvalues (counted with algebraic multiplicity) is equal to the trace of the matrix:
+
+  $$
+  \sum_{i=1}^{n} \lambda_i = \text{trace}(A).
+  $$
+
+- The product of the eigenvalues (counted with algebraic multiplicity) is equal to the determinant of the matrix:
+
+  $$
+  \prod_{i=1}^{n} \lambda_i = \text{det}(A).
+  $$
+
+- If$A$ is symmetric, then:
+  - All eigenvalues $\lambda$ are real.
+  - If $\lambda_i$ and $\lambda_j$ are distinct eigenvalues, then their corresponding eigenvectors $\mathbf{v}_i$ and $\mathbf{v}_j$ satisfy:
+
+  $$
+  \mathbf{v}_i^T \mathbf{v}_j = 0.
+  $$
+
+- If $A$ is a scalar multiple of $k$, then:
+
+  $$
+  \lambda_i \text{ of } kA = k \cdot \lambda_i \text{ of } A.
+  $$
+
+- If $A$ is invertible, then:
+
+  $$
+  \lambda_i \text{ of } A^{-1} = \frac{1}{\lambda_i \text{ of } A}.
+  $$
+
+- If $A$ and $B$ are similar, then:
+
+  $$
+  B = P^{-1} A P \implies \lambda_i \text{ of } B = \lambda_i \text{ of } A.
+  $$
+
+- If $\lambda$ is an eigenvalue, it has:
+  - **Algebraic Multiplicity**: The number of times $\lambda$ appears as a root of $p(\lambda)$.
+  - **Geometric Multiplicity**: The dimension of the eigenspace $E_{\lambda} = \{\mathbf{v} : A\mathbf{v} = \lambda \mathbf{v}\}$.
+
+- If$A$ is symmetric and all eigenvalues $\lambda$ are positive, then $A$ is positive definite:
+
+  $$
+  \lambda_i > 0 \implies A \text{ is positive definite.}
+  $$
+
+- A square matrix $A$ has an eigenvalue $\lambda = 0$ if and only if $A$ is singular:
+
+  $$
+  \text{det}(A) = 0 \iff \lambda = 0.
+  $$
+
+:::
+
+:::{.callout-important}
+## Eigen Vectors
+
+Eigen vectors are the non-trivial solutions of $det(A-\lambda I)=0$ for distinct $\lambda$.
+:::
+
+:::{.callout-note}
+## Properties of Eigen vectors
+- If $\mathbf{v}$ is an eigenvector of a square matrix $A$ corresponding to the eigenvalue $\lambda$, then:
+
+  $$
+  A\mathbf{v} = \lambda \mathbf{v}.
+  $$
+
+- Eigenvectors corresponding to distinct eigenvalues are linearly independent. If $\lambda_1$ and $\lambda_2$ are distinct eigenvalues of $A$, with corresponding eigenvectors $\mathbf{v}_1$ and $\mathbf{v}_2$, then:
+
+  $$
+  c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 = \mathbf{0} \implies c_1 = 0 \text{ and } c_2 = 0.
+  $$
+
+- If $\mathbf{v}$ is an eigenvector corresponding to the eigenvalue $\lambda$, then any non-zero scalar multiple of $\mathbf{v}$ is also an eigenvector corresponding to $\lambda$:
+
+  $$
+  \text{If } \mathbf{v} \text{ is an eigenvector, then } c\mathbf{v} \text{ is an eigenvector for any non-zero scalar } c.
+  $$
+
+- The eigenspace $E_{\lambda}$ associated with an eigenvalue $\lambda$ is defined as:
+
+  $$
+  E_{\lambda} = \{ \mathbf{v} : A\mathbf{v} = \lambda \mathbf{v} \} = \text{Null}(A - \lambda I).
+  $$
+
+- The dimension of the eigenspace $E_{\lambda}$ is equal to the geometric multiplicity of the eigenvalue $\lambda$.
+
+- If $A$ is a symmetric matrix, then eigenvectors corresponding to distinct eigenvalues are orthogonal:
+
+  $$
+  \mathbf{v}_i^T \mathbf{v}_j = 0 \text{ for distinct eigenvalues } \lambda_i \text{ and } \lambda_j.
+  $$
+
+- For any square matrix $A$, if $\lambda = 0$ is an eigenvalue, the eigenvectors corresponding to this eigenvalue form the null space of $A$:
+
+  $$
+  E_{0} = \{ \mathbf{v} : A\mathbf{v} = \mathbf{0} \} = \text{Null}(A).
+  $$
+
+- If$A$ is invertible, then $A$ has no eigenvalue equal to zero, meaning all eigenvectors correspond to non-zero eigenvalues.
+
+- For$A$ as a scalar multiple of $k$:
+
+  $$
+  A\mathbf{v} = k \lambda \mathbf{v} \text{ for eigenvalue } \lambda.
+  $$
+
+:::
+###  Eigenvalue Decomposition (Spectral Decomposition)
+For matrices that are diagonalizable (including symmetric matrices), spectral decomposition expresses the matrix as a combination of its eigenvalues and eigenvectors. Specifically, for a matrix $A$, spectral decomposition is represented as:
+
+$$
+A = V \Lambda V^{-1}
+$$
+
+where:
+- $V$ is the matrix of eigenvectors of $A$,
+- $\Lambda$ is a diagonal matrix of eigenvalues of $A$,
+- $V^{-1}$ is the inverse of the matrix of eigenvectors (if $V$ is invertible).
+
+For symmetric matrices $A$, the decomposition becomes simpler:
+
+$$
+A = Q \Lambda Q^\top
+$$
+
+Here, $Q$ is an orthogonal matrix of eigenvectors (i.e., $Q^\top Q = I$), and $\Lambda$ is a diagonal matrix of eigenvalues.
+
+###  Geometric Interpretation
+Eigenvalues and eigenvectors provide insights into the geometry of linear transformations represented by matrices. Eigenvectors represent directions that remain invariant under the transformation, while eigenvalues indicate how these directions are stretched or compressed.
+
+For example, in the case of a transformation matrix that scales or rotates data points, eigenvalues show the magnitude of scaling along the principal axes (directions defined by eigenvectors).
+
+###  Importance of Diagonalization
+The key advantage of spectral decomposition is that it simplifies matrix operations. When a matrix is diagonalized as $A = Q \Lambda Q^\top$, any function of the matrix $A$ (such as powers, exponentials, or inverses) can be easily computed by operating on the diagonal matrix $\Lambda$. For example:
+
+$$
+A^k = Q \Lambda^k Q^\top
+$$
+
+Since $\Lambda$ is diagonal, raising $\Lambda$ to any power $k$ is straightforward, involving only raising each eigenvalue to the power $k$.
+
+###  Properties of Symmetric Matrices
+Spectral decomposition applies particularly well to symmetric matrices, which satisfy $A = A^\top$. Symmetric matrices have the following key properties:
+
+- **Real eigenvalues**: The eigenvalues of a symmetric matrix are always real numbers.
+
+- **Orthogonal eigenvectors**: The eigenvectors corresponding to distinct eigenvalues of a symmetric matrix are orthogonal to each other.
+
+- **Diagonalizability**: Every symmetric matrix can be diagonalized by an orthogonal matrix.
+
+These properties make symmetric matrices highly desirable in computational applications.
+
+## Mathematical Requirements for Spectral Decomposition
+
+###  Determining Eigenvalues and Eigenvectors
+
+The eigenvalues of a matrix $A$ are the solutions to the characteristic equation:
+
+$$
+\text{det}(A - \lambda I) = 0
+$$
+
+Here, $I$ is the identity matrix, and $\lambda$ represents the eigenvalues. Solving this polynomial equation provides the eigenvalues $\lambda_1, \lambda_2, \dots, \lambda_n$. Once the eigenvalues are determined, the eigenvectors can be computed by solving the equation $(A - \lambda I)v = 0$ for each eigenvalue.
+
+### Characteristic Polynomial of $2 \times 2$ Matrices
+
+For a $2 \times 2$ matrix:
+$$
+A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}
+$$
+the characteristic polynomial is derived from the determinant of $A - \lambda I$, where $I$ is the identity matrix:
+
+$$
+\det(A - \lambda I) = 0
+$$
+
+This leads to:
+$$
+\det\begin{pmatrix} a - \lambda & b \\ c & d - \lambda \end{pmatrix} = (a - \lambda)(d - \lambda) - bc = 0
+$$
+
+\textbf{Short-cut Method:} The characteristic polynomial can be simplified to:
+$$
+\lambda^2 - (a + d)\lambda + (ad - bc) = 0
+$$
+
+This polynomial can be solved using the quadratic formula:
+$$
+\lambda = \frac{(a + d) \pm \sqrt{(a + d)^2 - 4(ad - bc)}}{2}
+$$
+
+:::{.callout-important}
+## Shortcut to write Characteristic polynomial of a $2\times 2$ matrix
+
+If $A=\begin{bmatrix} a & b\\ c& d\end{bmatrix}$, then the characteristic polynomial is
+$$\lambda^2-(\text{Trace}(A))\lambda+det(A)=0$$
+
+Eigen vectors can be found by using the formula:
+\begin{equation*}
+EV(\lambda=\lambda_1)=\begin{bmatrix}\lambda_1-d\\ c\end{bmatrix}
+\end{equation*}
+
+:::
+
+### Problems
+
+**Example 1:** Find Eigenvalues and Eigenvectors of the matrix, $$A = \begin{pmatrix} 3 & 2 \\ 4 & 1 \end{pmatrix}$$
+
+*Solution:*
+
+The characteristic equation is given by $$det(A-\lambda I)=0$$
+
+\begin{align*}
+\lambda^2 - 4\lambda - 5 &= 0\\
+(\lambda-5)(\lambda+1)&=0\\
+\end{align*}
+
+Hence the eigen values are $\lambda_1=5,\quad \lambda_2=-1$.
+
+So the eigen vectors are:
+\begin{align*}
+EV(\lambda=\lambda_1)&=\begin{bmatrix}\lambda_1-d\\ c\end{bmatrix}\\
+\therefore EV(\lambda=5)&=\begin{bmatrix}4\\ 4\end{bmatrix}=\begin{bmatrix}1\\ 1\end{bmatrix}\\
+\therefore EV(\lambda=-1)&=\begin{bmatrix}-2\\ 4\end{bmatrix}=\begin{bmatrix}-1\\ 2\end{bmatrix}
+\end{align*}
+
+**Problem 2:** Calculate the eigenvalues and eigenvectors of the matrix: $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$
+
+*Solution:*
+
+To find the eigenvalues and eigenvectors of a $2 \times 2$ matrix, we can use the shortcut formula for the characteristic polynomial:
+
+$$
+\lambda^2 - \text{trace}(A)\lambda + \det(A) = 0,
+$$
+
+where $A$ is the matrix. Let's apply this to the matrix 
+
+$$
+A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}.
+$$
+
+First, we calculate the trace and determinant of $A$:
+
+- The trace is the sum of the diagonal elements:
+
+$$
+\text{trace}(A) = 2 + 2 = 4.
+$$
+
+- The determinant is calculated as follows:
+
+$$
+\det(A) = (2)(2) - (1)(1) = 4 - 1 = 3.
+$$
+
+Next, substituting the trace and determinant into the characteristic polynomial gives:
+
+$$
+\lambda^2 - (4)\lambda + 3 = 0,
+$$
+
+which simplifies to:
+
+$$
+\lambda^2 - 4\lambda + 3 = 0.
+$$
+
+We can factor this quadratic equation:
+
+$$
+(\lambda - 1)(\lambda - 3) = 0.
+$$
+
+Setting each factor to zero gives the eigenvalues:
+
+$$
+\lambda_1 = 1, \quad \lambda_2 = 3.
+$$
+
+To find the eigenvectors corresponding to each eigenvalue, we use the shortcut for the eigenvector of a $2 \times 2$ matrix $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$:
+
+$$
+EV(\lambda) = \begin{pmatrix} \lambda - d \\ c \end{pmatrix}.
+$$
+
+For the eigenvalue $\lambda_1 = 1$:
+
+$$
+EV(1) = \begin{pmatrix} 1 - 2 \\ 1 \end{pmatrix} = \begin{pmatrix} -1 \\ 1 \end{pmatrix}.
+$$
+
+This eigenvector can be simplified (up to a scalar multiple) to:
+
+$$
+\mathbf{v_1} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}.
+$$
+
+For the eigenvalue $\lambda_2 = 3$:
+
+$$
+EV(3) = \begin{pmatrix} 3 - 2 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}.
+$$
+
+This eigenvector is already in a simple form:
+
+$$
+\mathbf{v_2} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}.
+$$
+
+**Problem 3:** For the matrix:
+    $A = \begin{pmatrix} 1 & 2 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 1 \end{pmatrix}$, find the eigenvalues and eigenvectors.
+
+*Solution:*
+
+We are given the matrix 
+$$
+A = \begin{pmatrix} 1 & 2 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 1 \end{pmatrix}
+$$
+
+and we aim to find its eigenvalues using the characteristic polynomial.
+
+The shortcut formula for the characteristic polynomial of a $3 \times 3$ matrix is given by:
+$$
+\lambda^3 - \text{tr}(A)\lambda^2 + (\text{sum of principal minors of } A)\lambda - \det(A) = 0.
+$$
+
+
+The trace of a matrix is the sum of its diagonal elements. For matrix $A$, we have:
+$$
+\text{tr}(A) = 1 + 1 + 1 = 3.
+$$
+
+
+The principal minors are the determinants of the $2 \times 2$ submatrices obtained by deleting one row and one column of $A$.
+
+ The first minor is obtained by deleting the third row and third column:
+$$
+\det\begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix} = (1)(1) - (2)(0) = 1.
+$$
+
+ The second minor is obtained by deleting the second row and second column:
+$$
+\det\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} = (1)(1) - (1)(1) = 0.
+$$
+
+The third minor is obtained by deleting the first row and first column:
+$$
+\det\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = (1)(1) - (0)(0) = 1.
+$$
+
+Thus, the sum of the principal minors is:
+$$
+1 + 0 + 1 = 2.
+$$
+
+
+The determinant of $A$ can be calculated using cofactor expansion along the first row:
+$$
+\det(A) = 1 \cdot \det\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} - 2 \cdot \det\begin{pmatrix} 0 & 0 \\ 1 & 1 \end{pmatrix} + 1 \cdot \det\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+$$
+$$
+= 1 \cdot (1) - 2 \cdot (0) + 1 \cdot (-1) = 1 - 0 - 1 = 0.
+$$
+
+
+Now, we substitute these values into the characteristic polynomial formula:
+$$
+\lambda^3 - \text{tr}(A)\lambda^2 + (\text{sum of principal minors})\lambda - \det(A) = 0
+$$
+$$
+\lambda^3 - 3\lambda^2 + 2\lambda - 0 = 0.
+$$
+
+
+We now solve the equation:
+$$
+\lambda^3 - 3\lambda^2 + 2\lambda = 0.
+$$
+Factoring out $\lambda$ and apply factor theorem, we get:
+
+\begin{align*}
+   \lambda(\lambda^2 - 3\lambda + 2) &= 0\\
+   \lambda(\lambda-2)(\lambda-1)&=0
+\end{align*}
+
+This gives one eigenvalue:
+$$
+\lambda_1 = 0;\quad \lambda_2=2;\quad \lambda_3=1
+$$
+
+
+Now we find the eigenvectors corresponding to each eigenvalue.
+
+ For $\lambda_1 = 0$, solve $(A - 0I)\mathbf{v} = 0$:
+$$
+\begin{pmatrix} 1 & 2 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}.
+$$
+This gives the system:
+$$
+x + 2y + z = 0, \quad y = 0, \quad x + z = 0.
+$$
+Thus, $x = -z$, and the eigenvector is:
+$$
+\mathbf{v}_1 = \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}.
+$$
+
+ For $\lambda_2 = 2$, solve $(A - 2I)\mathbf{v} = 0$:
+$$
+\begin{pmatrix} -1 & 2 & 1 \\ 0 & -1 & 0 \\ 1 & 0 & -1 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}.
+$$
+This gives the system:
+$$
+-x + 2y + z = 0, \quad -y = 0, \quad x - z = 0.
+$$
+Thus, $x = z$, and the eigenvector is:
+$$
+\mathbf{v}_2 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}.
+$$
+
+For $\lambda_3 = 1$, solve $(A - I)\mathbf{v} = 0$:
+$$
+\begin{pmatrix} 0 & 2 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}.
+$$
+This gives the system:
+$$
+2y + z = 0, \quad x = 0.
+$$
+Thus, $z = -2y$, and the eigenvector is:
+$$
+\mathbf{v}_3 = \begin{pmatrix} 0 \\ 1 \\ -2 \end{pmatrix}.
+$$
+
+**Problem 3:** If $A=\begin{bmatrix}1&2&4\\ 0&3&4\\ 1&-1&-1 \end{bmatrix}$, compute the eigen values and eigen vectors and left eigen vectors of $A$.
+
+*Solution:*
+
+We are given the matrix
+$$
+A = \begin{pmatrix} 1 & 2 & 4 \\ 0 & 3 & 4 \\ 1 & -1 & -1 \end{pmatrix}
+$$
+
+and need to find its eigenvalues and eigenvectors.
+
+
+
+The characteristic polynomial for a $3 \times 3$ matrix is given by:
+$$
+\lambda^3 - \text{tr}(A)\lambda^2 + (\text{sum of principal minors})\lambda - \det(A) = 0.
+$$
+
+The trace is the sum of the diagonal elements:
+$$
+\text{tr}(A) = 1 + 3 + (-1) = 3.
+$$
+
+
+We now compute the $2 \times 2$ principal minors:
+
+- Minor by removing the third row and third column:
+$$
+\det\begin{pmatrix} 1 & 2 \\ 0 & 3 \end{pmatrix} = (1)(3) - (2)(0) = 3.
+$$
+
+- Minor by removing the second row and second column:
+$$
+\det\begin{pmatrix} 1 & 4 \\ 1 & -1 \end{pmatrix} = (1)(-1) - (4)(1) = -1 - 4 = -5.
+$$
+
+- Minor by removing the first row and first column:
+$$
+\det\begin{pmatrix} 3 & 4 \\ -1 & -1 \end{pmatrix} = (3)(-1) - (4)(-1) = -3 + 4 = 1.
+$$
+
+Thus, the sum of the principal minors is:
+$$
+3 + (-5) + 1 = -1.
+$$
+
+
+We calculate the determinant of $A$ by cofactor expansion along the first row:
+$$
+\det(A) = 1 \cdot \det\begin{pmatrix} 3 & 4 \\ -1 & -1 \end{pmatrix} - 2 \cdot \det\begin{pmatrix} 0 & 4 \\ 1 & -1 \end{pmatrix} + 4 \cdot \det\begin{pmatrix} 0 & 3 \\ 1 & -1 \end{pmatrix}.
+$$
+The $2 \times 2$ determinants are:
+$$
+\det\begin{pmatrix} 3 & 4 \\ -1 & -1 \end{pmatrix} = -3 + 4 = 1, \quad \det\begin{pmatrix} 0 & 4 \\ 1 & -1 \end{pmatrix} = -4,
+$$
+$$
+\det\begin{pmatrix} 0 & 3 \\ 1 & -1 \end{pmatrix} = -3.
+$$
+
+Thus:
+$$
+\det(A) = 1 \cdot 1 - 2 \cdot (-4) + 4 \cdot (-3) = 1 + 8 - 12 = -3.
+$$
+
+
+Substituting into the characteristic polynomial:
+$$
+\lambda^3 - \text{tr}(A)\lambda^2 + (\text{sum of principal minors})\lambda - \det(A) = 0,
+$$
+
+we get:
+$$
+\lambda^3 - 3\lambda^2 - \lambda + 3 = 0.
+$$
+
+
+We now solve the cubic equation:
+\begin{align*}
+   \lambda^3 - 3\lambda^2 - \lambda + 3& = 0. \\
+   (\lambda-1)(\lambda+1)(\lambda -3)&=0
+\end{align*}
+
+$$\lambda_1 = 1, \quad \lambda_2 = -1, \quad \lambda_3 = 3.$$
+
+
+To find the eigenvector corresponding to $\lambda_1 = 3$, solve $(A - 3I)\mathbf{v} = 0$:
+$$
+A - 3I = \begin{pmatrix} 1 & 2 & 4 \\ 0 & 3 & 4 \\ 1 & -1 & -1 \end{pmatrix} - 3\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} = \begin{pmatrix} -2 & 2 & 4 \\ 0 & 0 & 4 \\ 1 & -1 & -4 \end{pmatrix}.
+$$
+
+Solving this system gives the eigenvector:
+$$
+\mathbf{v}_1 = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}.
+$$
+
+
+For $\lambda_2 = -1$, solve $(A +I)\mathbf{v} = 0$:
+$$
+A +I = \begin{pmatrix} 1 & 2 & 4 \\ 0 & 3 & 4 \\ 1 & -1 & -1 \end{pmatrix} +\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} = \begin{pmatrix} 2 & 2 & 4 \\ 0 & 4 & 4 \\ 1 & -1 & 0 \end{pmatrix}.
+$$
+
+Note that the third row is depending on first and second rows. So by finding the cross product of first two rows,
+
+$$
+\mathbf{v}_2 = \begin{pmatrix} -1 \\ -1 \\ 1 \end{pmatrix}.
+$$
+
+For $\lambda_3 = 1$, solve $(A -I)\mathbf{v} = 0$:
+$$
+A - I = \begin{pmatrix} 1 & 2 & 4 \\ 0 & 3 & 4 \\ 1 & -1 & -1 \end{pmatrix} -\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 2 & 4 \\ 0 & 2 & 4 \\ 1 & -1 & -2\end{pmatrix}.
+$$
+
+Note that the second row is same as first row. So by finding the cross product of first and third rows,
+$$
+\mathbf{v}_3 = \begin{pmatrix} 0 \\ -2 \\ 1 \end{pmatrix}.
+$$
+
+Thus, the eigenvalues of the matrix are:
+$$
+\lambda_1 = 3, \quad \lambda_2 = -1, \quad \lambda_3 = 1
+$$
+
+with corresponding eigenvectors $\mathbf{v}_1=\begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$, $\mathbf{v}_2=\begin{pmatrix} -1 \\ -1 \\ 1 \end{pmatrix}$, and $\mathbf{v}_3=\begin{pmatrix} 0 \\ -2 \\ 1 \end{pmatrix}$.
+
+
+Left eigen vectors of the matrix $A$ are eigen vectors of $A^T$.
+
+Here $A^T=\begin{bmatrix}
+    1&0&1\\ 2&3&-1\\ 4&4&-1
+\end{bmatrix}$.
+
+Since $A$ and $A^T$ have same eigen values, it is enough to find corresponding eigen vectors.
+When $\lambda=3$, the coefficient matrix of $(A-\lambda I)X=0$ reduced into $\begin{bmatrix}
+    -2&0&1\\ 2&0&-1\\ 4&4&-4
+\end{bmatrix}$
+
+Here the only independent rows are first and last. So the eigen vector can be found as the cross product of these two rows.
+$\therefore v_1=\begin{bmatrix}
+    1\\1\\2
+\end{bmatrix}$.
+
+When $\lambda=-1$, the coefficient matrix of $(A-\lambda I)X=0$ reduced into $\begin{bmatrix}
+    2&0&1\\ 2&4&-1\\ 4&4&0
+\end{bmatrix}$
+
+Here the only independent rows are first and second. So the eigen vector can be found as the cross product of these two rows.
+$\therefore v_2=\begin{bmatrix}
+    -1\\1\\2
+\end{bmatrix}$.
+When $\lambda=1$, the coefficient matrix of $(A-\lambda I)X=0$ reduced into $\begin{bmatrix}
+    0&0&1\\ 2&2&-1\\ 4&4&-2
+\end{bmatrix}$
+
+Here the only independent rows are first and second. So the eigen vector can be found as the cross product of these two rows.
+$\therefore v_2=\begin{bmatrix}
+    -1\\1\\0
+\end{bmatrix}$.
+
+###  Diagonalization of Symmetric Matrices
+
+For a symmetric matrix $A$, the process of diagonalization can be summarized as follows:
+
+1. **Compute eigenvalues**: Solve the characteristic equation $\text{det}(A - \lambda I) = 0$ to find the eigenvalues.
+
+2. **Find eigenvectors**: For each eigenvalue $\lambda_i$, solve $(A - \lambda_i I)v_i = 0$ to find the corresponding eigenvector $v_i$.
+
+3. **Form the eigenvector matrix**: Arrange the eigenvectors into a matrix $Q$, with each eigenvector as a column.
+
+4. **Form the diagonal matrix of eigenvalues**: Construct $\Lambda$ by placing the eigenvalues along the diagonal of the matrix.
+
+Thus, the matrix can be expressed as $A = Q \Lambda Q^\top$.
+
+###  Matrix Functions and Spectral Theorem
+
+Once a matrix is diagonalized, various matrix functions become easier to compute. For a function $f(A)$, such as the exponential of a matrix or any power, the function can be applied to the diagonal matrix of eigenvalues:
+
+$$
+f(A) = Q f(\Lambda) Q^\top
+$$
+
+where $f(\Lambda)$ is the function applied element-wise to the eigenvalues in the diagonal matrix $\Lambda$.
+
+### Symmetric Positive Definite Matrices
+
+A special class of matrices, symmetric positive definite matrices, are often used in optimization and machine learning. These matrices have all positive eigenvalues, ensuring that the matrix is invertible and has a unique decomposition.
+
+## Computational Aspects
+
+Spectral decomposition is computationally intensive, particularly for large matrices. Efficient numerical algorithms like the **QR algorithm** and **Jacobi method** are used to compute eigenvalues and eigenvectors in practice. For dense matrices, algorithms scale as $O(n^3)$, but specialized methods exist for sparse matrices that take advantage of matrix structure to reduce computational cost.
+
+## Practical Applications
+
+- **Principal Component Analysis (PCA)**: Used to reduce the dimensionality of datasets by finding the principal components (eigenvectors) that capture the most variance in the data.
+- **Quantum Mechanics**: Eigenvalue problems frequently arise in solving Schrödinger's equation, where eigenfunctions correspond to states of a quantum system, and eigenvalues represent observable quantities like energy.
+- **Markov Chains**: In probability and stochastic processes, spectral decomposition helps analyze long-term behavior by breaking down the transition matrix into eigenvalue components.
+- **Graph Theory**: The adjacency matrix of a graph can be decomposed using spectral methods to reveal properties like community structure and connectivity.
+
+## Conclusion
+
+Spectral decomposition offers an elegant and practical framework for understanding the fundamental structure of matrices. By reducing matrices to their eigenvalues and eigenvectors, it simplifies numerous computational tasks in linear algebra, making it an indispensable tool in various applications such as machine learning, physics, and optimization.
+
