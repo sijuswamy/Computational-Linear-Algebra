@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; Linear Algebra for Advanced Applications – Computational Linear Algebra</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./module_3.html" rel="prev">
+<link href="./CME_logo.JPG" rel="icon" type="image/jpeg">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./module_4.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Algebra for Advanced Applications</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Computational Linear Algebra</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/sijuswamy/Computational-Linear-Algebra" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Computational-Linear-Algebra.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Computational-Linear-Algebra.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./module_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python for Linear Algebra</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./module_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Transforming Linear Algebra to Computational Language</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./module_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python Libraries for Computational Linear Algebra</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./module_4.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Algebra for Advanced Applications</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="CME_logo.JPG" class="img-fluid figure-img"></p>
+<figcaption>Computational Mathematics</figcaption>
+</figure>
+</div>
+</div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">4.1</span> Introduction</a></li>
+  <li><a href="#lu-decomposition" id="toc-lu-decomposition" class="nav-link" data-scroll-target="#lu-decomposition"><span class="header-section-number">4.2</span> LU Decomposition</a>
+  <ul class="collapse">
+  <li><a href="#step-by-step-procedure" id="toc-step-by-step-procedure" class="nav-link" data-scroll-target="#step-by-step-procedure"><span class="header-section-number">4.2.1</span> Step-by-Step Procedure</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">4.2.2</span> Example</a></li>
+  <li><a href="#python-implementation" id="toc-python-implementation" class="nav-link" data-scroll-target="#python-implementation"><span class="header-section-number">4.2.3</span> Python Implementation</a></li>
+  <li><a href="#lu-decomposition-practice-problems-with-solutions" id="toc-lu-decomposition-practice-problems-with-solutions" class="nav-link" data-scroll-target="#lu-decomposition-practice-problems-with-solutions"><span class="header-section-number">4.2.4</span> LU Decomposition Practice Problems with Solutions</a></li>
+  </ul></li>
+  <li><a href="#lu-decomposition-practice-problems" id="toc-lu-decomposition-practice-problems" class="nav-link" data-scroll-target="#lu-decomposition-practice-problems"><span class="header-section-number">4.3</span> LU Decomposition Practice Problems</a></li>
+  <li><a href="#matrix-approach-to-create-lu-decomposition" id="toc-matrix-approach-to-create-lu-decomposition" class="nav-link" data-scroll-target="#matrix-approach-to-create-lu-decomposition"><span class="header-section-number">4.4</span> Matrix Approach to Create LU Decomposition</a></li>
+  <li><a href="#spectral-decomposition" id="toc-spectral-decomposition" class="nav-link" data-scroll-target="#spectral-decomposition"><span class="header-section-number">5</span> Spectral Decomposition</a>
+  <ul class="collapse">
+  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1"><span class="header-section-number">5.1</span> Introduction</a></li>
+  <li><a href="#spectral-decomposition-detailed-concepts" id="toc-spectral-decomposition-detailed-concepts" class="nav-link" data-scroll-target="#spectral-decomposition-detailed-concepts"><span class="header-section-number">5.2</span> Spectral Decomposition: Detailed Concepts</a>
+  <ul class="collapse">
+  <li><a href="#eigenvalues-and-eigenvectors" id="toc-eigenvalues-and-eigenvectors" class="nav-link" data-scroll-target="#eigenvalues-and-eigenvectors"><span class="header-section-number">5.2.1</span> Eigenvalues and Eigenvectors</a></li>
+  <li><a href="#eigenvalue-decomposition-spectral-decomposition" id="toc-eigenvalue-decomposition-spectral-decomposition" class="nav-link" data-scroll-target="#eigenvalue-decomposition-spectral-decomposition"><span class="header-section-number">5.2.2</span> Eigenvalue Decomposition (Spectral Decomposition)</a></li>
+  <li><a href="#geometric-interpretation" id="toc-geometric-interpretation" class="nav-link" data-scroll-target="#geometric-interpretation"><span class="header-section-number">5.2.3</span> Geometric Interpretation</a></li>
+  <li><a href="#importance-of-diagonalization" id="toc-importance-of-diagonalization" class="nav-link" data-scroll-target="#importance-of-diagonalization"><span class="header-section-number">5.2.4</span> Importance of Diagonalization</a></li>
+  <li><a href="#properties-of-symmetric-matrices" id="toc-properties-of-symmetric-matrices" class="nav-link" data-scroll-target="#properties-of-symmetric-matrices"><span class="header-section-number">5.2.5</span> Properties of Symmetric Matrices</a></li>
+  </ul></li>
+  <li><a href="#mathematical-requirements-for-spectral-decomposition" id="toc-mathematical-requirements-for-spectral-decomposition" class="nav-link" data-scroll-target="#mathematical-requirements-for-spectral-decomposition"><span class="header-section-number">5.3</span> Mathematical Requirements for Spectral Decomposition</a>
+  <ul class="collapse">
+  <li><a href="#determining-eigenvalues-and-eigenvectors" id="toc-determining-eigenvalues-and-eigenvectors" class="nav-link" data-scroll-target="#determining-eigenvalues-and-eigenvectors"><span class="header-section-number">5.3.1</span> Determining Eigenvalues and Eigenvectors</a></li>
+  <li><a href="#characteristic-polynomial-of-2-times-2-matrices" id="toc-characteristic-polynomial-of-2-times-2-matrices" class="nav-link" data-scroll-target="#characteristic-polynomial-of-2-times-2-matrices"><span class="header-section-number">5.3.2</span> Characteristic Polynomial of <span class="math inline">\(2 \times 2\)</span> Matrices</a></li>
+  <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems"><span class="header-section-number">5.3.3</span> Problems</a></li>
+  <li><a href="#diagonalization-of-symmetric-matrices" id="toc-diagonalization-of-symmetric-matrices" class="nav-link" data-scroll-target="#diagonalization-of-symmetric-matrices"><span class="header-section-number">5.3.4</span> Diagonalization of Symmetric Matrices</a></li>
+  <li><a href="#matrix-functions-and-spectral-theorem" id="toc-matrix-functions-and-spectral-theorem" class="nav-link" data-scroll-target="#matrix-functions-and-spectral-theorem"><span class="header-section-number">5.3.5</span> Matrix Functions and Spectral Theorem</a></li>
+  <li><a href="#symmetric-positive-definite-matrices" id="toc-symmetric-positive-definite-matrices" class="nav-link" data-scroll-target="#symmetric-positive-definite-matrices"><span class="header-section-number">5.3.6</span> Symmetric Positive Definite Matrices</a></li>
+  </ul></li>
+  <li><a href="#computational-aspects" id="toc-computational-aspects" class="nav-link" data-scroll-target="#computational-aspects"><span class="header-section-number">5.4</span> Computational Aspects</a></li>
+  <li><a href="#practical-applications" id="toc-practical-applications" class="nav-link" data-scroll-target="#practical-applications"><span class="header-section-number">5.5</span> Practical Applications</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">5.6</span> Conclusion</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear Algebra for Advanced Applications</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">4.1</span> Introduction</h2>
+<p>Matrix decomposition plays a pivotal role in computational linear algebra, forming the backbone of numerous modern applications in fields such as data science, machine learning, computer vision, and signal processing. The core idea behind matrix decomposition is to break down complex matrices into simpler, structured components that allow for more efficient computation. Techniques such as LU, QR, Singular Value Decomposition (SVD), and Eigenvalue decompositions not only reduce computational complexity but also provide deep insights into the geometry and structure of data. These methods are essential in solving systems of linear equations, performing dimensionality reduction, and extracting meaningful features from data. For instance, LU decomposition is widely used to solve large linear systems, while QR decomposition plays a key role in solving least squares problems—a fundamental task in machine learning models.</p>
+<p>In emerging fields like big data analytics and artificial intelligence, matrix decomposition techniques are indispensable for processing and analyzing high-dimensional datasets. SVD and Principal Component Analysis (PCA), for example, are extensively used for data compression and noise reduction, making machine learning algorithms more efficient by reducing the number of variables while retaining key information. Additionally, sparse matrix decompositions allow for the handling of enormous datasets where most entries are zero, optimizing memory usage and computation time. As data science and machine learning continue to evolve, mastering these matrix decomposition techniques provides not only a computational advantage but also deeper insights into the structure and relationships within data, enhancing the performance of algorithms in real-world applications.</p>
+</section>
+<section id="lu-decomposition" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="lu-decomposition"><span class="header-section-number">4.2</span> LU Decomposition</h2>
+<p>LU decomposition is a powerful tool in linear algebra that elegantly unravels the complexity of solving systems of linear equations. At its core, LU decomposition expresses a matrix <span class="math inline">\(A\)</span> as the product of two distinct matrices: <span class="math inline">\(L\)</span> (a lower triangular matrix with ones on the diagonal) and <span class="math inline">\(U\)</span> (an upper triangular matrix). This decomposition transforms the problem of solving <span class="math inline">\(Ax = b\)</span> into a two-step process: first, solving <span class="math inline">\(Ly = b\)</span> for <span class="math inline">\(y\)</span>, followed by <span class="math inline">\(Ux = y\)</span> for <span class="math inline">\(x\)</span>. This systematic approach not only simplifies computations but also provides insightful perspectives on the relationships between the equations involved.</p>
+<p>The magic of LU decomposition lies in its utilization of elementary transformations—operations that allow us to manipulate the rows of a matrix to achieve a row-reduced echelon form. These transformations include row swaps, scaling, and adding multiples of one row to another. By applying these operations, we can gradually transform the original matrix <span class="math inline">\(A\)</span> into the upper triangular matrix <span class="math inline">\(U\)</span>, while simultaneously capturing the essence of these transformations in the lower triangular matrix <span class="math inline">\(L\)</span>. This interplay of <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> not only enhances computational efficiency but also unveils the deeper structural relationships within the matrix.</p>
+<p>Moreover, the beauty of matrix multiplication shines through in LU decomposition. The product <span class="math inline">\(A = LU\)</span> showcases how two simpler matrices can combine to reconstruct a more complex one, demonstrating the power of linear combinations in solving equations. As we delve into LU decomposition, we embark on a journey that highlights the synergy between algebraic manipulation and geometric interpretation, empowering us to tackle intricate problems with grace and precision. Given a square matrix <span class="math inline">\(A\)</span>, the LU decomposition expresses <span class="math inline">\(A\)</span> as a product of a lower triangular matrix <span class="math inline">\(L\)</span> and an upper triangular matrix <span class="math inline">\(U\)</span>: <span class="math display">\[A = LU\]</span></p>
+<p>Where: - <span class="math inline">\(L\)</span> is a lower triangular matrix with 1’s on the diagonal and other elements like <span class="math inline">\(l_{21}, l_{31}, l_{32}, \dots\)</span>, - <span class="math inline">\(U\)</span> is an upper triangular matrix with elements <span class="math inline">\(u_{11}, u_{12}, u_{13}, u_{22}, u_{23}, u_{33}, \dots\)</span>.</p>
+<section id="step-by-step-procedure" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="step-by-step-procedure"><span class="header-section-number">4.2.1</span> Step-by-Step Procedure</h3>
+<p>Let’s assume <span class="math inline">\(A\)</span> is a <span class="math inline">\(3 \times 3\)</span> matrix for simplicity: <span class="math display">\[A = \begin{pmatrix}a_{11} &amp; a_{12} &amp; a_{13} \\a_{21} &amp; a_{22} &amp; a_{23} \\a_{31} &amp; a_{32} &amp; a_{33}\end{pmatrix}\]</span></p>
+<p>We need to find matrices <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span>, where:</p>
+<ul>
+<li><p><span class="math inline">\(L = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+l_{21} &amp; 1 &amp; 0 \\
+l_{31} &amp; l_{32} &amp; 1
+\end{pmatrix}\)</span></p></li>
+<li><p><span class="math inline">\(U = \begin{pmatrix}
+u_{11} &amp; u_{12} &amp; u_{13} \\
+0 &amp; u_{22} &amp; u_{23} \\
+0 &amp; 0 &amp; u_{33}
+\end{pmatrix}\)</span></p></li>
+</ul>
+<p>The product of <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> gives: <span class="math display">\[LU = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\l_{21} &amp; 1 &amp; 0 \\l_{31} &amp; l_{32} &amp; 1\end{pmatrix}\begin{pmatrix} u_{11} &amp; u_{12} &amp; u_{13} \\0 &amp; u_{22} &amp; u_{23} \\0 &amp; 0 &amp; u_{33}\end{pmatrix}=\begin{pmatrix} u_{11} &amp; u_{12} &amp; u_{13} \\l_{21}u_{11} &amp; l_{21}u_{12} + u_{22} &amp; l_{21}u_{13} + u_{23} \\l_{31}u_{11} &amp; l_{31}u_{12} + l_{32}u_{22} &amp; l_{31}u_{13} + l_{32}u_{23} + u_{33}\end{pmatrix}\]</span></p>
+<p>By equating this with <span class="math inline">\(A\)</span>, we can set up a system of equations to solve for <span class="math inline">\(l_{ij}\)</span> and <span class="math inline">\(u_{ij}\)</span>.</p>
+<blockquote class="blockquote">
+<p>Step 1: Solve for <span class="math inline">\(u_{11}, u_{12}, u_{13}\)</span></p>
+</blockquote>
+<p>From the first row of <span class="math inline">\(A = LU\)</span>, we have: <span class="math display">\[u_{11} = a_{11}\]</span> <span class="math display">\[u_{12} = a_{12}\]</span> <span class="math display">\[u_{13} = a_{13}\]</span></p>
+<blockquote class="blockquote">
+<p>Step 2: Solve for <span class="math inline">\(l_{21}\)</span> and <span class="math inline">\(u_{22}, u_{23}\)</span></p>
+</blockquote>
+<p>From the second row, we get: <span class="math display">\[l_{21}u_{11} = a_{21} \quad \Rightarrow \quad l_{21} = \frac{a_{21}}{u_{11}}\]</span> <span class="math display">\[l_{21}u_{12} + u_{22} = a_{22} \quad \Rightarrow \quad u_{22} = a_{22} - l_{21}u_{12}\]</span> <span class="math display">\[l_{21}u_{13} + u_{23} = a_{23} \quad \Rightarrow \quad u_{23} = a_{23} - l_{21}u_{13}\]</span></p>
+<blockquote class="blockquote">
+<p>Step 3: Solve for <span class="math inline">\(l_{31}, l_{32}\)</span> and <span class="math inline">\(u_{33}\)</span></p>
+</blockquote>
+<p>From the third row, we get: <span class="math display">\[l_{31}u_{11} = a_{31} \quad \Rightarrow \quad l_{31} = \frac{a_{31}}{u_{11}}\]</span> <span class="math display">\[l_{31}u_{12} + l_{32}u_{22} = a_{32} \quad \Rightarrow \quad l_{32} = \frac{a_{32} - l_{31}u_{12}}{u_{22}}\]</span> <span class="math display">\[l_{31}u_{13} + l_{32}u_{23} + u_{33} = a_{33} \quad \Rightarrow \quad u_{33} = a_{33} - l_{31}u_{13} - l_{32}u_{23}\]</span></p>
+<p><strong>Final Result</strong></p>
+<p>Thus, the LU decomposition is given by the matrices: - <span class="math inline">\(L = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+l_{21} &amp; 1 &amp; 0 \\
+l_{31} &amp; l_{32} &amp; 1
+\end{pmatrix}\)</span> - <span class="math inline">\(U = \begin{pmatrix}
+u_{11} &amp; u_{12} &amp; u_{13} \\
+0 &amp; u_{22} &amp; u_{23} \\
+0 &amp; 0 &amp; u_{33}
+\end{pmatrix}\)</span></p>
+<p>Where: - <span class="math inline">\(u_{11} = a_{11}, u_{12} = a_{12}, u_{13} = a_{13}\)</span> - <span class="math inline">\(l_{21} = \frac{a_{21}}{u_{11}}, u_{22} = a_{22} - l_{21}u_{12}, u_{23} = a_{23} - l_{21}u_{13}\)</span> - <span class="math inline">\(l_{31} = \frac{a_{31}}{u_{11}}, l_{32} = \frac{a_{32} - l_{31}u_{12}}{u_{22}}, u_{33} = a_{33} - l_{31}u_{13} - l_{32}u_{23}\)</span></p>
+</section>
+<section id="example" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="example"><span class="header-section-number">4.2.2</span> Example</h3>
+<p>Let’s decompose the following matrix: <span class="math display">\[A = \begin{pmatrix} 4 &amp; 3 &amp; 2 \\6 &amp; 3 &amp; 1 \\2 &amp; 1 &amp; 3\end{pmatrix}\]</span></p>
+<p>Following the steps outlined above:</p>
+<ul>
+<li><span class="math inline">\(u_{11} = 4, u_{12} = 3, u_{13} = 2\)</span></li>
+<li><span class="math inline">\(l_{21} = \frac{6}{4} = 1.5\)</span>, so:
+<ul>
+<li><span class="math inline">\(u_{22} = 3 - 1.5 \times 3 = -1.5\)</span></li>
+<li><span class="math inline">\(u_{23} = 1 - 1.5 \times 2 = -2\)</span></li>
+</ul></li>
+<li><span class="math inline">\(l_{31} = \frac{2}{4} = 0.5\)</span>, so:
+<ul>
+<li><span class="math inline">\(l_{32} = \frac{1 - 0.5 \times 3}{-1.5} = 0.67\)</span></li>
+<li><span class="math inline">\(u_{33} = 3 - 0.5 \times 2 - 0.67 \times (-2) = 2.67\)</span></li>
+</ul></li>
+</ul>
+<p>Thus, the decomposition is: - <span class="math inline">\(L = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+1.5 &amp; 1 &amp; 0 \\
+0.5 &amp; 0.67 &amp; 1
+\end{pmatrix}\)</span> - <span class="math inline">\(U = \begin{pmatrix}
+4 &amp; 3 &amp; 2 \\
+0 &amp; -1.5 &amp; -2 \\
+0 &amp; 0 &amp; 2.67
+\end{pmatrix}\)</span></p>
+</section>
+<section id="python-implementation" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="python-implementation"><span class="header-section-number">4.2.3</span> Python Implementation</h3>
+<div id="02864438" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.linalg <span class="im">import</span> lu</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrix A</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>],</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">1</span>],</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>]])</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform LU decomposition</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>P, L, U <span class="op">=</span> lu(A)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"L = </span><span class="ch">\n</span><span class="st">"</span>, L)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"U = </span><span class="ch">\n</span><span class="st">"</span>, U)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>L = 
+ [[1.         0.         0.        ]
+ [0.66666667 1.         0.        ]
+ [0.33333333 0.         1.        ]]
+U = 
+ [[6.         3.         1.        ]
+ [0.         1.         1.33333333]
+ [0.         0.         2.66666667]]</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Since there are many row transformations that reduce a given matrix into row echelon form. So the LU decomposition is not unique.</p>
+</div>
+</div>
+</section>
+<section id="lu-decomposition-practice-problems-with-solutions" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="lu-decomposition-practice-problems-with-solutions"><span class="header-section-number">4.2.4</span> LU Decomposition Practice Problems with Solutions</h3>
+<p><strong>Problem 1:</strong> Decompose the matrix <span class="math display">\[ A = \begin{pmatrix} 4 &amp; 3 \\ 6 &amp; 3 \end{pmatrix} \]</span> into the product of a lower triangular matrix <span class="math inline">\(L\)</span> and an upper triangular matrix <span class="math inline">\(U\)</span>.</p>
+<p><strong>Solution:</strong></p>
+<p>Let <span class="math display">\[ L = \begin{pmatrix} 1 &amp; 0 \\ l_{21} &amp; 1 \end{pmatrix}, \quad U = \begin{pmatrix} u_{11} &amp; u_{12} \\ 0 &amp; u_{22} \end{pmatrix}. \]</span></p>
+<p>We have:</p>
+<ol type="1">
+<li>From the first row: <span class="math inline">\(u_{11} = 4\)</span> and <span class="math inline">\(u_{12} = 3\)</span>.</li>
+<li>From the second row: <span class="math inline">\(6 = l_{21} \cdot 4\)</span> gives <span class="math inline">\(l_{21} = \frac{6}{4} = 1.5\)</span>.</li>
+<li>Finally, <span class="math inline">\(3 = 1.5 \cdot 3 + u_{22}\)</span> gives <span class="math inline">\(u_{22} = 3 - 4.5 = -1.5\)</span>.</li>
+</ol>
+<p>Thus, we have: <span class="math display">\[ L = \begin{pmatrix} 1 &amp; 0 \\ 1.5 &amp; 1 \end{pmatrix}, \quad U = \begin{pmatrix} 4 &amp; 3 \\ 0 &amp; -1.5 \end{pmatrix}. \]</span></p>
+<p><strong>Problem 2:</strong> Given the matrix <span class="math display">\[ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 2 &amp; 5 &amp; 8 \\ 4 &amp; 5 &amp; 6 \end{pmatrix}, \]</span> perform LU decomposition to find matrices <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span>.</p>
+<p><strong>Solution:</strong></p>
+<p>Let <span class="math display">\[ L = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ l_{21} &amp; 1 &amp; 0 \\ l_{31} &amp; l_{32} &amp; 1 \end{pmatrix}, \quad U = \begin{pmatrix} u_{11} &amp; u_{12} &amp; u_{13} \\ 0 &amp; u_{22} &amp; u_{23} \\ 0 &amp; 0 &amp; u_{33} \end{pmatrix}. \]</span></p>
+<p>We have:</p>
+<ol type="1">
+<li>From Row 1: <span class="math inline">\(u_{11} = 1, u_{12} = 2, u_{13} = 3\)</span>.</li>
+<li>From Row 2: <span class="math inline">\(2 = l_{21} \cdot 1\)</span> gives <span class="math inline">\(l_{21} = 2\)</span>.
+<ul>
+<li>For Row 2: <span class="math inline">\(5 = l_{21} \cdot 2 + u_{22}\)</span> gives <span class="math inline">\(5 = 4 + u_{22} \Rightarrow u_{22} = 1\)</span>.</li>
+<li><span class="math inline">\(8 = l_{21} \cdot 3 + u_{23} \Rightarrow 8 = 6 + u_{23} \Rightarrow u_{23} = 2\)</span>.</li>
+</ul></li>
+<li>From Row 3: <span class="math inline">\(4 = l_{31} \cdot 1 \Rightarrow l_{31} = 4\)</span>.
+<ul>
+<li><span class="math inline">\(5 = l_{31} \cdot 2 + l_{32} \cdot 1 \Rightarrow 5 = 8 + l_{32} \Rightarrow l_{32} = -3\)</span>.</li>
+<li>Finally, <span class="math inline">\(6 = l_{31} \cdot 3 + l_{32} \cdot 2 + u_{33} \Rightarrow 6 = 12 - 6 + u_{33} \Rightarrow u_{33} = 0\)</span>.</li>
+</ul></li>
+</ol>
+<p>Thus, <span class="math display">\[ L = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 2 &amp; 1 &amp; 0 \\ 4 &amp; -3 &amp; 1 \end{pmatrix}, \quad U = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 0 &amp; 1 &amp; 2 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}. \]</span></p>
+<p><strong>Problem 3:</strong> Perform LU decomposition of the matrix <span class="math display">\[ A = \begin{pmatrix} 2 &amp; 1 &amp; 1 \\ 4 &amp; -6 &amp; 0 \\ -2 &amp; 7 &amp; 2 \end{pmatrix}, \]</span> and verify the decomposition by checking <span class="math inline">\(A = LU\)</span>.</p>
+<p><strong>Solution:</strong></p>
+<p>Let <span class="math display">\[ L = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ l_{21} &amp; 1 &amp; 0 \\ l_{31} &amp; l_{32} &amp; 1 \end{pmatrix}, \quad U = \begin{pmatrix} u_{11} &amp; u_{12} &amp; u_{13} \\ 0 &amp; u_{22} &amp; u_{23} \\ 0 &amp; 0 &amp; u_{33} \end{pmatrix}. \]</span></p>
+<p>We have:</p>
+<ol type="1">
+<li>From Row 1: <span class="math inline">\(u_{11} = 2, u_{12} = 1, u_{13} = 1\)</span>.</li>
+<li>From Row 2: <span class="math inline">\(4 = l_{21} \cdot 2 \Rightarrow l_{21} = 2\)</span>.
+<ul>
+<li><span class="math inline">\(-6 = 2 \cdot 1 + u_{22} \Rightarrow u_{22} = -8\)</span>.</li>
+<li><span class="math inline">\(0 = 2 \cdot 1 + u_{23} \Rightarrow u_{23} = -2\)</span>.</li>
+</ul></li>
+<li>From Row 3: <span class="math inline">\(-2 = l_{31} \cdot 2 \Rightarrow l_{31} = -1\)</span>.
+<ul>
+<li><span class="math inline">\(7 = -1 \cdot 1 + l_{32} \cdot -8 \Rightarrow 7 = -1 - 8l_{32} \Rightarrow l_{32} = -1\)</span>.</li>
+<li>Finally, <span class="math inline">\(2 = -1 \cdot 1 + -1 \cdot -2 + u_{33} \Rightarrow 2 = 1 + u_{33} \Rightarrow u_{33} = 1\)</span>.</li>
+</ul></li>
+</ol>
+<p>Thus, <span class="math display">\[ L = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 2 &amp; 1 &amp; 0 \\ -1 &amp; -1 &amp; 1 \end{pmatrix}, \quad U = \begin{pmatrix} 2 &amp; 1 &amp; 1 \\ 0 &amp; -8 &amp; -2 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}. \]</span></p>
+<p><strong>Problem 4:</strong> For the matrix <span class="math display">\[ A = \begin{pmatrix} 3 &amp; 1 &amp; 6 \\ 2 &amp; 1 &amp; 1 \\ 1 &amp; 2 &amp; 2 \end{pmatrix}, \]</span> find the LU decomposition and use it to solve the system <span class="math inline">\(Ax = b\)</span> where <span class="math inline">\(b = \begin{pmatrix} 9 \\ 5 \\ 4 \end{pmatrix}\)</span>.</p>
+<p><strong>Solution:</strong></p>
+<p>Let <span class="math display">\[ L = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ l_{21} &amp; 1 &amp; 0 \\ l_{31} &amp; l_{32} &amp; 1 \end{pmatrix}, \quad U = \begin{pmatrix} u_{11} &amp; u_{12} &amp; u_{13} \\ 0 &amp; u_{22} &amp; u_{23} \\ 0 &amp; 0 &amp; u_{33} \end{pmatrix}. \]</span></p>
+<p>We have:</p>
+<ol type="1">
+<li>From Row 1: <span class="math inline">\(u_{11} = 3, u_{12} = 1, u_{13} = 6\)</span>.</li>
+<li>From Row 2: <span class="math inline">\(2 = l_{21} \cdot 3 \Rightarrow l_{21} = \frac{2}{3}\)</span>.
+<ul>
+<li><span class="math inline">\(1 = \frac{2}{3} \cdot 1 + u_{22} \Rightarrow 1 = \frac{2}{3} + u_{22} \Rightarrow u_{22} = \frac{1}{3}\)</span>.</li>
+<li><span class="math inline">\(1 = \frac{2}{3} \cdot 6 + u_{23} \Rightarrow 1 = 4 + u_{23} \Rightarrow u_{23} = -3\)</span>.</li>
+</ul></li>
+<li>From Row 3: <span class="math inline">\(1 = l_{31} \cdot 3 \Rightarrow l_{31} = \frac{1}{3}\)</span>.
+<ul>
+<li><span class="math inline">\(2 = \frac{1}{3} \cdot 1 + l_{32} \cdot \frac{1}{3} \Rightarrow 2 = \frac{1}{3} + \frac{1}{3} l_{32} \Rightarrow l_{32} = 6\)</span>.</li>
+<li>Finally, <span class="math inline">\(2 = \frac{1}{3} \cdot 6 + 6 \cdot -3 + u_{33} \Rightarrow 2 = 2 - 18 + u_{33} \Rightarrow u_{33} = 18\)</span>.</li>
+</ul></li>
+</ol>
+<p>Thus, <span class="math display">\[ L = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ \frac{2}{3} &amp; 1 &amp; 0 \\ \frac{1}{3} &amp; 6 &amp; 1 \end{pmatrix}, \quad U = \begin{pmatrix} 3 &amp; 1 &amp; 6 \\ 0 &amp; \frac{1}{3} &amp; -3 \\ 0 &amp; 0 &amp; 18 \end{pmatrix}. \]</span></p>
+<p>Now, to solve <span class="math inline">\(Ax = b\)</span>, we first solve <span class="math inline">\(Ly = b\)</span>: <span class="math display">\[ \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ \frac{2}{3} &amp; 1 &amp; 0 \\ \frac{1}{3} &amp; 6 &amp; 1 \end{pmatrix} \begin{pmatrix} y_1 \\ y_2 \\ y_3 \end{pmatrix} = \begin{pmatrix} 9 \\ 5 \\ 4 \end{pmatrix} \]</span></p>
+<p>Solving this gives: 1. <span class="math inline">\(y_1 = 9\)</span> 2. <span class="math inline">\(\frac{2}{3} \cdot 9 + y_2 = 5 \Rightarrow 6 + y_2 = 5 \Rightarrow y_2 = -1\)</span> 3. <span class="math inline">\(\frac{1}{3} \cdot 9 + 6 \cdot -1 + y_3 = 4 \Rightarrow 3 - 6 + y_3 = 4 \Rightarrow y_3 = 7\)</span></p>
+<p>Next, solve <span class="math inline">\(Ux = y\)</span>: <span class="math display">\[ \begin{pmatrix} 3 &amp; 1 &amp; 6 \\ 0 &amp; \frac{1}{3} &amp; -3 \\ 0 &amp; 0 &amp; 18 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 9 \\ -1 \\ 7 \end{pmatrix} \]</span></p>
+<ol type="1">
+<li>From Row 3: <span class="math inline">\(18x_3 = 7 \Rightarrow x_3 = \frac{7}{18}\)</span></li>
+<li>From Row 2: <span class="math inline">\(\frac{1}{3}x_2 - 3x_3 = -1 \Rightarrow \frac{1}{3}x_2 - \frac{21}{18} = -1 \Rightarrow \frac{1}{3}x_2 = -\frac{18}{18} + \frac{21}{18} = \frac{3}{18} \Rightarrow x_2 = \frac{1}{3}\)</span></li>
+<li>From Row 1: <span class="math inline">\(3x_1 + x_2 + 6x_3 = 9 \Rightarrow 3x_1 + \frac{1}{3} + \frac{42}{18} = 9 \Rightarrow 3x_1 + \frac{1}{3} + \frac{7}{3} = 9 \Rightarrow 3x_1 = 9 - \frac{8}{3} = \frac{27 - 8}{3} = \frac{19}{3} \Rightarrow x_1 = \frac{19}{9}\)</span></li>
+</ol>
+<p>Thus, the solution to <span class="math inline">\(Ax = b\)</span> is <span class="math display">\[ x = \begin{pmatrix} \frac{19}{9} \\ \frac{1}{3} \\ \frac{7}{18} \end{pmatrix}. \]</span></p>
+</section>
+</section>
+<section id="lu-decomposition-practice-problems" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="lu-decomposition-practice-problems"><span class="header-section-number">4.3</span> LU Decomposition Practice Problems</h2>
+<p><strong>Problem 1:</strong> Decompose the matrix <span class="math display">\[ A = \begin{pmatrix} 4 &amp; 3 \\ 6 &amp; 3 \end{pmatrix} \]</span> into the product of a lower triangular matrix <span class="math inline">\(L\)</span> and an upper triangular matrix <span class="math inline">\(U\)</span>.</p>
+<p><strong>Problem 2:</strong> Given the matrix <span class="math display">\[ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 2 &amp; 5 &amp; 8 \\ 4 &amp; 5 &amp; 6 \end{pmatrix}, \]</span> perform LU decomposition to find matrices <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span>.</p>
+<p><strong>Problem 3:</strong> Perform LU decomposition of the matrix <span class="math display">\[ A = \begin{pmatrix} 2 &amp; 1 &amp; 1 \\ 4 &amp; -6 &amp; 0 \\ -2 &amp; 7 &amp; 2 \end{pmatrix}, \]</span> and verify the decomposition by checking <span class="math inline">\(A = LU\)</span>.</p>
+<p><strong>Problem 4:</strong> For the matrix <span class="math display">\[ A = \begin{pmatrix} 3 &amp; 1 &amp; 6 \\ 2 &amp; 1 &amp; 1 \\ 1 &amp; 2 &amp; 2 \end{pmatrix}, \]</span> find the LU decomposition and use it to solve the system <span class="math inline">\(Ax = b\)</span> where <span class="math inline">\(b = \begin{pmatrix} 9 \\ 5 \\ 4 \end{pmatrix}\)</span>.</p>
+<p><strong>Problem 5:</strong> Decompose the matrix <span class="math display">\[ A = \begin{pmatrix} 1 &amp; 3 &amp; 1 \\ 2 &amp; 6 &amp; 1 \\ 1 &amp; 1 &amp; 4 \end{pmatrix} \]</span> into <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span>, and solve the system <span class="math inline">\(Ax = \begin{pmatrix} 5 \\ 9 \\ 6 \end{pmatrix}\)</span>.</p>
+<p><strong>Problem 6:</strong> Given the matrix <span class="math display">\[ A = \begin{pmatrix} 7 &amp; 3 \\ 2 &amp; 5 \end{pmatrix}, \]</span> perform LU decomposition and use the result to solve <span class="math inline">\(Ax = b\)</span> for <span class="math inline">\(b = \begin{pmatrix} 10 \\ 7 \end{pmatrix}\)</span>.</p>
+<p><strong>Problem 7:</strong> Find the LU decomposition of the matrix <span class="math display">\[ A = \begin{pmatrix} 2 &amp; -1 &amp; 1 \\ -2 &amp; 2 &amp; -1 \\ 4 &amp; -1 &amp; 3 \end{pmatrix}, \]</span> and use it to solve <span class="math inline">\(Ax = b\)</span> where <span class="math inline">\(b = \begin{pmatrix} 1 \\ -1 \\ 7 \end{pmatrix}\)</span>.</p>
+<p><strong>Problem 8:</strong> Perform LU decomposition of the matrix <span class="math display">\[ A = \begin{pmatrix} 5 &amp; 2 &amp; 1 \\ 10 &amp; 4 &amp; 3 \\ 15 &amp; 8 &amp; 6 \end{pmatrix}. \]</span></p>
+<p><strong>Problem 9:</strong> Use LU decomposition to find the solution to the system <span class="math inline">\(Ax = b\)</span> where <span class="math display">\[ A = \begin{pmatrix} 1 &amp; 1 &amp; 1 \\ 2 &amp; 3 &amp; 5 \\ 4 &amp; 6 &amp; 8 \end{pmatrix}, \quad b = \begin{pmatrix} 6 \\ 15 \\ 30 \end{pmatrix}. \]</span></p>
+<p><strong>Problem 10:</strong> Decompose the matrix <span class="math display">\[ A = \begin{pmatrix} 6 &amp; -2 &amp; 2 \\ 12 &amp; -8 &amp; 6 \\ -6 &amp; 3 &amp; -3 \end{pmatrix} \]</span> into <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span>, and verify that <span class="math inline">\(A = LU\)</span>.</p>
+</section>
+<section id="matrix-approach-to-create-lu-decomposition" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="matrix-approach-to-create-lu-decomposition"><span class="header-section-number">4.4</span> Matrix Approach to Create LU Decomposition</h2>
+<p>LU decomposition can be performed using <em>elementary matrix operations</em>. In this method, we iteratively apply elementary matrices to reduce the given matrix <span class="math inline">\(A\)</span> into an upper triangular matrix <span class="math inline">\(U\)</span>, while keeping track of the transformations to form the lower triangular matrix <span class="math inline">\(L\)</span>.</p>
+<p>The LU decomposition can be written as: <span class="math display">\[A = LU\]</span></p>
+<p>where: - <span class="math inline">\(L\)</span> is the product of the inverses of the elementary matrices. - <span class="math inline">\(U\)</span> is the upper triangular matrix obtained after applying the row operations.</p>
+<p><strong>Example: LU Decomposition of a 3x3 Matrix</strong></p>
+<p>Given the matrix: <span class="math display">\[
+A = \begin{pmatrix}
+2 &amp; 1 &amp; 1 \\
+4 &amp; -6 &amp; 0 \\
+-2 &amp; 7 &amp; 2
+\end{pmatrix}
+\]</span></p>
+<p>We will decompose <span class="math inline">\(A\)</span> into <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> using elementary row operations.</p>
+<blockquote class="blockquote">
+<p>Step 1: Applying Elementary Matrices</p>
+</blockquote>
+<p>We want to perform row operations to reduce <span class="math inline">\(A\)</span> into upper triangular form.</p>
+<blockquote class="blockquote">
+<p>Step 1.1: Eliminate the <span class="math inline">\(a_{21}\)</span> entry (below the pivot in column 1)</p>
+</blockquote>
+<p>To eliminate the <span class="math inline">\(4\)</span> in position <span class="math inline">\(a_{21}\)</span>, perform the operation: <span class="math display">\[R_2 \rightarrow R_2 - 2R_1\]</span></p>
+<p>This corresponds to multiplying <span class="math inline">\(A\)</span> by the elementary matrix: <span class="math display">\[E_1 = \begin{pmatrix}1 &amp; 0 &amp; 0 \\-2 &amp; 1 &amp; 0 \\0 &amp; 0 &amp; 1\end{pmatrix}\]</span></p>
+<p>After this row operation, the matrix becomes: <span class="math display">\[
+E_1 A = \begin{pmatrix}
+2 &amp; 1 &amp; 1 \\
+0 &amp; -8 &amp; -2 \\
+-2 &amp; 7 &amp; 2
+\end{pmatrix}
+\]</span></p>
+<blockquote class="blockquote">
+<p>Step 1.2: Eliminate the <span class="math inline">\(a_{31}\)</span> entry</p>
+</blockquote>
+<p>To eliminate the <span class="math inline">\(-2\)</span> in position <span class="math inline">\(a_{31}\)</span>, perform the operation: <span class="math display">\[R_3 \rightarrow R_3 + R_1\]</span></p>
+<p>This corresponds to multiplying the matrix by another elementary matrix: <span class="math display">\[
+E_2 = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<p>Now, the matrix becomes: <span class="math display">\[
+E_2 E_1 A = \begin{pmatrix}
+2 &amp; 1 &amp; 1 \\
+0 &amp; -8 &amp; -2 \\
+0 &amp; 8 &amp; 3
+\end{pmatrix}
+\]</span></p>
+<blockquote class="blockquote">
+<p>Step 1.3: Eliminate the <span class="math inline">\(a_{32}\)</span> entry</p>
+</blockquote>
+<p>Finally, to eliminate the <span class="math inline">\(8\)</span> in position <span class="math inline">\(a_{32}\)</span>, perform the operation: <span class="math display">\[
+R_3 \rightarrow R_3 + R_2
+\]</span></p>
+<p>This corresponds to multiplying the matrix by the third elementary matrix:</p>
+<p><span class="math display">\[
+E_3 = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<p>After applying this operation, the matrix becomes: <span class="math display">\[
+E_3 E_2 E_1 A = \begin{pmatrix}
+2 &amp; 1 &amp; 1 \\
+0 &amp; -8 &amp; -2 \\
+0 &amp; 0 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<p>This is the upper triangular matrix <span class="math inline">\(U\)</span>.</p>
+<blockquote class="blockquote">
+<p>Step 2: Construct the Lower Triangular Matrix <span class="math inline">\(L\)</span></p>
+</blockquote>
+<p>The lower triangular matrix <span class="math inline">\(L\)</span> is formed by taking the inverses of the elementary matrices <span class="math inline">\(E_1, E_2, E_3\)</span>. Each inverse corresponds to the inverse of the row operations we applied.</p>
+<ul>
+<li><p><span class="math inline">\(E_1^{-1}\)</span> corresponds to adding back <span class="math inline">\(2R_1\)</span> to <span class="math inline">\(R_2\)</span>, so: <span class="math display">\[
+E_1^{-1} = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+2 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{pmatrix}
+\]</span></p></li>
+<li><p><span class="math inline">\(E_2^{-1}\)</span> corresponds to subtracting <span class="math inline">\(R_1\)</span> from <span class="math inline">\(R_3\)</span>, so: <span class="math display">\[
+E_2^{-1} = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+-1 &amp; 0 &amp; 1
+\end{pmatrix}
+\]</span></p></li>
+<li><p><span class="math inline">\(E_3^{-1}\)</span> corresponds to subtracting <span class="math inline">\(R_2\)</span> from <span class="math inline">\(R_3\)</span>, so: <span class="math display">\[
+E_3^{-1} = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; -1 &amp; 1
+\end{pmatrix}
+\]</span></p></li>
+</ul>
+<p>Now, the lower triangular matrix <span class="math inline">\(L\)</span> is obtained by multiplying these inverses in reverse order: <span class="math display">\[
+L = E_3^{-1} E_2^{-1} E_1^{-1} = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+2 &amp; 1 &amp; 0 \\
+-1 &amp; -1 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<p>Thus, the LU decomposition of <span class="math inline">\(A\)</span> is: <span class="math display">\[
+L = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+2 &amp; 1 &amp; 0 \\
+-1 &amp; -1 &amp; 1
+\end{pmatrix},
+\quad U = \begin{pmatrix}
+2 &amp; 1 &amp; 1 \\
+0 &amp; -8 &amp; -2 \\
+0 &amp; 0 &amp; 1
+\end{pmatrix}
+\]</span></p>
+<p><strong>Verification</strong></p>
+<p>Now, we check if <span class="math inline">\(A = LU\)</span>.</p>
+<p>Multiply <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span>:</p>
+<div id="e0edad23" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>              [<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>]])</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>],</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">0</span>, <span class="op">-</span><span class="dv">8</span>, <span class="op">-</span><span class="dv">2</span>],</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>]])</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> L <span class="op">@</span> U</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>array([[ 2,  1,  1],
+       [ 4, -6,  0],
+       [-2,  7,  2]])</code></pre>
+</div>
+</div>
+</section>
+<section id="spectral-decomposition" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Spectral Decomposition</h1>
+<section id="introduction-1" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="introduction-1"><span class="header-section-number">5.1</span> Introduction</h2>
+<p>Spectral decomposition, also known as eigenvalue decomposition, is a powerful tool in computational linear algebra that breaks down a matrix into its eigenvalues and eigenvectors. This technique allows matrices to be represented in terms of their fundamental components, making it easier to analyze and manipulate them. It is especially useful for symmetric matrices, which are common in various applications. Spectral decomposition facilitates solving systems of equations, optimizing functions, and performing transformations in a simplified, structured manner, as it allows operations to be performed on the eigenvalues, which often leads to more efficient computations.</p>
+<p>The importance of spectral decomposition extends across a wide range of fields, including computer science, engineering, and data science. In machine learning, for instance, it forms the backbone of algorithms like Principal Component Analysis (PCA), which is used for dimensionality reduction. It also plays a vital role in numerical stability when dealing with large matrices and is central to many optimization problems, such as those found in machine learning and physics. Spectral decomposition not only provides a deeper understanding of the properties of matrices but also offers practical benefits in improving the efficiency and accuracy of numerical algorithms.</p>
+</section>
+<section id="spectral-decomposition-detailed-concepts" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="spectral-decomposition-detailed-concepts"><span class="header-section-number">5.2</span> Spectral Decomposition: Detailed Concepts</h2>
+<section id="eigenvalues-and-eigenvectors" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="eigenvalues-and-eigenvectors"><span class="header-section-number">5.2.1</span> Eigenvalues and Eigenvectors</h3>
+<p>The core idea behind spectral decomposition is that it expresses a matrix in terms of its eigenvalues and eigenvectors. For a square matrix <span class="math inline">\(A \in \mathbb{R}^{n \times n}\)</span>, an eigenvalue <span class="math inline">\(\lambda \in \mathbb{R}\)</span> and an eigenvector <span class="math inline">\(v \in \mathbb{R}^{n}\)</span> satisfy the following equation:</p>
+<p><span class="math display">\[
+A v = \lambda v
+\]</span></p>
+<p>This implies that when the matrix <span class="math inline">\(A\)</span> acts on the vector <span class="math inline">\(v\)</span>, it only scales the vector by <span class="math inline">\(\lambda\)</span>, but does not change its direction. The eigenvector <span class="math inline">\(v\)</span> represents the direction of this scaling, while the eigenvalue <span class="math inline">\(\lambda\)</span> represents the magnitude of the scaling.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Properties of Eigen values
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>If <span class="math inline">\(\lambda\)</span> is an eigenvalue of <span class="math inline">\(A\)</span>, then it satisfies the characteristic polynomial:</p>
+<p><span class="math display">\[
+p(\lambda) = \text{det}(A - \lambda I) = 0.
+\]</span></p></li>
+<li><p>The sum of the eigenvalues (counted with algebraic multiplicity) is equal to the trace of the matrix:</p>
+<p><span class="math display">\[
+\sum_{i=1}^{n} \lambda_i = \text{trace}(A).
+\]</span></p></li>
+<li><p>The product of the eigenvalues (counted with algebraic multiplicity) is equal to the determinant of the matrix:</p>
+<p><span class="math display">\[
+\prod_{i=1}^{n} \lambda_i = \text{det}(A).
+\]</span></p></li>
+<li><p>If<span class="math inline">\(A\)</span> is symmetric, then:</p>
+<ul>
+<li>All eigenvalues <span class="math inline">\(\lambda\)</span> are real.</li>
+<li>If <span class="math inline">\(\lambda_i\)</span> and <span class="math inline">\(\lambda_j\)</span> are distinct eigenvalues, then their corresponding eigenvectors <span class="math inline">\(\mathbf{v}_i\)</span> and <span class="math inline">\(\mathbf{v}_j\)</span> satisfy:</li>
+</ul>
+<p><span class="math display">\[
+\mathbf{v}_i^T \mathbf{v}_j = 0.
+\]</span></p></li>
+<li><p>If <span class="math inline">\(A\)</span> is a scalar multiple of <span class="math inline">\(k\)</span>, then:</p>
+<p><span class="math display">\[
+\lambda_i \text{ of } kA = k \cdot \lambda_i \text{ of } A.
+\]</span></p></li>
+<li><p>If <span class="math inline">\(A\)</span> is invertible, then:</p>
+<p><span class="math display">\[
+\lambda_i \text{ of } A^{-1} = \frac{1}{\lambda_i \text{ of } A}.
+\]</span></p></li>
+<li><p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are similar, then:</p>
+<p><span class="math display">\[
+B = P^{-1} A P \implies \lambda_i \text{ of } B = \lambda_i \text{ of } A.
+\]</span></p></li>
+<li><p>If <span class="math inline">\(\lambda\)</span> is an eigenvalue, it has:</p>
+<ul>
+<li><strong>Algebraic Multiplicity</strong>: The number of times <span class="math inline">\(\lambda\)</span> appears as a root of <span class="math inline">\(p(\lambda)\)</span>.</li>
+<li><strong>Geometric Multiplicity</strong>: The dimension of the eigenspace <span class="math inline">\(E_{\lambda} = \{\mathbf{v} : A\mathbf{v} = \lambda \mathbf{v}\}\)</span>.</li>
+</ul></li>
+<li><p>If<span class="math inline">\(A\)</span> is symmetric and all eigenvalues <span class="math inline">\(\lambda\)</span> are positive, then <span class="math inline">\(A\)</span> is positive definite:</p>
+<p><span class="math display">\[
+\lambda_i &gt; 0 \implies A \text{ is positive definite.}
+\]</span></p></li>
+<li><p>A square matrix <span class="math inline">\(A\)</span> has an eigenvalue <span class="math inline">\(\lambda = 0\)</span> if and only if <span class="math inline">\(A\)</span> is singular:</p>
+<p><span class="math display">\[
+\text{det}(A) = 0 \iff \lambda = 0.
+\]</span></p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Eigen Vectors
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Eigen vectors are the non-trivial solutions of <span class="math inline">\(det(A-\lambda I)=0\)</span> for distinct <span class="math inline">\(\lambda\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Properties of Eigen vectors
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>If <span class="math inline">\(\mathbf{v}\)</span> is an eigenvector of a square matrix <span class="math inline">\(A\)</span> corresponding to the eigenvalue <span class="math inline">\(\lambda\)</span>, then:</p>
+<p><span class="math display">\[
+A\mathbf{v} = \lambda \mathbf{v}.
+\]</span></p></li>
+<li><p>Eigenvectors corresponding to distinct eigenvalues are linearly independent. If <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span> are distinct eigenvalues of <span class="math inline">\(A\)</span>, with corresponding eigenvectors <span class="math inline">\(\mathbf{v}_1\)</span> and <span class="math inline">\(\mathbf{v}_2\)</span>, then:</p>
+<p><span class="math display">\[
+c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 = \mathbf{0} \implies c_1 = 0 \text{ and } c_2 = 0.
+\]</span></p></li>
+<li><p>If <span class="math inline">\(\mathbf{v}\)</span> is an eigenvector corresponding to the eigenvalue <span class="math inline">\(\lambda\)</span>, then any non-zero scalar multiple of <span class="math inline">\(\mathbf{v}\)</span> is also an eigenvector corresponding to <span class="math inline">\(\lambda\)</span>:</p>
+<p><span class="math display">\[
+\text{If } \mathbf{v} \text{ is an eigenvector, then } c\mathbf{v} \text{ is an eigenvector for any non-zero scalar } c.
+\]</span></p></li>
+<li><p>The eigenspace <span class="math inline">\(E_{\lambda}\)</span> associated with an eigenvalue <span class="math inline">\(\lambda\)</span> is defined as:</p>
+<p><span class="math display">\[
+E_{\lambda} = \{ \mathbf{v} : A\mathbf{v} = \lambda \mathbf{v} \} = \text{Null}(A - \lambda I).
+\]</span></p></li>
+<li><p>The dimension of the eigenspace <span class="math inline">\(E_{\lambda}\)</span> is equal to the geometric multiplicity of the eigenvalue <span class="math inline">\(\lambda\)</span>.</p></li>
+<li><p>If <span class="math inline">\(A\)</span> is a symmetric matrix, then eigenvectors corresponding to distinct eigenvalues are orthogonal:</p>
+<p><span class="math display">\[
+\mathbf{v}_i^T \mathbf{v}_j = 0 \text{ for distinct eigenvalues } \lambda_i \text{ and } \lambda_j.
+\]</span></p></li>
+<li><p>For any square matrix <span class="math inline">\(A\)</span>, if <span class="math inline">\(\lambda = 0\)</span> is an eigenvalue, the eigenvectors corresponding to this eigenvalue form the null space of <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[
+E_{0} = \{ \mathbf{v} : A\mathbf{v} = \mathbf{0} \} = \text{Null}(A).
+\]</span></p></li>
+<li><p>If<span class="math inline">\(A\)</span> is invertible, then <span class="math inline">\(A\)</span> has no eigenvalue equal to zero, meaning all eigenvectors correspond to non-zero eigenvalues.</p></li>
+<li><p>For<span class="math inline">\(A\)</span> as a scalar multiple of <span class="math inline">\(k\)</span>:</p>
+<p><span class="math display">\[
+A\mathbf{v} = k \lambda \mathbf{v} \text{ for eigenvalue } \lambda.
+\]</span></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="eigenvalue-decomposition-spectral-decomposition" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="eigenvalue-decomposition-spectral-decomposition"><span class="header-section-number">5.2.2</span> Eigenvalue Decomposition (Spectral Decomposition)</h3>
+<p>For matrices that are diagonalizable (including symmetric matrices), spectral decomposition expresses the matrix as a combination of its eigenvalues and eigenvectors. Specifically, for a matrix <span class="math inline">\(A\)</span>, spectral decomposition is represented as:</p>
+<p><span class="math display">\[
+A = V \Lambda V^{-1}
+\]</span></p>
+<p>where: - <span class="math inline">\(V\)</span> is the matrix of eigenvectors of <span class="math inline">\(A\)</span>, - <span class="math inline">\(\Lambda\)</span> is a diagonal matrix of eigenvalues of <span class="math inline">\(A\)</span>, - <span class="math inline">\(V^{-1}\)</span> is the inverse of the matrix of eigenvectors (if <span class="math inline">\(V\)</span> is invertible).</p>
+<p>For symmetric matrices <span class="math inline">\(A\)</span>, the decomposition becomes simpler:</p>
+<p><span class="math display">\[
+A = Q \Lambda Q^\top
+\]</span></p>
+<p>Here, <span class="math inline">\(Q\)</span> is an orthogonal matrix of eigenvectors (i.e., <span class="math inline">\(Q^\top Q = I\)</span>), and <span class="math inline">\(\Lambda\)</span> is a diagonal matrix of eigenvalues.</p>
+</section>
+<section id="geometric-interpretation" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="geometric-interpretation"><span class="header-section-number">5.2.3</span> Geometric Interpretation</h3>
+<p>Eigenvalues and eigenvectors provide insights into the geometry of linear transformations represented by matrices. Eigenvectors represent directions that remain invariant under the transformation, while eigenvalues indicate how these directions are stretched or compressed.</p>
+<p>For example, in the case of a transformation matrix that scales or rotates data points, eigenvalues show the magnitude of scaling along the principal axes (directions defined by eigenvectors).</p>
+</section>
+<section id="importance-of-diagonalization" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="importance-of-diagonalization"><span class="header-section-number">5.2.4</span> Importance of Diagonalization</h3>
+<p>The key advantage of spectral decomposition is that it simplifies matrix operations. When a matrix is diagonalized as <span class="math inline">\(A = Q \Lambda Q^\top\)</span>, any function of the matrix <span class="math inline">\(A\)</span> (such as powers, exponentials, or inverses) can be easily computed by operating on the diagonal matrix <span class="math inline">\(\Lambda\)</span>. For example:</p>
+<p><span class="math display">\[
+A^k = Q \Lambda^k Q^\top
+\]</span></p>
+<p>Since <span class="math inline">\(\Lambda\)</span> is diagonal, raising <span class="math inline">\(\Lambda\)</span> to any power <span class="math inline">\(k\)</span> is straightforward, involving only raising each eigenvalue to the power <span class="math inline">\(k\)</span>.</p>
+</section>
+<section id="properties-of-symmetric-matrices" class="level3" data-number="5.2.5">
+<h3 data-number="5.2.5" class="anchored" data-anchor-id="properties-of-symmetric-matrices"><span class="header-section-number">5.2.5</span> Properties of Symmetric Matrices</h3>
+<p>Spectral decomposition applies particularly well to symmetric matrices, which satisfy <span class="math inline">\(A = A^\top\)</span>. Symmetric matrices have the following key properties:</p>
+<ul>
+<li><p><strong>Real eigenvalues</strong>: The eigenvalues of a symmetric matrix are always real numbers.</p></li>
+<li><p><strong>Orthogonal eigenvectors</strong>: The eigenvectors corresponding to distinct eigenvalues of a symmetric matrix are orthogonal to each other.</p></li>
+<li><p><strong>Diagonalizability</strong>: Every symmetric matrix can be diagonalized by an orthogonal matrix.</p></li>
+</ul>
+<p>These properties make symmetric matrices highly desirable in computational applications.</p>
+</section>
+</section>
+<section id="mathematical-requirements-for-spectral-decomposition" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="mathematical-requirements-for-spectral-decomposition"><span class="header-section-number">5.3</span> Mathematical Requirements for Spectral Decomposition</h2>
+<section id="determining-eigenvalues-and-eigenvectors" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="determining-eigenvalues-and-eigenvectors"><span class="header-section-number">5.3.1</span> Determining Eigenvalues and Eigenvectors</h3>
+<p>The eigenvalues of a matrix <span class="math inline">\(A\)</span> are the solutions to the characteristic equation:</p>
+<p><span class="math display">\[
+\text{det}(A - \lambda I) = 0
+\]</span></p>
+<p>Here, <span class="math inline">\(I\)</span> is the identity matrix, and <span class="math inline">\(\lambda\)</span> represents the eigenvalues. Solving this polynomial equation provides the eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, \dots, \lambda_n\)</span>. Once the eigenvalues are determined, the eigenvectors can be computed by solving the equation <span class="math inline">\((A - \lambda I)v = 0\)</span> for each eigenvalue.</p>
+</section>
+<section id="characteristic-polynomial-of-2-times-2-matrices" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="characteristic-polynomial-of-2-times-2-matrices"><span class="header-section-number">5.3.2</span> Characteristic Polynomial of <span class="math inline">\(2 \times 2\)</span> Matrices</h3>
+<p>For a <span class="math inline">\(2 \times 2\)</span> matrix: <span class="math display">\[
+A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}
+\]</span> the characteristic polynomial is derived from the determinant of <span class="math inline">\(A - \lambda I\)</span>, where <span class="math inline">\(I\)</span> is the identity matrix:</p>
+<p><span class="math display">\[
+\det(A - \lambda I) = 0
+\]</span></p>
+<p>This leads to: <span class="math display">\[
+\det\begin{pmatrix} a - \lambda &amp; b \\ c &amp; d - \lambda \end{pmatrix} = (a - \lambda)(d - \lambda) - bc = 0
+\]</span></p>
+<p> The characteristic polynomial can be simplified to: <span class="math display">\[
+\lambda^2 - (a + d)\lambda + (ad - bc) = 0
+\]</span></p>
+<p>This polynomial can be solved using the quadratic formula: <span class="math display">\[
+\lambda = \frac{(a + d) \pm \sqrt{(a + d)^2 - 4(ad - bc)}}{2}
+\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Shortcut to write Characteristic polynomial of a <span class="math inline">\(2\times 2\)</span> matrix
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(A=\begin{bmatrix} a &amp; b\\ c&amp; d\end{bmatrix}\)</span>, then the characteristic polynomial is <span class="math display">\[\lambda^2-(\text{Trace}(A))\lambda+det(A)=0\]</span></p>
+<p>Eigen vectors can be found by using the formula: <span class="math display">\[\begin{equation*}
+EV(\lambda=\lambda_1)=\begin{bmatrix}\lambda_1-d\\ c\end{bmatrix}
+\end{equation*}\]</span></p>
+</div>
+</div>
+</section>
+<section id="problems" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="problems"><span class="header-section-number">5.3.3</span> Problems</h3>
+<p><strong>Example 1:</strong> Find Eigenvalues and Eigenvectors of the matrix, <span class="math display">\[A = \begin{pmatrix} 3 &amp; 2 \\ 4 &amp; 1 \end{pmatrix}\]</span></p>
+<p><em>Solution:</em></p>
+<p>The characteristic equation is given by <span class="math display">\[det(A-\lambda I)=0\]</span></p>
+<p><span class="math display">\[\begin{align*}
+\lambda^2 - 4\lambda - 5 &amp;= 0\\
+(\lambda-5)(\lambda+1)&amp;=0\\
+\end{align*}\]</span></p>
+<p>Hence the eigen values are <span class="math inline">\(\lambda_1=5,\quad \lambda_2=-1\)</span>.</p>
+<p>So the eigen vectors are: <span class="math display">\[\begin{align*}
+EV(\lambda=\lambda_1)&amp;=\begin{bmatrix}\lambda_1-d\\ c\end{bmatrix}\\
+\therefore EV(\lambda=5)&amp;=\begin{bmatrix}4\\ 4\end{bmatrix}=\begin{bmatrix}1\\ 1\end{bmatrix}\\
+\therefore EV(\lambda=-1)&amp;=\begin{bmatrix}-2\\ 4\end{bmatrix}=\begin{bmatrix}-1\\ 2\end{bmatrix}
+\end{align*}\]</span></p>
+<p><strong>Problem 2:</strong> Calculate the eigenvalues and eigenvectors of the matrix: <span class="math inline">\(A = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}\)</span></p>
+<p><em>Solution:</em></p>
+<p>To find the eigenvalues and eigenvectors of a <span class="math inline">\(2 \times 2\)</span> matrix, we can use the shortcut formula for the characteristic polynomial:</p>
+<p><span class="math display">\[
+\lambda^2 - \text{trace}(A)\lambda + \det(A) = 0,
+\]</span></p>
+<p>where <span class="math inline">\(A\)</span> is the matrix. Let’s apply this to the matrix</p>
+<p><span class="math display">\[
+A = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}.
+\]</span></p>
+<p>First, we calculate the trace and determinant of <span class="math inline">\(A\)</span>:</p>
+<ul>
+<li>The trace is the sum of the diagonal elements:</li>
+</ul>
+<p><span class="math display">\[
+\text{trace}(A) = 2 + 2 = 4.
+\]</span></p>
+<ul>
+<li>The determinant is calculated as follows:</li>
+</ul>
+<p><span class="math display">\[
+\det(A) = (2)(2) - (1)(1) = 4 - 1 = 3.
+\]</span></p>
+<p>Next, substituting the trace and determinant into the characteristic polynomial gives:</p>
+<p><span class="math display">\[
+\lambda^2 - (4)\lambda + 3 = 0,
+\]</span></p>
+<p>which simplifies to:</p>
+<p><span class="math display">\[
+\lambda^2 - 4\lambda + 3 = 0.
+\]</span></p>
+<p>We can factor this quadratic equation:</p>
+<p><span class="math display">\[
+(\lambda - 1)(\lambda - 3) = 0.
+\]</span></p>
+<p>Setting each factor to zero gives the eigenvalues:</p>
+<p><span class="math display">\[
+\lambda_1 = 1, \quad \lambda_2 = 3.
+\]</span></p>
+<p>To find the eigenvectors corresponding to each eigenvalue, we use the shortcut for the eigenvector of a <span class="math inline">\(2 \times 2\)</span> matrix <span class="math inline">\(A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span>:</p>
+<p><span class="math display">\[
+EV(\lambda) = \begin{pmatrix} \lambda - d \\ c \end{pmatrix}.
+\]</span></p>
+<p>For the eigenvalue <span class="math inline">\(\lambda_1 = 1\)</span>:</p>
+<p><span class="math display">\[
+EV(1) = \begin{pmatrix} 1 - 2 \\ 1 \end{pmatrix} = \begin{pmatrix} -1 \\ 1 \end{pmatrix}.
+\]</span></p>
+<p>This eigenvector can be simplified (up to a scalar multiple) to:</p>
+<p><span class="math display">\[
+\mathbf{v_1} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}.
+\]</span></p>
+<p>For the eigenvalue <span class="math inline">\(\lambda_2 = 3\)</span>:</p>
+<p><span class="math display">\[
+EV(3) = \begin{pmatrix} 3 - 2 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}.
+\]</span></p>
+<p>This eigenvector is already in a simple form:</p>
+<p><span class="math display">\[
+\mathbf{v_2} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}.
+\]</span></p>
+<p><strong>Problem 3:</strong> For the matrix: <span class="math inline">\(A = \begin{pmatrix} 1 &amp; 2 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \end{pmatrix}\)</span>, find the eigenvalues and eigenvectors.</p>
+<p><em>Solution:</em></p>
+<p>We are given the matrix <span class="math display">\[
+A = \begin{pmatrix} 1 &amp; 2 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \end{pmatrix}
+\]</span></p>
+<p>and we aim to find its eigenvalues using the characteristic polynomial.</p>
+<p>The shortcut formula for the characteristic polynomial of a <span class="math inline">\(3 \times 3\)</span> matrix is given by: <span class="math display">\[
+\lambda^3 - \text{tr}(A)\lambda^2 + (\text{sum of principal minors of } A)\lambda - \det(A) = 0.
+\]</span></p>
+<p>The trace of a matrix is the sum of its diagonal elements. For matrix <span class="math inline">\(A\)</span>, we have: <span class="math display">\[
+\text{tr}(A) = 1 + 1 + 1 = 3.
+\]</span></p>
+<p>The principal minors are the determinants of the <span class="math inline">\(2 \times 2\)</span> submatrices obtained by deleting one row and one column of <span class="math inline">\(A\)</span>.</p>
+<p>The first minor is obtained by deleting the third row and third column: <span class="math display">\[
+\det\begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 1 \end{pmatrix} = (1)(1) - (2)(0) = 1.
+\]</span></p>
+<p>The second minor is obtained by deleting the second row and second column: <span class="math display">\[
+\det\begin{pmatrix} 1 &amp; 1 \\ 1 &amp; 1 \end{pmatrix} = (1)(1) - (1)(1) = 0.
+\]</span></p>
+<p>The third minor is obtained by deleting the first row and first column: <span class="math display">\[
+\det\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} = (1)(1) - (0)(0) = 1.
+\]</span></p>
+<p>Thus, the sum of the principal minors is: <span class="math display">\[
+1 + 0 + 1 = 2.
+\]</span></p>
+<p>The determinant of <span class="math inline">\(A\)</span> can be calculated using cofactor expansion along the first row: <span class="math display">\[
+\det(A) = 1 \cdot \det\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} - 2 \cdot \det\begin{pmatrix} 0 &amp; 0 \\ 1 &amp; 1 \end{pmatrix} + 1 \cdot \det\begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}
+\]</span> <span class="math display">\[
+= 1 \cdot (1) - 2 \cdot (0) + 1 \cdot (-1) = 1 - 0 - 1 = 0.
+\]</span></p>
+<p>Now, we substitute these values into the characteristic polynomial formula: <span class="math display">\[
+\lambda^3 - \text{tr}(A)\lambda^2 + (\text{sum of principal minors})\lambda - \det(A) = 0
+\]</span> <span class="math display">\[
+\lambda^3 - 3\lambda^2 + 2\lambda - 0 = 0.
+\]</span></p>
+<p>We now solve the equation: <span class="math display">\[
+\lambda^3 - 3\lambda^2 + 2\lambda = 0.
+\]</span> Factoring out <span class="math inline">\(\lambda\)</span> and apply factor theorem, we get:</p>
+<p><span class="math display">\[\begin{align*}
+   \lambda(\lambda^2 - 3\lambda + 2) &amp;= 0\\
+   \lambda(\lambda-2)(\lambda-1)&amp;=0
+\end{align*}\]</span></p>
+<p>This gives one eigenvalue: <span class="math display">\[
+\lambda_1 = 0;\quad \lambda_2=2;\quad \lambda_3=1
+\]</span></p>
+<p>Now we find the eigenvectors corresponding to each eigenvalue.</p>
+<p>For <span class="math inline">\(\lambda_1 = 0\)</span>, solve <span class="math inline">\((A - 0I)\mathbf{v} = 0\)</span>: <span class="math display">\[
+\begin{pmatrix} 1 &amp; 2 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}.
+\]</span> This gives the system: <span class="math display">\[
+x + 2y + z = 0, \quad y = 0, \quad x + z = 0.
+\]</span> Thus, <span class="math inline">\(x = -z\)</span>, and the eigenvector is: <span class="math display">\[
+\mathbf{v}_1 = \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}.
+\]</span></p>
+<p>For <span class="math inline">\(\lambda_2 = 2\)</span>, solve <span class="math inline">\((A - 2I)\mathbf{v} = 0\)</span>: <span class="math display">\[
+\begin{pmatrix} -1 &amp; 2 &amp; 1 \\ 0 &amp; -1 &amp; 0 \\ 1 &amp; 0 &amp; -1 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}.
+\]</span> This gives the system: <span class="math display">\[
+-x + 2y + z = 0, \quad -y = 0, \quad x - z = 0.
+\]</span> Thus, <span class="math inline">\(x = z\)</span>, and the eigenvector is: <span class="math display">\[
+\mathbf{v}_2 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}.
+\]</span></p>
+<p>For <span class="math inline">\(\lambda_3 = 1\)</span>, solve <span class="math inline">\((A - I)\mathbf{v} = 0\)</span>: <span class="math display">\[
+\begin{pmatrix} 0 &amp; 2 &amp; 1 \\ 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 0 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}.
+\]</span> This gives the system: <span class="math display">\[
+2y + z = 0, \quad x = 0.
+\]</span> Thus, <span class="math inline">\(z = -2y\)</span>, and the eigenvector is: <span class="math display">\[
+\mathbf{v}_3 = \begin{pmatrix} 0 \\ 1 \\ -2 \end{pmatrix}.
+\]</span></p>
+<p><strong>Problem 3:</strong> If <span class="math inline">\(A=\begin{bmatrix}1&amp;2&amp;4\\ 0&amp;3&amp;4\\ 1&amp;-1&amp;-1 \end{bmatrix}\)</span>, compute the eigen values and eigen vectors and left eigen vectors of <span class="math inline">\(A\)</span>.</p>
+<p><em>Solution:</em></p>
+<p>We are given the matrix <span class="math display">\[
+A = \begin{pmatrix} 1 &amp; 2 &amp; 4 \\ 0 &amp; 3 &amp; 4 \\ 1 &amp; -1 &amp; -1 \end{pmatrix}
+\]</span></p>
+<p>and need to find its eigenvalues and eigenvectors.</p>
+<p>The characteristic polynomial for a <span class="math inline">\(3 \times 3\)</span> matrix is given by: <span class="math display">\[
+\lambda^3 - \text{tr}(A)\lambda^2 + (\text{sum of principal minors})\lambda - \det(A) = 0.
+\]</span></p>
+<p>The trace is the sum of the diagonal elements: <span class="math display">\[
+\text{tr}(A) = 1 + 3 + (-1) = 3.
+\]</span></p>
+<p>We now compute the <span class="math inline">\(2 \times 2\)</span> principal minors:</p>
+<ul>
+<li><p>Minor by removing the third row and third column: <span class="math display">\[
+\det\begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 3 \end{pmatrix} = (1)(3) - (2)(0) = 3.
+\]</span></p></li>
+<li><p>Minor by removing the second row and second column: <span class="math display">\[
+\det\begin{pmatrix} 1 &amp; 4 \\ 1 &amp; -1 \end{pmatrix} = (1)(-1) - (4)(1) = -1 - 4 = -5.
+\]</span></p></li>
+<li><p>Minor by removing the first row and first column: <span class="math display">\[
+\det\begin{pmatrix} 3 &amp; 4 \\ -1 &amp; -1 \end{pmatrix} = (3)(-1) - (4)(-1) = -3 + 4 = 1.
+\]</span></p></li>
+</ul>
+<p>Thus, the sum of the principal minors is: <span class="math display">\[
+3 + (-5) + 1 = -1.
+\]</span></p>
+<p>We calculate the determinant of <span class="math inline">\(A\)</span> by cofactor expansion along the first row: <span class="math display">\[
+\det(A) = 1 \cdot \det\begin{pmatrix} 3 &amp; 4 \\ -1 &amp; -1 \end{pmatrix} - 2 \cdot \det\begin{pmatrix} 0 &amp; 4 \\ 1 &amp; -1 \end{pmatrix} + 4 \cdot \det\begin{pmatrix} 0 &amp; 3 \\ 1 &amp; -1 \end{pmatrix}.
+\]</span> The <span class="math inline">\(2 \times 2\)</span> determinants are: <span class="math display">\[
+\det\begin{pmatrix} 3 &amp; 4 \\ -1 &amp; -1 \end{pmatrix} = -3 + 4 = 1, \quad \det\begin{pmatrix} 0 &amp; 4 \\ 1 &amp; -1 \end{pmatrix} = -4,
+\]</span> <span class="math display">\[
+\det\begin{pmatrix} 0 &amp; 3 \\ 1 &amp; -1 \end{pmatrix} = -3.
+\]</span></p>
+<p>Thus: <span class="math display">\[
+\det(A) = 1 \cdot 1 - 2 \cdot (-4) + 4 \cdot (-3) = 1 + 8 - 12 = -3.
+\]</span></p>
+<p>Substituting into the characteristic polynomial: <span class="math display">\[
+\lambda^3 - \text{tr}(A)\lambda^2 + (\text{sum of principal minors})\lambda - \det(A) = 0,
+\]</span></p>
+<p>we get: <span class="math display">\[
+\lambda^3 - 3\lambda^2 - \lambda + 3 = 0.
+\]</span></p>
+<p>We now solve the cubic equation: <span class="math display">\[\begin{align*}
+   \lambda^3 - 3\lambda^2 - \lambda + 3&amp; = 0. \\
+   (\lambda-1)(\lambda+1)(\lambda -3)&amp;=0
+\end{align*}\]</span></p>
+<p><span class="math display">\[\lambda_1 = 1, \quad \lambda_2 = -1, \quad \lambda_3 = 3.\]</span></p>
+<p>To find the eigenvector corresponding to <span class="math inline">\(\lambda_1 = 3\)</span>, solve <span class="math inline">\((A - 3I)\mathbf{v} = 0\)</span>: <span class="math display">\[
+A - 3I = \begin{pmatrix} 1 &amp; 2 &amp; 4 \\ 0 &amp; 3 &amp; 4 \\ 1 &amp; -1 &amp; -1 \end{pmatrix} - 3\begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix} = \begin{pmatrix} -2 &amp; 2 &amp; 4 \\ 0 &amp; 0 &amp; 4 \\ 1 &amp; -1 &amp; -4 \end{pmatrix}.
+\]</span></p>
+<p>Solving this system gives the eigenvector: <span class="math display">\[
+\mathbf{v}_1 = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}.
+\]</span></p>
+<p>For <span class="math inline">\(\lambda_2 = -1\)</span>, solve <span class="math inline">\((A +I)\mathbf{v} = 0\)</span>: <span class="math display">\[
+A +I = \begin{pmatrix} 1 &amp; 2 &amp; 4 \\ 0 &amp; 3 &amp; 4 \\ 1 &amp; -1 &amp; -1 \end{pmatrix} +\begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix} = \begin{pmatrix} 2 &amp; 2 &amp; 4 \\ 0 &amp; 4 &amp; 4 \\ 1 &amp; -1 &amp; 0 \end{pmatrix}.
+\]</span></p>
+<p>Note that the third row is depending on first and second rows. So by finding the cross product of first two rows,</p>
+<p><span class="math display">\[
+\mathbf{v}_2 = \begin{pmatrix} -1 \\ -1 \\ 1 \end{pmatrix}.
+\]</span></p>
+<p>For <span class="math inline">\(\lambda_3 = 1\)</span>, solve <span class="math inline">\((A -I)\mathbf{v} = 0\)</span>: <span class="math display">\[
+A - I = \begin{pmatrix} 1 &amp; 2 &amp; 4 \\ 0 &amp; 3 &amp; 4 \\ 1 &amp; -1 &amp; -1 \end{pmatrix} -\begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix} = \begin{pmatrix} 0 &amp; 2 &amp; 4 \\ 0 &amp; 2 &amp; 4 \\ 1 &amp; -1 &amp; -2\end{pmatrix}.
+\]</span></p>
+<p>Note that the second row is same as first row. So by finding the cross product of first and third rows, <span class="math display">\[
+\mathbf{v}_3 = \begin{pmatrix} 0 \\ -2 \\ 1 \end{pmatrix}.
+\]</span></p>
+<p>Thus, the eigenvalues of the matrix are: <span class="math display">\[
+\lambda_1 = 3, \quad \lambda_2 = -1, \quad \lambda_3 = 1
+\]</span></p>
+<p>with corresponding eigenvectors <span class="math inline">\(\mathbf{v}_1=\begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}\)</span>, <span class="math inline">\(\mathbf{v}_2=\begin{pmatrix} -1 \\ -1 \\ 1 \end{pmatrix}\)</span>, and <span class="math inline">\(\mathbf{v}_3=\begin{pmatrix} 0 \\ -2 \\ 1 \end{pmatrix}\)</span>.</p>
+<p>Left eigen vectors of the matrix <span class="math inline">\(A\)</span> are eigen vectors of <span class="math inline">\(A^T\)</span>.</p>
+<p>Here <span class="math inline">\(A^T=\begin{bmatrix}
+    1&amp;0&amp;1\\ 2&amp;3&amp;-1\\ 4&amp;4&amp;-1
+\end{bmatrix}\)</span>.</p>
+<p>Since <span class="math inline">\(A\)</span> and <span class="math inline">\(A^T\)</span> have same eigen values, it is enough to find corresponding eigen vectors. When <span class="math inline">\(\lambda=3\)</span>, the coefficient matrix of <span class="math inline">\((A-\lambda I)X=0\)</span> reduced into <span class="math inline">\(\begin{bmatrix}
+    -2&amp;0&amp;1\\ 2&amp;0&amp;-1\\ 4&amp;4&amp;-4
+\end{bmatrix}\)</span></p>
+<p>Here the only independent rows are first and last. So the eigen vector can be found as the cross product of these two rows. <span class="math inline">\(\therefore v_1=\begin{bmatrix}
+    1\\1\\2
+\end{bmatrix}\)</span>.</p>
+<p>When <span class="math inline">\(\lambda=-1\)</span>, the coefficient matrix of <span class="math inline">\((A-\lambda I)X=0\)</span> reduced into <span class="math inline">\(\begin{bmatrix}
+    2&amp;0&amp;1\\ 2&amp;4&amp;-1\\ 4&amp;4&amp;0
+\end{bmatrix}\)</span></p>
+<p>Here the only independent rows are first and second. So the eigen vector can be found as the cross product of these two rows. <span class="math inline">\(\therefore v_2=\begin{bmatrix}
+    -1\\1\\2
+\end{bmatrix}\)</span>. When <span class="math inline">\(\lambda=1\)</span>, the coefficient matrix of <span class="math inline">\((A-\lambda I)X=0\)</span> reduced into <span class="math inline">\(\begin{bmatrix}
+    0&amp;0&amp;1\\ 2&amp;2&amp;-1\\ 4&amp;4&amp;-2
+\end{bmatrix}\)</span></p>
+<p>Here the only independent rows are first and second. So the eigen vector can be found as the cross product of these two rows. <span class="math inline">\(\therefore v_2=\begin{bmatrix}
+    -1\\1\\0
+\end{bmatrix}\)</span>.</p>
+</section>
+<section id="diagonalization-of-symmetric-matrices" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="diagonalization-of-symmetric-matrices"><span class="header-section-number">5.3.4</span> Diagonalization of Symmetric Matrices</h3>
+<p>For a symmetric matrix <span class="math inline">\(A\)</span>, the process of diagonalization can be summarized as follows:</p>
+<ol type="1">
+<li><p><strong>Compute eigenvalues</strong>: Solve the characteristic equation <span class="math inline">\(\text{det}(A - \lambda I) = 0\)</span> to find the eigenvalues.</p></li>
+<li><p><strong>Find eigenvectors</strong>: For each eigenvalue <span class="math inline">\(\lambda_i\)</span>, solve <span class="math inline">\((A - \lambda_i I)v_i = 0\)</span> to find the corresponding eigenvector <span class="math inline">\(v_i\)</span>.</p></li>
+<li><p><strong>Form the eigenvector matrix</strong>: Arrange the eigenvectors into a matrix <span class="math inline">\(Q\)</span>, with each eigenvector as a column.</p></li>
+<li><p><strong>Form the diagonal matrix of eigenvalues</strong>: Construct <span class="math inline">\(\Lambda\)</span> by placing the eigenvalues along the diagonal of the matrix.</p></li>
+</ol>
+<p>Thus, the matrix can be expressed as <span class="math inline">\(A = Q \Lambda Q^\top\)</span>.</p>
+</section>
+<section id="matrix-functions-and-spectral-theorem" class="level3" data-number="5.3.5">
+<h3 data-number="5.3.5" class="anchored" data-anchor-id="matrix-functions-and-spectral-theorem"><span class="header-section-number">5.3.5</span> Matrix Functions and Spectral Theorem</h3>
+<p>Once a matrix is diagonalized, various matrix functions become easier to compute. For a function <span class="math inline">\(f(A)\)</span>, such as the exponential of a matrix or any power, the function can be applied to the diagonal matrix of eigenvalues:</p>
+<p><span class="math display">\[
+f(A) = Q f(\Lambda) Q^\top
+\]</span></p>
+<p>where <span class="math inline">\(f(\Lambda)\)</span> is the function applied element-wise to the eigenvalues in the diagonal matrix <span class="math inline">\(\Lambda\)</span>.</p>
+</section>
+<section id="symmetric-positive-definite-matrices" class="level3" data-number="5.3.6">
+<h3 data-number="5.3.6" class="anchored" data-anchor-id="symmetric-positive-definite-matrices"><span class="header-section-number">5.3.6</span> Symmetric Positive Definite Matrices</h3>
+<p>A special class of matrices, symmetric positive definite matrices, are often used in optimization and machine learning. These matrices have all positive eigenvalues, ensuring that the matrix is invertible and has a unique decomposition.</p>
+</section>
+</section>
+<section id="computational-aspects" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="computational-aspects"><span class="header-section-number">5.4</span> Computational Aspects</h2>
+<p>Spectral decomposition is computationally intensive, particularly for large matrices. Efficient numerical algorithms like the <strong>QR algorithm</strong> and <strong>Jacobi method</strong> are used to compute eigenvalues and eigenvectors in practice. For dense matrices, algorithms scale as <span class="math inline">\(O(n^3)\)</span>, but specialized methods exist for sparse matrices that take advantage of matrix structure to reduce computational cost.</p>
+</section>
+<section id="practical-applications" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="practical-applications"><span class="header-section-number">5.5</span> Practical Applications</h2>
+<ul>
+<li><strong>Principal Component Analysis (PCA)</strong>: Used to reduce the dimensionality of datasets by finding the principal components (eigenvectors) that capture the most variance in the data.</li>
+<li><strong>Quantum Mechanics</strong>: Eigenvalue problems frequently arise in solving Schrödinger’s equation, where eigenfunctions correspond to states of a quantum system, and eigenvalues represent observable quantities like energy.</li>
+<li><strong>Markov Chains</strong>: In probability and stochastic processes, spectral decomposition helps analyze long-term behavior by breaking down the transition matrix into eigenvalue components.</li>
+<li><strong>Graph Theory</strong>: The adjacency matrix of a graph can be decomposed using spectral methods to reveal properties like community structure and connectivity.</li>
+</ul>
+</section>
+<section id="conclusion" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">5.6</span> Conclusion</h2>
+<p>Spectral decomposition offers an elegant and practical framework for understanding the fundamental structure of matrices. By reducing matrices to their eigenvalues and eigenvectors, it simplifies numerous computational tasks in linear algebra, making it an indispensable tool in various applications such as machine learning, physics, and optimization.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./module_3.html" class="pagination-link" aria-label="Python Libraries for Computational Linear Algebra">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python Libraries for Computational Linear Algebra</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
