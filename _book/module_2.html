@@ -340,7 +340,7 @@ window.Quarto = {
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="matrix-addition-and-subtraction-in-data-analysis"><span class="header-section-number">2.2.1</span> Matrix Addition and Subtraction in Data Analysis</h3>
 <p>Matrix addition and subtraction are fundamental operations that help in combining datasets and analyzing differences.</p>
 <p><strong>Simple Example: Combining Quarterly Sales Data</strong></p>
-<p>We begin with quarterly sales data from different regions and combine them to get the total sales. The sales data is given in <a href="#tbl-qtb" class="quarto-xref">Table&nbsp;<span>2.1</span></a>. A ar plot of the total sales is shown in <a href="#fig-total1" class="quarto-xref">Fig&nbsp;<span>2.1</span></a>.</p>
+<p>We begin with quarterly sales data from different regions and combine them to get the total sales. The sales data is given in <a href="#tbl-qtb" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-qtb</span></a>. A ar plot of the total sales is shown in <a href="#fig-total1" class="quarto-xref">Fig&nbsp;<span class="quarto-unresolved-ref ref-noprefix">fig-total1</span></a>.</p>
 <div id="tbl-qtb" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-qtb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -409,7 +409,7 @@ Figure&nbsp;2.1: Computing Total Sales using <code>Numpy</code> aggregation meth
 </div>
 </div>
 </div>
-<p>In the above <code>Python</code> code, we have performed the aggregation operation with the <code>NumPy</code> method. Same can be done in a more data analysis style using <code>pandas</code> inorder to handle tabular data meaningfully. In this approach, quarterly sales data of each region is stored as <code>DataFrames</code>(like an excel sheet). The we combine these two <code>DataFrames</code> into one. After that create a new row with index ‘Total’ and populate this row with sum of quarterly sales in Region A and Region B. Finally a bar plot is created using this ‘Total’ sales. Advantage of this approach is that we don’t need the <code>matplotlib</code> library to create visualizations!. The EDA using this approach is shown in <a href="#fig-tot2" class="quarto-xref">Fig&nbsp;<span>2.2</span></a>.</p>
+<p>In the above <code>Python</code> code, we have performed the aggregation operation with the <code>NumPy</code> method. Same can be done in a more data analysis style using <code>pandas</code> inorder to handle tabular data meaningfully. In this approach, quarterly sales data of each region is stored as <code>DataFrames</code>(like an excel sheet). The we combine these two <code>DataFrames</code> into one. After that create a new row with index ‘Total’ and populate this row with sum of quarterly sales in Region A and Region B. Finally a bar plot is created using this ‘Total’ sales. Advantage of this approach is that we don’t need the <code>matplotlib</code> library to create visualizations!. The EDA using this approach is shown in <a href="#fig-tot2" class="quarto-xref">Fig&nbsp;<span class="quarto-unresolved-ref ref-noprefix">fig-tot2</span></a>.</p>
 <div id="cell-fig-tot2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -440,7 +440,7 @@ Figure&nbsp;2.2: Computation of Total Sales using <code>Pandas</code> method
 </div>
 </div>
 </div>
-<p>We can extend this in to more advanced examples. Irrespective to the size of the data, for representation and aggregation tasks matrix models are best options and are used in industry as a standard. Let us consider an advanced example to analyse difference in stock prices. For this example we are using a simulated data. The python code for this simulation process is shown in <a href="#fig-sim" class="quarto-xref">Fig&nbsp;<span>2.3</span></a>.</p>
+<p>We can extend this in to more advanced examples. Irrespective to the size of the data, for representation and aggregation tasks matrix models are best options and are used in industry as a standard. Let us consider an advanced example to analyse difference in stock prices. For this example we are using a simulated data. The python code for this simulation process is shown in <a href="#fig-sim" class="quarto-xref">Fig&nbsp;<span class="quarto-unresolved-ref ref-noprefix">fig-sim</span></a>.</p>
 <div id="cell-fig-sim" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -523,7 +523,7 @@ Table&nbsp;2.2: Employee Performance Data
 <p>For example, while applying the <code>min-max</code> scaling in the first value of Metric A, the scaled value is <span class="math display">\[min_max(80)\dfrac{80-80}{120-80}=0\]</span></p>
 <p>Similarly</p>
 <p><span class="math display">\[min_max(100)\dfrac{100-80}{120-80}=0.5\]</span></p>
-<p>When we apply this formula to Metric A and Metric B, the scaled output from <a href="#tbl-EPD" class="quarto-xref">Table&nbsp;<span>2.2</span></a> will be as follows:</p>
+<p>When we apply this formula to Metric A and Metric B, the scaled output from <a href="#tbl-EPD" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-EPD</span></a> will be as follows:</p>
 <div id="tbl-EPDu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-EPDu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -569,8 +569,8 @@ Table&nbsp;2.3: Employee Performance Data
 </div>
 </figure>
 </div>
-<p>It is interesting to look into the scaled data! In the orginal table (<a href="#tbl-EPD" class="quarto-xref">Table&nbsp;<span>2.2</span></a>) it is looked like Metric B is superior. But from the scaled table (<a href="#tbl-EPDu" class="quarto-xref">Table&nbsp;<span>2.3</span></a>), it is clear that both the Metrics are representing same relative information. This will help us to identify the redundency in measure and so skip any one of the Metric before analysis!.</p>
-<p>The same can be achieved through a matrix operation. The <code>Python</code> implementation of this scaling process is shown in <a href="#fig-totalsales" class="quarto-xref">Fig&nbsp;<span>2.4</span></a>.</p>
+<p>It is interesting to look into the scaled data! In the orginal table (<a href="#tbl-EPD" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-EPD</span></a>) it is looked like Metric B is superior. But from the scaled table (<a href="#tbl-EPDu" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-EPDu</span></a>), it is clear that both the Metrics are representing same relative information. This will help us to identify the redundency in measure and so skip any one of the Metric before analysis!.</p>
+<p>The same can be achieved through a matrix operation. The <code>Python</code> implementation of this scaling process is shown in <a href="#fig-totalsales" class="quarto-xref">Fig&nbsp;<span class="quarto-unresolved-ref ref-noprefix">fig-totalsales</span></a>.</p>
 <div id="cell-fig-totalsales" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -623,7 +623,7 @@ Note
 <p>The <code>min-max</code> scaling method will confine the feature values (attributes) into the range <span class="math inline">\([0,1]\)</span>. So in effect all the features are scaled proportionally to the data spectrum.</p>
 </div>
 </div>
-<p>Similarly, we can use the <code>standard scaling</code> (transformation to normal distribution) using the transformation <span class="math inline">\(\dfrac{x-\bar{x}}{\sigma}\)</span>. Scaling table is given as a practice task to the reader. The python code for this operation is shown in <a href="#fig-minmax" class="quarto-xref">Fig&nbsp;<span>2.5</span></a>.</p>
+<p>Similarly, we can use the <code>standard scaling</code> (transformation to normal distribution) using the transformation <span class="math inline">\(\dfrac{x-\bar{x}}{\sigma}\)</span>. Scaling table is given as a practice task to the reader. The python code for this operation is shown in <a href="#fig-minmax" class="quarto-xref">Fig&nbsp;<span class="quarto-unresolved-ref ref-noprefix">fig-minmax</span></a>.</p>
 <div id="cell-fig-minmax" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard scaling from scratch</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> standard_scaling(data):</span>
@@ -671,7 +671,7 @@ Figure&nbsp;2.5: Min-max scaling using basic python
 </div>
 </div>
 </div>
-<p>To understand the effect of standard scaling, let us consider <a href="#fig-comp1" class="quarto-xref">Fig&nbsp;<span>2.6</span></a>. This plot create the frequency distribution of the data as a histogram along with the density function. From the first sub-plot, it is clear that the distribution has multiple modes (peaks). When we apply the standard scaling, the distribution become un-modal(only one peek). This is demonstrated in the second sub-plot.</p>
+<p>To understand the effect of standard scaling, let us consider <a href="#fig-comp1" class="quarto-xref">Fig&nbsp;<span class="quarto-unresolved-ref ref-noprefix">fig-comp1</span></a>. This plot create the frequency distribution of the data as a histogram along with the density function. From the first sub-plot, it is clear that the distribution has multiple modes (peaks). When we apply the standard scaling, the distribution become un-modal(only one peek). This is demonstrated in the second sub-plot.</p>
 <div id="cell-fig-comp1" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard scaling from scratch</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -707,7 +707,7 @@ Figure&nbsp;2.6: Impact of standard scaling on the distribution
 </div>
 </div>
 </div>
-<p>A scatter plot showing the compare the impact of scaling on the given distribution is shown in <a href="#fig-scatter" class="quarto-xref">Fig&nbsp;<span>2.7</span></a>.</p>
+<p>A scatter plot showing the compare the impact of scaling on the given distribution is shown in <a href="#fig-scatter" class="quarto-xref">Fig&nbsp;<span class="quarto-unresolved-ref ref-noprefix">fig-scatter</span></a>.</p>
 <div id="cell-fig-scatter" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot original and scaled data</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))</span>
@@ -748,7 +748,7 @@ Figure&nbsp;2.7: Comparison of impact of scaling on the distribution
 </div>
 </div>
 </div>
-<p>From the <a href="#fig-scatter" class="quarto-xref">Fig&nbsp;<span>2.7</span></a>, it is clear that the scaling does not affect the pattern of the data, instead it just scale the distribution proportionally!</p>
+<p>From the <a href="#fig-scatter" class="quarto-xref">Fig&nbsp;<span class="quarto-unresolved-ref ref-noprefix">fig-scatter</span></a>, it is clear that the scaling does not affect the pattern of the data, instead it just scale the distribution proportionally!</p>
 <p>We can use the <code>scikit-learn</code> library for do the same thing in a very simple handy approach. The <code>python</code> code for this job is shown below.</p>
 <div id="d9577da2" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
@@ -784,7 +784,7 @@ Figure&nbsp;2.7: Comparison of impact of scaling on the distribution
  [ 1.41421356  1.41421356]]</code></pre>
 </div>
 </div>
-<p>A scatter plot showing the impact on scaling is shown in <a href="#fig-comp2" class="quarto-xref">Fig&nbsp;<span>2.8</span></a>. This plot compare the m<code>min-max</code> and <code>standard-scaling</code>.</p>
+<p>A scatter plot showing the impact on scaling is shown in <a href="#fig-comp2" class="quarto-xref">Fig&nbsp;<span class="quarto-unresolved-ref ref-noprefix">fig-comp2</span></a>. This plot compare the m<code>min-max</code> and <code>standard-scaling</code>.</p>
 <div id="cell-fig-comp2" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot original and scaled data</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))</span>
@@ -934,7 +934,7 @@ Matrix([[7, 16, 27], [40, 55, 72]])</code></pre>
 </div>
 <p><strong>Practical Applications</strong></p>
 <p><em>Application 1: Image Masking</em></p>
-<p>The Hadamard product can be used for image masking. Here’s how you can apply a mask to an image and visualize it as shown in <a href="#fig-imgmask" class="quarto-xref">Fig&nbsp;<span>2.9</span></a>.</p>
+<p>The Hadamard product can be used for image masking. Here’s how you can apply a mask to an image and visualize it as shown in <a href="#fig-imgmask" class="quarto-xref">Fig&nbsp;<span class="quarto-unresolved-ref ref-noprefix">fig-imgmask</span></a>.</p>
 <div id="cell-fig-imgmask" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -2342,7 +2342,7 @@ Problem statement
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In the realm of recommendation systems, predicting user preferences for various product categories based on past interactions is a common challenge. Suppose we have data on user preferences for different products and categories. We can use this data to recommend the best products for each user by employing mathematical tools such as the Kronecker product. The User Preference and Category relationships are given in <a href="#tbl-UPM" class="quarto-xref">Table&nbsp;<span>2.4</span></a> and <a href="#tbl-CRM" class="quarto-xref">Table&nbsp;<span>2.5</span></a> .</p>
+<p>In the realm of recommendation systems, predicting user preferences for various product categories based on past interactions is a common challenge. Suppose we have data on user preferences for different products and categories. We can use this data to recommend the best products for each user by employing mathematical tools such as the Kronecker product. The User Preference and Category relationships are given in <a href="#tbl-UPM" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-UPM</span></a> and <a href="#tbl-CRM" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-CRM</span></a> .</p>
 <div id="tbl-UPM" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-UPM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2551,7 +2551,7 @@ Electronics_F3
 Books_F3</code></pre>
 </div>
 </div>
-<p>A simple visualization of this recomendation system is shown in <a href="#fig-reco" class="quarto-xref">Fig&nbsp;<span>2.11</span></a>.</p>
+<p>A simple visualization of this recomendation system is shown in <a href="#fig-reco" class="quarto-xref">Fig&nbsp;<span class="quarto-unresolved-ref ref-noprefix">fig-reco</span></a>.</p>
 <div id="cell-fig-reco" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_recommendations(user_index):</span>
@@ -2615,7 +2615,7 @@ Least Possible Values of Determinant
 </div>
 </div>
 <p>Now let’s look into the most important matrix measure for advanced application in Linear Algebra.</p>
-<p>As we know the matrix is basically a representation tool that make things abstract- remove unnecessary details. Then the matrix itself can be represented in many ways. This is the real story telling with this most promising mathematical structure. Consider a context of collecting feedback about a product in three aspects- cost, quality and practicality. For simplicity in calculation, we consider responses from 3 customers only. The data is shown in <a href="#tbl-RT" class="quarto-xref">Table&nbsp;<span>2.6</span></a>.</p>
+<p>As we know the matrix is basically a representation tool that make things abstract- remove unnecessary details. Then the matrix itself can be represented in many ways. This is the real story telling with this most promising mathematical structure. Consider a context of collecting feedback about a product in three aspects- cost, quality and practicality. For simplicity in calculation, we consider responses from 3 customers only. The data is shown in <a href="#tbl-RT" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-RT</span></a>.</p>
 <div id="tbl-RT" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-RT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2760,7 +2760,7 @@ Note
 </section>
 <section id="fundamental-subspaces" class="level3" data-number="2.2.5">
 <h3 data-number="2.2.5" class="anchored" data-anchor-id="fundamental-subspaces"><span class="header-section-number">2.2.5</span> Fundamental Subspaces</h3>
-<p>In section <span class="citation" data-cites="note-ortho">(<a href="references.html#ref-note-ortho" role="doc-biblioref"><strong>note-ortho?</strong></a>)</span>, we have seen that for any matrix <span class="math inline">\(A\)</span>, there is two pairs of inter-related orthogonal spaces. This leads to the concept of Fundamental sup spaces.</p>
+<p>In section <span class="citation" data-cites="note-ortho">(<a href="#ref-note-ortho" role="doc-biblioref"><strong>note-ortho?</strong></a>)</span>, we have seen that for any matrix <span class="math inline">\(A\)</span>, there is two pairs of inter-related orthogonal spaces. This leads to the concept of Fundamental sup spaces.</p>
 <p>Matrices are not just arrays of numbers; they can represent linear transformations too. A linear transformation maps vectors from one vector space to another while preserving vector addition and scalar multiplication. The matrix <span class="math inline">\(A\)</span> can be viewed as a representation of a linear transformation <span class="math inline">\(T\)</span> from <span class="math inline">\(\mathbb{R}^n\)</span> to <span class="math inline">\(\mathbb{R}^m\)</span> where:</p>
 <p><span class="math display">\[T(\mathbf{x}) = A \mathbf{x}\]</span></p>
 <p>In this context:</p>
@@ -2797,7 +2797,7 @@ Note
 </div>
 </div>
 </div>
-<p>This idea is depicted as a ‘Big picture of the four sub spaces of a matrix’ in the Strang’s text book on Linear algebra for every one <span class="citation" data-cites="strang2020linear">(<a href="references.html#ref-strang2020linear" role="doc-biblioref">Strang 2020</a>)</span>. This ‘Big Picture’ is shown in <a href="#fig-big-pic" class="quarto-xref">Fig-&nbsp;<span>2.12</span></a>.</p>
+<p>This idea is depicted as a ‘Big picture of the four sub spaces of a matrix’ in the Strang’s text book on Linear algebra for every one <span class="citation" data-cites="strang2020linear">(<a href="#ref-strang2020linear" role="doc-biblioref">Strang 2020</a>)</span>. This ‘Big Picture’ is shown in <a href="#fig-big-pic" class="quarto-xref">Fig-&nbsp;<span class="quarto-unresolved-ref ref-noprefix">fig-big-pic</span></a>.</p>
 <div id="fig-big-pic" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-big-pic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -3158,7 +3158,7 @@ Null Space (Basis for infinite solutions): [[ 7.07106781e-01]
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-strang2020linear" class="csl-entry" role="listitem">
 Strang, Gilbert. 2020. <em>Linear Algebra for Everyone</em>. SIAM.
 </div>
@@ -3608,7 +3608,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false,"closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":false});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
