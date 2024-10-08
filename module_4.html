@@ -293,9 +293,10 @@ window.Quarto = {
   <li><a href="#determining-eigenvalues-and-eigenvectors" id="toc-determining-eigenvalues-and-eigenvectors" class="nav-link" data-scroll-target="#determining-eigenvalues-and-eigenvectors"><span class="header-section-number">5.4.1</span> Determining Eigenvalues and Eigenvectors</a></li>
   <li><a href="#characteristic-polynomial-of-2-times-2-matrices" id="toc-characteristic-polynomial-of-2-times-2-matrices" class="nav-link" data-scroll-target="#characteristic-polynomial-of-2-times-2-matrices"><span class="header-section-number">5.4.2</span> Characteristic Polynomial of <span class="math inline">\(2 \times 2\)</span> Matrices</a></li>
   <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems"><span class="header-section-number">5.4.3</span> Problems</a></li>
-  <li><a href="#diagonalization-of-symmetric-matrices" id="toc-diagonalization-of-symmetric-matrices" class="nav-link" data-scroll-target="#diagonalization-of-symmetric-matrices"><span class="header-section-number">5.4.4</span> Diagonalization of Symmetric Matrices</a></li>
-  <li><a href="#matrix-functions-and-spectral-theorem" id="toc-matrix-functions-and-spectral-theorem" class="nav-link" data-scroll-target="#matrix-functions-and-spectral-theorem"><span class="header-section-number">5.4.5</span> Matrix Functions and Spectral Theorem</a></li>
-  <li><a href="#symmetric-positive-definite-matrices" id="toc-symmetric-positive-definite-matrices" class="nav-link" data-scroll-target="#symmetric-positive-definite-matrices"><span class="header-section-number">5.4.6</span> Symmetric Positive Definite Matrices</a></li>
+  <li><a href="#python-code-to-find-eigen-values-and-eigen-vectors" id="toc-python-code-to-find-eigen-values-and-eigen-vectors" class="nav-link" data-scroll-target="#python-code-to-find-eigen-values-and-eigen-vectors"><span class="header-section-number">5.4.4</span> <code>Python</code> code to find eigen values and eigen vectors</a></li>
+  <li><a href="#diagonalization-of-symmetric-matrices" id="toc-diagonalization-of-symmetric-matrices" class="nav-link" data-scroll-target="#diagonalization-of-symmetric-matrices"><span class="header-section-number">5.4.5</span> Diagonalization of Symmetric Matrices</a></li>
+  <li><a href="#matrix-functions-and-spectral-theorem" id="toc-matrix-functions-and-spectral-theorem" class="nav-link" data-scroll-target="#matrix-functions-and-spectral-theorem"><span class="header-section-number">5.4.6</span> Matrix Functions and Spectral Theorem</a></li>
+  <li><a href="#symmetric-positive-definite-matrices" id="toc-symmetric-positive-definite-matrices" class="nav-link" data-scroll-target="#symmetric-positive-definite-matrices"><span class="header-section-number">5.4.7</span> Symmetric Positive Definite Matrices</a></li>
   </ul></li>
   <li><a href="#computational-aspects" id="toc-computational-aspects" class="nav-link" data-scroll-target="#computational-aspects"><span class="header-section-number">5.5</span> Computational Aspects</a></li>
   <li><a href="#practical-applications" id="toc-practical-applications" class="nav-link" data-scroll-target="#practical-applications"><span class="header-section-number">5.6</span> Practical Applications</a></li>
@@ -408,7 +409,7 @@ u_{11} &amp; u_{12} &amp; u_{13} \\
 </section>
 <section id="python-implementation" class="level3" data-number="4.2.3">
 <h3 data-number="4.2.3" class="anchored" data-anchor-id="python-implementation"><span class="header-section-number">4.2.3</span> Python Implementation</h3>
-<div id="7d40fe36" class="cell" data-execution_count="1">
+<div id="79ee3979" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.linalg <span class="im">import</span> lu</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -657,7 +658,7 @@ L = \begin{pmatrix}
 <p><strong>Verification</strong></p>
 <p>Now, we check if <span class="math inline">\(A = LU\)</span>.</p>
 <p>Multiply <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span>:</p>
-<div id="822976ab" class="cell" data-execution_count="2">
+<div id="4a32fcfc" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
@@ -670,7 +671,7 @@ L = \begin{pmatrix}
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> L <span class="op">@</span> U</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>array([[ 2,  1,  1],
        [ 4, -6,  0],
        [-2,  7,  2]])</code></pre>
@@ -1135,8 +1136,72 @@ A - I = \begin{pmatrix} 1 &amp; 2 &amp; 4 \\ 0 &amp; 3 &amp; 4 \\ 1 &amp; -1 &am
     -1\\1\\0
 \end{bmatrix}\)</span>.</p>
 </section>
-<section id="diagonalization-of-symmetric-matrices" class="level3" data-number="5.4.4">
-<h3 data-number="5.4.4" class="anchored" data-anchor-id="diagonalization-of-symmetric-matrices"><span class="header-section-number">5.4.4</span> Diagonalization of Symmetric Matrices</h3>
+<section id="python-code-to-find-eigen-values-and-eigen-vectors" class="level3" data-number="5.4.4">
+<h3 data-number="5.4.4" class="anchored" data-anchor-id="python-code-to-find-eigen-values-and-eigen-vectors"><span class="header-section-number">5.4.4</span> <code>Python</code> code to find eigen values and eigen vectors</h3>
+<ol type="1">
+<li>Find eigen values and eigen vectors of <span class="math inline">\(A=\begin{bmatrix} 2&amp;1\\ 1&amp;2\end{bmatrix}\)</span>.</li>
+</ol>
+<div id="936490b4" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.linalg <span class="im">import</span> null_space</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrix A</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">1</span>], </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">1</span>, <span class="dv">2</span>]])</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Find eigenvalues</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>eigenvalues, _ <span class="op">=</span> np.linalg.eig(A)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Define identity matrix I</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> np.eye(A.shape[<span class="dv">0</span>])</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over eigenvalues to find corresponding eigenvectors</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, eigenvalue <span class="kw">in</span> <span class="bu">enumerate</span>(eigenvalues):</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute A - lambda * I</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    A_lambda_I <span class="op">=</span> A <span class="op">-</span> eigenvalue <span class="op">*</span> I</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find the null space (which gives the eigenvector)</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    eig_vector <span class="op">=</span> null_space(A_lambda_I)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Eigenvalue </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>eigenvalue<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Eigenvector </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">:</span><span class="ch">\n</span><span class="sc">{</span>eig_vector<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Eigenvalue 1: 3.0
+Eigenvector 1:
+[[0.70710678]
+ [0.70710678]]
+
+Eigenvalue 2: 1.0
+Eigenvector 2:
+[[-0.70710678]
+ [ 0.70710678]]
+</code></pre>
+</div>
+</div>
+<p>Same can be done using direct approach. Code for this task is given below.</p>
+<div id="8f326df9" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrix A</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">1</span>], </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">1</span>, <span class="dv">2</span>]])</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Find eigenvalues and eigenvectors</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>eigenvalues, eigenvectors <span class="op">=</span> np.linalg.eig(A)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the results</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Eigenvalues:"</span>, eigenvalues)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Eigenvectors:</span><span class="ch">\n</span><span class="st">"</span>, eigenvectors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Eigenvalues: [3. 1.]
+Eigenvectors:
+ [[ 0.70710678 -0.70710678]
+ [ 0.70710678  0.70710678]]</code></pre>
+</div>
+</div>
+</section>
+<section id="diagonalization-of-symmetric-matrices" class="level3" data-number="5.4.5">
+<h3 data-number="5.4.5" class="anchored" data-anchor-id="diagonalization-of-symmetric-matrices"><span class="header-section-number">5.4.5</span> Diagonalization of Symmetric Matrices</h3>
 <p>For a symmetric matrix <span class="math inline">\(A\)</span>, the process of diagonalization can be summarized as follows:</p>
 <ol type="1">
 <li><p><strong>Compute eigenvalues</strong>: Solve the characteristic equation <span class="math inline">\(\text{det}(A - \lambda I) = 0\)</span> to find the eigenvalues.</p></li>
@@ -1145,17 +1210,79 @@ A - I = \begin{pmatrix} 1 &amp; 2 &amp; 4 \\ 0 &amp; 3 &amp; 4 \\ 1 &amp; -1 &am
 <li><p><strong>Form the diagonal matrix of eigenvalues</strong>: Construct <span class="math inline">\(\Lambda\)</span> by placing the eigenvalues along the diagonal of the matrix.</p></li>
 </ol>
 <p>Thus, the matrix can be expressed as <span class="math inline">\(A = Q \Lambda Q^\top\)</span>.</p>
+<ol type="1">
+<li>Diagonalize the matrix <span class="math inline">\(A=\begin{bmatrix} 2&amp;1\\ 1&amp;2\end{bmatrix}\)</span>.</li>
+</ol>
+<p><code>Python</code> code for this task is given below.</p>
+<div id="7d6dd47f" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrix A</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">1</span>], </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">1</span>, <span class="dv">2</span>]])</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Find eigenvalues and eigenvectors</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>eigenvalues, eigenvectors <span class="op">=</span> np.linalg.eig(A)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Construct the diagonal matrix D (eigenvalues)</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.diag(eigenvalues)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Construct the matrix P (eigenvectors)</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> eigenvectors</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Calculate the inverse of P</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>P_inv <span class="op">=</span> np.linalg.inv(P)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify the diagonalization: A = P D P_inv</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>A_reconstructed <span class="op">=</span> P <span class="op">@</span> D <span class="op">@</span> P_inv</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Matrix A:"</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Eigenvalues (Diagonal matrix D):"</span>)</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(D)</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Eigenvectors (Matrix P):"</span>)</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(P)</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Inverse of P:"</span>)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(P_inv)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Reconstructed matrix A (P D P^(-1)):"</span>)</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A_reconstructed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Matrix A:
+[[2 1]
+ [1 2]]
+
+Eigenvalues (Diagonal matrix D):
+[[3. 0.]
+ [0. 1.]]
+
+Eigenvectors (Matrix P):
+[[ 0.70710678 -0.70710678]
+ [ 0.70710678  0.70710678]]
+
+Inverse of P:
+[[ 0.70710678  0.70710678]
+ [-0.70710678  0.70710678]]
+
+Reconstructed matrix A (P D P^(-1)):
+[[2. 1.]
+ [1. 2.]]</code></pre>
+</div>
+</div>
 </section>
-<section id="matrix-functions-and-spectral-theorem" class="level3" data-number="5.4.5">
-<h3 data-number="5.4.5" class="anchored" data-anchor-id="matrix-functions-and-spectral-theorem"><span class="header-section-number">5.4.5</span> Matrix Functions and Spectral Theorem</h3>
+<section id="matrix-functions-and-spectral-theorem" class="level3" data-number="5.4.6">
+<h3 data-number="5.4.6" class="anchored" data-anchor-id="matrix-functions-and-spectral-theorem"><span class="header-section-number">5.4.6</span> Matrix Functions and Spectral Theorem</h3>
 <p>Once a matrix is diagonalized, various matrix functions become easier to compute. For a function <span class="math inline">\(f(A)\)</span>, such as the exponential of a matrix or any power, the function can be applied to the diagonal matrix of eigenvalues:</p>
 <p><span class="math display">\[
 f(A) = Q f(\Lambda) Q^\top
 \]</span></p>
 <p>where <span class="math inline">\(f(\Lambda)\)</span> is the function applied element-wise to the eigenvalues in the diagonal matrix <span class="math inline">\(\Lambda\)</span>.</p>
 </section>
-<section id="symmetric-positive-definite-matrices" class="level3" data-number="5.4.6">
-<h3 data-number="5.4.6" class="anchored" data-anchor-id="symmetric-positive-definite-matrices"><span class="header-section-number">5.4.6</span> Symmetric Positive Definite Matrices</h3>
+<section id="symmetric-positive-definite-matrices" class="level3" data-number="5.4.7">
+<h3 data-number="5.4.7" class="anchored" data-anchor-id="symmetric-positive-definite-matrices"><span class="header-section-number">5.4.7</span> Symmetric Positive Definite Matrices</h3>
 <p>A special class of matrices, symmetric positive definite matrices, are often used in optimization and machine learning. These matrices have all positive eigenvalues, ensuring that the matrix is invertible and has a unique decomposition.</p>
 </section>
 </section>
