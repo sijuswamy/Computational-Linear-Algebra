@@ -278,27 +278,28 @@ window.Quarto = {
   <li><a href="#matrix-approach-to-create-lu-decomposition" id="toc-matrix-approach-to-create-lu-decomposition" class="nav-link" data-scroll-target="#matrix-approach-to-create-lu-decomposition"><span class="header-section-number">4.4</span> Matrix Approach to Create LU Decomposition</a></li>
   <li><a href="#spectral-decomposition" id="toc-spectral-decomposition" class="nav-link" data-scroll-target="#spectral-decomposition"><span class="header-section-number">5</span> Spectral Decomposition</a>
   <ul class="collapse">
-  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1"><span class="header-section-number">5.1</span> Introduction</a></li>
-  <li><a href="#spectral-decomposition-detailed-concepts" id="toc-spectral-decomposition-detailed-concepts" class="nav-link" data-scroll-target="#spectral-decomposition-detailed-concepts"><span class="header-section-number">5.2</span> Spectral Decomposition: Detailed Concepts</a>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">5.1</span> Background</a></li>
+  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1"><span class="header-section-number">5.2</span> Introduction</a></li>
+  <li><a href="#spectral-decomposition-detailed-concepts" id="toc-spectral-decomposition-detailed-concepts" class="nav-link" data-scroll-target="#spectral-decomposition-detailed-concepts"><span class="header-section-number">5.3</span> Spectral Decomposition: Detailed Concepts</a>
   <ul class="collapse">
-  <li><a href="#eigenvalues-and-eigenvectors" id="toc-eigenvalues-and-eigenvectors" class="nav-link" data-scroll-target="#eigenvalues-and-eigenvectors"><span class="header-section-number">5.2.1</span> Eigenvalues and Eigenvectors</a></li>
-  <li><a href="#eigenvalue-decomposition-spectral-decomposition" id="toc-eigenvalue-decomposition-spectral-decomposition" class="nav-link" data-scroll-target="#eigenvalue-decomposition-spectral-decomposition"><span class="header-section-number">5.2.2</span> Eigenvalue Decomposition (Spectral Decomposition)</a></li>
-  <li><a href="#geometric-interpretation" id="toc-geometric-interpretation" class="nav-link" data-scroll-target="#geometric-interpretation"><span class="header-section-number">5.2.3</span> Geometric Interpretation</a></li>
-  <li><a href="#importance-of-diagonalization" id="toc-importance-of-diagonalization" class="nav-link" data-scroll-target="#importance-of-diagonalization"><span class="header-section-number">5.2.4</span> Importance of Diagonalization</a></li>
-  <li><a href="#properties-of-symmetric-matrices" id="toc-properties-of-symmetric-matrices" class="nav-link" data-scroll-target="#properties-of-symmetric-matrices"><span class="header-section-number">5.2.5</span> Properties of Symmetric Matrices</a></li>
+  <li><a href="#eigenvalues-and-eigenvectors" id="toc-eigenvalues-and-eigenvectors" class="nav-link" data-scroll-target="#eigenvalues-and-eigenvectors"><span class="header-section-number">5.3.1</span> Eigenvalues and Eigenvectors</a></li>
+  <li><a href="#eigenvalue-decomposition-spectral-decomposition" id="toc-eigenvalue-decomposition-spectral-decomposition" class="nav-link" data-scroll-target="#eigenvalue-decomposition-spectral-decomposition"><span class="header-section-number">5.3.2</span> Eigenvalue Decomposition (Spectral Decomposition)</a></li>
+  <li><a href="#geometric-interpretation" id="toc-geometric-interpretation" class="nav-link" data-scroll-target="#geometric-interpretation"><span class="header-section-number">5.3.3</span> Geometric Interpretation</a></li>
+  <li><a href="#importance-of-diagonalization" id="toc-importance-of-diagonalization" class="nav-link" data-scroll-target="#importance-of-diagonalization"><span class="header-section-number">5.3.4</span> Importance of Diagonalization</a></li>
+  <li><a href="#properties-of-symmetric-matrices" id="toc-properties-of-symmetric-matrices" class="nav-link" data-scroll-target="#properties-of-symmetric-matrices"><span class="header-section-number">5.3.5</span> Properties of Symmetric Matrices</a></li>
   </ul></li>
-  <li><a href="#mathematical-requirements-for-spectral-decomposition" id="toc-mathematical-requirements-for-spectral-decomposition" class="nav-link" data-scroll-target="#mathematical-requirements-for-spectral-decomposition"><span class="header-section-number">5.3</span> Mathematical Requirements for Spectral Decomposition</a>
+  <li><a href="#mathematical-requirements-for-spectral-decomposition" id="toc-mathematical-requirements-for-spectral-decomposition" class="nav-link" data-scroll-target="#mathematical-requirements-for-spectral-decomposition"><span class="header-section-number">5.4</span> Mathematical Requirements for Spectral Decomposition</a>
   <ul class="collapse">
-  <li><a href="#determining-eigenvalues-and-eigenvectors" id="toc-determining-eigenvalues-and-eigenvectors" class="nav-link" data-scroll-target="#determining-eigenvalues-and-eigenvectors"><span class="header-section-number">5.3.1</span> Determining Eigenvalues and Eigenvectors</a></li>
-  <li><a href="#characteristic-polynomial-of-2-times-2-matrices" id="toc-characteristic-polynomial-of-2-times-2-matrices" class="nav-link" data-scroll-target="#characteristic-polynomial-of-2-times-2-matrices"><span class="header-section-number">5.3.2</span> Characteristic Polynomial of <span class="math inline">\(2 \times 2\)</span> Matrices</a></li>
-  <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems"><span class="header-section-number">5.3.3</span> Problems</a></li>
-  <li><a href="#diagonalization-of-symmetric-matrices" id="toc-diagonalization-of-symmetric-matrices" class="nav-link" data-scroll-target="#diagonalization-of-symmetric-matrices"><span class="header-section-number">5.3.4</span> Diagonalization of Symmetric Matrices</a></li>
-  <li><a href="#matrix-functions-and-spectral-theorem" id="toc-matrix-functions-and-spectral-theorem" class="nav-link" data-scroll-target="#matrix-functions-and-spectral-theorem"><span class="header-section-number">5.3.5</span> Matrix Functions and Spectral Theorem</a></li>
-  <li><a href="#symmetric-positive-definite-matrices" id="toc-symmetric-positive-definite-matrices" class="nav-link" data-scroll-target="#symmetric-positive-definite-matrices"><span class="header-section-number">5.3.6</span> Symmetric Positive Definite Matrices</a></li>
+  <li><a href="#determining-eigenvalues-and-eigenvectors" id="toc-determining-eigenvalues-and-eigenvectors" class="nav-link" data-scroll-target="#determining-eigenvalues-and-eigenvectors"><span class="header-section-number">5.4.1</span> Determining Eigenvalues and Eigenvectors</a></li>
+  <li><a href="#characteristic-polynomial-of-2-times-2-matrices" id="toc-characteristic-polynomial-of-2-times-2-matrices" class="nav-link" data-scroll-target="#characteristic-polynomial-of-2-times-2-matrices"><span class="header-section-number">5.4.2</span> Characteristic Polynomial of <span class="math inline">\(2 \times 2\)</span> Matrices</a></li>
+  <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems"><span class="header-section-number">5.4.3</span> Problems</a></li>
+  <li><a href="#diagonalization-of-symmetric-matrices" id="toc-diagonalization-of-symmetric-matrices" class="nav-link" data-scroll-target="#diagonalization-of-symmetric-matrices"><span class="header-section-number">5.4.4</span> Diagonalization of Symmetric Matrices</a></li>
+  <li><a href="#matrix-functions-and-spectral-theorem" id="toc-matrix-functions-and-spectral-theorem" class="nav-link" data-scroll-target="#matrix-functions-and-spectral-theorem"><span class="header-section-number">5.4.5</span> Matrix Functions and Spectral Theorem</a></li>
+  <li><a href="#symmetric-positive-definite-matrices" id="toc-symmetric-positive-definite-matrices" class="nav-link" data-scroll-target="#symmetric-positive-definite-matrices"><span class="header-section-number">5.4.6</span> Symmetric Positive Definite Matrices</a></li>
   </ul></li>
-  <li><a href="#computational-aspects" id="toc-computational-aspects" class="nav-link" data-scroll-target="#computational-aspects"><span class="header-section-number">5.4</span> Computational Aspects</a></li>
-  <li><a href="#practical-applications" id="toc-practical-applications" class="nav-link" data-scroll-target="#practical-applications"><span class="header-section-number">5.5</span> Practical Applications</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">5.6</span> Conclusion</a></li>
+  <li><a href="#computational-aspects" id="toc-computational-aspects" class="nav-link" data-scroll-target="#computational-aspects"><span class="header-section-number">5.5</span> Computational Aspects</a></li>
+  <li><a href="#practical-applications" id="toc-practical-applications" class="nav-link" data-scroll-target="#practical-applications"><span class="header-section-number">5.6</span> Practical Applications</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">5.7</span> Conclusion</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -407,7 +408,7 @@ u_{11} &amp; u_{12} &amp; u_{13} \\
 </section>
 <section id="python-implementation" class="level3" data-number="4.2.3">
 <h3 data-number="4.2.3" class="anchored" data-anchor-id="python-implementation"><span class="header-section-number">4.2.3</span> Python Implementation</h3>
-<div id="02864438" class="cell" data-execution_count="1">
+<div id="7d40fe36" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.linalg <span class="im">import</span> lu</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -656,7 +657,7 @@ L = \begin{pmatrix}
 <p><strong>Verification</strong></p>
 <p>Now, we check if <span class="math inline">\(A = LU\)</span>.</p>
 <p>Multiply <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span>:</p>
-<div id="e0edad23" class="cell" data-execution_count="2">
+<div id="822976ab" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
@@ -678,15 +679,25 @@ L = \begin{pmatrix}
 </section>
 <section id="spectral-decomposition" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Spectral Decomposition</h1>
-<section id="introduction-1" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="introduction-1"><span class="header-section-number">5.1</span> Introduction</h2>
+<section id="background" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="background"><span class="header-section-number">5.1</span> Background</h2>
+<p>Imagine encountering a low-resolution image of a familiar scene. The human brain excels at recognizing familiar objects by relying on essential features, often extracting the most significant details while discarding the less important information. This cognitive process mirrors the power of eigenvalue decomposition, where eigenvectors represent the ``nectar’’ of a matrix, capturing its most important characteristics.</p>
+<p>As an example, try to identify this image. If you can do it, then your brain know this place!</p>
+<p><img src="gitsRC.jpg" class="img-fluid"></p>
+<p>Before proceeding further just compare the size of its’ original clean image and the low-quality image shown in Figure</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">Original</span> <span class="va">image</span> <span class="va">size</span><span class="op">:</span> <span class="fl">985.69</span> <span class="va">KB</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">Reconstructed</span> <span class="va">image</span> <span class="va">size</span><span class="op">:</span> <span class="fl">1.12</span> <span class="va">KB</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The reconstructed image is just 0.2% of the original in size! This is the core principle of optimizing image storage of CCTV system. This resizing can be done and execute with optimal scaling with the help of Linear Algebra. This module mainly focuses on such engineering applications.</p>
+</section>
+<section id="introduction-1" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="introduction-1"><span class="header-section-number">5.2</span> Introduction</h2>
 <p>Spectral decomposition, also known as eigenvalue decomposition, is a powerful tool in computational linear algebra that breaks down a matrix into its eigenvalues and eigenvectors. This technique allows matrices to be represented in terms of their fundamental components, making it easier to analyze and manipulate them. It is especially useful for symmetric matrices, which are common in various applications. Spectral decomposition facilitates solving systems of equations, optimizing functions, and performing transformations in a simplified, structured manner, as it allows operations to be performed on the eigenvalues, which often leads to more efficient computations.</p>
 <p>The importance of spectral decomposition extends across a wide range of fields, including computer science, engineering, and data science. In machine learning, for instance, it forms the backbone of algorithms like Principal Component Analysis (PCA), which is used for dimensionality reduction. It also plays a vital role in numerical stability when dealing with large matrices and is central to many optimization problems, such as those found in machine learning and physics. Spectral decomposition not only provides a deeper understanding of the properties of matrices but also offers practical benefits in improving the efficiency and accuracy of numerical algorithms.</p>
 </section>
-<section id="spectral-decomposition-detailed-concepts" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="spectral-decomposition-detailed-concepts"><span class="header-section-number">5.2</span> Spectral Decomposition: Detailed Concepts</h2>
-<section id="eigenvalues-and-eigenvectors" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="eigenvalues-and-eigenvectors"><span class="header-section-number">5.2.1</span> Eigenvalues and Eigenvectors</h3>
+<section id="spectral-decomposition-detailed-concepts" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="spectral-decomposition-detailed-concepts"><span class="header-section-number">5.3</span> Spectral Decomposition: Detailed Concepts</h2>
+<section id="eigenvalues-and-eigenvectors" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="eigenvalues-and-eigenvectors"><span class="header-section-number">5.3.1</span> Eigenvalues and Eigenvectors</h3>
 <p>The core idea behind spectral decomposition is that it expresses a matrix in terms of its eigenvalues and eigenvectors. For a square matrix <span class="math inline">\(A \in \mathbb{R}^{n \times n}\)</span>, an eigenvalue <span class="math inline">\(\lambda \in \mathbb{R}\)</span> and an eigenvector <span class="math inline">\(v \in \mathbb{R}^{n}\)</span> satisfy the following equation:</p>
 <p><span class="math display">\[
 A v = \lambda v
@@ -809,8 +820,8 @@ A\mathbf{v} = k \lambda \mathbf{v} \text{ for eigenvalue } \lambda.
 </div>
 </div>
 </section>
-<section id="eigenvalue-decomposition-spectral-decomposition" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="eigenvalue-decomposition-spectral-decomposition"><span class="header-section-number">5.2.2</span> Eigenvalue Decomposition (Spectral Decomposition)</h3>
+<section id="eigenvalue-decomposition-spectral-decomposition" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="eigenvalue-decomposition-spectral-decomposition"><span class="header-section-number">5.3.2</span> Eigenvalue Decomposition (Spectral Decomposition)</h3>
 <p>For matrices that are diagonalizable (including symmetric matrices), spectral decomposition expresses the matrix as a combination of its eigenvalues and eigenvectors. Specifically, for a matrix <span class="math inline">\(A\)</span>, spectral decomposition is represented as:</p>
 <p><span class="math display">\[
 A = V \Lambda V^{-1}
@@ -822,21 +833,21 @@ A = Q \Lambda Q^\top
 \]</span></p>
 <p>Here, <span class="math inline">\(Q\)</span> is an orthogonal matrix of eigenvectors (i.e., <span class="math inline">\(Q^\top Q = I\)</span>), and <span class="math inline">\(\Lambda\)</span> is a diagonal matrix of eigenvalues.</p>
 </section>
-<section id="geometric-interpretation" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="geometric-interpretation"><span class="header-section-number">5.2.3</span> Geometric Interpretation</h3>
+<section id="geometric-interpretation" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="geometric-interpretation"><span class="header-section-number">5.3.3</span> Geometric Interpretation</h3>
 <p>Eigenvalues and eigenvectors provide insights into the geometry of linear transformations represented by matrices. Eigenvectors represent directions that remain invariant under the transformation, while eigenvalues indicate how these directions are stretched or compressed.</p>
 <p>For example, in the case of a transformation matrix that scales or rotates data points, eigenvalues show the magnitude of scaling along the principal axes (directions defined by eigenvectors).</p>
 </section>
-<section id="importance-of-diagonalization" class="level3" data-number="5.2.4">
-<h3 data-number="5.2.4" class="anchored" data-anchor-id="importance-of-diagonalization"><span class="header-section-number">5.2.4</span> Importance of Diagonalization</h3>
+<section id="importance-of-diagonalization" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="importance-of-diagonalization"><span class="header-section-number">5.3.4</span> Importance of Diagonalization</h3>
 <p>The key advantage of spectral decomposition is that it simplifies matrix operations. When a matrix is diagonalized as <span class="math inline">\(A = Q \Lambda Q^\top\)</span>, any function of the matrix <span class="math inline">\(A\)</span> (such as powers, exponentials, or inverses) can be easily computed by operating on the diagonal matrix <span class="math inline">\(\Lambda\)</span>. For example:</p>
 <p><span class="math display">\[
 A^k = Q \Lambda^k Q^\top
 \]</span></p>
 <p>Since <span class="math inline">\(\Lambda\)</span> is diagonal, raising <span class="math inline">\(\Lambda\)</span> to any power <span class="math inline">\(k\)</span> is straightforward, involving only raising each eigenvalue to the power <span class="math inline">\(k\)</span>.</p>
 </section>
-<section id="properties-of-symmetric-matrices" class="level3" data-number="5.2.5">
-<h3 data-number="5.2.5" class="anchored" data-anchor-id="properties-of-symmetric-matrices"><span class="header-section-number">5.2.5</span> Properties of Symmetric Matrices</h3>
+<section id="properties-of-symmetric-matrices" class="level3" data-number="5.3.5">
+<h3 data-number="5.3.5" class="anchored" data-anchor-id="properties-of-symmetric-matrices"><span class="header-section-number">5.3.5</span> Properties of Symmetric Matrices</h3>
 <p>Spectral decomposition applies particularly well to symmetric matrices, which satisfy <span class="math inline">\(A = A^\top\)</span>. Symmetric matrices have the following key properties:</p>
 <ul>
 <li><p><strong>Real eigenvalues</strong>: The eigenvalues of a symmetric matrix are always real numbers.</p></li>
@@ -846,18 +857,18 @@ A^k = Q \Lambda^k Q^\top
 <p>These properties make symmetric matrices highly desirable in computational applications.</p>
 </section>
 </section>
-<section id="mathematical-requirements-for-spectral-decomposition" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="mathematical-requirements-for-spectral-decomposition"><span class="header-section-number">5.3</span> Mathematical Requirements for Spectral Decomposition</h2>
-<section id="determining-eigenvalues-and-eigenvectors" class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="determining-eigenvalues-and-eigenvectors"><span class="header-section-number">5.3.1</span> Determining Eigenvalues and Eigenvectors</h3>
+<section id="mathematical-requirements-for-spectral-decomposition" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="mathematical-requirements-for-spectral-decomposition"><span class="header-section-number">5.4</span> Mathematical Requirements for Spectral Decomposition</h2>
+<section id="determining-eigenvalues-and-eigenvectors" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="determining-eigenvalues-and-eigenvectors"><span class="header-section-number">5.4.1</span> Determining Eigenvalues and Eigenvectors</h3>
 <p>The eigenvalues of a matrix <span class="math inline">\(A\)</span> are the solutions to the characteristic equation:</p>
 <p><span class="math display">\[
 \text{det}(A - \lambda I) = 0
 \]</span></p>
 <p>Here, <span class="math inline">\(I\)</span> is the identity matrix, and <span class="math inline">\(\lambda\)</span> represents the eigenvalues. Solving this polynomial equation provides the eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, \dots, \lambda_n\)</span>. Once the eigenvalues are determined, the eigenvectors can be computed by solving the equation <span class="math inline">\((A - \lambda I)v = 0\)</span> for each eigenvalue.</p>
 </section>
-<section id="characteristic-polynomial-of-2-times-2-matrices" class="level3" data-number="5.3.2">
-<h3 data-number="5.3.2" class="anchored" data-anchor-id="characteristic-polynomial-of-2-times-2-matrices"><span class="header-section-number">5.3.2</span> Characteristic Polynomial of <span class="math inline">\(2 \times 2\)</span> Matrices</h3>
+<section id="characteristic-polynomial-of-2-times-2-matrices" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="characteristic-polynomial-of-2-times-2-matrices"><span class="header-section-number">5.4.2</span> Characteristic Polynomial of <span class="math inline">\(2 \times 2\)</span> Matrices</h3>
 <p>For a <span class="math inline">\(2 \times 2\)</span> matrix: <span class="math display">\[
 A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}
 \]</span> the characteristic polynomial is derived from the determinant of <span class="math inline">\(A - \lambda I\)</span>, where <span class="math inline">\(I\)</span> is the identity matrix:</p>
@@ -890,8 +901,8 @@ EV(\lambda=\lambda_1)=\begin{bmatrix}\lambda_1-d\\ c\end{bmatrix}
 </div>
 </div>
 </section>
-<section id="problems" class="level3" data-number="5.3.3">
-<h3 data-number="5.3.3" class="anchored" data-anchor-id="problems"><span class="header-section-number">5.3.3</span> Problems</h3>
+<section id="problems" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="problems"><span class="header-section-number">5.4.3</span> Problems</h3>
 <p><strong>Example 1:</strong> Find Eigenvalues and Eigenvectors of the matrix, <span class="math display">\[A = \begin{pmatrix} 3 &amp; 2 \\ 4 &amp; 1 \end{pmatrix}\]</span></p>
 <p><em>Solution:</em></p>
 <p>The characteristic equation is given by <span class="math display">\[det(A-\lambda I)=0\]</span></p>
@@ -1124,8 +1135,8 @@ A - I = \begin{pmatrix} 1 &amp; 2 &amp; 4 \\ 0 &amp; 3 &amp; 4 \\ 1 &amp; -1 &am
     -1\\1\\0
 \end{bmatrix}\)</span>.</p>
 </section>
-<section id="diagonalization-of-symmetric-matrices" class="level3" data-number="5.3.4">
-<h3 data-number="5.3.4" class="anchored" data-anchor-id="diagonalization-of-symmetric-matrices"><span class="header-section-number">5.3.4</span> Diagonalization of Symmetric Matrices</h3>
+<section id="diagonalization-of-symmetric-matrices" class="level3" data-number="5.4.4">
+<h3 data-number="5.4.4" class="anchored" data-anchor-id="diagonalization-of-symmetric-matrices"><span class="header-section-number">5.4.4</span> Diagonalization of Symmetric Matrices</h3>
 <p>For a symmetric matrix <span class="math inline">\(A\)</span>, the process of diagonalization can be summarized as follows:</p>
 <ol type="1">
 <li><p><strong>Compute eigenvalues</strong>: Solve the characteristic equation <span class="math inline">\(\text{det}(A - \lambda I) = 0\)</span> to find the eigenvalues.</p></li>
@@ -1135,25 +1146,25 @@ A - I = \begin{pmatrix} 1 &amp; 2 &amp; 4 \\ 0 &amp; 3 &amp; 4 \\ 1 &amp; -1 &am
 </ol>
 <p>Thus, the matrix can be expressed as <span class="math inline">\(A = Q \Lambda Q^\top\)</span>.</p>
 </section>
-<section id="matrix-functions-and-spectral-theorem" class="level3" data-number="5.3.5">
-<h3 data-number="5.3.5" class="anchored" data-anchor-id="matrix-functions-and-spectral-theorem"><span class="header-section-number">5.3.5</span> Matrix Functions and Spectral Theorem</h3>
+<section id="matrix-functions-and-spectral-theorem" class="level3" data-number="5.4.5">
+<h3 data-number="5.4.5" class="anchored" data-anchor-id="matrix-functions-and-spectral-theorem"><span class="header-section-number">5.4.5</span> Matrix Functions and Spectral Theorem</h3>
 <p>Once a matrix is diagonalized, various matrix functions become easier to compute. For a function <span class="math inline">\(f(A)\)</span>, such as the exponential of a matrix or any power, the function can be applied to the diagonal matrix of eigenvalues:</p>
 <p><span class="math display">\[
 f(A) = Q f(\Lambda) Q^\top
 \]</span></p>
 <p>where <span class="math inline">\(f(\Lambda)\)</span> is the function applied element-wise to the eigenvalues in the diagonal matrix <span class="math inline">\(\Lambda\)</span>.</p>
 </section>
-<section id="symmetric-positive-definite-matrices" class="level3" data-number="5.3.6">
-<h3 data-number="5.3.6" class="anchored" data-anchor-id="symmetric-positive-definite-matrices"><span class="header-section-number">5.3.6</span> Symmetric Positive Definite Matrices</h3>
+<section id="symmetric-positive-definite-matrices" class="level3" data-number="5.4.6">
+<h3 data-number="5.4.6" class="anchored" data-anchor-id="symmetric-positive-definite-matrices"><span class="header-section-number">5.4.6</span> Symmetric Positive Definite Matrices</h3>
 <p>A special class of matrices, symmetric positive definite matrices, are often used in optimization and machine learning. These matrices have all positive eigenvalues, ensuring that the matrix is invertible and has a unique decomposition.</p>
 </section>
 </section>
-<section id="computational-aspects" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="computational-aspects"><span class="header-section-number">5.4</span> Computational Aspects</h2>
+<section id="computational-aspects" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="computational-aspects"><span class="header-section-number">5.5</span> Computational Aspects</h2>
 <p>Spectral decomposition is computationally intensive, particularly for large matrices. Efficient numerical algorithms like the <strong>QR algorithm</strong> and <strong>Jacobi method</strong> are used to compute eigenvalues and eigenvectors in practice. For dense matrices, algorithms scale as <span class="math inline">\(O(n^3)\)</span>, but specialized methods exist for sparse matrices that take advantage of matrix structure to reduce computational cost.</p>
 </section>
-<section id="practical-applications" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="practical-applications"><span class="header-section-number">5.5</span> Practical Applications</h2>
+<section id="practical-applications" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="practical-applications"><span class="header-section-number">5.6</span> Practical Applications</h2>
 <ul>
 <li><strong>Principal Component Analysis (PCA)</strong>: Used to reduce the dimensionality of datasets by finding the principal components (eigenvectors) that capture the most variance in the data.</li>
 <li><strong>Quantum Mechanics</strong>: Eigenvalue problems frequently arise in solving Schrödinger’s equation, where eigenfunctions correspond to states of a quantum system, and eigenvalues represent observable quantities like energy.</li>
@@ -1161,8 +1172,8 @@ f(A) = Q f(\Lambda) Q^\top
 <li><strong>Graph Theory</strong>: The adjacency matrix of a graph can be decomposed using spectral methods to reveal properties like community structure and connectivity.</li>
 </ul>
 </section>
-<section id="conclusion" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">5.6</span> Conclusion</h2>
+<section id="conclusion" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">5.7</span> Conclusion</h2>
 <p>Spectral decomposition offers an elegant and practical framework for understanding the fundamental structure of matrices. By reducing matrices to their eigenvalues and eigenvectors, it simplifies numerous computational tasks in linear algebra, making it an indispensable tool in various applications such as machine learning, physics, and optimization.</p>
 
 

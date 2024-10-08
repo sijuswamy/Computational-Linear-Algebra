@@ -477,6 +477,24 @@ A
 
 # Spectral Decomposition
 
+## Background
+
+Imagine encountering a low-resolution image of a familiar scene. The human brain excels at recognizing familiar objects by relying on essential features, often extracting the most significant details while discarding the less important information. This cognitive process mirrors the power of eigenvalue decomposition, where eigenvectors represent the ``nectar'' of a matrix, capturing its most important characteristics.
+
+As an example, try to identify this image. If you can do it, then your brain  know this place!
+
+![](gitsRC.jpg)
+
+
+Before proceeding further just compare the size of its' original clean image and the low-quality image shown in Figure
+
+```{.matlab}
+Original image size: 985.69 KB
+Reconstructed image size: 1.12 KB
+```
+
+The reconstructed image is just 0.2\% of the original in size! This is the core principle of optimizing image storage of CCTV system. This resizing can be done and execute with optimal scaling with the help of Linear Algebra. This module mainly focuses on such engineering applications.
+
 ## Introduction
 
 Spectral decomposition, also known as eigenvalue decomposition, is a powerful tool in computational linear algebra that breaks down a matrix into its eigenvalues and eigenvectors. This technique allows matrices to be represented in terms of their fundamental components, making it easier to analyze and manipulate them. It is especially useful for symmetric matrices, which are common in various applications. Spectral decomposition facilitates solving systems of equations, optimizing functions, and performing transformations in a simplified, structured manner, as it allows operations to be performed on the eigenvalues, which often leads to more efficient computations.
@@ -1098,6 +1116,56 @@ $\therefore v_2=\begin{bmatrix}
     -1\\1\\0
 \end{bmatrix}$.
 
+
+### `Python` code to find eigen values and eigen vectors
+
+1. Find eigen values and eigen vectors of $A=\begin{bmatrix} 2&1\\ 1&2\end{bmatrix}$.
+
+```{python}
+import numpy as np
+from scipy.linalg import null_space
+
+# Define matrix A
+A = np.array([[2, 1], 
+              [1, 2]])
+
+# Find eigenvalues
+eigenvalues, _ = np.linalg.eig(A)
+
+# Define identity matrix I
+I = np.eye(A.shape[0])
+
+# Iterate over eigenvalues to find corresponding eigenvectors
+for i, eigenvalue in enumerate(eigenvalues):
+    # Compute A - lambda * I
+    A_lambda_I = A - eigenvalue * I
+    
+    # Find the null space (which gives the eigenvector)
+    eig_vector = null_space(A_lambda_I)
+    
+    print(f"Eigenvalue {i+1}: {eigenvalue}")
+    print(f"Eigenvector {i+1}:\n{eig_vector}\n")
+
+```
+
+Same can be done using direct approach. Code for this task is given below.
+
+```{python}
+import numpy as np
+
+# Define matrix A
+A = np.array([[2, 1], 
+              [1, 2]])
+
+# Find eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(A)
+
+# Display the results
+print("Eigenvalues:", eigenvalues)
+print("Eigenvectors:\n", eigenvectors)
+```
+
+
 ###  Diagonalization of Symmetric Matrices
 
 For a symmetric matrix $A$, the process of diagonalization can be summarized as follows:
@@ -1111,6 +1179,48 @@ For a symmetric matrix $A$, the process of diagonalization can be summarized as 
 4. **Form the diagonal matrix of eigenvalues**: Construct $\Lambda$ by placing the eigenvalues along the diagonal of the matrix.
 
 Thus, the matrix can be expressed as $A = Q \Lambda Q^\top$.
+
+1. Diagonalize the matrix $A=\begin{bmatrix} 2&1\\ 1&2\end{pmatrix}$.
+
+`Python` code for this task is given below.
+
+```{python}
+import numpy as np
+
+# Define matrix A
+A = np.array([[2, 1], 
+              [1, 2]])
+
+# Step 1: Find eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(A)
+
+# Step 2: Construct the diagonal matrix D (eigenvalues)
+D = np.diag(eigenvalues)
+
+# Step 3: Construct the matrix P (eigenvectors)
+P = eigenvectors
+
+# Step 4: Calculate the inverse of P
+P_inv = np.linalg.inv(P)
+
+# Verify the diagonalization: A = P D P_inv
+A_reconstructed = P @ D @ P_inv
+
+print("Matrix A:")
+print(A)
+
+print("\nEigenvalues (Diagonal matrix D):")
+print(D)
+
+print("\nEigenvectors (Matrix P):")
+print(P)
+
+print("\nInverse of P:")
+print(P_inv)
+
+print("\nReconstructed matrix A (P D P^(-1)):")
+print(A_reconstructed)
+```
 
 ###  Matrix Functions and Spectral Theorem
 
