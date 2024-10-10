@@ -418,7 +418,7 @@ u_{11} &amp; u_{12} &amp; u_{13} \\
 </section>
 <section id="python-implementation" class="level3" data-number="4.2.3">
 <h3 data-number="4.2.3" class="anchored" data-anchor-id="python-implementation"><span class="header-section-number">4.2.3</span> Python Implementation</h3>
-<div id="7b83abb9" class="cell" data-execution_count="1">
+<div id="ea3421d1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.linalg <span class="im">import</span> lu</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -667,7 +667,7 @@ L = \begin{pmatrix}
 <p><strong>Verification</strong></p>
 <p>Now, we check if <span class="math inline">\(A = LU\)</span>.</p>
 <p>Multiply <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span>:</p>
-<div id="17225599" class="cell" data-execution_count="2">
+<div id="bead0ff8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
@@ -1150,7 +1150,7 @@ A - I = \begin{pmatrix} 1 &amp; 2 &amp; 4 \\ 0 &amp; 3 &amp; 4 \\ 1 &amp; -1 &am
 <ol type="1">
 <li>Find eigen values and eigen vectors of <span class="math inline">\(A=\begin{bmatrix} 2&amp;1\\ 1&amp;2\end{bmatrix}\)</span>.</li>
 </ol>
-<div id="ebb07933" class="cell" data-execution_count="3">
+<div id="98aed40b" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.linalg <span class="im">import</span> null_space</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1188,7 +1188,7 @@ Eigenvector 2:
 </div>
 </div>
 <p>Same can be done using direct approach. Code for this task is given below.</p>
-<div id="a591a604" class="cell" data-execution_count="4">
+<div id="a5231dfb" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrix A</span></span>
@@ -1223,7 +1223,7 @@ Eigenvectors:
 <li>Diagonalize the matrix <span class="math inline">\(A=\begin{bmatrix} 2&amp;1\\ 1&amp;2\end{bmatrix}\)</span>.</li>
 </ol>
 <p><code>Python</code> code for this task is given below.</p>
-<div id="33f00c08" class="cell" data-execution_count="5">
+<div id="b3905548" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define matrix A</span></span>
@@ -1389,7 +1389,7 @@ A = U \Sigma V^T
 <ol type="1">
 <li>Find the QR decomposition of the matrix, <span class="math inline">\(A=\begin{bmatrix}12&amp;-51&amp;4\\ 6&amp;167&amp;-68\\ -4&amp;24&amp;-41\end{bmatrix}\)</span>. Verify the decomposition using the reconstruction.</li>
 </ol>
-<div id="518a97ed" class="cell" data-execution_count="6">
+<div id="99aa0b78" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define  A</span></span>
@@ -1459,8 +1459,7 @@ A \mathbf{x} = \mathbf{b}
 2x_1 + 3x_2 &amp;= 5 \\
 4x_1 + 6x_2 &amp;= 10 \\
 1x_1 + 2x_2 &amp;= 3 \\
-\end{align*}
-\]</span></p>
+\end{align*}\]</span></p>
 <p>Here, we have three equations but only two unknowns (<span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>). This system is overdetermined.</p>
 </section>
 <section id="challenges-in-solving-overdetermined-systems" class="level3" data-number="6.1.2">
@@ -1515,7 +1514,7 @@ R \mathbf{x} = Q^T \mathbf{b}
 </ul></li>
 </ol>
 <p><code>Python</code> code for solving the above system of equations is given below.</p>
-<div id="3ac51f08" class="cell" data-execution_count="7">
+<div id="7d5295e1" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the coefficient matrix A and the constant vector b</span></span>
@@ -1548,14 +1547,12 @@ R \mathbf{x} = Q^T \mathbf{b}
 </blockquote>
 <p><strong>Problem Statement:</strong><br>
 Solve the overdetermined system given by the equations:</p>
-<p><span class="math display">\[
-\begin{align*}
+<p><span class="math display">\[\begin{align*}
 2x + 3y &amp;= 5 \\
 4x + 6y &amp;= 10 \\
 1x + 2y &amp;= 2
-\end{align*}
-\]</span></p>
-<div id="b79dcf8e" class="cell" data-execution_count="8">
+\end{align*}\]</span></p>
+<div id="fe98e81a" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Problem 1: Simple Overdetermined System</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1586,14 +1583,12 @@ Problem 1 - Ordinary Least Squares Solution: [ 4. -1.]</code></pre>
 </blockquote>
 <p><strong>Problem Statement:</strong><br>
 Solve the following system:</p>
-<p><span class="math display">\[
-\begin{align*}
+<p><span class="math display">\[\begin{align*}
 x + 2y &amp;= 3 \\
 2x + 4y &amp;= 6 \\
 3x + 1y &amp;= 5
-\end{align*}
-\]</span></p>
-<div id="aabfb9ec" class="cell" data-execution_count="9">
+\end{align*}\]</span></p>
+<div id="133ad404" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Problem 2: Overdetermined System with No Exact Solution</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the coefficient matrix A and the vector b</span></span>
@@ -1626,7 +1621,7 @@ Generate a random overdetermined system and solve it:</p>
 Ax = b
 \]</span></p>
 <p>Where (A) is a random (6 ) matrix and (b) is generated accordingly.</p>
-<div id="3c6d5344" class="cell" data-execution_count="10">
+<div id="1a0f2ba9" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Problem 3: Overdetermined System with Random Data</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a random overdetermined system</span></span>
@@ -1654,12 +1649,10 @@ Problem 3 - Ordinary Least Squares Solution: [0.94791379 2.10331498 2.98999875]<
 </blockquote>
 <p><strong>Problem Statement:</strong><br>
 Fit a linear model to the following data points:</p>
-<p><span class="math display">\[
-\begin{align*}
+<p><span class="math display">\[\begin{align*}
 (1, 2), (2, 3), (3, 5), (4, 7), (5, 11)
-\end{align*}
-\]</span></p>
-<div id="f076dbb7" class="cell" data-execution_count="11">
+\end{align*}\]</span></p>
+<div id="01383219" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Problem 4: Real-World Data Fitting</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Data points</span></span>
@@ -1688,12 +1681,10 @@ Problem 4 - Ordinary Least Squares Solution: [ 2.2 -1. ]</code></pre>
 </blockquote>
 <p><strong>Problem Statement:</strong><br>
 Fit a quadratic polynomial to the following data points:</p>
-<p><span class="math display">\[
-\begin{align*}
+<p><span class="math display">\[\begin{align*}
 (1, 1), (2, 4), (3, 9), (4, 16), (5, 25)
-\end{align*}
-\]</span></p>
-<div id="05f24b3e" class="cell" data-execution_count="12">
+\end{align*}\]</span></p>
+<div id="decf2005" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Problem 5: Polynomial Fit (Higher Degree)</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Data points for polynomial fitting</span></span>

@@ -1357,12 +1357,11 @@ where:
 
 Consider the following system of equations:
 
-$$\begin{align*}
+\begin{align*}
 2x_1 + 3x_2 &= 5 \\
 4x_1 + 6x_2 &= 10 \\
 1x_1 + 2x_2 &= 3 \\
 \end{align*}
-$$
 
 
 
@@ -1442,13 +1441,13 @@ print(x)
 **Problem Statement:**  
 Solve the overdetermined system given by the equations:
 
-$$
+
 \begin{align*}
 2x + 3y &= 5 \\
 4x + 6y &= 10 \\
 1x + 2y &= 2
 \end{align*}
-$$
+
 
 
 ```{python}
@@ -1480,13 +1479,13 @@ print("Problem 1 - Ordinary Least Squares Solution:", x_ols1)
 **Problem Statement:**  
 Solve the following system:
 
-$$
+
 \begin{align*}
 x + 2y &= 3 \\
 2x + 4y &= 6 \\
 3x + 1y &= 5
 \end{align*}
-$$
+
 
 ```{python}
 # Problem 2: Overdetermined System with No Exact Solution
@@ -1548,11 +1547,11 @@ print("Problem 3 - Ordinary Least Squares Solution:", x_ols3)
 **Problem Statement:**  
 Fit a linear model to the following data points:
 
-$$
+
 \begin{align*}
 (1, 2), (2, 3), (3, 5), (4, 7), (5, 11)
 \end{align*}
-$$
+
 
 
 ```{python}
@@ -1583,11 +1582,11 @@ print("Problem 4 - Ordinary Least Squares Solution:", x_ols4)
 **Problem Statement:**  
 Fit a quadratic polynomial to the following data points:
 
-$$
+
 \begin{align*}
 (1, 1), (2, 4), (3, 9), (4, 16), (5, 25)
 \end{align*}
-$$
+
 
 
 ```{python}
