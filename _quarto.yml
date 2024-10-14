@@ -19,6 +19,7 @@ book:
     - module_2.qmd
     - module_3.qmd
     - module_4.qmd
+    - module_5.qmd
     - references.qmd
 
 bibliography: references.bib

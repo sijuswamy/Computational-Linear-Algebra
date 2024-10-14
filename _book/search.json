@@ -1,12 +1,72 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Computational Linear Algebra",
+    "objectID": "module_5.html",
+    "href": "module_5.html",
+    "title": "5  Linear Algebra for Advanced Applications",
     "section": "",
-    "text": "Preface\n\nअज्ञान-तिमिरान्धस्य ज्ञानाञ्जन-शलाकया चक्षुर् उन्मीलितं येन तस्मै श्री-गुरवे नमः\n\nI was born in the darkness of ignorance, and my master opened my eyes with the torch of knowledge. I offer my respectful obeisances unto him\n\nWelcome to the course on Computational Linear Algebra. This course is designed to provide a practical perspective on linear algebra, bridging the gap between mathematical theory and real-world applications. As we delve into the intricacies of linear algebra, our focus will be on equipping you with the skills to effectively utilize these concepts in the design, development, and manipulation of data-driven processes applicable to Computer Science and Engineering.\nThroughout this course, you will explore linear algebra not just as a set of abstract mathematical principles, but as a powerful tool for solving complex problems and optimizing processes. The curriculum integrates robust mathematical theory with hands-on implementation, enabling you to apply linear algebra techniques in practical scenarios.\nFrom understanding fundamental operations to applying advanced concepts in data-driven contexts, this course aims to build a strong foundation that supports both theoretical knowledge and practical expertise. Whether you’re tackling computational challenges or developing innovative solutions, the skills and insights gained here will be invaluable in your academic and professional endeavors Knuth (1984).\nWe look forward to guiding you through this journey of blending theory with practice and helping you harness the full potential of linear algebra in your work.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "5.1 Singular Value Decomposition (SVD) – An Intuitive and Mathematical Approach\nSingular Value Decomposition (SVD) is one of the most powerful matrix factorization tools in linear algebra, extensively used in areas like data compression, signal processing, machine learning, and more. SVD generalizes the concept of diagonalization to non-square matrices, decomposing any \\(m \\times n\\) matrix \\(A\\) into three matrices with well-defined geometric interpretations.",
     "crumbs": [
-      "Preface"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
+    ]
+  },
+  {
+    "objectID": "module_5.html#the-svd-theorem",
+    "href": "module_5.html#the-svd-theorem",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.2 The SVD Theorem",
+    "text": "5.2 The SVD Theorem\nFor any real or complex \\(m \\times n\\) matrix \\(A\\), SVD states that:\n\\[\nA = U \\Sigma V^T\n\\]\nWhere: - \\(U\\) is an \\(m \\times m\\) orthogonal matrix (or unitary in the complex case), - \\(\\Sigma\\) is an \\(m \\times n\\) diagonal matrix, with non-negative real numbers (the singular values of \\(A\\)) on the diagonal, - \\(V^T\\) is the transpose (or conjugate transpose in the complex case) of an \\(n \\times n\\) orthogonal matrix \\(V\\).\nThese are range and null spaces for both the column and the row spaces.\n\\[\\begin{align}\n%\n  \\mathbf{C}^{n} =\n    \\color{blue}{\\mathcal{R} \\left( \\mathbf{A}^{*} \\right)} \\oplus\n    \\color{red}{\\mathcal{N} \\left( \\mathbf{A} \\right)} \\\\\n%\n  \\mathbf{C}^{m} =\n    \\color{blue}{\\mathcal{R} \\left( \\mathbf{A} \\right)} \\oplus\n    \\color{red} {\\mathcal{N} \\left( \\mathbf{A}^{*} \\right)}\n%\n\\end{align}\\]\nThe singular value decomposition provides an orthonormal basis for the four fundamental subspaces.\n\n\n\n\n\n\nSingular Value Decomposition- A matrix visualization\n\n\n\n\\[\\begin{align}\n  \\mathbf{A} &=\n  \\mathbf{U} \\, \\Sigma \\, \\mathbf{V}^{*} \\\\\n%\n&=\n% U\n  \\left[ \\begin{array}{cc}\n     \\color{blue}{\\mathbf{U}_{\\mathcal{R}}} & \\color{red}{\\mathbf{U}_{\\mathcal{N}}}\n  \\end{array} \\right]  \n% Sigma\n  \\left[ \\begin{array}{cccc|cc}\n     \\sigma_{1} & 0 & \\dots &  &   & \\dots &  0 \\\\\n     0 & \\sigma_{2}  \\\\\n     \\vdots && \\ddots \\\\\n       & & & \\sigma_{\\rho} \\\\\\hline\n       & & & & 0 & \\\\\n     \\vdots &&&&&\\ddots \\\\\n     0 & & &   &   &  & 0 \\\\\n  \\end{array} \\right]\n% V\n  \\left[ \\begin{array}{c}\n     \\color{blue}{\\mathbf{V}_{\\mathcal{R}}}^{*} \\\\\n     \\color{red}{\\mathbf{V}_{\\mathcal{N}}}^{*}\n  \\end{array} \\right]  \\\\\n%\n  & =\n% U\n   \\left[ \\begin{array}{cccccccc}\n    \\color{blue}{u_{1}} & \\dots & \\color{blue}{u_{\\rho}} & \\color{red}{u_{\\rho+1}} & \\dots & \\color{red}{u_{m}}\n  \\end{array} \\right]\n% Sigma\n  \\left[ \\begin{array}{cc}\n     \\mathbf{S}_{\\rho\\times \\rho} & \\mathbf{0} \\\\\n     \\mathbf{0} & \\mathbf{0}\n  \\end{array} \\right]\n% V\n   \\left[ \\begin{array}{c}\n    \\color{blue}{v_{1}^{*}} \\\\\n    \\vdots \\\\\n    \\color{blue}{v_{\\rho}^{*}} \\\\\n    \\color{red}{v_{\\rho+1}^{*}} \\\\\n    \\vdots \\\\\n    \\color{red}{v_{n}^{*}}\n  \\end{array} \\right]\n%\n\\end{align}\\]\nThe column vectors of \\(U\\) are an orthonormal span of \\(\\mathbb{C}^{m}\\) (column space), while the column vectors of \\(V\\) are an orthonormal span of \\(\\mathbb{C}^{n}\\) (row space).\nThe \\(\\rho\\) singular values are real and ordered (descending):\n\\[\\sigma_{1} \\ge \\sigma_{2} \\ge \\dots \\ge \\sigma_{\\rho}&gt;0.\\]\nThese singular values for the diagonal matrix of singular values\n\\[\\mathbf{S} = \\text{diagonal} (\\sigma_{1},\\sigma_{1},\\dots,\\sigma_{\\rho}) \\in\\mathbb{R}^{\\rho\\times\\rho}.\\]\nThe \\(S\\) matrix is embedded in the sabot matrix \\(\\Sigma\\in\\mathbb{R}^{m\\times n}\\) whose shape insures conformability.\nPlease note that the singular values only correspond to range space vectors.\nThe column vectors form spans for the subspaces: \\[\\begin{align}\n% R A\n\\color{blue}{\\mathcal{R} \\left( \\mathbf{A} \\right)} &=\n\\text{span} \\left\\{\n\\color{blue}{u_{1}}, \\dots , \\color{blue}{u_{\\rho}}\n\\right\\} \\\\\n% R A*\n\\color{blue}{\\mathcal{R} \\left( \\mathbf{A}^{*} \\right)} &=\n\\text{span} \\left\\{\n\\color{blue}{v_{1}}, \\dots , \\color{blue}{v_{\\rho}}\n\\right\\} \\\\\n% N A*\n\\color{red}{\\mathcal{N} \\left( \\mathbf{A}^{*} \\right)} &=\n\\text{span} \\left\\{\n\\color{red}{u_{\\rho+1}}, \\dots , \\color{red}{u_{m}}\n\\right\\} \\\\\n% N A\n\\color{red}{\\mathcal{N} \\left( \\mathbf{A} \\right)} &=\n\\text{span} \\left\\{\n\\color{red}{v_{\\rho+1}}, \\dots , \\color{red}{v_{n}}\n\\right\\} \\\\\n%\n\\end{align}\\]",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
+    ]
+  },
+  {
+    "objectID": "module_5.html#intuition-behind-svd",
+    "href": "module_5.html#intuition-behind-svd",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.3 Intuition Behind SVD",
+    "text": "5.3 Intuition Behind SVD\nThe SVD can be understood geometrically: - The columns of \\(V\\) form an orthonormal basis of the input space. - The matrix \\(\\Sigma\\) scales and transforms this space along the principal axes. - The columns of \\(U\\) form an orthonormal basis of the output space, representing how the transformed vectors in the input space map to the output space.\nSVD essentially performs three steps on any vector \\(x\\): 1. Rotation: \\(V^T\\) aligns \\(x\\) with the principal axes.\n\nScaling: \\(\\Sigma\\) scales along these axes.\nRotation: \\(U\\) maps the result back to the output space.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
+    ]
+  },
+  {
+    "objectID": "module_5.html#spectral-decomposition-vs.-svd",
+    "href": "module_5.html#spectral-decomposition-vs.-svd",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.4 Spectral Decomposition vs. SVD",
+    "text": "5.4 Spectral Decomposition vs. SVD\n\nSpectral Decomposition (also known as Eigendecomposition) applies to square matrices and decomposes a matrix \\(A\\) into \\(A = Q \\Lambda Q^{-1}\\), where \\(Q\\) is an orthogonal matrix of eigenvectors, and \\(\\Lambda\\) is a diagonal matrix of eigenvalues.\nSVD, on the other hand, applies to any matrix (square or rectangular) and generalizes this idea by using singular values (which are always non-negative) instead of eigenvalues.\n\n\n5.4.1 Comparison:\n\nEigenvectors and Eigenvalues: Spectral decomposition only works if \\(A\\) is square and diagonalizable. It gives insight into the properties of a matrix (e.g., whether it is invertible).\nSingular Vectors and Singular Values: SVD works for any matrix and provides a more general and stable decomposition, useful even for non-square matrices.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
+    ]
+  },
+  {
+    "objectID": "module_5.html#steps-to-find-u-sigma-and-vt",
+    "href": "module_5.html#steps-to-find-u-sigma-and-vt",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.5 Steps to Find \\(U\\), \\(\\Sigma\\), and \\(V^T\\)",
+    "text": "5.5 Steps to Find \\(U\\), \\(\\Sigma\\), and \\(V^T\\)\nGiven a matrix \\(A\\), the SVD factors \\(U\\), \\(\\Sigma\\), and \\(V^T\\) can be computed as follows:\n\nCompute \\(A^T A\\) and find the eigenvalues and eigenvectors:\n\nThe matrix \\(V\\) is formed from the eigenvectors of \\(A^T A\\).\nThe singular values \\(\\sigma_i\\) are the square roots of the eigenvalues of \\(A^T A\\).\n\nConstruct \\(\\Sigma\\):\n\n\\(\\Sigma\\) is a diagonal matrix where the non-zero entries are the singular values \\(\\sigma_1, \\sigma_2, \\dots\\), arranged in decreasing order.\n\nCompute \\(A A^T\\) and find the eigenvectors:\n\nThe matrix \\(U\\) is formed from the eigenvectors of \\(A A^T\\).\n\nTranspose \\(V\\):\n\nThe matrix \\(V^T\\) is simply the transpose of \\(V\\).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
+    ]
+  },
+  {
+    "objectID": "module_5.html#example",
+    "href": "module_5.html#example",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.6 Example",
+    "text": "5.6 Example\nLet’s consider a simple example where \\(A\\) is a \\(2 \\times 2\\) matrix:\n\\[\nA = \\begin{pmatrix} 3 & 1 \\\\ 1 & 3 \\end{pmatrix}\n\\]\n\n5.6.1 Step 1: Compute \\(A^T A\\)\n\\[\nA^T A = \\begin{pmatrix} 3 & 1 \\\\ 1 & 3 \\end{pmatrix} \\begin{pmatrix} 3 & 1 \\\\ 1 & 3 \\end{pmatrix} = \\begin{pmatrix} 10 & 6 \\\\ 6 & 10 \\end{pmatrix}\n\\]\nFind the eigenvalues of \\(A^T A\\):\n\\[\n\\det(A^T A - \\lambda I) = \\det\\begin{pmatrix} 10 - \\lambda & 6 \\\\ 6 & 10 - \\lambda \\end{pmatrix} = 0\n\\]\n\\[\n(10 - \\lambda)^2 - 36 = 0 \\quad \\Rightarrow \\quad \\lambda = 16, \\lambda = 4\n\\]\nThe eigenvalues of \\(A^T A\\) are \\(16\\) and \\(4\\), so the singular values of \\(A\\) are \\(\\sigma_1 = 4\\) and \\(\\sigma_2 = 2\\).\n\n\n5.6.2 Step 2: Find \\(V\\) from the eigenvectors of \\(A^T A\\)\nSolve \\((A^T A - \\lambda I)v = 0\\) for each eigenvalue:\n\nFor \\(\\lambda = 16\\), the eigenvector is \\(v_1 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\\),\nFor \\(\\lambda = 4\\), the eigenvector is \\(v_2 = \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}\\).\n\nThus,\n\\[\nV = \\begin{pmatrix} 1/\\sqrt{2} & -1/\\sqrt{2} \\\\ 1/\\sqrt{2} & 1/\\sqrt{2} \\end{pmatrix}\n\\]\n\n\n5.6.3 Step 3: Construct \\(\\Sigma\\)\nThe singular values \\(\\sigma_1 = 4\\) and \\(\\sigma_2 = 2\\), so:\n\\[\n\\Sigma = \\begin{pmatrix} 4 & 0 \\\\ 0 & 2 \\end{pmatrix}\n\\]\n\n\n5.6.4 Step 4: Find \\(U\\) from the eigenvectors of \\(A A^T\\)\nSimilarly, compute \\(A A^T\\):\n\\[\nA A^T = \\begin{pmatrix} 3 & 1 \\\\ 1 & 3 \\end{pmatrix} \\begin{pmatrix} 3 & 1 \\\\ 1 & 3 \\end{pmatrix} = \\begin{pmatrix} 10 & 6 \\\\ 6 & 10 \\end{pmatrix}\n\\]\nSolve for the eigenvectors of \\(A A^T\\) (same as \\(A^T A\\)):\nThe eigenvectors are \\(u_1 = \\begin{pmatrix} 1/\\sqrt{2} \\\\ 1/\\sqrt{2} \\end{pmatrix}\\) and \\(u_2 = \\begin{pmatrix} -1/\\sqrt{2} \\\\ 1/\\sqrt{2} \\end{pmatrix}\\).\nThus,\n\\[\nU = \\begin{pmatrix} 1/\\sqrt{2} & -1/\\sqrt{2} \\\\ 1/\\sqrt{2} & 1/\\sqrt{2} \\end{pmatrix}\n\\]\n\n\n5.6.5 Step 5: Final SVD\nWe can now write the SVD of \\(A\\) as:\n\\[\nA = U \\Sigma V^T\n\\]\nWhere:\n\\[\nU = \\begin{pmatrix} 1/\\sqrt{2} & -1/\\sqrt{2} \\\\ 1/\\sqrt{2} & 1/\\sqrt{2} \\end{pmatrix}, \\quad \\Sigma = \\begin{pmatrix} 4 & 0 \\\\ 0 & 2 \\end{pmatrix}, \\quad V^T = \\begin{pmatrix} 1/\\sqrt{2} & 1/\\sqrt{2} \\\\ -1/\\sqrt{2} & 1/\\sqrt{2} \\end{pmatrix}\n\\]\nPython code to find SVD of this example is given below.\n\nimport numpy as np\n\n# Define the matrix A\nA = np.array([[3, 1],\n              [1, 3]])\n\n# Perform SVD decomposition\nU, Sigma, VT = np.linalg.svd(A)\n\n# Create Sigma matrix from singular values\nSigma_matrix = np.zeros((A.shape[0], A.shape[1]))\nnp.fill_diagonal(Sigma_matrix, Sigma)\n\n# Print results\nprint(\"Matrix A:\")\nprint(A)\nprint(\"\\nU matrix:\")\nprint(U)\nprint(\"\\nSigma matrix:\")\nprint(Sigma_matrix)\nprint(\"\\nV^T matrix:\")\nprint(VT)\n\n# Verify the decomposition A = U * Sigma * V^T\nA_reconstructed = U @ Sigma_matrix @ VT\nprint(\"\\nReconstructed A (U * Sigma * V^T):\")\nprint(A_reconstructed)\n\nMatrix A:\n[[3 1]\n [1 3]]\n\nU matrix:\n[[-0.70710678 -0.70710678]\n [-0.70710678  0.70710678]]\n\nSigma matrix:\n[[4. 0.]\n [0. 2.]]\n\nV^T matrix:\n[[-0.70710678 -0.70710678]\n [-0.70710678  0.70710678]]\n\nReconstructed A (U * Sigma * V^T):\n[[3. 1.]\n [1. 3.]]",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
+    ]
+  },
+  {
+    "objectID": "module_5.html#takeaway",
+    "href": "module_5.html#takeaway",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.8 Takeaway",
+    "text": "5.8 Takeaway\nSingular Value Decomposition provides a general framework for decomposing any matrix into orthogonal components, revealing the underlying structure of the matrix. SVD has numerous applications in machine learning, signal processing, and more. The method to find the matrices \\(U\\), \\(\\Sigma\\), and \\(V^T\\) involves using the eigenvalues and eigenvectors of \\(A^T A\\) and \\(A A^T\\).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
     ]
   },
   {
@@ -344,9 +404,19 @@
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Harris, Charles R., K. Jarrod Millman, Stéfan J. van der Walt, Ralf\nGommers, Pauli Virtanen, David Cournapeau, Eric Wieser, et al. 2020.\n“Array Programming with NumPy.”\nNature 585 (7825): 357–62. https://doi.org/10.1038/s41586-020-2649-2.\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.\n\n\nStrang, Gilbert. 2020. Linear Algebra for Everyone. SIAM.\n\n\n———. 2022. Introduction to Linear Algebra. SIAM.\n\n\nVirtanen, Pauli, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler\nReddy, David Cournapeau, Evgeni Burovski, et al. 2020. “SciPy 1.0: Fundamental Algorithms for\nScientific Computing in Python.” Nature Methods\n17: 261–72. https://doi.org/10.1038/s41592-019-0686-2.",
+    "text": "Harris, Charles R., K. Jarrod Millman, Stéfan J. van der Walt, Ralf\nGommers, Pauli Virtanen, David Cournapeau, Eric Wieser, et al. 2020.\n“Array Programming with NumPy.”\nNature 585 (7825): 357–62. https://doi.org/10.1038/s41586-020-2649-2.\n\n\nStrang, Gilbert. 2020. Linear Algebra for Everyone. SIAM.\n\n\n———. 2022. Introduction to Linear Algebra. SIAM.\n\n\nVirtanen, Pauli, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler\nReddy, David Cournapeau, Evgeni Burovski, et al. 2020. “SciPy 1.0: Fundamental Algorithms for\nScientific Computing in Python.” Nature Methods\n17: 261–72. https://doi.org/10.1038/s41592-019-0686-2.",
     "crumbs": [
       "References"
+    ]
+  },
+  {
+    "objectID": "module_5.html#reconstructing-matrix-a-using-svd",
+    "href": "module_5.html#reconstructing-matrix-a-using-svd",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.7 Reconstructing Matrix \\(A\\) Using SVD",
+    "text": "5.7 Reconstructing Matrix \\(A\\) Using SVD\nGiven the Singular Value Decomposition (SVD) of a matrix \\(A\\), the matrix can be reconstructed as a linear combination of low-rank matrices using the left singular vectors \\(u_i\\), singular values \\(\\sigma_i\\), and the right singular vectors \\(v_i^T\\).\nThe formula to reconstruct the matrix \\(A\\) is:\n\\[\nA = \\sum_{i=1}^{r} \\sigma_i \\, u_i \\, v_i^T\n\\]\nwhere: - \\(r\\) is the rank of the matrix \\(A\\) (i.e., the number of non-zero singular values), - \\(\\sigma_i\\) is the \\(i\\)-th singular value from the diagonal matrix \\(\\Sigma\\), - \\(u_i\\) is the \\(i\\)-th column of the matrix \\(U\\) (left singular vectors), - \\(v_i^T\\) is the transpose of the \\(i\\)-th row of the matrix \\(V^T\\) (right singular vectors).\n\n5.7.1 Breakdown of Terms:\n\n\\(u_i \\in \\mathbb{R}^m\\) is a column vector from the matrix \\(U\\) (size \\(m \\times 1\\)),\n\\(v_i^T \\in \\mathbb{R}^n\\) is a row vector from the matrix \\(V^T\\) (size \\(1 \\times n\\)),\n\\(\\sigma_i \\in \\mathbb{R}\\) is a scalar representing the \\(i\\)-th singular value.\n\nEach term \\(\\sigma_i u_i v_i^T\\) represents a rank-1 matrix (the outer product of two vectors). The sum of these rank-1 matrices reconstructs the original matrix \\(A\\).\n\n\n5.7.2 Example:\nFor a matrix \\(A\\), its SVD is represented as:\n\\[\nA = U \\Sigma V^T = \\sum_{i=1}^{r} \\sigma_i \\, u_i \\, v_i^T\n\\]\nIf the rank of \\(A\\) is 2, then the reconstructed form of \\(A\\) would be:\n\\[\nA = \\sigma_1 u_1 v_1^T + \\sigma_2 u_2 v_2^T\n\\]\nEach term \\(\\sigma_i u_i v_i^T\\) corresponds to a low-rank approximation that contributes to the final matrix. By summing these terms, the full matrix \\(A\\) is obtained.\nPython code demonstrating reconstruction is given below:\n\nimport numpy as np\n\n# Define the matrix A and convert it to float64\nA = np.array([[3, 1], \n              [1, 3]], dtype=np.float64)\n\n# Perform SVD\nU, Sigma, VT = np.linalg.svd(A)\n\n# Reconstruct A using the singular values and singular vectors\nA_reconstructed = np.zeros_like(A)  # This will be float64 now\nfor i in range(len(Sigma)-1):\n    A_reconstructed += Sigma[i] * np.outer(U[:, i], VT[i, :])\n\nprint(\"Original matrix A:\")\nprint(A)\n\nprint(\"\\nReconstructed A from rank-1 matrices:\")\nprint(A_reconstructed)\n\nOriginal matrix A:\n[[3. 1.]\n [1. 3.]]\n\nReconstructed A from rank-1 matrices:\n[[2. 2.]\n [2. 2.]]",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
     ]
   }
 ]
