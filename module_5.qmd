@@ -26,11 +26,11 @@ These are range and null spaces for both the column and the row spaces.
 
 \begin{align}
 %
-  \mathbf{C}^{n} = 
+  \mathbf{C}^{n} &= 
     \color{blue}{\mathcal{R} \left( \mathbf{A}^{*} \right)} \oplus
     \color{red}{\mathcal{N} \left( \mathbf{A} \right)} \\
 %
-  \mathbf{C}^{m} = 
+  \mathbf{C}^{m} &= 
     \color{blue}{\mathcal{R} \left( \mathbf{A} \right)} \oplus
     \color{red} {\mathcal{N} \left( \mathbf{A}^{*} \right)}
 %
@@ -38,97 +38,7 @@ These are range and null spaces for both the column and the row spaces.
 
 The singular value decomposition provides an orthonormal basis for the four fundamental subspaces.
 
-:::{.callout-note}
 
-### Singular Value Decomposition- A matrix visualization
-
-\begin{align}
-  \mathbf{A} &=
-  \mathbf{U} \, \Sigma \, \mathbf{V}^{*} \\
-%
- &=
-% U 
-  \left[ \begin{array}{cc}
-     \color{blue}{\mathbf{U}_{\mathcal{R}}} & \color{red}{\mathbf{U}_{\mathcal{N}}}
-  \end{array} \right]  
-% Sigma
-  \left[ \begin{array}{cccc|cc}
-     \sigma_{1} & 0 & \dots &  &   & \dots &  0 \\
-     0 & \sigma_{2}  \\
-     \vdots && \ddots \\
-       & & & \sigma_{\rho} \\\hline
-       & & & & 0 & \\
-     \vdots &&&&&\ddots \\
-     0 & & &   &   &  & 0 \\
-  \end{array} \right]
-% V 
-  \left[ \begin{array}{c}
-     \color{blue}{\mathbf{V}_{\mathcal{R}}}^{*} \\ 
-     \color{red}{\mathbf{V}_{\mathcal{N}}}^{*}
-  \end{array} \right]  \\
-%
-  & =
-% U
-   \left[ \begin{array}{cccccccc}
-    \color{blue}{u_{1}} & \dots & \color{blue}{u_{\rho}} & \color{red}{u_{\rho+1}} & \dots & \color{red}{u_{m}}
-  \end{array} \right]
-% Sigma
-  \left[ \begin{array}{cc}
-     \mathbf{S}_{\rho\times \rho} & \mathbf{0} \\
-     \mathbf{0} & \mathbf{0} 
-  \end{array} \right]
-% V
-   \left[ \begin{array}{c}
-    \color{blue}{v_{1}^{*}} \\ 
-    \vdots \\
-    \color{blue}{v_{\rho}^{*}} \\
-    \color{red}{v_{\rho+1}^{*}} \\
-    \vdots \\ 
-    \color{red}{v_{n}^{*}}
-  \end{array} \right]
-%
-\end{align}
-
-The column vectors of $U$  are an orthonormal span of $\mathbb{C}^{m}$ (column space), while the column vectors of $V$  are an orthonormal span of $\mathbb{C}^{n}$ (row space).
-
-The $\rho$ singular values are real and ordered (descending):
-
-$$\sigma_{1} \ge \sigma_{2} \ge \dots \ge \sigma_{\rho}>0.$$
-
-These singular values for the diagonal matrix of singular values
-
-$$\mathbf{S} = \text{diagonal} (\sigma_{1},\sigma_{1},\dots,\sigma_{\rho}) \in\mathbb{R}^{\rho\times\rho}.$$
-
-The $S$  matrix is embedded in the sabot matrix $\Sigma\in\mathbb{R}^{m\times n}$ whose shape insures conformability.
-
-Please note that the singular values _only_ correspond to _range space_ vectors.
-
-The column vectors form spans for the subspaces:
-\begin{align} 
-% R A
-\color{blue}{\mathcal{R} \left( \mathbf{A} \right)} &=
-\text{span} \left\{
- \color{blue}{u_{1}}, \dots , \color{blue}{u_{\rho}}
-\right\} \\
-% R A*
-\color{blue}{\mathcal{R} \left( \mathbf{A}^{*} \right)} &=
-\text{span} \left\{
- \color{blue}{v_{1}}, \dots , \color{blue}{v_{\rho}}
-\right\} \\
-% N A*
-\color{red}{\mathcal{N} \left( \mathbf{A}^{*} \right)} &=
-\text{span} \left\{
-\color{red}{u_{\rho+1}}, \dots , \color{red}{u_{m}}
-\right\} \\
-% N A
-\color{red}{\mathcal{N} \left( \mathbf{A} \right)} &=
-\text{span} \left\{
-\color{red}{v_{\rho+1}}, \dots , \color{red}{v_{n}}
-\right\} \\
-%
-\end{align}
-
-:::
 
 ## Intuition Behind SVD
 
@@ -348,6 +258,180 @@ print(A)
 
 print("\nReconstructed A from rank-1 matrices:")
 print(A_reconstructed)
+
+```
+
+## Singular Value Decomposition in Image Processing
+
+###  Image Compression
+
+SVD is widely used for compressing images. By approximating an image with a lower rank matrix, significant amounts of data can be reduced without a substantial loss in quality. The largest singular values and their corresponding singular vectors are retained, allowing for effective storage and transmission.
+
+###  Noise Reduction
+
+SVD helps in denoising images by separating noise from the original image data. By reconstructing the image using only the most significant singular values and vectors, the impact of noise (often associated with smaller singular values) can be minimized, resulting in a clearer image.
+
+###  Image Reconstruction
+In applications where parts of an image are missing or corrupted, SVD can facilitate reconstruction. By analyzing the singular values and vectors, missing data can be inferred and filled in, preserving the structural integrity of the image.
+
+###  Facial Recognition
+SVD is employed in facial recognition systems as a means to extract features. By decomposing facial images into their constituent parts, SVD helps identify key features that distinguish different faces, enhancing recognition accuracy.
+
+###  Image Segmentation
+In image segmentation, SVD can aid in clustering pixels based on their attributes. By reducing dimensionality, it helps identify distinct regions in an image, facilitating the separation of objects and backgrounds.
+
+###  Color Image Processing
+SVD can be applied to color images by treating each color channel separately. This allows for efficient manipulation, compression, and analysis of color images, improving overall processing performance.
+
+###  Pattern Recognition
+SVD is utilized in pattern recognition tasks where it helps to identify and classify patterns within images. By simplifying the data representation, SVD enhances the efficiency and accuracy of recognition algorithms.
+
+### Example
+
+```{python}
+from PIL import Image
+import urllib.request
+import matplotlib.pyplot as plt
+urllib.request.urlretrieve(
+  'http://lenna.org/len_top.jpg',
+   "input.jpg")
+
+img = Image.open("input.jpg")
+```
+
+```{python}
+# convert to grayscale
+imggray = img.convert('LA')
+plt.figure(figsize=(8,6))
+plt.imshow(imggray);
+```
+
+```{python}
+# creating image histogram
+import pandas as pd
+import numpy as np
+imgmat = np.array(list(imggray.getdata(band=0)), float)
+A=pd.Series(imgmat)
+A.hist(bins=20)
+```
+
+```{python}
+# printing the pixel values
+print(imgmat)
+```
+
+```{python}
+# dimension of the gray scale image matrix
+imgmat.shape
+```
+```{python}
+##loading an image and show it using matrices of pixel values
+from skimage import io
+f = "http://lenna.org/len_top.jpg" #url of the image
+a = io.imread(f) # read the image to a tensor
+c1=a[:,:,0] # channel 1
+c2=a[:,:,1] # channel 2
+c3=a[:,:,2] # channel 3
+print(c1)
+# dimension of channel-1
+c1.shape
+```
+
+```{python}
+fig = plt.figure(figsize=(12, 3))
+ax1 = fig.add_subplot(131)
+ax2 = fig.add_subplot(132)
+ax3 = fig.add_subplot(133)
+ax1.imshow(c1, cmap='gray', vmin = 0, vmax = 255,interpolation='none')
+ax2.imshow(c2, cmap='gray', vmin = 0, vmax = 255,interpolation='none')
+ax3.imshow(c3, cmap='gray', vmin = 0, vmax = 255,interpolation='none')
+plt.show()
+```
+
+```{python}
+c1_array=np.array(list(c1)).reshape(-1)
+pd.Series(c1_array).hist()
+```
+
+```{python}
+## an application of matrix addition
+plt.imshow(0.34*c1-0.2*c2-0.01*c3, cmap='gray', vmin = 0, vmax = 255,interpolation='none')
+plt.show()
+```
+
+```{python}
+#converting a grayscale image to numpy array
+imgmat = np.array(list(imggray.getdata(band=0)), float)
+imgmat.shape = (imggray.size[1], imggray.size[0])
+imgmat = np.matrix(imgmat)
+plt.figure(figsize=(8,6))
+plt.imshow(imgmat, cmap='gray');
+```
+As promised, one line of command is enough to get the singular value decomposition. $U$ and $V$ are the left-hand side and the right-hand side matrices, respectively. 'sigma' is a vector containing the diagonal entries of the matrix $\Sigma$ The other two lines reconstruct the matrix using the first singular value only. You can already guess the rough shape of the original image.
+
+```{python}
+U, sigma, V = np.linalg.svd(imgmat)
+
+reconstimg = np.matrix(U[:, :1]) * np.diag(sigma[:1]) * np.matrix(V[:1, :])
+plt.imshow(reconstimg, cmap='gray');
+```
+
+Let's see what we get when we use the second, third and fourth singular value as well.
+
+```{python}
+for i in range(2, 4):
+    reconstimg = np.matrix(U[:, :i]) * np.diag(sigma[:i]) * np.matrix(V[:i, :])
+    plt.imshow(reconstimg, cmap='gray')
+    title = "n = %s" % i
+    plt.title(title)
+    plt.show()
+```
+
+Now we let $i$ run from 5 to 51, using a step width of 5. For $i=50$, we already get a pretty good image!
+
+```{python}
+for i in range(5, 51, 5):
+    reconstimg = np.matrix(U[:, :i]) * np.diag(sigma[:i]) * np.matrix(V[:i, :])
+    plt.imshow(reconstimg, cmap='gray')
+    title = "n = %s" % i
+    plt.title(title)
+    plt.show()
+```
+
+But how many singular values do we have after all? The following command gives us the number of entries in sigma. As it is the diagonal matrix, it is stored as a vector and we do not save the zero entries. We now output the number of singular values (the length of the vector sigma, containing the diagonal entries), as well as the size of the matrices $U$ and $V$.
+
+```{python}
+print("We have %d singular values." % sigma.shape)
+print("U is of size", U.shape, ".")
+print("V is of size", V.shape, ".")
+print("The last, or smallest entry in sigma is", sigma[224])
+```
+
+As Python stores the whole singular value decomposition, we do not really save space. But as you saw in the first theoretical exercise of the 10th series, we do not have to compute the whole matrices $U$ and $V$ if we know that we only want to reconstruct the rank $k$ approximation. How many numbers do you have to store for the initial matrix of the picture? How many numbers do you have to store if you want to reconstruct the rank $k$ approximation only?
+
+Use the following Cell to find an $i$ large enough that you are satisfied with the quality of the image. Check, how much percent of the initial size you have to store. If your picture has a different resolution, you will have to correct the terms.
+
+```{python}
+i = 10
+reconstimg = np.matrix(U[:, :i]) * np.diag(sigma[:i]) * np.matrix(V[:i, :])
+plt.imshow(reconstimg, cmap='gray')
+title = "n = %s" % i
+plt.title(title)
+plt.show()
+
+numbers = 400*i + i + 225* i
+print("For this quality, we have to store %d numbers." % numbers)
+```
+If you really want to have a good quality, say you want to reconstruct using $r - 1$ singular values, where $r$ is the total number of singular values, is it still a good idea to use the singular value decomposition?
+
+
+```{python}
+i = 30
+reconstimg = np.matrix(U[:, :i]) * np.diag(sigma[:i]) * np.matrix(V[:i, :])
+plt.imshow(reconstimg, cmap='gray')
+title = "n = %s" % i
+plt.title(title)
+plt.show()
 
 ```
 
