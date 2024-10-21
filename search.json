@@ -430,6 +430,96 @@
     ]
   },
   {
+    "objectID": "module_5.html#principal-component-analysis",
+    "href": "module_5.html#principal-component-analysis",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.10 Principal Component Analysis",
+    "text": "5.10 Principal Component Analysis\nPrincipal Component Analysis (PCA) is fundamentally a technique used for dimensionality reduction, feature extraction, and data visualization. While it’s widely used in various fields, its mathematical foundation lies in Singular Value Decomposition (SVD). This connection between PCA and SVD helps in understanding the underlying mechanics and simplifies PCA computations in high-dimensional spaces. In this section, we will explore PCA as a special case of SVD, present the mathematical derivations, and conclude with an advanced illustration involving image compression.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
+    ]
+  },
+  {
+    "objectID": "module_5.html#principal-component-analysis-as-a-special-case-of-svd",
+    "href": "module_5.html#principal-component-analysis-as-a-special-case-of-svd",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.11 Principal Component Analysis as a Special Case of SVD",
+    "text": "5.11 Principal Component Analysis as a Special Case of SVD\nPrincipal Component Analysis (PCA) is a widely used technique for dimensionality reduction, feature extraction, and data compression. It is based on the mathematical foundations of linear algebra, particularly eigenvalue decomposition and singular value decomposition (SVD).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
+    ]
+  },
+  {
+    "objectID": "module_5.html#problem-setting-for-pca",
+    "href": "module_5.html#problem-setting-for-pca",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.12 Problem Setting for PCA",
+    "text": "5.12 Problem Setting for PCA\nLet \\(X \\in \\mathbb{R}^{m \\times n}\\) represent the data matrix, where: - \\(m\\) is the number of data samples, - \\(n\\) is the number of features for each sample.\nTo begin, we center the data by subtracting the mean of each feature from the dataset:\n\\[\nX_{\\text{centered}} = X - \\bar{X}\n\\]\nwhere \\(\\bar{X}\\) is the mean vector for the columns of \\(X\\).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
+    ]
+  },
+  {
+    "objectID": "module_5.html#covariance-matrix",
+    "href": "module_5.html#covariance-matrix",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.13 Covariance Matrix",
+    "text": "5.13 Covariance Matrix\nThe covariance matrix \\(C\\) of the centered data \\(X_{\\text{centered}}\\) is given by:\n\\[\nC = \\frac{1}{m-1} X_{\\text{centered}}^T X_{\\text{centered}} \\in \\mathbb{R}^{n \\times n}\n\\]\nThe covariance matrix captures the relationships between the features of the data. PCA identifies the directions (principal components) that correspond to the maximum variance in the data.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
+    ]
+  },
+  {
+    "objectID": "module_5.html#eigenvalue-decomposition",
+    "href": "module_5.html#eigenvalue-decomposition",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.14 Eigenvalue Decomposition",
+    "text": "5.14 Eigenvalue Decomposition\nPCA reduces to finding the eigenvalue decomposition of the covariance matrix \\(C\\):\n\\[\nC v_i = \\lambda_i v_i\n\\]\nwhere: - \\(v_i\\) is the \\(i\\)-th eigenvector, - \\(\\lambda_i\\) is the \\(i\\)-th eigenvalue associated with \\(v_i\\).\nThe eigenvectors \\(v_i\\) represent the principal components, and the eigenvalues \\(\\lambda_i\\) represent the variance captured by each principal component.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
+    ]
+  },
+  {
+    "objectID": "module_5.html#singular-value-decomposition-svd",
+    "href": "module_5.html#singular-value-decomposition-svd",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.15 Singular Value Decomposition (SVD)",
+    "text": "5.15 Singular Value Decomposition (SVD)\nPCA can be interpreted as a special case of Singular Value Decomposition (SVD). The SVD of the centered data matrix \\(X_{\\text{centered}}\\) is:\n\\[\nX_{\\text{centered}} = U \\Sigma V^T\n\\]\nwhere: - \\(U \\in \\mathbb{R}^{m \\times m}\\) contains the left singular vectors, - \\(\\Sigma \\in \\mathbb{R}^{m \\times n}\\) is the diagonal matrix of singular values, - \\(V \\in \\mathbb{R}^{n \\times n}\\) contains the right singular vectors.\nThe right singular vectors \\(V\\) are equivalent to the eigenvectors of the covariance matrix \\(C\\), and the singular values \\(\\sigma_i\\) are related to the eigenvalues \\(\\lambda_i\\) by:\n\\[\n\\lambda_i = \\sigma_i^2\n\\]\n\n\n\n\n\n\nPCA Derivation Summary\n\n\n\nTo summarize:\n\nCenter the data by subtracting the mean of each feature.\nCompute the covariance matrix \\(C = \\frac{1}{m-1} X_{\\text{centered}}^T X_{\\text{centered}}\\).\nPerform eigenvalue decomposition of \\(C\\) to find the eigenvectors and eigenvalues.\nAlternatively, perform SVD of \\(X_{\\text{centered}}\\). The right singular vectors are the principal components, and the singular values are related to the variance.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
+    ]
+  },
+  {
+    "objectID": "module_5.html#applications-of-pca",
+    "href": "module_5.html#applications-of-pca",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.16 Applications of PCA",
+    "text": "5.16 Applications of PCA\nPCA has several practical applications:\n\nDimensionality Reduction: PCA reduces the number of dimensions in a dataset while retaining the most important information.\nImage Compression: PCA can compress images by keeping only the principal components that capture the most variance.\nFeature Extraction: PCA is used in machine learning to extract the most significant features from high-dimensional datasets, speeding up computations and preventing overfitting.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
+    ]
+  },
+  {
+    "objectID": "module_5.html#image-compression-using-pca",
+    "href": "module_5.html#image-compression-using-pca",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.17 Image Compression using PCA",
+    "text": "5.17 Image Compression using PCA\nConsider an image represented as a matrix \\(A \\in \\mathbb{R}^{n \\times n}\\), where each entry is a pixel intensity. To apply PCA for image compression:\n\nFlatten the image into a matrix where each row represents a pixel.\nCompute the covariance matrix of the image.\nPerform eigenvalue decomposition or SVD on the covariance matrix.\nSelect the top \\(k\\) eigenvectors and project the image onto these eigenvectors.\nReconstruct the image using the reduced data.\n\n\n5.17.1 Sample problems\nConsider the following dataset:\n\\[\nX = \\begin{pmatrix}\n2 & 3 \\\\\n3 & 5 \\\\\n5 & 7\n\\end{pmatrix}\n\\]\n\n\n5.17.2 Step 1: Center the Data\nCalculate the mean of each feature (column):\n\\[\n\\text{Mean} = \\begin{pmatrix}\n\\frac{2+3+5}{3} \\\\\n\\frac{3+5+7}{3}\n\\end{pmatrix} = \\begin{pmatrix}\n3.33 \\\\\n5\n\\end{pmatrix}\n\\]\nSubtract the mean from each data point to center the data:\n\\[\nX_{\\text{centered}} = X - \\text{Mean} = \\begin{pmatrix}\n2 - 3.33 & 3 - 5 \\\\\n3 - 3.33 & 5 - 5 \\\\\n5 - 3.33 & 7 - 5\n\\end{pmatrix} = \\begin{pmatrix}\n-1.33 & -2 \\\\\n-0.33 & 0 \\\\\n1.67 & 2\n\\end{pmatrix}\n\\]\n\n\n5.17.3 Step 2: Calculate the Covariance Matrix\nUsing the formula:\n\\[\nC = \\frac{1}{n-1} X_{\\text{centered}}^T X_{\\text{centered}}\n\\]\nwhere ( n = 3 ) (the number of data points).\n\nTranspose of Centered Data:\n\n\\[\nX_{\\text{centered}}^T = \\begin{pmatrix}\n-1.33 & -0.33 & 1.67 \\\\\n-2 & 0 & 2\n\\end{pmatrix}\n\\]\n\nMultiply ( X_{}^T ) by ( X_{} ):\n\n\\[\nX_{\\text{centered}}^T X_{\\text{centered}} = \\begin{pmatrix}\n(-1.33)(-1.33) + (-0.33)(-0.33) + (1.67)(1.67) & (-1.33)(-2) + (-0.33)(0) + (1.67)(2) \\\\\n(-2)(-1.33) + (0)(-0.33) + (2)(1.67) & (-2)(-2) + (0)(0) + (2)(2)\n\\end{pmatrix}\n\\]\nCalculating each entry:\n\nFirst entry: \\[\n(-1.33)^2 + (-0.33)^2 + (1.67)^2 = 1.7689 + 0.1089 + 2.7889 = 4.6667\n\\]\nSecond entry: \\[\n(-1.33)(-2) + (1.67)(2) = 2.66 + 3.34 = 6\n\\]\n\nThus, \\[\nX_{\\text{centered}}^T X_{\\text{centered}} = \\begin{pmatrix} 4.67 & 6 \\\\ 6 & 8 \\end{pmatrix}\n\\]\n\nCalculate the Covariance Matrix:\n\n\\[\nC = \\frac{1}{3-1} \\begin{pmatrix} 4.67 & 6 \\\\ 6 & 8 \\end{pmatrix} = \\frac{1}{2} \\begin{pmatrix} 4.67 & 6 \\\\ 6 & 8 \\end{pmatrix} = \\begin{pmatrix} 2.335 & 3 \\\\ 3 & 4 \\end{pmatrix}\n\\]\n\n\n5.17.4 Step 3: Calculate Eigenvalues and Eigenvectors\n\nEigenvalue Equation:\nThe characteristic polynomial is given by:\n\\[\n\\text{det}(C - \\lambda I) = 0\n\\]\nwhere ( I ) is the identity matrix. So:\n\\[\nC - \\lambda I = \\begin{pmatrix} 2.335 - \\lambda & 3 \\\\ 3 & 4 - \\lambda \\end{pmatrix}\n\\]\nThe determinant is:\n\\[\n\\text{det}(C - \\lambda I) = (2.335 - \\lambda)(4 - \\lambda) - (3)(3)\n\\]\nExpanding this, we get:\n\\[\n\\text{det}(C - \\lambda I) = (2.335 \\cdot 4 - 2.335 \\lambda - 4 \\lambda + \\lambda^2 - 9) = \\lambda^2 - (6.335)\\lambda + (9.34 - 9) = \\lambda^2 - 6.335\\lambda + 0.34\n\\]\nFinding Eigenvalues:\nSolving the characteristic equation:\n\\[\n\\lambda^2 - 6.335\\lambda + 0.34 = 0\n\\]\nUsing the quadratic formula:\n\\[\n\\lambda = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a} = \\frac{6.335 \\pm \\sqrt{(-6.335)^2 - 4 \\cdot 1 \\cdot 0.34}}{2}\n\\]\nCalculate ( b^2 - 4ac ):\n\\[\n(-6.335)^2 - 4 \\cdot 1 \\cdot 0.34 \\approx 40.096225 - 1.36 = 38.736225\n\\]\nThus, the eigenvalues are:\n\\[\n\\lambda_1 = \\frac{6.335 + \\sqrt{38.736225}}{2}, \\quad \\lambda_2 = \\frac{6.335 - \\sqrt{38.736225}}{2}\n\\]\nFinding Eigenvectors:\n\nFor each eigenvalue ( ), solve:\n\\[\n(C - \\lambda I) \\mathbf{v} = 0\n\\]\nLet’s denote the eigenvalues we find as ( _1 ) and ( _2 ). For each ( ):\n\nSubstitute ( ) into ( (C - I) ) and set up the equation to find the eigenvectors.\n\n\n\n5.17.5 Python Implementation\nHere’s the Python code to perform PCA step by step, corresponding to the tasks outlined above:\n\nimport numpy as np\n\n# Given dataset\nX = np.array([[2, 3],\n              [3, 5],\n              [5, 7]])\n\n# Step 1: Center the data\nmean = np.mean(X, axis=0)\nX_centered = X - mean\n\n# Step 2: Calculate the covariance matrix\ncov_matrix = np.cov(X_centered, rowvar=False)\n\n# Step 3: Calculate eigenvalues and eigenvectors\neigenvalues, eigenvectors = np.linalg.eig(cov_matrix)\n\n# Display the results\nprint(\"Mean:\\n\", mean)\nprint(\"Centered Data:\\n\", X_centered)\nprint(\"Covariance Matrix:\\n\", cov_matrix)\nprint(\"Eigenvalues:\\n\", eigenvalues)\nprint(\"Eigenvectors:\\n\", eigenvectors)\n\n# Step 4: Project data onto principal components\nX_pca = X_centered @ eigenvectors\n\nprint(\"PCA Result (Projected Data):\\n\", X_pca)\n\nMean:\n [3.33333333 5.        ]\nCentered Data:\n [[-1.33333333 -2.        ]\n [-0.33333333  0.        ]\n [ 1.66666667  2.        ]]\nCovariance Matrix:\n [[2.33333333 3.        ]\n [3.         4.        ]]\nEigenvalues:\n [0.05307638 6.28025695]\nEigenvectors:\n [[-0.79612934 -0.60512649]\n [ 0.60512649 -0.79612934]]\nPCA Result (Projected Data):\n [[-0.14874719  2.39909401]\n [ 0.26537645  0.20170883]\n [-0.11662926 -2.60080284]]",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
+    ]
+  },
+  {
+    "objectID": "module_5.html#principal-component-analysis-pca-for-image-reconstruction",
+    "href": "module_5.html#principal-component-analysis-pca-for-image-reconstruction",
+    "title": "5  Linear Algebra for Advanced Applications",
+    "section": "5.18 Principal Component Analysis (PCA) for Image Reconstruction",
+    "text": "5.18 Principal Component Analysis (PCA) for Image Reconstruction\nIn this example, we will use PCA to reduce the dimensionality of an image and then reconstruct it using only a fraction of the principal components. We will demonstrate this with the famous Lena image.\nStep 1: Load and Display the Image\nFirst, let’s load the image using the PIL library and display it.\n\nfrom PIL import Image\nimport urllib.request\nimport matplotlib.pyplot as plt\n\n# Load the image from URL\nurllib.request.urlretrieve('http://lenna.org/len_top.jpg', \"input.jpg\")\n\n# Open and display the image\nimg = Image.open(\"input.jpg\")\nplt.imshow(img)\nplt.title(\"Original Image\")\nplt.axis('off')\nplt.show()\n\n\n\n\n\n\n\n\nStep 2: Convert the Image to Grayscale\nTo simplify the PCA process, we will work with the grayscale version of the image.\n\n# Convert image to grayscale\nimg_gray = img.convert('L')\nplt.imshow(img_gray, cmap='gray')\nplt.title(\"Grayscale Image\")\nplt.axis('off')\nplt.show()\n\n# Convert to NumPy array\nimg_array = np.array(img_gray)\nprint(\"Image Shape:\", img_array.shape)\n\n\n\n\n\n\n\n\nImage Shape: (225, 400)\n\n\nStep 3: Apply PCA to the Grayscale Image\nWe will apply PCA to compress the image by reducing the number of principal components used for reconstruction.\n\nfrom sklearn.decomposition import PCA\nimport numpy as np\n\n# Flatten the image into 2D (pixels x features)\nimg_flattened = img_array / 255.0  # Normalize pixel values\npca = PCA(n_components=50)  # Choose 50 components\n\n# Fit PCA on the image and transform\nimg_transformed = pca.fit_transform(img_flattened)\n\n# Print the explained variance ratio\nprint(\"Explained Variance Ratio:\", np.sum(pca.explained_variance_ratio_))\n\nExplained Variance Ratio: 0.9480357612223579\n\n\nStep 4: Reconstruct the Image using the Reduced Components\nNow we use the transformed PCA components to reconstruct the image and compare it with the original.\n\n# Reconstruct the image from PCA components\nimg_reconstructed = pca.inverse_transform(img_transformed)\n\n# Rescale the image back to original pixel values (0-255)\nimg_reconstructed = (img_reconstructed * 255).astype(np.uint8)\n\n# Plot the reconstructed image\nplt.imshow(img_reconstructed, cmap='gray')\nplt.title(\"Reconstructed Image with 50 Components\")\nplt.axis('off')\nplt.show()\n\n\n\n\n\n\n\n\nStep 5: Compare the Original and Reconstructed Images\nFinally, let’s compare the original grayscale image with the PCA-reconstructed image to see how well it retains essential details.\n\n# Plot original and reconstructed side by side\nfig, ax = plt.subplots(1, 2, figsize=(10, 5))\n\n# Original Grayscale Image\nax[0].imshow(img_array, cmap='gray')\nax[0].set_title(\"Original Grayscale Image\")\nax[0].axis('off')\n\n# Reconstructed Image\nax[1].imshow(img_reconstructed, cmap='gray')\nax[1].set_title(\"Reconstructed Image (50 Components)\")\nax[1].axis('off')\n\nplt.show()",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra for Advanced Applications</span>"
+    ]
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "References",
