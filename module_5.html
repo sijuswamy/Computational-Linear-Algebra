@@ -321,6 +321,7 @@ window.Quarto = {
   <li><a href="#python-implementation" id="toc-python-implementation" class="nav-link" data-scroll-target="#python-implementation"><span class="header-section-number">5.17.5</span> Python Implementation</a></li>
   </ul></li>
   <li><a href="#principal-component-analysis-pca-for-image-reconstruction" id="toc-principal-component-analysis-pca-for-image-reconstruction" class="nav-link" data-scroll-target="#principal-component-analysis-pca-for-image-reconstruction"><span class="header-section-number">5.18</span> Principal Component Analysis (PCA) for Image Reconstruction</a></li>
+  <li><a href="#micro-projects" id="toc-micro-projects" class="nav-link" data-scroll-target="#micro-projects"><span class="header-section-number">5.19</span> Micro Projects</a></li>
   </ul>
 </nav>
     </div>
@@ -480,7 +481,7 @@ A = U \Sigma V^T
 U = \begin{pmatrix} 1/\sqrt{2} &amp; -1/\sqrt{2} \\ 1/\sqrt{2} &amp; 1/\sqrt{2} \end{pmatrix}, \quad \Sigma = \begin{pmatrix} 4 &amp; 0 \\ 0 &amp; 2 \end{pmatrix}, \quad V^T = \begin{pmatrix} 1/\sqrt{2} &amp; 1/\sqrt{2} \\ -1/\sqrt{2} &amp; 1/\sqrt{2} \end{pmatrix}
 \]</span></p>
 <p><code>Python</code> code to find SVD of this example is given below.</p>
-<div id="7ff7f62f" class="cell" data-execution_count="1">
+<div id="9a230461" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the matrix A</span></span>
@@ -561,7 +562,7 @@ A = \sigma_1 u_1 v_1^T + \sigma_2 u_2 v_2^T
 \]</span></p>
 <p>Each term <span class="math inline">\(\sigma_i u_i v_i^T\)</span> corresponds to a <strong>low-rank approximation</strong> that contributes to the final matrix. By summing these terms, the full matrix <span class="math inline">\(A\)</span> is obtained.</p>
 <p>Python code demonstrating reconstruction is given below:</p>
-<div id="fefcd695" class="cell" data-execution_count="2">
+<div id="9cee0d1f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the matrix A and convert it to float64</span></span>
@@ -625,7 +626,7 @@ Reconstructed A from rank-1 matrices:
 </section>
 <section id="example-2" class="level3" data-number="5.8.8">
 <h3 data-number="5.8.8" class="anchored" data-anchor-id="example-2"><span class="header-section-number">5.8.8</span> Example</h3>
-<div id="9f9ccdbf" class="cell" data-execution_count="3">
+<div id="b9fec0f7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib.request</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -635,7 +636,7 @@ Reconstructed A from rank-1 matrices:
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> Image.<span class="bu">open</span>(<span class="st">"input.jpg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="875296de" class="cell" data-execution_count="4">
+<div id="567c4de0" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to grayscale</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>imggray <span class="op">=</span> img.convert(<span class="st">'LA'</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
@@ -648,7 +649,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 </div>
-<div id="3210f04b" class="cell" data-execution_count="5">
+<div id="ab2d6297" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creating image histogram</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -663,21 +664,21 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 </div>
-<div id="c40be97f" class="cell" data-execution_count="6">
+<div id="c9ce094b" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># printing the pixel values</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(imgmat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[ 80.  80.  79. ... 100.  94.  99.]</code></pre>
 </div>
 </div>
-<div id="463c22ec" class="cell" data-execution_count="7">
+<div id="fdd04a5b" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dimension of the gray scale image matrix</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>imgmat.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>(90000,)</code></pre>
 </div>
 </div>
-<div id="2d9bfd03" class="cell" data-execution_count="8">
+<div id="3f95867f" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">##loading an image and show it using matrices of pixel values</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimage <span class="im">import</span> io</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="st">"http://lenna.org/len_top.jpg"</span> <span class="co">#url of the image</span></span>
@@ -701,7 +702,7 @@ Reconstructed A from rank-1 matrices:
 <pre><code>(225, 400)</code></pre>
 </div>
 </div>
-<div id="7f84bc18" class="cell" data-execution_count="9">
+<div id="4071ab74" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">3</span>))</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">131</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">132</span>)</span>
@@ -718,7 +719,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 </div>
-<div id="d107c475" class="cell" data-execution_count="10">
+<div id="12ed38b1" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>c1_array<span class="op">=</span>np.array(<span class="bu">list</span>(c1)).reshape(<span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>pd.Series(c1_array).hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -729,7 +730,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 </div>
-<div id="b1da5964" class="cell" data-execution_count="11">
+<div id="daf81bb6" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">## an application of matrix addition</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(<span class="fl">0.34</span><span class="op">*</span>c1<span class="op">-</span><span class="fl">0.2</span><span class="op">*</span>c2<span class="op">-</span><span class="fl">0.01</span><span class="op">*</span>c3, cmap<span class="op">=</span><span class="st">'gray'</span>, vmin <span class="op">=</span> <span class="dv">0</span>, vmax <span class="op">=</span> <span class="dv">255</span>,interpolation<span class="op">=</span><span class="st">'none'</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -741,7 +742,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 </div>
-<div id="bef897a8" class="cell" data-execution_count="12">
+<div id="9a615900" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#converting a grayscale image to numpy array</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>imgmat <span class="op">=</span> np.array(<span class="bu">list</span>(imggray.getdata(band<span class="op">=</span><span class="dv">0</span>)), <span class="bu">float</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>imgmat.shape <span class="op">=</span> (imggray.size[<span class="dv">1</span>], imggray.size[<span class="dv">0</span>])</span>
@@ -757,7 +758,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 <p>As promised, one line of command is enough to get the singular value decomposition. <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are the left-hand side and the right-hand side matrices, respectively. ‘sigma’ is a vector containing the diagonal entries of the matrix <span class="math inline">\(\Sigma\)</span> The other two lines reconstruct the matrix using the first singular value only. You can already guess the rough shape of the original image.</p>
-<div id="87a5cf39" class="cell" data-execution_count="13">
+<div id="442bab68" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>U, sigma, V <span class="op">=</span> np.linalg.svd(imgmat)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>reconstimg <span class="op">=</span> np.matrix(U[:, :<span class="dv">1</span>]) <span class="op">*</span> np.diag(sigma[:<span class="dv">1</span>]) <span class="op">*</span> np.matrix(V[:<span class="dv">1</span>, :])</span>
@@ -771,7 +772,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 <p>Let’s see what we get when we use the second, third and fourth singular value as well.</p>
-<div id="96a6cf3a" class="cell" data-execution_count="14">
+<div id="ca8dabee" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">4</span>):</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    reconstimg <span class="op">=</span> np.matrix(U[:, :i]) <span class="op">*</span> np.diag(sigma[:i]) <span class="op">*</span> np.matrix(V[:i, :])</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    plt.imshow(reconstimg, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
@@ -794,7 +795,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 <p>Now we let <span class="math inline">\(i\)</span> run from 5 to 51, using a step width of 5. For <span class="math inline">\(i=50\)</span>, we already get a pretty good image!</p>
-<div id="ae71463e" class="cell" data-execution_count="15">
+<div id="fca25e37" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">51</span>, <span class="dv">5</span>):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    reconstimg <span class="op">=</span> np.matrix(U[:, :i]) <span class="op">*</span> np.diag(sigma[:i]) <span class="op">*</span> np.matrix(V[:i, :])</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    plt.imshow(reconstimg, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
@@ -873,7 +874,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 <p>But how many singular values do we have after all? The following command gives us the number of entries in sigma. As it is the diagonal matrix, it is stored as a vector and we do not save the zero entries. We now output the number of singular values (the length of the vector sigma, containing the diagonal entries), as well as the size of the matrices <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span>.</p>
-<div id="f7388c50" class="cell" data-execution_count="16">
+<div id="46040b8e" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"We have </span><span class="sc">%d</span><span class="st"> singular values."</span> <span class="op">%</span> sigma.shape)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"U is of size"</span>, U.shape, <span class="st">"."</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"V is of size"</span>, V.shape, <span class="st">"."</span>)</span>
@@ -887,7 +888,7 @@ The last, or smallest entry in sigma is 9.637679189276597</code></pre>
 </div>
 <p>As Python stores the whole singular value decomposition, we do not really save space. But as you saw in the first theoretical exercise of the 10th series, we do not have to compute the whole matrices <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> if we know that we only want to reconstruct the rank <span class="math inline">\(k\)</span> approximation. How many numbers do you have to store for the initial matrix of the picture? How many numbers do you have to store if you want to reconstruct the rank <span class="math inline">\(k\)</span> approximation only?</p>
 <p>Use the following Cell to find an <span class="math inline">\(i\)</span> large enough that you are satisfied with the quality of the image. Check, how much percent of the initial size you have to store. If your picture has a different resolution, you will have to correct the terms.</p>
-<div id="9a409096" class="cell" data-execution_count="17">
+<div id="d546874e" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>reconstimg <span class="op">=</span> np.matrix(U[:, :i]) <span class="op">*</span> np.diag(sigma[:i]) <span class="op">*</span> np.matrix(V[:i, :])</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>plt.imshow(reconstimg, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
@@ -909,7 +910,7 @@ The last, or smallest entry in sigma is 9.637679189276597</code></pre>
 </div>
 </div>
 <p>If you really want to have a good quality, say you want to reconstruct using <span class="math inline">\(r - 1\)</span> singular values, where <span class="math inline">\(r\)</span> is the total number of singular values, is it still a good idea to use the singular value decomposition?</p>
-<div id="d8524022" class="cell" data-execution_count="18">
+<div id="54daf5a9" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">30</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>reconstimg <span class="op">=</span> np.matrix(U[:, :i]) <span class="op">*</span> np.diag(sigma[:i]) <span class="op">*</span> np.matrix(V[:i, :])</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>plt.imshow(reconstimg, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
@@ -1145,7 +1146,7 @@ C - \lambda I = \begin{pmatrix} 2.335 - \lambda &amp; 3 \\ 3 &amp; 4 - \lambda \
 <section id="python-implementation" class="level3" data-number="5.17.5">
 <h3 data-number="5.17.5" class="anchored" data-anchor-id="python-implementation"><span class="header-section-number">5.17.5</span> Python Implementation</h3>
 <p>Here’s the Python code to perform PCA step by step, corresponding to the tasks outlined above:</p>
-<div id="9acf0e97" class="cell" data-execution_count="19">
+<div id="779d838c" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Given dataset</span></span>
@@ -1202,7 +1203,7 @@ PCA Result (Projected Data):
 <p>In this example, we will use PCA to reduce the dimensionality of an image and then reconstruct it using only a fraction of the principal components. We will demonstrate this with the famous Lena image.</p>
 <p><strong>Step 1: Load and Display the Image</strong></p>
 <p>First, let’s load the image using the <code>PIL</code> library and display it.</p>
-<div id="1fd6d1b3" class="cell" data-execution_count="20">
+<div id="4fac0261" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib.request</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1226,7 +1227,7 @@ PCA Result (Projected Data):
 </div>
 <p><strong>Step 2: Convert the Image to Grayscale</strong></p>
 <p>To simplify the PCA process, we will work with the grayscale version of the image.</p>
-<div id="90d7baf6" class="cell" data-execution_count="21">
+<div id="3b4a41d1" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert image to grayscale</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>img_gray <span class="op">=</span> img.convert(<span class="st">'L'</span>)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>plt.imshow(img_gray, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
@@ -1250,7 +1251,7 @@ PCA Result (Projected Data):
 </div>
 <p><strong>Step 3: Apply PCA to the Grayscale Image</strong></p>
 <p>We will apply PCA to compress the image by reducing the number of principal components used for reconstruction.</p>
-<div id="6eae9295" class="cell" data-execution_count="22">
+<div id="9f73a883" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1269,7 +1270,7 @@ PCA Result (Projected Data):
 </div>
 <p><strong>Step 4: Reconstruct the Image using the Reduced Components</strong></p>
 <p>Now we use the transformed PCA components to reconstruct the image and compare it with the original.</p>
-<div id="0568e63a" class="cell" data-execution_count="23">
+<div id="611a9111" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reconstruct the image from PCA components</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>img_reconstructed <span class="op">=</span> pca.inverse_transform(img_transformed)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1291,7 +1292,7 @@ PCA Result (Projected Data):
 </div>
 <p><strong>Step 5: Compare the Original and Reconstructed Images</strong></p>
 <p>Finally, let’s compare the original grayscale image with the PCA-reconstructed image to see how well it retains essential details.</p>
-<div id="29522f88" class="cell" data-execution_count="24">
+<div id="61cb0351" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot original and reconstructed side by side</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1314,6 +1315,14 @@ PCA Result (Projected Data):
 </div>
 </div>
 </div>
+</section>
+<section id="micro-projects" class="level2" data-number="5.19">
+<h2 data-number="5.19" class="anchored" data-anchor-id="micro-projects"><span class="header-section-number">5.19</span> Micro Projects</h2>
+<ol type="1">
+<li>Linear Regression</li>
+</ol>
+<p>Link to GitHub</p>
+<p><a href="https://github.com/sijuswamy/AIML_Files" class="uri">https://github.com/sijuswamy/AIML_Files</a></p>
 
 
 </section>
