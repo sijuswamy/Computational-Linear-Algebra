@@ -1,5 +1,5 @@
 ---
-title: "Linear Algebra for Advanced Applications"
+title: "Practical Uses Cases"
 execute: 
   enabled: true
 jupyter: python3
@@ -439,3 +439,610 @@ plt.show()
 
 Singular Value Decomposition provides a general framework for decomposing any matrix into orthogonal components, revealing the underlying structure of the matrix. SVD has numerous applications in machine learning, signal processing, and more. The method to find the matrices $U$, $\Sigma$, and $V^T$ involves using the eigenvalues and eigenvectors of $A^T A$ and $A A^T$.
 
+
+## Principal Component Analysis
+
+Principal Component Analysis (PCA) is fundamentally a technique used for dimensionality reduction, feature extraction, and data visualization. While it’s widely used in various fields, its mathematical foundation lies in Singular Value Decomposition (SVD). This connection between PCA and SVD helps in understanding the underlying mechanics and simplifies PCA computations in high-dimensional spaces.
+In this section, we will explore PCA as a special case of SVD, present the mathematical derivations, and conclude with an advanced illustration involving image compression.
+
+## Principal Component Analysis as a Special Case of SVD
+
+Principal Component Analysis (PCA) is a widely used technique for dimensionality reduction, feature extraction, and data compression. It is based on the mathematical foundations of linear algebra, particularly eigenvalue decomposition and singular value decomposition (SVD).
+
+## Problem Setting for PCA
+
+Let $X \in \mathbb{R}^{m \times n}$ represent the data matrix, where:
+- $m$ is the number of data samples,
+- $n$ is the number of features for each sample.
+
+To begin, we center the data by subtracting the mean of each feature from the dataset:
+
+$$
+X_{\text{centered}} = X - \bar{X}
+$$
+
+where $\bar{X}$ is the mean vector for the columns of $X$.
+
+## Covariance Matrix
+
+The covariance matrix $C$ of the centered data $X_{\text{centered}}$ is given by:
+
+$$
+C = \frac{1}{m-1} X_{\text{centered}}^T X_{\text{centered}} \in \mathbb{R}^{n \times n}
+$$
+
+The covariance matrix captures the relationships between the features of the data. PCA identifies the directions (principal components) that correspond to the maximum variance in the data.
+
+## Eigenvalue Decomposition
+
+PCA reduces to finding the eigenvalue decomposition of the covariance matrix $C$:
+
+$$
+C v_i = \lambda_i v_i
+$$
+
+where:
+- $v_i$ is the $i$-th eigenvector,
+- $\lambda_i$ is the $i$-th eigenvalue associated with $v_i$.
+
+The eigenvectors $v_i$ represent the principal components, and the eigenvalues $\lambda_i$ represent the variance captured by each principal component.
+
+## Singular Value Decomposition (SVD)
+
+PCA can be interpreted as a special case of Singular Value Decomposition (SVD). The SVD of the centered data matrix $X_{\text{centered}}$ is:
+
+$$
+X_{\text{centered}} = U \Sigma V^T
+$$
+
+where:
+- $U \in \mathbb{R}^{m \times m}$ contains the left singular vectors,
+- $\Sigma \in \mathbb{R}^{m \times n}$ is the diagonal matrix of singular values,
+- $V \in \mathbb{R}^{n \times n}$ contains the right singular vectors.
+
+The right singular vectors $V$ are equivalent to the eigenvectors of the covariance matrix $C$, and the singular values $\sigma_i$ are related to the eigenvalues $\lambda_i$ by:
+
+$$
+\lambda_i = \sigma_i^2
+$$
+
+
+:::{.callout-note}
+## PCA Derivation Summary
+
+To summarize:
+
+1. Center the data by subtracting the mean of each feature.
+2. Compute the covariance matrix $C = \frac{1}{m-1} X_{\text{centered}}^T X_{\text{centered}}$.
+3. Perform eigenvalue decomposition of $C$ to find the eigenvectors and eigenvalues.
+4. Alternatively, perform SVD of $X_{\text{centered}}$. The right singular vectors are the principal components, and the singular values are related to the variance.
+
+
+:::
+
+## Applications of PCA
+
+PCA has several practical applications:
+
+- **Dimensionality Reduction**: PCA reduces the number of dimensions in a dataset while retaining the most important information.
+- **Image Compression**: PCA can compress images by keeping only the principal components that capture the most variance.
+- **Feature Extraction**: PCA is used in machine learning to extract the most significant features from high-dimensional datasets, speeding up computations and preventing overfitting.
+
+## Image Compression using PCA
+
+Consider an image represented as a matrix $A \in \mathbb{R}^{n \times n}$, where each entry is a pixel intensity. To apply PCA for image compression:
+
+1. Flatten the image into a matrix where each row represents a pixel.
+2. Compute the covariance matrix of the image.
+3. Perform eigenvalue decomposition or SVD on the covariance matrix.
+4. Select the top $k$ eigenvectors and project the image onto these eigenvectors.
+5. Reconstruct the image using the reduced data.
+
+
+
+
+
+### Sample problems
+
+Consider the following dataset:
+
+$$
+X = \begin{pmatrix} 
+2 & 3 \\ 
+3 & 5 \\ 
+5 & 7 
+\end{pmatrix}
+$$
+
+### Step 1: Center the Data
+
+Calculate the mean of each feature (column):
+
+$$
+\text{Mean} = \begin{pmatrix} 
+\frac{2+3+5}{3} \\ 
+\frac{3+5+7}{3} 
+\end{pmatrix} = \begin{pmatrix} 
+3.33 \\ 
+5 
+\end{pmatrix}
+$$
+
+Subtract the mean from each data point to center the data:
+
+$$
+X_{\text{centered}} = X - \text{Mean} = \begin{pmatrix} 
+2 - 3.33 & 3 - 5 \\ 
+3 - 3.33 & 5 - 5 \\ 
+5 - 3.33 & 7 - 5 
+\end{pmatrix} = \begin{pmatrix} 
+-1.33 & -2 \\ 
+-0.33 & 0 \\ 
+1.67 & 2 
+\end{pmatrix}
+$$
+
+### Step 2: Calculate the Covariance Matrix
+
+Using the formula:
+
+$$
+C = \frac{1}{n-1} X_{\text{centered}}^T X_{\text{centered}}
+$$
+
+where $n = 3$ (the number of data points).
+
+1. **Transpose of Centered Data:**
+
+$$
+X_{\text{centered}}^T = \begin{pmatrix} 
+-1.33 & -0.33 & 1.67 \\ 
+-2 & 0 & 2 
+\end{pmatrix}
+$$
+
+2. **Multiply $X_{\text{centered}}^T$ by $X_{\text{centered}}$:**
+
+$$
+X_{\text{centered}}^T X_{\text{centered}} = \begin{pmatrix} 
+(-1.33)(-1.33) + (-0.33)(-0.33) + (1.67)(1.67) & (-1.33)(-2) + (-0.33)(0) + (1.67)(2) \\ 
+(-2)(-1.33) + (0)(-0.33) + (2)(1.67) & (-2)(-2) + (0)(0) + (2)(2) 
+\end{pmatrix}
+$$
+
+Calculating each entry:
+
+- First entry:
+$$
+(-1.33)^2 + (-0.33)^2 + (1.67)^2 = 1.7689 + 0.1089 + 2.7889 = 4.6667
+$$
+
+- Second entry:
+$$
+(-1.33)(-2) + (1.67)(2) = 2.66 + 3.34 = 6
+$$
+
+Thus,
+$$
+X_{\text{centered}}^T X_{\text{centered}} = \begin{pmatrix} 4.67 & 6 \\ 6 & 8 \end{pmatrix}
+$$
+
+3. **Calculate the Covariance Matrix:**
+
+$$
+C = \frac{1}{3-1} \begin{pmatrix} 4.67 & 6 \\ 6 & 8 \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 4.67 & 6 \\ 6 & 8 \end{pmatrix} = \begin{pmatrix} 2.335 & 3 \\ 3 & 4 \end{pmatrix}
+$$
+
+### Step 3: Calculate Eigenvalues and Eigenvectors
+
+1. **Eigenvalue Equation:**
+
+   The characteristic polynomial is given by:
+
+   $$
+   \text{det}(C - \lambda I) = 0
+   $$
+
+   where $I$ is the identity matrix. So:
+
+   $$
+   C - \lambda I = \begin{pmatrix} 2.335 - \lambda & 3 \\ 3 & 4 - \lambda \end{pmatrix}
+   $$
+
+   The determinant is:
+
+   $$
+   \text{det}(C - \lambda I) = (2.335 - \lambda)(4 - \lambda) - (3)(3)
+   $$
+
+   Expanding this, we get:
+
+   $$
+   \text{det}(C - \lambda I) = (2.335 \cdot 4 - 2.335 \lambda - 4 \lambda + \lambda^2 - 9) = \lambda^2 - (6.335)\lambda + (9.34 - 9) = \lambda^2 - 6.335\lambda + 0.34
+   $$
+
+2. **Finding Eigenvalues:**
+
+   Solving the characteristic equation:
+
+   $$
+   \lambda^2 - 6.335\lambda + 0.34 = 0
+   $$
+
+   Using the quadratic formula:
+
+   $$
+   \lambda = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{6.335 \pm \sqrt{(-6.335)^2 - 4 \cdot 1 \cdot 0.34}}{2}
+   $$
+
+   Calculate $b^2 - 4ac$:
+
+   $$
+   (-6.335)^2 - 4 \cdot 1 \cdot 0.34 \approx 40.096225 - 1.36 = 38.736225
+   $$
+
+   Thus, the eigenvalues are:
+
+   $$
+   \lambda_1 = \frac{6.335 + \sqrt{38.736225}}{2}, \quad \lambda_2 = \frac{6.335 - \sqrt{38.736225}}{2}
+   $$
+
+3. **Finding Eigenvectors:**
+
+For each eigenvalue $\lambda$, solve:
+
+$$
+(C - \lambda I) \mathbf{v} = 0
+$$
+
+Let’s denote the eigenvalues we find as $\lambda_1$ and $\lambda_2$. For each $\lambda$:
+
+- Substitute $\lambda$ into $(C - \lambda I)$ and set up the equation to find the eigenvectors.
+
+### Python Implementation
+
+Here’s the Python code to perform PCA step by step, corresponding to the tasks outlined above:
+
+```{python}
+import numpy as np
+
+# Given dataset
+X = np.array([[2, 3],
+              [3, 5],
+              [5, 7]])
+
+# Step 1: Center the data
+mean = np.mean(X, axis=0)
+X_centered = X - mean
+
+# Step 2: Calculate the covariance matrix
+cov_matrix = np.cov(X_centered, rowvar=False)
+
+# Step 3: Calculate eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(cov_matrix)
+
+# Display the results
+print("Mean:\n", mean)
+print("Centered Data:\n", X_centered)
+print("Covariance Matrix:\n", cov_matrix)
+print("Eigenvalues:\n", eigenvalues)
+print("Eigenvectors:\n", eigenvectors)
+
+# Step 4: Project data onto principal components
+X_pca = X_centered @ eigenvectors
+
+print("PCA Result (Projected Data):\n", X_pca)
+```
+
+## Principal Component Analysis (PCA) for Image Reconstruction
+
+In this example, we will use PCA to reduce the dimensionality of an image and then reconstruct it using only a fraction of the principal components. We will demonstrate this with the famous Lena image.
+
+**Step 1: Load and Display the Image**
+
+First, let's load the image using the `PIL` library and display it.
+
+```{python}
+from PIL import Image
+import urllib.request
+import matplotlib.pyplot as plt
+
+# Load the image from URL
+urllib.request.urlretrieve('http://lenna.org/len_top.jpg', "input.jpg")
+
+# Open and display the image
+img = Image.open("input.jpg")
+plt.imshow(img)
+plt.title("Original Image")
+plt.axis('off')
+plt.show()
+
+```
+
+**Step 2: Convert the Image to Grayscale**
+
+To simplify the PCA process, we will work with the grayscale version of the image.
+
+```{python}
+# Convert image to grayscale
+img_gray = img.convert('L')
+plt.imshow(img_gray, cmap='gray')
+plt.title("Grayscale Image")
+plt.axis('off')
+plt.show()
+
+# Convert to NumPy array
+img_array = np.array(img_gray)
+print("Image Shape:", img_array.shape)
+```
+
+**Step 3: Apply PCA to the Grayscale Image**
+
+We will apply PCA to compress the image by reducing the number of principal components used for reconstruction.
+
+
+```{python}
+from sklearn.decomposition import PCA
+import numpy as np
+
+# Flatten the image into 2D (pixels x features)
+img_flattened = img_array / 255.0  # Normalize pixel values
+pca = PCA(n_components=50)  # Choose 50 components
+
+# Fit PCA on the image and transform
+img_transformed = pca.fit_transform(img_flattened)
+
+# Print the explained variance ratio
+print("Explained Variance Ratio:", np.sum(pca.explained_variance_ratio_))
+```
+
+**Step 4: Reconstruct the Image using the Reduced Components**
+
+Now we use the transformed PCA components to reconstruct the image and compare it with the original.
+
+```{python}
+# Reconstruct the image from PCA components
+img_reconstructed = pca.inverse_transform(img_transformed)
+
+# Rescale the image back to original pixel values (0-255)
+img_reconstructed = (img_reconstructed * 255).astype(np.uint8)
+
+# Plot the reconstructed image
+plt.imshow(img_reconstructed, cmap='gray')
+plt.title("Reconstructed Image with 50 Components")
+plt.axis('off')
+plt.show()
+```
+
+**Step 5: Compare the Original and Reconstructed Images**
+
+Finally, let’s compare the original grayscale image with the PCA-reconstructed image to see how well it retains essential details.
+
+```{python}
+# Plot original and reconstructed side by side
+fig, ax = plt.subplots(1, 2, figsize=(10, 5))
+
+# Original Grayscale Image
+ax[0].imshow(img_array, cmap='gray')
+ax[0].set_title("Original Grayscale Image")
+ax[0].axis('off')
+
+# Reconstructed Image
+ax[1].imshow(img_reconstructed, cmap='gray')
+ax[1].set_title("Reconstructed Image (50 Components)")
+ax[1].axis('off')
+
+plt.show()
+```
+
+
+## Micro Projects
+
+1. Linear Regression 
+
+Link to GitHub 
+
+<https://github.com/sijuswamy/AIML_Files>
+
+## Sample questions for Lab Work
+
+
+This lab exam covers Spectral Decomposition, Singular Value Decomposition (SVD), and Principal Component Analysis (PCA). For each question, perform the necessary computations and provide your answers.
+
+---
+
+### Question 1: Spectral Decomposition of a Symmetric Matrix
+
+For the matrix 
+$$
+A = \begin{bmatrix} 1 & 2 & 6 \\ 3 & 5 & 6 \\ 4 & 6 & 9 \end{bmatrix}
+$$
+find its spectral decomposition. Calculate the eigenvalues, eigenvectors, and express $A$ as $PDP^{-1}$, where $D$ is a diagonal matrix of eigenvalues and $P$ contains the eigenvectors.
+
+---
+
+### Question 2: Diagonalization of a Matrix
+
+Given 
+$$
+B = \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}
+$$
+find the eigenvalues and eigenvectors, and use them to express $B$ in its spectral decomposition form.
+
+---
+
+### Question 3: Eigenvalues and Eigenvectors of a Square Matrix
+
+For the matrix 
+$$
+C = \begin{bmatrix} 4 & 0 & 0 \\ 0 & 3 & 1 \\ 0 & 1 & 2 \end{bmatrix}
+$$
+find the eigenvalues and eigenvectors. Verify that the matrix can be reconstructed from its eigenvalues and eigenvectors.
+
+---
+
+### Question 4: Orthogonal Matrix Decomposition
+
+For the matrix 
+$$
+D = \begin{bmatrix} 5 & 4 \\ 4 & 5 \end{bmatrix}
+$$
+find its spectral decomposition and confirm whether the eigenvectors form an orthogonal matrix.
+
+---
+
+### Question 5: Singular Value Decomposition (SVD)
+
+For the matrix 
+$$
+E = \begin{bmatrix} 3 & 1 \\ -1 & 3 \end{bmatrix}
+$$
+compute its Singular Value Decomposition. Write the matrix as $U \Sigma V^T$, where $U$ and $V$ are orthogonal matrices and $\Sigma$ is a diagonal matrix with singular values.
+
+---
+
+### Question 6: Rank-1 Approximation Using SVD
+
+Using the matrix 
+$$
+F = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix}
+$$
+perform a rank-1 approximation. Calculate the Frobenius norm of the difference between $F$ and its rank-1 approximation.
+
+---
+
+### Question 7: Matrix Compression Using SVD
+
+For the matrix 
+$$
+G = \begin{bmatrix} 10 & 20 & 30 \\ 20 & 30 & 40 \\ 30 & 40 & 50 \end{bmatrix}
+$$
+find a compressed form of $G$ using only the most significant singular value. Provide the resulting approximation.
+
+---
+
+### Question 8: SVD Data Reconstruction
+
+For the matrix 
+$$
+H = \begin{bmatrix} 4 & 11 \\ 14 & 8 \\ 1 & 5 \end{bmatrix}
+$$
+find its Singular Value Decomposition. Reconstruct the matrix from the SVD components.
+
+---
+
+### Question 9: Principal Component Analysis (PCA)
+
+Consider the dataset 
+$$
+X = \begin{bmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \\ 7 & 8 \end{bmatrix}
+$$
+Perform Principal Component Analysis (PCA) by first centering the data and then computing the principal components.
+
+---
+
+### Question 10: Dimensionality Reduction with PCA
+
+Using the dataset 
+$$
+Y = \begin{bmatrix} 2 & 4 \\ 3 & 8 \\ 5 & 7 \\ 6 & 2 \\ 7 & 5 \end{bmatrix}
+$$
+apply PCA to reduce the data to one dimension. Project the data onto the principal component found.
+
+---
+
+## Hint to Solutions.
+
+```{python}
+import numpy as np
+import scipy.linalg
+
+# 1. Spectral Decomposition for Matrix A
+A = np.array([[1, 2, 6], [3, 5, 6], [4, 6, 9]])
+eigenvalues, eigenvectors = np.linalg.eig(A)
+D = np.diag(eigenvalues)
+P = eigenvectors
+P_inv = np.linalg.inv(P)
+reconstructed_A = P @ D @ P_inv
+print("Eigenvalues:\n", eigenvalues)
+print("Eigenvectors:\n", eigenvectors)
+print("Reconstructed A:\n", reconstructed_A)
+
+# 2. Diagonalization of Matrix B
+B = np.array([[2, 1], [1, 2]])
+eigenvalues_B, eigenvectors_B = np.linalg.eig(B)
+D_B = np.diag(eigenvalues_B)
+P_B = eigenvectors_B
+P_inv_B = np.linalg.inv(P_B)
+reconstructed_B = P_B @ D_B @ P_inv_B
+print("\nEigenvalues of B:\n", eigenvalues_B)
+print("Eigenvectors of B:\n", eigenvectors_B)
+print("Reconstructed B:\n", reconstructed_B)
+
+# 3. Eigenvalues and Eigenvectors for Matrix C
+C = np.array([[4, 0, 0], [0, 3, 1], [0, 1, 2]])
+eigenvalues_C, eigenvectors_C = np.linalg.eig(C)
+D_C = np.diag(eigenvalues_C)
+P_C = eigenvectors_C
+reconstructed_C = P_C @ D_C @ np.linalg.inv(P_C)
+print("\nEigenvalues of C:\n", eigenvalues_C)
+print("Eigenvectors of C:\n", eigenvectors_C)
+print("Reconstructed C:\n", reconstructed_C)
+
+# 4. Orthogonal Matrix Decomposition of D
+D = np.array([[5, 4], [4, 5]])
+eigenvalues_D, eigenvectors_D = np.linalg.eig(D)
+P_D = eigenvectors_D
+reconstructed_D = P_D @ np.diag(eigenvalues_D) @ P_D.T
+print("\nEigenvalues of D:\n", eigenvalues_D)
+print("Eigenvectors of D (orthogonal):\n", P_D)
+print("Reconstructed D:\n", reconstructed_D)
+
+# 5. SVD of Matrix E
+E = np.array([[3, 1], [-1, 3]])
+U, S, Vt = np.linalg.svd(E)
+Sigma = np.zeros((U.shape[0], Vt.shape[0]))
+Sigma[:len(S), :len(S)] = np.diag(S)
+reconstructed_E = U @ Sigma @ Vt
+print("\nU:\n", U)
+print("Sigma:\n", Sigma)
+print("V^T:\n", Vt)
+print("Reconstructed E:\n", reconstructed_E)
+
+# 6. Rank-1 Approximation Using SVD for Matrix F
+F = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+U_F, S_F, Vt_F = np.linalg.svd(F)
+rank_1_F = np.outer(U_F[:, 0] * S_F[0], Vt_F[0, :])
+frobenius_norm = np.linalg.norm(F - rank_1_F, 'fro')
+print("\nRank-1 Approximation of F:\n", rank_1_F)
+print("Frobenius Norm of Difference:\n", frobenius_norm)
+
+# 7. SVD for Image Compression (Matrix G)
+G = np.array([[10, 20, 30], [20, 30, 40], [30, 40, 50]])
+U_G, S_G, Vt_G = np.linalg.svd(G)
+compressed_G = np.outer(U_G[:, 0] * S_G[0], Vt_G[0, :])
+print("\nCompressed Matrix G:\n", compressed_G)
+
+# 8. SVD Data Reconstruction for Matrix H
+H = np.array([[4, 11], [14, 8], [1, 5]])
+U_H, S_H, Vt_H = np.linalg.svd(H)
+Sigma_H = np.zeros((U_H.shape[0], Vt_H.shape[0]))
+Sigma_H[:len(S_H), :len(S_H)] = np.diag(S_H)
+reconstructed_H = U_H @ Sigma_H @ Vt_H
+print("\nReconstructed H:\n", reconstructed_H)
+
+# 9. PCA on Small Dataset X
+X = np.array([[1, 2], [3, 4], [5, 6], [7, 8]])
+X_centered = X - np.mean(X, axis=0)
+U_X, S_X, Vt_X = np.linalg.svd(X_centered)
+print("\nCentered Data X:\n", X_centered)
+print("Principal Components of X:\n", Vt_X.T)
+
+# 10. Dimensionality Reduction with PCA for Dataset Y
+Y = np.array([[2, 4], [3, 8], [5, 7], [6, 2], [7, 5]])
+Y_centered = Y - np.mean(Y, axis=0)
+U_Y, S_Y, Vt_Y = np.linalg.svd(Y_centered)
+Y_projected = Y_centered @ Vt_Y.T[:, :1]
+print("\n1D Projection of Y:\n", Y_projected)
+
+```
