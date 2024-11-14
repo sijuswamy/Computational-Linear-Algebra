@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Linear Algebra for Advanced Applications – Computational Linear Algebra</title>
+<title>5&nbsp; Practical Uses Cases – Computational Linear Algebra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -145,7 +145,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./module_5.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Algebra for Advanced Applications</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./module_5.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Practical Uses Cases</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -246,7 +246,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./module_5.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Algebra for Advanced Applications</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Practical Uses Cases</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -322,6 +322,20 @@ window.Quarto = {
   </ul></li>
   <li><a href="#principal-component-analysis-pca-for-image-reconstruction" id="toc-principal-component-analysis-pca-for-image-reconstruction" class="nav-link" data-scroll-target="#principal-component-analysis-pca-for-image-reconstruction"><span class="header-section-number">5.18</span> Principal Component Analysis (PCA) for Image Reconstruction</a></li>
   <li><a href="#micro-projects" id="toc-micro-projects" class="nav-link" data-scroll-target="#micro-projects"><span class="header-section-number">5.19</span> Micro Projects</a></li>
+  <li><a href="#sample-questions-for-lab-work" id="toc-sample-questions-for-lab-work" class="nav-link" data-scroll-target="#sample-questions-for-lab-work"><span class="header-section-number">5.20</span> Sample questions for Lab Work</a>
+  <ul class="collapse">
+  <li><a href="#question-1-spectral-decomposition-of-a-symmetric-matrix" id="toc-question-1-spectral-decomposition-of-a-symmetric-matrix" class="nav-link" data-scroll-target="#question-1-spectral-decomposition-of-a-symmetric-matrix"><span class="header-section-number">5.20.1</span> Question 1: Spectral Decomposition of a Symmetric Matrix</a></li>
+  <li><a href="#question-2-diagonalization-of-a-matrix" id="toc-question-2-diagonalization-of-a-matrix" class="nav-link" data-scroll-target="#question-2-diagonalization-of-a-matrix"><span class="header-section-number">5.20.2</span> Question 2: Diagonalization of a Matrix</a></li>
+  <li><a href="#question-3-eigenvalues-and-eigenvectors-of-a-square-matrix" id="toc-question-3-eigenvalues-and-eigenvectors-of-a-square-matrix" class="nav-link" data-scroll-target="#question-3-eigenvalues-and-eigenvectors-of-a-square-matrix"><span class="header-section-number">5.20.3</span> Question 3: Eigenvalues and Eigenvectors of a Square Matrix</a></li>
+  <li><a href="#question-4-orthogonal-matrix-decomposition" id="toc-question-4-orthogonal-matrix-decomposition" class="nav-link" data-scroll-target="#question-4-orthogonal-matrix-decomposition"><span class="header-section-number">5.20.4</span> Question 4: Orthogonal Matrix Decomposition</a></li>
+  <li><a href="#question-5-singular-value-decomposition-svd" id="toc-question-5-singular-value-decomposition-svd" class="nav-link" data-scroll-target="#question-5-singular-value-decomposition-svd"><span class="header-section-number">5.20.5</span> Question 5: Singular Value Decomposition (SVD)</a></li>
+  <li><a href="#question-6-rank-1-approximation-using-svd" id="toc-question-6-rank-1-approximation-using-svd" class="nav-link" data-scroll-target="#question-6-rank-1-approximation-using-svd"><span class="header-section-number">5.20.6</span> Question 6: Rank-1 Approximation Using SVD</a></li>
+  <li><a href="#question-7-matrix-compression-using-svd" id="toc-question-7-matrix-compression-using-svd" class="nav-link" data-scroll-target="#question-7-matrix-compression-using-svd"><span class="header-section-number">5.20.7</span> Question 7: Matrix Compression Using SVD</a></li>
+  <li><a href="#question-8-svd-data-reconstruction" id="toc-question-8-svd-data-reconstruction" class="nav-link" data-scroll-target="#question-8-svd-data-reconstruction"><span class="header-section-number">5.20.8</span> Question 8: SVD Data Reconstruction</a></li>
+  <li><a href="#question-9-principal-component-analysis-pca" id="toc-question-9-principal-component-analysis-pca" class="nav-link" data-scroll-target="#question-9-principal-component-analysis-pca"><span class="header-section-number">5.20.9</span> Question 9: Principal Component Analysis (PCA)</a></li>
+  <li><a href="#question-10-dimensionality-reduction-with-pca" id="toc-question-10-dimensionality-reduction-with-pca" class="nav-link" data-scroll-target="#question-10-dimensionality-reduction-with-pca"><span class="header-section-number">5.20.10</span> Question 10: Dimensionality Reduction with PCA</a></li>
+  </ul></li>
+  <li><a href="#hint-to-solutions." id="toc-hint-to-solutions." class="nav-link" data-scroll-target="#hint-to-solutions."><span class="header-section-number">5.21</span> Hint to Solutions.</a></li>
   </ul>
 </nav>
     </div>
@@ -330,7 +344,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Algebra for Advanced Applications</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Practical Uses Cases</span></h1>
 </div>
 
 
@@ -481,7 +495,7 @@ A = U \Sigma V^T
 U = \begin{pmatrix} 1/\sqrt{2} &amp; -1/\sqrt{2} \\ 1/\sqrt{2} &amp; 1/\sqrt{2} \end{pmatrix}, \quad \Sigma = \begin{pmatrix} 4 &amp; 0 \\ 0 &amp; 2 \end{pmatrix}, \quad V^T = \begin{pmatrix} 1/\sqrt{2} &amp; 1/\sqrt{2} \\ -1/\sqrt{2} &amp; 1/\sqrt{2} \end{pmatrix}
 \]</span></p>
 <p><code>Python</code> code to find SVD of this example is given below.</p>
-<div id="9a230461" class="cell" data-execution_count="1">
+<div id="8ff5dccc" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the matrix A</span></span>
@@ -562,7 +576,7 @@ A = \sigma_1 u_1 v_1^T + \sigma_2 u_2 v_2^T
 \]</span></p>
 <p>Each term <span class="math inline">\(\sigma_i u_i v_i^T\)</span> corresponds to a <strong>low-rank approximation</strong> that contributes to the final matrix. By summing these terms, the full matrix <span class="math inline">\(A\)</span> is obtained.</p>
 <p>Python code demonstrating reconstruction is given below:</p>
-<div id="9cee0d1f" class="cell" data-execution_count="2">
+<div id="01131bb3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the matrix A and convert it to float64</span></span>
@@ -626,7 +640,7 @@ Reconstructed A from rank-1 matrices:
 </section>
 <section id="example-2" class="level3" data-number="5.8.8">
 <h3 data-number="5.8.8" class="anchored" data-anchor-id="example-2"><span class="header-section-number">5.8.8</span> Example</h3>
-<div id="b9fec0f7" class="cell" data-execution_count="3">
+<div id="211a335d" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib.request</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -636,7 +650,7 @@ Reconstructed A from rank-1 matrices:
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> Image.<span class="bu">open</span>(<span class="st">"input.jpg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="567c4de0" class="cell" data-execution_count="4">
+<div id="7b5d16b5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to grayscale</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>imggray <span class="op">=</span> img.convert(<span class="st">'LA'</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
@@ -649,7 +663,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 </div>
-<div id="ab2d6297" class="cell" data-execution_count="5">
+<div id="054da4e4" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creating image histogram</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -664,21 +678,21 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 </div>
-<div id="c9ce094b" class="cell" data-execution_count="6">
+<div id="f8e9836b" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># printing the pixel values</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(imgmat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[ 80.  80.  79. ... 100.  94.  99.]</code></pre>
 </div>
 </div>
-<div id="fdd04a5b" class="cell" data-execution_count="7">
+<div id="40dc977f" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dimension of the gray scale image matrix</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>imgmat.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>(90000,)</code></pre>
 </div>
 </div>
-<div id="3f95867f" class="cell" data-execution_count="8">
+<div id="f68f5de8" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">##loading an image and show it using matrices of pixel values</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimage <span class="im">import</span> io</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="st">"http://lenna.org/len_top.jpg"</span> <span class="co">#url of the image</span></span>
@@ -698,11 +712,11 @@ Reconstructed A from rank-1 matrices:
  [128 127 132 ... 125 119 123]
  [133 130 127 ... 139 133 140]]</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>(225, 400)</code></pre>
 </div>
 </div>
-<div id="4071ab74" class="cell" data-execution_count="9">
+<div id="6eb06ad8" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">3</span>))</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">131</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">132</span>)</span>
@@ -719,7 +733,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 </div>
-<div id="12ed38b1" class="cell" data-execution_count="10">
+<div id="1d09a32e" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>c1_array<span class="op">=</span>np.array(<span class="bu">list</span>(c1)).reshape(<span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>pd.Series(c1_array).hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -730,7 +744,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 </div>
-<div id="daf81bb6" class="cell" data-execution_count="11">
+<div id="ad6ee290" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">## an application of matrix addition</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(<span class="fl">0.34</span><span class="op">*</span>c1<span class="op">-</span><span class="fl">0.2</span><span class="op">*</span>c2<span class="op">-</span><span class="fl">0.01</span><span class="op">*</span>c3, cmap<span class="op">=</span><span class="st">'gray'</span>, vmin <span class="op">=</span> <span class="dv">0</span>, vmax <span class="op">=</span> <span class="dv">255</span>,interpolation<span class="op">=</span><span class="st">'none'</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -742,7 +756,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 </div>
-<div id="9a615900" class="cell" data-execution_count="12">
+<div id="ff390d10" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#converting a grayscale image to numpy array</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>imgmat <span class="op">=</span> np.array(<span class="bu">list</span>(imggray.getdata(band<span class="op">=</span><span class="dv">0</span>)), <span class="bu">float</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>imgmat.shape <span class="op">=</span> (imggray.size[<span class="dv">1</span>], imggray.size[<span class="dv">0</span>])</span>
@@ -758,7 +772,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 <p>As promised, one line of command is enough to get the singular value decomposition. <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are the left-hand side and the right-hand side matrices, respectively. ‘sigma’ is a vector containing the diagonal entries of the matrix <span class="math inline">\(\Sigma\)</span> The other two lines reconstruct the matrix using the first singular value only. You can already guess the rough shape of the original image.</p>
-<div id="442bab68" class="cell" data-execution_count="13">
+<div id="27b456b6" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>U, sigma, V <span class="op">=</span> np.linalg.svd(imgmat)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>reconstimg <span class="op">=</span> np.matrix(U[:, :<span class="dv">1</span>]) <span class="op">*</span> np.diag(sigma[:<span class="dv">1</span>]) <span class="op">*</span> np.matrix(V[:<span class="dv">1</span>, :])</span>
@@ -772,7 +786,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 <p>Let’s see what we get when we use the second, third and fourth singular value as well.</p>
-<div id="ca8dabee" class="cell" data-execution_count="14">
+<div id="8b5b7e1e" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">4</span>):</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    reconstimg <span class="op">=</span> np.matrix(U[:, :i]) <span class="op">*</span> np.diag(sigma[:i]) <span class="op">*</span> np.matrix(V[:i, :])</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    plt.imshow(reconstimg, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
@@ -795,7 +809,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 <p>Now we let <span class="math inline">\(i\)</span> run from 5 to 51, using a step width of 5. For <span class="math inline">\(i=50\)</span>, we already get a pretty good image!</p>
-<div id="fca25e37" class="cell" data-execution_count="15">
+<div id="ad0ae37f" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">51</span>, <span class="dv">5</span>):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    reconstimg <span class="op">=</span> np.matrix(U[:, :i]) <span class="op">*</span> np.diag(sigma[:i]) <span class="op">*</span> np.matrix(V[:i, :])</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    plt.imshow(reconstimg, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
@@ -874,7 +888,7 @@ Reconstructed A from rank-1 matrices:
 </div>
 </div>
 <p>But how many singular values do we have after all? The following command gives us the number of entries in sigma. As it is the diagonal matrix, it is stored as a vector and we do not save the zero entries. We now output the number of singular values (the length of the vector sigma, containing the diagonal entries), as well as the size of the matrices <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span>.</p>
-<div id="46040b8e" class="cell" data-execution_count="16">
+<div id="5b755ea1" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"We have </span><span class="sc">%d</span><span class="st"> singular values."</span> <span class="op">%</span> sigma.shape)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"U is of size"</span>, U.shape, <span class="st">"."</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"V is of size"</span>, V.shape, <span class="st">"."</span>)</span>
@@ -888,7 +902,7 @@ The last, or smallest entry in sigma is 9.637679189276597</code></pre>
 </div>
 <p>As Python stores the whole singular value decomposition, we do not really save space. But as you saw in the first theoretical exercise of the 10th series, we do not have to compute the whole matrices <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> if we know that we only want to reconstruct the rank <span class="math inline">\(k\)</span> approximation. How many numbers do you have to store for the initial matrix of the picture? How many numbers do you have to store if you want to reconstruct the rank <span class="math inline">\(k\)</span> approximation only?</p>
 <p>Use the following Cell to find an <span class="math inline">\(i\)</span> large enough that you are satisfied with the quality of the image. Check, how much percent of the initial size you have to store. If your picture has a different resolution, you will have to correct the terms.</p>
-<div id="d546874e" class="cell" data-execution_count="17">
+<div id="70e1eaae" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>reconstimg <span class="op">=</span> np.matrix(U[:, :i]) <span class="op">*</span> np.diag(sigma[:i]) <span class="op">*</span> np.matrix(V[:i, :])</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>plt.imshow(reconstimg, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
@@ -910,7 +924,7 @@ The last, or smallest entry in sigma is 9.637679189276597</code></pre>
 </div>
 </div>
 <p>If you really want to have a good quality, say you want to reconstruct using <span class="math inline">\(r - 1\)</span> singular values, where <span class="math inline">\(r\)</span> is the total number of singular values, is it still a good idea to use the singular value decomposition?</p>
-<div id="54daf5a9" class="cell" data-execution_count="18">
+<div id="c8bfb14e" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">30</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>reconstimg <span class="op">=</span> np.matrix(U[:, :i]) <span class="op">*</span> np.diag(sigma[:i]) <span class="op">*</span> np.matrix(V[:i, :])</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>plt.imshow(reconstimg, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
@@ -1057,7 +1071,7 @@ X_{\text{centered}} = X - \text{Mean} = \begin{pmatrix}
 <p><span class="math display">\[
 C = \frac{1}{n-1} X_{\text{centered}}^T X_{\text{centered}}
 \]</span></p>
-<p>where ( n = 3 ) (the number of data points).</p>
+<p>where <span class="math inline">\(n = 3\)</span> (the number of data points).</p>
 <ol type="1">
 <li><strong>Transpose of Centered Data:</strong></li>
 </ol>
@@ -1068,7 +1082,7 @@ X_{\text{centered}}^T = \begin{pmatrix}
 \end{pmatrix}
 \]</span></p>
 <ol start="2" type="1">
-<li><strong>Multiply ( X_{}^T ) by ( X_{} ):</strong></li>
+<li><strong>Multiply <span class="math inline">\(X_{\text{centered}}^T\)</span> by <span class="math inline">\(X_{\text{centered}}\)</span>:</strong></li>
 </ol>
 <p><span class="math display">\[
 X_{\text{centered}}^T X_{\text{centered}} = \begin{pmatrix}
@@ -1103,7 +1117,7 @@ C = \frac{1}{3-1} \begin{pmatrix} 4.67 &amp; 6 \\ 6 &amp; 8 \end{pmatrix} = \fra
 <p><span class="math display">\[
 \text{det}(C - \lambda I) = 0
 \]</span></p>
-<p>where ( I ) is the identity matrix. So:</p>
+<p>where <span class="math inline">\(I\)</span> is the identity matrix. So:</p>
 <p><span class="math display">\[
 C - \lambda I = \begin{pmatrix} 2.335 - \lambda &amp; 3 \\ 3 &amp; 4 - \lambda \end{pmatrix}
 \]</span></p>
@@ -1124,7 +1138,7 @@ C - \lambda I = \begin{pmatrix} 2.335 - \lambda &amp; 3 \\ 3 &amp; 4 - \lambda \
 <p><span class="math display">\[
 \lambda = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{6.335 \pm \sqrt{(-6.335)^2 - 4 \cdot 1 \cdot 0.34}}{2}
 \]</span></p>
-<p>Calculate ( b^2 - 4ac ):</p>
+<p>Calculate <span class="math inline">\(b^2 - 4ac\)</span>:</p>
 <p><span class="math display">\[
 (-6.335)^2 - 4 \cdot 1 \cdot 0.34 \approx 40.096225 - 1.36 = 38.736225
 \]</span></p>
@@ -1134,19 +1148,19 @@ C - \lambda I = \begin{pmatrix} 2.335 - \lambda &amp; 3 \\ 3 &amp; 4 - \lambda \
 \]</span></p></li>
 <li><p><strong>Finding Eigenvectors:</strong></p></li>
 </ol>
-<p>For each eigenvalue ( ), solve:</p>
+<p>For each eigenvalue <span class="math inline">\(\lambda\)</span>, solve:</p>
 <p><span class="math display">\[
 (C - \lambda I) \mathbf{v} = 0
 \]</span></p>
-<p>Let’s denote the eigenvalues we find as ( _1 ) and ( _2 ). For each ( ):</p>
+<p>Let’s denote the eigenvalues we find as <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span>. For each <span class="math inline">\(\lambda\)</span>:</p>
 <ul>
-<li>Substitute ( ) into ( (C - I) ) and set up the equation to find the eigenvectors.</li>
+<li>Substitute <span class="math inline">\(\lambda\)</span> into <span class="math inline">\((C - \lambda I)\)</span> and set up the equation to find the eigenvectors.</li>
 </ul>
 </section>
 <section id="python-implementation" class="level3" data-number="5.17.5">
 <h3 data-number="5.17.5" class="anchored" data-anchor-id="python-implementation"><span class="header-section-number">5.17.5</span> Python Implementation</h3>
 <p>Here’s the Python code to perform PCA step by step, corresponding to the tasks outlined above:</p>
-<div id="779d838c" class="cell" data-execution_count="19">
+<div id="889094f0" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Given dataset</span></span>
@@ -1203,7 +1217,7 @@ PCA Result (Projected Data):
 <p>In this example, we will use PCA to reduce the dimensionality of an image and then reconstruct it using only a fraction of the principal components. We will demonstrate this with the famous Lena image.</p>
 <p><strong>Step 1: Load and Display the Image</strong></p>
 <p>First, let’s load the image using the <code>PIL</code> library and display it.</p>
-<div id="4fac0261" class="cell" data-execution_count="20">
+<div id="b9b9af9b" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib.request</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1227,7 +1241,7 @@ PCA Result (Projected Data):
 </div>
 <p><strong>Step 2: Convert the Image to Grayscale</strong></p>
 <p>To simplify the PCA process, we will work with the grayscale version of the image.</p>
-<div id="3b4a41d1" class="cell" data-execution_count="21">
+<div id="35286f8b" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert image to grayscale</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>img_gray <span class="op">=</span> img.convert(<span class="st">'L'</span>)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>plt.imshow(img_gray, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
@@ -1251,7 +1265,7 @@ PCA Result (Projected Data):
 </div>
 <p><strong>Step 3: Apply PCA to the Grayscale Image</strong></p>
 <p>We will apply PCA to compress the image by reducing the number of principal components used for reconstruction.</p>
-<div id="9f73a883" class="cell" data-execution_count="22">
+<div id="a452b79c" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1270,7 +1284,7 @@ PCA Result (Projected Data):
 </div>
 <p><strong>Step 4: Reconstruct the Image using the Reduced Components</strong></p>
 <p>Now we use the transformed PCA components to reconstruct the image and compare it with the original.</p>
-<div id="611a9111" class="cell" data-execution_count="23">
+<div id="b386a078" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reconstruct the image from PCA components</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>img_reconstructed <span class="op">=</span> pca.inverse_transform(img_transformed)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1292,7 +1306,7 @@ PCA Result (Projected Data):
 </div>
 <p><strong>Step 5: Compare the Original and Reconstructed Images</strong></p>
 <p>Finally, let’s compare the original grayscale image with the PCA-reconstructed image to see how well it retains essential details.</p>
-<div id="61cb0351" class="cell" data-execution_count="24">
+<div id="179a7236" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot original and reconstructed side by side</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1323,6 +1337,263 @@ PCA Result (Projected Data):
 </ol>
 <p>Link to GitHub</p>
 <p><a href="https://github.com/sijuswamy/AIML_Files" class="uri">https://github.com/sijuswamy/AIML_Files</a></p>
+</section>
+<section id="sample-questions-for-lab-work" class="level2" data-number="5.20">
+<h2 data-number="5.20" class="anchored" data-anchor-id="sample-questions-for-lab-work"><span class="header-section-number">5.20</span> Sample questions for Lab Work</h2>
+<p>This lab exam covers Spectral Decomposition, Singular Value Decomposition (SVD), and Principal Component Analysis (PCA). For each question, perform the necessary computations and provide your answers.</p>
+<hr>
+<section id="question-1-spectral-decomposition-of-a-symmetric-matrix" class="level3" data-number="5.20.1">
+<h3 data-number="5.20.1" class="anchored" data-anchor-id="question-1-spectral-decomposition-of-a-symmetric-matrix"><span class="header-section-number">5.20.1</span> Question 1: Spectral Decomposition of a Symmetric Matrix</h3>
+<p>For the matrix <span class="math display">\[
+A = \begin{bmatrix} 1 &amp; 2 &amp; 6 \\ 3 &amp; 5 &amp; 6 \\ 4 &amp; 6 &amp; 9 \end{bmatrix}
+\]</span> find its spectral decomposition. Calculate the eigenvalues, eigenvectors, and express <span class="math inline">\(A\)</span> as <span class="math inline">\(PDP^{-1}\)</span>, where <span class="math inline">\(D\)</span> is a diagonal matrix of eigenvalues and <span class="math inline">\(P\)</span> contains the eigenvectors.</p>
+<hr>
+</section>
+<section id="question-2-diagonalization-of-a-matrix" class="level3" data-number="5.20.2">
+<h3 data-number="5.20.2" class="anchored" data-anchor-id="question-2-diagonalization-of-a-matrix"><span class="header-section-number">5.20.2</span> Question 2: Diagonalization of a Matrix</h3>
+<p>Given <span class="math display">\[
+B = \begin{bmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{bmatrix}
+\]</span> find the eigenvalues and eigenvectors, and use them to express <span class="math inline">\(B\)</span> in its spectral decomposition form.</p>
+<hr>
+</section>
+<section id="question-3-eigenvalues-and-eigenvectors-of-a-square-matrix" class="level3" data-number="5.20.3">
+<h3 data-number="5.20.3" class="anchored" data-anchor-id="question-3-eigenvalues-and-eigenvectors-of-a-square-matrix"><span class="header-section-number">5.20.3</span> Question 3: Eigenvalues and Eigenvectors of a Square Matrix</h3>
+<p>For the matrix <span class="math display">\[
+C = \begin{bmatrix} 4 &amp; 0 &amp; 0 \\ 0 &amp; 3 &amp; 1 \\ 0 &amp; 1 &amp; 2 \end{bmatrix}
+\]</span> find the eigenvalues and eigenvectors. Verify that the matrix can be reconstructed from its eigenvalues and eigenvectors.</p>
+<hr>
+</section>
+<section id="question-4-orthogonal-matrix-decomposition" class="level3" data-number="5.20.4">
+<h3 data-number="5.20.4" class="anchored" data-anchor-id="question-4-orthogonal-matrix-decomposition"><span class="header-section-number">5.20.4</span> Question 4: Orthogonal Matrix Decomposition</h3>
+<p>For the matrix <span class="math display">\[
+D = \begin{bmatrix} 5 &amp; 4 \\ 4 &amp; 5 \end{bmatrix}
+\]</span> find its spectral decomposition and confirm whether the eigenvectors form an orthogonal matrix.</p>
+<hr>
+</section>
+<section id="question-5-singular-value-decomposition-svd" class="level3" data-number="5.20.5">
+<h3 data-number="5.20.5" class="anchored" data-anchor-id="question-5-singular-value-decomposition-svd"><span class="header-section-number">5.20.5</span> Question 5: Singular Value Decomposition (SVD)</h3>
+<p>For the matrix <span class="math display">\[
+E = \begin{bmatrix} 3 &amp; 1 \\ -1 &amp; 3 \end{bmatrix}
+\]</span> compute its Singular Value Decomposition. Write the matrix as <span class="math inline">\(U \Sigma V^T\)</span>, where <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are orthogonal matrices and <span class="math inline">\(\Sigma\)</span> is a diagonal matrix with singular values.</p>
+<hr>
+</section>
+<section id="question-6-rank-1-approximation-using-svd" class="level3" data-number="5.20.6">
+<h3 data-number="5.20.6" class="anchored" data-anchor-id="question-6-rank-1-approximation-using-svd"><span class="header-section-number">5.20.6</span> Question 6: Rank-1 Approximation Using SVD</h3>
+<p>Using the matrix <span class="math display">\[
+F = \begin{bmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9 \end{bmatrix}
+\]</span> perform a rank-1 approximation. Calculate the Frobenius norm of the difference between <span class="math inline">\(F\)</span> and its rank-1 approximation.</p>
+<hr>
+</section>
+<section id="question-7-matrix-compression-using-svd" class="level3" data-number="5.20.7">
+<h3 data-number="5.20.7" class="anchored" data-anchor-id="question-7-matrix-compression-using-svd"><span class="header-section-number">5.20.7</span> Question 7: Matrix Compression Using SVD</h3>
+<p>For the matrix <span class="math display">\[
+G = \begin{bmatrix} 10 &amp; 20 &amp; 30 \\ 20 &amp; 30 &amp; 40 \\ 30 &amp; 40 &amp; 50 \end{bmatrix}
+\]</span> find a compressed form of <span class="math inline">\(G\)</span> using only the most significant singular value. Provide the resulting approximation.</p>
+<hr>
+</section>
+<section id="question-8-svd-data-reconstruction" class="level3" data-number="5.20.8">
+<h3 data-number="5.20.8" class="anchored" data-anchor-id="question-8-svd-data-reconstruction"><span class="header-section-number">5.20.8</span> Question 8: SVD Data Reconstruction</h3>
+<p>For the matrix <span class="math display">\[
+H = \begin{bmatrix} 4 &amp; 11 \\ 14 &amp; 8 \\ 1 &amp; 5 \end{bmatrix}
+\]</span> find its Singular Value Decomposition. Reconstruct the matrix from the SVD components.</p>
+<hr>
+</section>
+<section id="question-9-principal-component-analysis-pca" class="level3" data-number="5.20.9">
+<h3 data-number="5.20.9" class="anchored" data-anchor-id="question-9-principal-component-analysis-pca"><span class="header-section-number">5.20.9</span> Question 9: Principal Component Analysis (PCA)</h3>
+<p>Consider the dataset <span class="math display">\[
+X = \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \\ 5 &amp; 6 \\ 7 &amp; 8 \end{bmatrix}
+\]</span> Perform Principal Component Analysis (PCA) by first centering the data and then computing the principal components.</p>
+<hr>
+</section>
+<section id="question-10-dimensionality-reduction-with-pca" class="level3" data-number="5.20.10">
+<h3 data-number="5.20.10" class="anchored" data-anchor-id="question-10-dimensionality-reduction-with-pca"><span class="header-section-number">5.20.10</span> Question 10: Dimensionality Reduction with PCA</h3>
+<p>Using the dataset <span class="math display">\[
+Y = \begin{bmatrix} 2 &amp; 4 \\ 3 &amp; 8 \\ 5 &amp; 7 \\ 6 &amp; 2 \\ 7 &amp; 5 \end{bmatrix}
+\]</span> apply PCA to reduce the data to one dimension. Project the data onto the principal component found.</p>
+<hr>
+</section>
+</section>
+<section id="hint-to-solutions." class="level2" data-number="5.21">
+<h2 data-number="5.21" class="anchored" data-anchor-id="hint-to-solutions."><span class="header-section-number">5.21</span> Hint to Solutions.</h2>
+<div id="595db06c" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.linalg</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Spectral Decomposition for Matrix A</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">6</span>], [<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">9</span>]])</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>eigenvalues, eigenvectors <span class="op">=</span> np.linalg.eig(A)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.diag(eigenvalues)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> eigenvectors</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>P_inv <span class="op">=</span> np.linalg.inv(P)</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>reconstructed_A <span class="op">=</span> P <span class="op">@</span> D <span class="op">@</span> P_inv</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Eigenvalues:</span><span class="ch">\n</span><span class="st">"</span>, eigenvalues)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Eigenvectors:</span><span class="ch">\n</span><span class="st">"</span>, eigenvectors)</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Reconstructed A:</span><span class="ch">\n</span><span class="st">"</span>, reconstructed_A)</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Diagonalization of Matrix B</span></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">2</span>]])</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>eigenvalues_B, eigenvectors_B <span class="op">=</span> np.linalg.eig(B)</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>D_B <span class="op">=</span> np.diag(eigenvalues_B)</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>P_B <span class="op">=</span> eigenvectors_B</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>P_inv_B <span class="op">=</span> np.linalg.inv(P_B)</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>reconstructed_B <span class="op">=</span> P_B <span class="op">@</span> D_B <span class="op">@</span> P_inv_B</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Eigenvalues of B:</span><span class="ch">\n</span><span class="st">"</span>, eigenvalues_B)</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Eigenvectors of B:</span><span class="ch">\n</span><span class="st">"</span>, eigenvectors_B)</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Reconstructed B:</span><span class="ch">\n</span><span class="st">"</span>, reconstructed_B)</span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Eigenvalues and Eigenvectors for Matrix C</span></span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.array([[<span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]])</span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>eigenvalues_C, eigenvectors_C <span class="op">=</span> np.linalg.eig(C)</span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>D_C <span class="op">=</span> np.diag(eigenvalues_C)</span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>P_C <span class="op">=</span> eigenvectors_C</span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>reconstructed_C <span class="op">=</span> P_C <span class="op">@</span> D_C <span class="op">@</span> np.linalg.inv(P_C)</span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Eigenvalues of C:</span><span class="ch">\n</span><span class="st">"</span>, eigenvalues_C)</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Eigenvectors of C:</span><span class="ch">\n</span><span class="st">"</span>, eigenvectors_C)</span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Reconstructed C:</span><span class="ch">\n</span><span class="st">"</span>, reconstructed_C)</span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Orthogonal Matrix Decomposition of D</span></span>
+<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">4</span>], [<span class="dv">4</span>, <span class="dv">5</span>]])</span>
+<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a>eigenvalues_D, eigenvectors_D <span class="op">=</span> np.linalg.eig(D)</span>
+<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a>P_D <span class="op">=</span> eigenvectors_D</span>
+<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a>reconstructed_D <span class="op">=</span> P_D <span class="op">@</span> np.diag(eigenvalues_D) <span class="op">@</span> P_D.T</span>
+<span id="cb36-41"><a href="#cb36-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Eigenvalues of D:</span><span class="ch">\n</span><span class="st">"</span>, eigenvalues_D)</span>
+<span id="cb36-42"><a href="#cb36-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Eigenvectors of D (orthogonal):</span><span class="ch">\n</span><span class="st">"</span>, P_D)</span>
+<span id="cb36-43"><a href="#cb36-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Reconstructed D:</span><span class="ch">\n</span><span class="st">"</span>, reconstructed_D)</span>
+<span id="cb36-44"><a href="#cb36-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-45"><a href="#cb36-45" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. SVD of Matrix E</span></span>
+<span id="cb36-46"><a href="#cb36-46" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> np.array([[<span class="dv">3</span>, <span class="dv">1</span>], [<span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>]])</span>
+<span id="cb36-47"><a href="#cb36-47" aria-hidden="true" tabindex="-1"></a>U, S, Vt <span class="op">=</span> np.linalg.svd(E)</span>
+<span id="cb36-48"><a href="#cb36-48" aria-hidden="true" tabindex="-1"></a>Sigma <span class="op">=</span> np.zeros((U.shape[<span class="dv">0</span>], Vt.shape[<span class="dv">0</span>]))</span>
+<span id="cb36-49"><a href="#cb36-49" aria-hidden="true" tabindex="-1"></a>Sigma[:<span class="bu">len</span>(S), :<span class="bu">len</span>(S)] <span class="op">=</span> np.diag(S)</span>
+<span id="cb36-50"><a href="#cb36-50" aria-hidden="true" tabindex="-1"></a>reconstructed_E <span class="op">=</span> U <span class="op">@</span> Sigma <span class="op">@</span> Vt</span>
+<span id="cb36-51"><a href="#cb36-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">U:</span><span class="ch">\n</span><span class="st">"</span>, U)</span>
+<span id="cb36-52"><a href="#cb36-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sigma:</span><span class="ch">\n</span><span class="st">"</span>, Sigma)</span>
+<span id="cb36-53"><a href="#cb36-53" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"V^T:</span><span class="ch">\n</span><span class="st">"</span>, Vt)</span>
+<span id="cb36-54"><a href="#cb36-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Reconstructed E:</span><span class="ch">\n</span><span class="st">"</span>, reconstructed_E)</span>
+<span id="cb36-55"><a href="#cb36-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-56"><a href="#cb36-56" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Rank-1 Approximation Using SVD for Matrix F</span></span>
+<span id="cb36-57"><a href="#cb36-57" aria-hidden="true" tabindex="-1"></a>F <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
+<span id="cb36-58"><a href="#cb36-58" aria-hidden="true" tabindex="-1"></a>U_F, S_F, Vt_F <span class="op">=</span> np.linalg.svd(F)</span>
+<span id="cb36-59"><a href="#cb36-59" aria-hidden="true" tabindex="-1"></a>rank_1_F <span class="op">=</span> np.outer(U_F[:, <span class="dv">0</span>] <span class="op">*</span> S_F[<span class="dv">0</span>], Vt_F[<span class="dv">0</span>, :])</span>
+<span id="cb36-60"><a href="#cb36-60" aria-hidden="true" tabindex="-1"></a>frobenius_norm <span class="op">=</span> np.linalg.norm(F <span class="op">-</span> rank_1_F, <span class="st">'fro'</span>)</span>
+<span id="cb36-61"><a href="#cb36-61" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Rank-1 Approximation of F:</span><span class="ch">\n</span><span class="st">"</span>, rank_1_F)</span>
+<span id="cb36-62"><a href="#cb36-62" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Frobenius Norm of Difference:</span><span class="ch">\n</span><span class="st">"</span>, frobenius_norm)</span>
+<span id="cb36-63"><a href="#cb36-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-64"><a href="#cb36-64" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. SVD for Image Compression (Matrix G)</span></span>
+<span id="cb36-65"><a href="#cb36-65" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> np.array([[<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>], [<span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>], [<span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]])</span>
+<span id="cb36-66"><a href="#cb36-66" aria-hidden="true" tabindex="-1"></a>U_G, S_G, Vt_G <span class="op">=</span> np.linalg.svd(G)</span>
+<span id="cb36-67"><a href="#cb36-67" aria-hidden="true" tabindex="-1"></a>compressed_G <span class="op">=</span> np.outer(U_G[:, <span class="dv">0</span>] <span class="op">*</span> S_G[<span class="dv">0</span>], Vt_G[<span class="dv">0</span>, :])</span>
+<span id="cb36-68"><a href="#cb36-68" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Compressed Matrix G:</span><span class="ch">\n</span><span class="st">"</span>, compressed_G)</span>
+<span id="cb36-69"><a href="#cb36-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-70"><a href="#cb36-70" aria-hidden="true" tabindex="-1"></a><span class="co"># 8. SVD Data Reconstruction for Matrix H</span></span>
+<span id="cb36-71"><a href="#cb36-71" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> np.array([[<span class="dv">4</span>, <span class="dv">11</span>], [<span class="dv">14</span>, <span class="dv">8</span>], [<span class="dv">1</span>, <span class="dv">5</span>]])</span>
+<span id="cb36-72"><a href="#cb36-72" aria-hidden="true" tabindex="-1"></a>U_H, S_H, Vt_H <span class="op">=</span> np.linalg.svd(H)</span>
+<span id="cb36-73"><a href="#cb36-73" aria-hidden="true" tabindex="-1"></a>Sigma_H <span class="op">=</span> np.zeros((U_H.shape[<span class="dv">0</span>], Vt_H.shape[<span class="dv">0</span>]))</span>
+<span id="cb36-74"><a href="#cb36-74" aria-hidden="true" tabindex="-1"></a>Sigma_H[:<span class="bu">len</span>(S_H), :<span class="bu">len</span>(S_H)] <span class="op">=</span> np.diag(S_H)</span>
+<span id="cb36-75"><a href="#cb36-75" aria-hidden="true" tabindex="-1"></a>reconstructed_H <span class="op">=</span> U_H <span class="op">@</span> Sigma_H <span class="op">@</span> Vt_H</span>
+<span id="cb36-76"><a href="#cb36-76" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Reconstructed H:</span><span class="ch">\n</span><span class="st">"</span>, reconstructed_H)</span>
+<span id="cb36-77"><a href="#cb36-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-78"><a href="#cb36-78" aria-hidden="true" tabindex="-1"></a><span class="co"># 9. PCA on Small Dataset X</span></span>
+<span id="cb36-79"><a href="#cb36-79" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>]])</span>
+<span id="cb36-80"><a href="#cb36-80" aria-hidden="true" tabindex="-1"></a>X_centered <span class="op">=</span> X <span class="op">-</span> np.mean(X, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb36-81"><a href="#cb36-81" aria-hidden="true" tabindex="-1"></a>U_X, S_X, Vt_X <span class="op">=</span> np.linalg.svd(X_centered)</span>
+<span id="cb36-82"><a href="#cb36-82" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Centered Data X:</span><span class="ch">\n</span><span class="st">"</span>, X_centered)</span>
+<span id="cb36-83"><a href="#cb36-83" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Principal Components of X:</span><span class="ch">\n</span><span class="st">"</span>, Vt_X.T)</span>
+<span id="cb36-84"><a href="#cb36-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-85"><a href="#cb36-85" aria-hidden="true" tabindex="-1"></a><span class="co"># 10. Dimensionality Reduction with PCA for Dataset Y</span></span>
+<span id="cb36-86"><a href="#cb36-86" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">4</span>], [<span class="dv">3</span>, <span class="dv">8</span>], [<span class="dv">5</span>, <span class="dv">7</span>], [<span class="dv">6</span>, <span class="dv">2</span>], [<span class="dv">7</span>, <span class="dv">5</span>]])</span>
+<span id="cb36-87"><a href="#cb36-87" aria-hidden="true" tabindex="-1"></a>Y_centered <span class="op">=</span> Y <span class="op">-</span> np.mean(Y, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb36-88"><a href="#cb36-88" aria-hidden="true" tabindex="-1"></a>U_Y, S_Y, Vt_Y <span class="op">=</span> np.linalg.svd(Y_centered)</span>
+<span id="cb36-89"><a href="#cb36-89" aria-hidden="true" tabindex="-1"></a>Y_projected <span class="op">=</span> Y_centered <span class="op">@</span> Vt_Y.T[:, :<span class="dv">1</span>]</span>
+<span id="cb36-90"><a href="#cb36-90" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">1D Projection of Y:</span><span class="ch">\n</span><span class="st">"</span>, Y_projected)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Eigenvalues:
+ [15.41619849 -1.          0.58380151]
+Eigenvectors:
+ [[-0.38597937 -0.94280904  0.67025624]
+ [-0.54141317  0.23570226 -0.71674952]
+ [-0.74692149  0.23570226  0.19242323]]
+Reconstructed A:
+ [[1. 2. 6.]
+ [3. 5. 6.]
+ [4. 6. 9.]]
+
+Eigenvalues of B:
+ [3. 1.]
+Eigenvectors of B:
+ [[ 0.70710678 -0.70710678]
+ [ 0.70710678  0.70710678]]
+Reconstructed B:
+ [[2. 1.]
+ [1. 2.]]
+
+Eigenvalues of C:
+ [1.38196601 3.61803399 4.        ]
+Eigenvectors of C:
+ [[ 0.          0.          1.        ]
+ [ 0.52573111 -0.85065081  0.        ]
+ [-0.85065081 -0.52573111  0.        ]]
+Reconstructed C:
+ [[4. 0. 0.]
+ [0. 3. 1.]
+ [0. 1. 2.]]
+
+Eigenvalues of D:
+ [9. 1.]
+Eigenvectors of D (orthogonal):
+ [[ 0.70710678 -0.70710678]
+ [ 0.70710678  0.70710678]]
+Reconstructed D:
+ [[5. 4.]
+ [4. 5.]]
+
+U:
+ [[-0.9486833   0.31622777]
+ [ 0.31622777  0.9486833 ]]
+Sigma:
+ [[3.16227766 0.        ]
+ [0.         3.16227766]]
+V^T:
+ [[-1. -0.]
+ [ 0.  1.]]
+Reconstructed E:
+ [[ 3.  1.]
+ [-1.  3.]]
+
+Rank-1 Approximation of F:
+ [[1.73621779 2.07174246 2.40726714]
+ [4.2071528  5.02018649 5.83322018]
+ [6.6780878  7.96863051 9.25917322]]
+Frobenius Norm of Difference:
+ 1.068369514554709
+
+Compressed Matrix G:
+ [[14.27105069 20.7349008  27.19875091]
+ [20.7349008  30.12645113 39.51800146]
+ [27.19875091 39.51800146 51.83725201]]
+
+Reconstructed H:
+ [[ 4. 11.]
+ [14.  8.]
+ [ 1.  5.]]
+
+Centered Data X:
+ [[-3. -3.]
+ [-1. -1.]
+ [ 1.  1.]
+ [ 3.  3.]]
+Principal Components of X:
+ [[ 0.70710678 -0.70710678]
+ [ 0.70710678  0.70710678]]
+
+1D Projection of Y:
+ [[-0.34611992]
+ [-3.22299204]
+ [-1.32087901]
+ [ 3.45810614]
+ [ 1.43188483]]</code></pre>
+</div>
+</div>
 
 
 </section>
