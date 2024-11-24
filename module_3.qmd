@@ -1938,3 +1938,69 @@ sns.boxplot(data=df)
 plt.show()
 ```
 
+## Module review
+
+
+### Advanced Linear Algebra Questions
+
+1. Write the NumPy methods for (a) matrix multiplication and (b) element-wise multiplication with suitable examples.  
+   - **Hint**: Use `numpy.matmul(A, B)` or `A @ B` for matrix multiplication and `numpy.multiply(A, B)` for element-wise multiplication.
+
+2. What is the determinant of a matrix? Write the Python code to compute the determinant of $A = \begin{bmatrix} 3 & 2 \\ 5 & 7 \end{bmatrix}$ using NumPy. 
+   - **Hint**: Use `numpy.linalg.det(A)` to find the determinant.
+
+3. Explain the difference between `numpy.dot()` and `numpy.matmul()` with suitable examples. 
+   - **Hint**: Discuss their usage for both vectors and matrices.
+
+4. What is the condition number of a matrix? Write Python code to compute the condition number of $A = \begin{bmatrix} 4 & 7 \\ 2 & 6 \end{bmatrix}$.
+   - **Hint**: Use `numpy.linalg.cond(A)` to calculate the condition number.
+
+5. Describe the process of normalizing a matrix. Write Python code to normalize the rows of $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{bmatrix}$. 
+   - **Hint**: Use `numpy.linalg.norm` and divide each row by its norm.
+
+6. What is a transpose of a matrix? Write Python code to compute the transpose of $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{bmatrix}$.
+   - **Hint**: Use `numpy.transpose(A)` or `A.T`.
+
+7. Write Python code to compute the inverse of $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$ using NumPy. Also, verify the result by multiplying $A$ with its inverse.  
+   - **Hint**: Use `numpy.linalg.inv(A)` for the inverse and `numpy.matmul()` to check the identity property.
+
+8. Explain the role of the trace of a matrix in linear algebra. Write Python code to compute the trace of $A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix}$.
+   - **Hint**: Use `numpy.trace(A)` to compute the trace.
+
+9.  What is matrix slicing? Demonstrate how to extract the first two rows and last two columns from $A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix}$.   
+   - **Hint**: Use NumPy slicing syntax: `A[:2, -2:]`.
+
+10.  Explain the difference between solving $Ax = b$ using `numpy.linalg.solve()` and directly computing $A^{-1}b$. Which method is computationally more efficient?   
+    - **Hint**: Discuss how `numpy.linalg.solve(A, b)` avoids explicitly calculating the inverse of $A$, making it more efficient.
+
+11.  Write the NumPy methods for (a) outer product and (b) inner product with suitable examples.   
+    - **Hint**: Use `numpy.outer(a, b)` for the outer product and `numpy.inner(a, b)` for the inner product. Example: $a = [1, 2]$ and $b = [3, 4]$.
+
+12.  What is the pseudo-inverse of a matrix? Write the Python code chunk to solve a system of linear equations $Ax = b$, where $A = \begin{bmatrix} 2 & 3 \\ -1 & 3 \\ 2 & 4 \end{bmatrix}$ and $b = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}$, using the pseudo-inverse. Justify the reason for using the pseudo-inverse instead of $A^{-1}$.   
+    - **Hint**: The pseudo-inverse is computed using the Moore-Penrose method (`numpy.linalg.pinv`). It is useful for non-square or rank-deficient matrices.
+
+13.  Explain various array concatenation routines from the NumPy library with suitable examples.   
+    - **Hint**: Use `numpy.concatenate`, `numpy.vstack`, `numpy.hstack`, and `numpy.dstack` to merge arrays along different axes.
+
+14.  Describe the major differences between NumPy and SymPy in advanced linear algebra operations.   
+    - **Hint**: NumPy focuses on numerical computations with high performance, while SymPy provides symbolic computation and exact results.
+
+15.  Demonstrate the use of `numpy.linalg.norm` to compute different norms of a matrix $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$.   
+    - **Hint**: Use `ord='fro'` for the Frobenius norm, `ord=1` for the 1-norm, and `ord=np.inf` for the infinity norm.
+
+16.  What is the Kronecker product of two matrices? Find the Kronecker product of $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$ and $B = \begin{bmatrix} 0 & 5 \\ 6 & 7 \end{bmatrix}$ using NumPy.   
+    - **Hint**: Use `numpy.kron(A, B)` to compute the Kronecker product.
+
+17.  Explain how sparse matrices are represented in SciPy. Provide examples of common formats such as CSR, COO, and CSC.   
+    - **Hint**: Use `scipy.sparse.csr_matrix`, `scipy.sparse.coo_matrix`, and `scipy.sparse.csc_matrix` for different formats.
+
+18.  Write Python code to compute the determinant and rank of a matrix $A = \begin{bmatrix} 5 & 2 \\ 1 & 4 \end{bmatrix}$ using NumPy.   
+    - **Hint**: Use `numpy.linalg.det(A)` for determinant and `numpy.linalg.matrix_rank(A)` for rank.
+
+19.  What are broadcasting rules in NumPy? Explain with examples how broadcasting simplifies matrix operations.
+
+    - **Hint**: Broadcasting allows element-wise operations on arrays of different shapes. Example: Adding a scalar to a matrix.
+
+20. Illustrate the computation of eigenvalues and eigenvectors of $A = \begin{bmatrix} 6 & 2 \\ 2 & 3 \end{bmatrix}$ using NumPy.   
+
+    - **Hint**: Use `numpy.linalg.eig(A)` to compute eigenvalues and eigenvectors.

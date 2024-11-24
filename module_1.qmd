@@ -2292,6 +2292,66 @@ solution = A.solve_least_squares(B)
 print("Solution to the System of Equations:")
 print(solution)
 ```
+
+
+## Module review
+
+
+1. Write Pseudocode for Matrix Addition.
+   - **Hint**: Use nested loops to iterate over rows and columns and sum elements.
+   - **Pseudocode**:
+     ```text
+     Initialize C as an m x n zero matrix
+     For i = 1 to m:
+         For j = 1 to n:
+             C[i][j] = A[i][j] + B[i][j]
+     End
+     Return C
+     ```
+
+2. Blend Grayscale Images A and B Using Weighted Blending (α = 0.70).
+   - **Hint**: Use  $C[i][j] = \alpha A[i][j] + (1 - \alpha) B[i][j]$.
+
+3. Reduce a Matrix Into Row-Reduced Echelon Form and Find Its Row and Column Spaces.
+   - **Hint**: Use Gaussian elimination to achieve RREF.
+
+4. Write Pseudocode for Row-Reduced Echelon Form.
+   - **Hint**: Use row operations to make pivots 1 and eliminate non-zero elements in pivot columns.
+   - **Pseudocode**:
+     ```text
+     For each row i in A:
+         Normalize pivot to 1
+         For each other row j:
+             Subtract multiple of row i to make column i of row j zero
+     End
+     ```
+
+5. Differentiate Between Array and Dictionary in Python With Examples.
+   - **Hint**:
+     - **Array**: Indexed collection of elements.
+     - **Dictionary**: Key-value pair mapping.
+   - **Example**:
+     ```python
+     array = [1, 2, 3, 4]
+     dictionary = {"key1": "value1", "key2": "value2"}
+     ```
+
+6. Write Pseudocode to Transpose a Matrix.
+   - **Hint**: Swap rows with columns.
+
+7. Perform Scalar Multiplication of a Matrix With a Scalar k.
+   - **Hint**: Multiply each element of  $A$ by  $k$.
+
+8. Create a Random Grayscale Image and Perform Pixel-wise Addition With Another Image.
+   - **Hint**: Use NumPy to generate and manipulate matrices.
+
+9. Extract the Diagonal Elements of a Matrix and Find Their Sum.
+   - **Hint**: Diagonal elements are  $A[i][i]$ for all  $i$.
+
+10. Discuss NumPy Arrays in Linear Algebra and How They Differ From Python Lists.
+    - **Hint**: NumPy arrays support efficient numerical operations, unlike general-purpose lists.
+
+
 ## Conclusion
 
 In this chapter, we transitioned from understanding fundamental matrix operations to applying them in practical scenarios, specifically in the realm of image processing. We began by covering essential matrix operations such as addition, subtraction, multiplication, and determinant calculations, providing both pseudocode and detailed explanations. This foundational knowledge was then translated into Python code, demonstrating how to perform these operations computationally.

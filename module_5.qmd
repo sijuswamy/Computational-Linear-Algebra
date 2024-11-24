@@ -1046,3 +1046,99 @@ Y_projected = Y_centered @ Vt_Y.T[:, :1]
 print("\n1D Projection of Y:\n", Y_projected)
 
 ```
+
+## Module review
+
+1. Write the Singular Value Decomposition of $A = \begin{bmatrix} 3 & 1 \\ 1 & 3 \end{bmatrix}$ and reconstruct the highest scaled component of $A$.
+
+**Hint:**  
+- To perform SVD, use `numpy.linalg.svd()` to decompose the matrix $A$ into $A = U \Sigma V^T$, where $U$ and $V$ are orthogonal matrices and $\Sigma$ is a diagonal matrix containing the singular values.
+- After performing the SVD, reconstruct the highest scaled component of $A$ using the first singular value and its corresponding singular vectors.
+
+---
+
+2. Explain the Principal Component Analysis (PCA) as a special case of the Singular Value Decomposition (SVD).
+
+**Hint:**  
+- PCA is a dimensionality reduction technique that projects data onto a set of orthogonal axes called principal components.
+- SVD is used in PCA to decompose the data matrix $X$ into $X = U \Sigma V^T$. The columns of $U$ are the principal components, and $\Sigma$ contains the scaling factors.
+- PCA involves selecting the top components based on the largest singular values in $\Sigma$.
+
+---
+
+3. Explain the applications of the Singular Value Decomposition (SVD) in image processing.
+
+**Hint:**  
+- SVD is used in image compression by approximating the original image with a reduced set of singular values and vectors, effectively reducing storage requirements.
+- It is also used in noise reduction, where small singular values are discarded, preserving only the significant components of an image.
+- SVD is widely applied in face recognition and feature extraction as it reduces the dimensionality while retaining important features of the image.
+
+---
+
+4. Write the steps in Principal Component Analysis (PCA) of the matrix $A$ so as to get the first two principal components using NumPy functions.
+
+**Hint:**  
+- Center the matrix by subtracting the mean of each column from the respective column elements.
+- Compute the covariance matrix of the centered data.
+- Perform Singular Value Decomposition (SVD) on the covariance matrix using `numpy.linalg.svd()`.
+- The first two principal components are the first two columns of the matrix $U$ obtained from the SVD of the covariance matrix.
+- Optionally, plot the projected data to visualize the results.
+
+---
+
+5. Given a matrix $A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix}$, perform PCA and extract the top two principal components.
+
+**Hint:**  
+- Center the matrix by subtracting the mean of each column.
+- Compute the covariance matrix.
+- Perform SVD on the covariance matrix using `numpy.linalg.svd()`.
+- The first two principal components will be the first two columns of the matrix $U$.
+- Project the original data onto these components to reduce the dimensionality.
+
+---
+
+6. Explain the difference between the Singular Value Decomposition (SVD) and Eigenvalue Decomposition (EVD).
+
+**Hint:**  
+- SVD is applicable to any matrix, while EVD is only defined for square matrices.
+- SVD decomposes a matrix into three components: $A = U \Sigma V^T$, where $U$ and $V$ are orthogonal matrices, and $\Sigma$ is a diagonal matrix containing singular values.
+- EVD decomposes a square matrix into $A = V \Lambda V^{-1}$, where $V$ contains the eigenvectors and $\Lambda$ is a diagonal matrix with eigenvalues.
+- SVD is more general and can be applied to non-square and non-symmetric matrices.
+
+---
+
+7. Given the matrix $A = \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}$, perform Singular Value Decomposition (SVD) and extract the first singular value.
+
+**Hint:**  
+- Use `numpy.linalg.svd()` to compute the SVD of $A$.
+- The singular values are the entries of the diagonal matrix $\Sigma$. The first singular value corresponds to the largest singular value in $\Sigma$.
+- Reconstruct $A$ using the computed $U$, $\Sigma$, and $V^T$.
+
+---
+
+8. How is the Singular Value Decomposition (SVD) used in Latent Semantic Analysis (LSA) for text mining?
+
+**Hint:**  
+- LSA is used for extracting the underlying structure in text data by reducing the dimensionality of the term-document matrix.
+- In LSA, the term-document matrix is decomposed using SVD to obtain a low-rank approximation of the matrix.
+- This allows for capturing the most important latent semantic structures by selecting the largest singular values and corresponding vectors, leading to better clustering and classification of text data.
+
+---
+
+9. For a given matrix $A = \begin{bmatrix} 1 & 2 & 4 \\ 0 & 1 & 3 \\ 1 & 1 & 5 \end{bmatrix}$, compute the rank of the matrix using its Singular Value Decomposition (SVD).
+
+**Hint:**  
+- The rank of the matrix $A$ is equal to the number of non-zero singular values in $\Sigma$.
+- Use `numpy.linalg.svd()` to perform the SVD of $A$ and count how many of the singular values are greater than a small threshold (e.g., $10^{-10}$).
+- The rank is the number of non-zero singular values in the diagonal matrix $\Sigma$.
+
+---
+
+10. Using the matrix $A = \begin{bmatrix} 1 & 3 \\ 2 & 4 \\ 3 & 5 \end{bmatrix}$, calculate the singular values and vectors using SVD and visualize the result.
+
+**Hint:**  
+- Apply `numpy.linalg.svd()` to compute the singular values and vectors of $A$.
+- Use the `matplotlib` library to visualize the data points and the transformation through the singular vectors.
+- The singular values indicate the importance of each principal component, and the vectors describe the directions of the largest variance in the data.
+
+---

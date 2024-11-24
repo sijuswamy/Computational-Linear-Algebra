@@ -2739,3 +2739,81 @@ if null_space2 is not None:
     print("Null Space (Basis for infinite solutions):", null_space2)
 ```
 
+## Module review
+
+1. Define the Hadamard Product in Linear Algebra and Provide a Suitable Example.
+   - **Hint**: Element-wise product of matrices of the same dimensions.  
+   - **Example**: For $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} $ and $B = \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix} $, $A \circ B = \begin{bmatrix} 5 & 12 \\ 21 & 32 \end{bmatrix}$.
+
+2. Give Two Applications of the Hadamard Product in Machine Learning. 
+   - **Hint**: Gradient updates and feature scaling in deep learning.
+
+3. Find the Outer Product of Two Vectors $S_1 = [1, 2, 7] $ and $S_2 = \begin{bmatrix} 7 \\ 2 \\ 1 \end{bmatrix} $.
+   - **Hint**: Compute $S_1 \cdot S_2^T$.
+
+4. Define and Differentiate Between the Dot Product and the Outer Product of Two Vectors. 
+   - **Hint**: Dot product results in a scalar; outer product results in a matrix.
+
+5. Write a Pseudocode to Compute the Hadamard Product of Two Matrices.  
+   - **Hint**: Use nested loops for element-wise multiplication.
+
+6. Compute the Row Norms of Matrix $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$.  
+   - **Hint**: Use $\|A_{i*}\| = \sqrt{\sum_j A_{ij}^2}$.
+
+7. Find the Column Norms of Matrix $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$. 
+   - **Hint**: Use $\|A_{*j}\| = \sqrt{\sum_i A_{ij}^2}$.
+
+8. Compute the Frobenius Norm of Matrix $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$.  
+   - **Hint**: $\|A\|_F = \sqrt{\sum_{i,j} A_{ij}^2}$.
+
+9. Prove the Hadamard Product Is Commutative and Associative.
+   - **Hint**: Based on properties of element-wise operations.
+
+10. Explain the Use of the Hadamard Product in Convolutional Neural Networks.  
+    - **Hint**: Used in depth-wise convolutions and attention mechanisms.
+
+11. For Vectors $u = [1, 2, 3]$ and $v = [4, 5, 6]$, Compute $u \circ v$ and $u \cdot v$.  
+    - **Hint**: Hadamard product is element-wise, dot product is summation.
+
+12. Write Pseudocode for Outer Product of Two Vectors.  
+    - **Hint**: Compute $u_i \cdot v_j $ for all $i, j$.
+
+13. Discuss the Role of the Outer Product in Tensor Decomposition. 
+    - **Hint**: Used to represent rank-1 tensors.
+
+14. Find Hadamard Product of $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$ and $B = \begin{bmatrix} 2 & 0 \\ 1 & 5 \end{bmatrix}$.
+    - **Hint**: Multiply corresponding elements.
+
+15. Use Python to Compute Outer Product of $x = [1, 2] $ and $y = [3, 4]$.  
+    - **Hint**: Use NumPy's `np.outer(x, y)`.
+
+16. Write all the fundamental subspaces of $A = \begin{bmatrix} 1 & 2 & 5 \\ 3 & 4 & 10 \\ 5 & 6 & 16 \end{bmatrix}$.  
+    - **Hint**: Determine the column space, null space, row space, and left null space using Gaussian elimination and rank of $A$.
+
+17. In a recommendation system, the user preference is $u = [4, 3, 5]$ and the item score is $v = [2, 5, 4]$. Find the user-item interaction score and its Frobenius norm.  
+    - **Hint**: Compute the outer product $u \cdot v^T$ and the Frobenius norm $\|u \cdot v^T\|_F = \sqrt{\sum u_iv_j^2}$.
+
+18. Verify the rank-nullity theorem for $A = \begin{bmatrix} 7 & -3 & 5 \\ 9 & 11 & 2 \\ 16 & 8 & 7 \end{bmatrix}$.  
+    - **Hint**: Compute the rank of $A $, the dimension of its null space, and verify $\text{rank}(A) + \text{nullity}(A) = \text{number of columns of } A$.
+
+19. Define the Kronecker product of two matrices. Find the Kronecker product of $A = \begin{bmatrix} -1 & 1 \\ 1 & -1 \end{bmatrix}$ and $B = \begin{bmatrix} 1 & 0 & 1 & 8 \\ 2 & -2 & 2 & -2 \\ -4 & 0 & 3 & -1 \end{bmatrix}$ in block matrix form. 
+    - **Hint**: Use the definition $A \otimes B = \begin{bmatrix} a_{11}B & a_{12}B \\ a_{21}B & a_{22}B \end{bmatrix}$.
+
+20. Explain and compute the rank of the Kronecker product of two matrices $A $ and $B$, where $A $ is $2 \times 2$ and $B $ is $3 \times 3$.  
+    - **Hint**: Use the property $\text{rank}(A \otimes B) = \text{rank}(A) \cdot \text{rank}(B)$.
+
+21. Find the row space and column space of $A = \begin{bmatrix} 2 & 4 & 6 \\ 1 & 2 & 3 \\ 0 & 0 & 0 \end{bmatrix}$.  
+    - **Hint**: Row space is spanned by independent rows; column space is spanned by independent columns.
+
+22. Determine if $A = \begin{bmatrix} 1 & 2 \\ 2 & 4 \end{bmatrix}$ is invertible. If not, explain why using its fundamental subspaces. 
+    - **Hint**: Check if the null space is trivial or if the determinant of $A$ is zero.
+
+23. Write a pseudocode to calculate the Frobenius norm of any $m \times n$ matrix.  
+    - **Hint**: Use $\|A\|_F = \sqrt{\sum_{i=1}^m \sum_{j=1}^n A_{ij}^2}$.
+
+24. Find the projection of $b = \begin{bmatrix} 3 \\ 4 \\ 5 \end{bmatrix} $ onto the column space of $A = \begin{bmatrix} 1 & 0 \\ 0 & 1 \\ 1 & 1 \end{bmatrix}$. 
+    - **Hint**: Use $P = A(A^T A)^{-1}A^T b$.
+
+25. Write a pseudocode to compute the outer product of two vectors $x$ and $y$. 
+    - **Hint**: Use a nested loop or NumPy's `np.outer()` function to compute the product.
+

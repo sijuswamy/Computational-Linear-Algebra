@@ -1,8 +1,6 @@
 # Preface {.unnumbered}
 
 
-*I was born in the darkness of ignorance, and my master opened my eyes with the torch of knowledge. I offer my respectful obeisances unto him*
-
 ----
 Welcome to the course on **Computational Linear Algebra**. This course is designed to provide a practical perspective on linear algebra, bridging the gap between mathematical theory and real-world applications. As we delve into the intricacies of linear algebra, our focus will be on equipping you with the skills to effectively utilize these concepts in the design, development, and manipulation of data-driven processes applicable to Computer Science and Engineering.
 
